@@ -21,32 +21,32 @@ namespace Protocol
             "",
             "Εισερχόμενα",
             "Εξερχόμενα"});
+
         }
+
+        InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
+        Panel IOBoxPanel = new Panel();
 
         private void cbProtokoloKind_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbProtokoloKind.Text == "Εισερχόμενα")
             {
-                panelInbox.Visible = true;
-                panelInbox.Location = new Point(12, 110);
-                panelOutbox.Visible = false;
+                Controls.Remove(IOBoxPanel);
+                IOBoxPanel = IOPanelsFrm.panelInbox;
+                IOBoxPanel.Location = new Point(12, 110);
+                Controls.Add(IOBoxPanel);
             }
             else if (cbProtokoloKind.Text == "Εξερχόμενα")
             {
-                panelInbox.Visible = false;
-                panelOutbox.Visible = true;
-                panelOutbox.Location = new Point(12, 110);
+                Controls.Remove(IOBoxPanel);
+                IOBoxPanel = IOPanelsFrm.panelOutbox;
+                IOBoxPanel.Location = new Point(12, 110);
+                Controls.Add(IOBoxPanel);
             }
             else
             {
-                panelInbox.Visible = false;
-                panelOutbox.Visible = false;
+                Controls.Remove(IOBoxPanel);
             }
-        }
-
-        private void panelInbox_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

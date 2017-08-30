@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InboxOutboxPanels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InboxOutboxPanels.Designer.cs">
+      <DependentUpon>InboxOutboxPanels.cs</DependentUpon>
+    </Compile>
     <Compile Include="MasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="ProtokoloUpdateForm.Designer.cs">
       <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="InboxOutboxPanels.resx">
+      <DependentUpon>InboxOutboxPanels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MasterForm.resx">
       <DependentUpon>MasterForm.cs</DependentUpon>
     </EmbeddedResource>
