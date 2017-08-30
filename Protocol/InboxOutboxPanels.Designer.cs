@@ -88,141 +88,158 @@
             // 
             // tbInToText
             // 
-            this.tbInToText.Location = new System.Drawing.Point(249, 354);
+            this.tbInToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInToText.Location = new System.Drawing.Point(264, 354);
             this.tbInToText.Multiline = true;
             this.tbInToText.Name = "tbInToText";
             this.tbInToText.Size = new System.Drawing.Size(280, 50);
-            this.tbInToText.TabIndex = 16;
+            this.tbInToText.TabIndex = 8;
             // 
             // tbInSummary
             // 
-            this.tbInSummary.Location = new System.Drawing.Point(249, 288);
+            this.tbInSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInSummary.Location = new System.Drawing.Point(264, 288);
             this.tbInSummary.Multiline = true;
             this.tbInSummary.Name = "tbInSummary";
             this.tbInSummary.Size = new System.Drawing.Size(280, 50);
-            this.tbInSummary.TabIndex = 15;
+            this.tbInSummary.TabIndex = 7;
             // 
             // tbInProeleusi
             // 
-            this.tbInProeleusi.Location = new System.Drawing.Point(249, 222);
+            this.tbInProeleusi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInProeleusi.Location = new System.Drawing.Point(264, 222);
             this.tbInProeleusi.Multiline = true;
             this.tbInProeleusi.Name = "tbInProeleusi";
             this.tbInProeleusi.Size = new System.Drawing.Size(280, 50);
-            this.tbInProeleusi.TabIndex = 14;
+            this.tbInProeleusi.TabIndex = 6;
             // 
             // tbInFolderId
             // 
-            this.tbInFolderId.Location = new System.Drawing.Point(249, 186);
+            this.tbInFolderId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInFolderId.Location = new System.Drawing.Point(264, 186);
             this.tbInFolderId.Name = "tbInFolderId";
-            this.tbInFolderId.Size = new System.Drawing.Size(280, 20);
-            this.tbInFolderId.TabIndex = 13;
+            this.tbInFolderId.Size = new System.Drawing.Size(280, 23);
+            this.tbInFolderId.TabIndex = 5;
             // 
             // tbInDocDate
             // 
-            this.tbInDocDate.Location = new System.Drawing.Point(249, 150);
+            this.tbInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInDocDate.Location = new System.Drawing.Point(264, 150);
             this.tbInDocDate.Name = "tbInDocDate";
-            this.tbInDocDate.Size = new System.Drawing.Size(280, 20);
-            this.tbInDocDate.TabIndex = 12;
+            this.tbInDocDate.Size = new System.Drawing.Size(280, 23);
+            this.tbInDocDate.TabIndex = 4;
             // 
             // tbInDocNum
             // 
-            this.tbInDocNum.Location = new System.Drawing.Point(249, 114);
+            this.tbInDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInDocNum.Location = new System.Drawing.Point(264, 114);
             this.tbInDocNum.Name = "tbInDocNum";
-            this.tbInDocNum.Size = new System.Drawing.Size(280, 20);
-            this.tbInDocNum.TabIndex = 11;
+            this.tbInDocNum.Size = new System.Drawing.Size(280, 23);
+            this.tbInDocNum.TabIndex = 3;
             // 
             // tbInGetDate
             // 
-            this.tbInGetDate.Location = new System.Drawing.Point(249, 78);
+            this.tbInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInGetDate.Location = new System.Drawing.Point(264, 78);
             this.tbInGetDate.Name = "tbInGetDate";
-            this.tbInGetDate.Size = new System.Drawing.Size(280, 20);
-            this.tbInGetDate.TabIndex = 10;
+            this.tbInGetDate.Size = new System.Drawing.Size(280, 23);
+            this.tbInGetDate.TabIndex = 2;
             // 
             // tbInProtokoloNum
             // 
-            this.tbInProtokoloNum.Location = new System.Drawing.Point(249, 42);
+            this.tbInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbInProtokoloNum.Name = "tbInProtokoloNum";
-            this.tbInProtokoloNum.Size = new System.Drawing.Size(280, 20);
-            this.tbInProtokoloNum.TabIndex = 9;
+            this.tbInProtokoloNum.Size = new System.Drawing.Size(280, 23);
+            this.tbInProtokoloNum.TabIndex = 1;
             // 
             // lblInToText
             // 
             this.lblInToText.AutoSize = true;
-            this.lblInToText.Location = new System.Drawing.Point(13, 357);
+            this.lblInToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInToText.Location = new System.Drawing.Point(8, 357);
             this.lblInToText.Name = "lblInToText";
-            this.lblInToText.Size = new System.Drawing.Size(211, 13);
+            this.lblInToText.Size = new System.Drawing.Size(257, 17);
             this.lblInToText.TabIndex = 8;
             this.lblInToText.Text = "Παράδοση για ενέργεια / Παρατηρήσεις";
             // 
             // lblInSummary
             // 
             this.lblInSummary.AutoSize = true;
-            this.lblInSummary.Location = new System.Drawing.Point(13, 291);
+            this.lblInSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInSummary.Location = new System.Drawing.Point(8, 291);
             this.lblInSummary.Name = "lblInSummary";
-            this.lblInSummary.Size = new System.Drawing.Size(54, 13);
+            this.lblInSummary.Size = new System.Drawing.Size(68, 17);
             this.lblInSummary.TabIndex = 7;
             this.lblInSummary.Text = "Περίληψη";
             // 
             // lblInProeleusi
             // 
             this.lblInProeleusi.AutoSize = true;
-            this.lblInProeleusi.Location = new System.Drawing.Point(13, 225);
+            this.lblInProeleusi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInProeleusi.Location = new System.Drawing.Point(8, 225);
             this.lblInProeleusi.Name = "lblInProeleusi";
-            this.lblInProeleusi.Size = new System.Drawing.Size(62, 13);
+            this.lblInProeleusi.Size = new System.Drawing.Size(79, 17);
             this.lblInProeleusi.TabIndex = 6;
             this.lblInProeleusi.Text = "Προέλευση";
             // 
             // lblInFolderId
             // 
             this.lblInFolderId.AutoSize = true;
-            this.lblInFolderId.Location = new System.Drawing.Point(13, 189);
+            this.lblInFolderId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInFolderId.Location = new System.Drawing.Point(8, 189);
             this.lblInFolderId.Name = "lblInFolderId";
-            this.lblInFolderId.Size = new System.Drawing.Size(138, 13);
+            this.lblInFolderId.Size = new System.Drawing.Size(173, 17);
             this.lblInFolderId.TabIndex = 5;
             this.lblInFolderId.Text = "Αριθμός Φακέλου Αρχείου";
             // 
             // lblInDocDate
             // 
             this.lblInDocDate.AutoSize = true;
-            this.lblInDocDate.Location = new System.Drawing.Point(13, 153);
+            this.lblInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInDocDate.Location = new System.Drawing.Point(8, 153);
             this.lblInDocDate.Name = "lblInDocDate";
-            this.lblInDocDate.Size = new System.Drawing.Size(119, 13);
+            this.lblInDocDate.Size = new System.Drawing.Size(153, 17);
             this.lblInDocDate.TabIndex = 4;
             this.lblInDocDate.Text = "Ημερομηνία Έκδοδσης";
             // 
             // lblInDocNum
             // 
             this.lblInDocNum.AutoSize = true;
-            this.lblInDocNum.Location = new System.Drawing.Point(13, 117);
+            this.lblInDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInDocNum.Location = new System.Drawing.Point(8, 117);
             this.lblInDocNum.Name = "lblInDocNum";
-            this.lblInDocNum.Size = new System.Drawing.Size(174, 13);
+            this.lblInDocNum.Size = new System.Drawing.Size(219, 17);
             this.lblInDocNum.TabIndex = 3;
             this.lblInDocNum.Text = "Αριθμός Εισερχομένου Εγγράφου";
             // 
             // lblInGetDate
             // 
             this.lblInGetDate.AutoSize = true;
-            this.lblInGetDate.Location = new System.Drawing.Point(13, 81);
+            this.lblInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInGetDate.Location = new System.Drawing.Point(8, 81);
             this.lblInGetDate.Name = "lblInGetDate";
-            this.lblInGetDate.Size = new System.Drawing.Size(102, 13);
+            this.lblInGetDate.Size = new System.Drawing.Size(129, 17);
             this.lblInGetDate.TabIndex = 2;
             this.lblInGetDate.Text = "Ημερομηνία Λήψης";
             // 
             // lblInProtokoloNum
             // 
             this.lblInProtokoloNum.AutoSize = true;
-            this.lblInProtokoloNum.Location = new System.Drawing.Point(13, 45);
+            this.lblInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInProtokoloNum.Location = new System.Drawing.Point(8, 45);
             this.lblInProtokoloNum.Name = "lblInProtokoloNum";
-            this.lblInProtokoloNum.Size = new System.Drawing.Size(151, 13);
+            this.lblInProtokoloNum.Size = new System.Drawing.Size(195, 17);
             this.lblInProtokoloNum.TabIndex = 1;
             this.lblInProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
             // 
             // lblInPanelTitle
             // 
             this.lblInPanelTitle.AutoSize = true;
+            this.lblInPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblInPanelTitle.Location = new System.Drawing.Point(246, 9);
             this.lblInPanelTitle.Name = "lblInPanelTitle";
-            this.lblInPanelTitle.Size = new System.Drawing.Size(72, 13);
+            this.lblInPanelTitle.Size = new System.Drawing.Size(99, 20);
             this.lblInPanelTitle.TabIndex = 0;
             this.lblInPanelTitle.Text = "Εισερχόμενα";
             // 
@@ -246,92 +263,103 @@
             // 
             // tbOutSummary
             // 
-            this.tbOutSummary.Location = new System.Drawing.Point(249, 216);
+            this.tbOutSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutSummary.Location = new System.Drawing.Point(264, 216);
             this.tbOutSummary.Multiline = true;
             this.tbOutSummary.Name = "tbOutSummary";
             this.tbOutSummary.Size = new System.Drawing.Size(280, 50);
-            this.tbOutSummary.TabIndex = 15;
+            this.tbOutSummary.TabIndex = 5;
             // 
             // tbOutKateuth
             // 
-            this.tbOutKateuth.Location = new System.Drawing.Point(249, 150);
+            this.tbOutKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutKateuth.Location = new System.Drawing.Point(264, 150);
             this.tbOutKateuth.Multiline = true;
             this.tbOutKateuth.Name = "tbOutKateuth";
             this.tbOutKateuth.Size = new System.Drawing.Size(280, 50);
-            this.tbOutKateuth.TabIndex = 14;
+            this.tbOutKateuth.TabIndex = 4;
             // 
             // tbOutDocNum
             // 
-            this.tbOutDocNum.Location = new System.Drawing.Point(249, 114);
+            this.tbOutDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutDocNum.Location = new System.Drawing.Point(264, 114);
             this.tbOutDocNum.Name = "tbOutDocNum";
-            this.tbOutDocNum.Size = new System.Drawing.Size(280, 20);
-            this.tbOutDocNum.TabIndex = 11;
+            this.tbOutDocNum.Size = new System.Drawing.Size(280, 23);
+            this.tbOutDocNum.TabIndex = 3;
             // 
             // tbOutSetDate
             // 
-            this.tbOutSetDate.Location = new System.Drawing.Point(249, 78);
+            this.tbOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutSetDate.Location = new System.Drawing.Point(264, 78);
             this.tbOutSetDate.Name = "tbOutSetDate";
-            this.tbOutSetDate.Size = new System.Drawing.Size(280, 20);
-            this.tbOutSetDate.TabIndex = 10;
+            this.tbOutSetDate.Size = new System.Drawing.Size(280, 23);
+            this.tbOutSetDate.TabIndex = 2;
             // 
             // tbOutProtokoloNum
             // 
-            this.tbOutProtokoloNum.Location = new System.Drawing.Point(249, 42);
+            this.tbOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbOutProtokoloNum.Name = "tbOutProtokoloNum";
-            this.tbOutProtokoloNum.Size = new System.Drawing.Size(280, 20);
-            this.tbOutProtokoloNum.TabIndex = 9;
+            this.tbOutProtokoloNum.Size = new System.Drawing.Size(280, 23);
+            this.tbOutProtokoloNum.TabIndex = 1;
             // 
             // lblOutSummary
             // 
             this.lblOutSummary.AutoSize = true;
-            this.lblOutSummary.Location = new System.Drawing.Point(13, 219);
+            this.lblOutSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutSummary.Location = new System.Drawing.Point(8, 219);
             this.lblOutSummary.Name = "lblOutSummary";
-            this.lblOutSummary.Size = new System.Drawing.Size(54, 13);
+            this.lblOutSummary.Size = new System.Drawing.Size(68, 17);
             this.lblOutSummary.TabIndex = 7;
             this.lblOutSummary.Text = "Περίληψη";
             // 
             // lblOutKateuth
             // 
             this.lblOutKateuth.AutoSize = true;
-            this.lblOutKateuth.Location = new System.Drawing.Point(13, 153);
+            this.lblOutKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutKateuth.Location = new System.Drawing.Point(8, 153);
             this.lblOutKateuth.Name = "lblOutKateuth";
-            this.lblOutKateuth.Size = new System.Drawing.Size(69, 13);
+            this.lblOutKateuth.Size = new System.Drawing.Size(86, 17);
             this.lblOutKateuth.TabIndex = 6;
             this.lblOutKateuth.Text = "Κατεύθυνση";
             // 
             // lblOutDocNum
             // 
             this.lblOutDocNum.AutoSize = true;
-            this.lblOutDocNum.Location = new System.Drawing.Point(13, 117);
+            this.lblOutDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutDocNum.Location = new System.Drawing.Point(8, 117);
             this.lblOutDocNum.Name = "lblOutDocNum";
-            this.lblOutDocNum.Size = new System.Drawing.Size(89, 13);
+            this.lblOutDocNum.Size = new System.Drawing.Size(109, 17);
             this.lblOutDocNum.TabIndex = 3;
             this.lblOutDocNum.Text = "Σχετικοί Αριθμοί";
             // 
             // lblOutSetDate
             // 
             this.lblOutSetDate.AutoSize = true;
-            this.lblOutSetDate.Location = new System.Drawing.Point(13, 81);
+            this.lblOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutSetDate.Location = new System.Drawing.Point(8, 81);
             this.lblOutSetDate.Name = "lblOutSetDate";
-            this.lblOutSetDate.Size = new System.Drawing.Size(124, 13);
+            this.lblOutSetDate.Size = new System.Drawing.Size(158, 17);
             this.lblOutSetDate.TabIndex = 2;
             this.lblOutSetDate.Text = "Ημερομηνία Αποστολής";
             // 
             // lblOutProtokoloNum
             // 
             this.lblOutProtokoloNum.AutoSize = true;
-            this.lblOutProtokoloNum.Location = new System.Drawing.Point(13, 45);
+            this.lblOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutProtokoloNum.Location = new System.Drawing.Point(8, 45);
             this.lblOutProtokoloNum.Name = "lblOutProtokoloNum";
-            this.lblOutProtokoloNum.Size = new System.Drawing.Size(151, 13);
+            this.lblOutProtokoloNum.Size = new System.Drawing.Size(195, 17);
             this.lblOutProtokoloNum.TabIndex = 1;
             this.lblOutProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
             // 
             // lblOutPanelTitle
             // 
             this.lblOutPanelTitle.AutoSize = true;
+            this.lblOutPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblOutPanelTitle.Location = new System.Drawing.Point(246, 9);
             this.lblOutPanelTitle.Name = "lblOutPanelTitle";
-            this.lblOutPanelTitle.Size = new System.Drawing.Size(67, 13);
+            this.lblOutPanelTitle.Size = new System.Drawing.Size(95, 20);
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 

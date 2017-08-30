@@ -18,12 +18,10 @@ namespace Protocol
         {
             InitializeComponent();
 
-            //ToDo: Get values from database
-            cbProtokoloKind.Items.AddRange(new object[] {
-            "",
-            "Εισερχόμενα",
-            "Εξερχόμενα"});
+            //cbProtokoloKind.Items.AddRange(new object[] { "", "Εισερχόμενα", "Εξερχόμενα" });
 
+            //Values from database
+            cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
         }
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
@@ -32,8 +30,25 @@ namespace Protocol
         private string[] GetProtocolKind()
         {
             List<string> KindOfProtocol = new List<string>();
-            KindOfProtocol.Add("");
 
+            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            string SelectSt = "SELECT Name FROM [GramV3-Dev].[dbo].[Proced] ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    KindOfProtocol.Add(reader["Name"].ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+            
             return KindOfProtocol.ToArray();
         }
 
@@ -45,6 +60,7 @@ namespace Protocol
                 IOBoxPanel = IOPanelsFrm.panelInbox;
                 IOBoxPanel.Location = new Point(12, 110);
                 Controls.Add(IOBoxPanel);
+                cbProtokoloKind.Enabled = false;
             }
             else if (cbProtokoloKind.Text == "Εξερχόμενα")
             {
@@ -52,11 +68,17 @@ namespace Protocol
                 IOBoxPanel = IOPanelsFrm.panelOutbox;
                 IOBoxPanel.Location = new Point(12, 110);
                 Controls.Add(IOBoxPanel);
+                cbProtokoloKind.Enabled = false;
             }
             else
             {
                 Controls.Remove(IOBoxPanel);
             }
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            //ToDo: 
         }
     }
 }

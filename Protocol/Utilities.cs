@@ -14,10 +14,10 @@ namespace Protocol
         static DBInfo()
         {
             //default values
-            server = "localhost\\SQLExpress";
-            database = "RefMeas";
-            username = "sa";
-            password = "motor01l";
+            server = "AVINDOMC\\SQLSERVERR2";
+            database = "GramV3-Dev";
+            username = "GramV3";
+            password = "8093570";
 
             string configFile_Path = @"dbconfig.txt";
             List<string> ConfigLines = new List<string>();
