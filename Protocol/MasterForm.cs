@@ -15,9 +15,18 @@ namespace Protocol
         public MasterForm()
         {
             InitializeComponent();
+        }
 
-            //new messagebox added - just for testing...
-            MessageBox.Show("Testing...");
+        private void InsertTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
+            frmProtoIns.ShowDialog();
+        }
+
+        private void UpdateTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtokoloUpdateForm frmProtoUpd = new ProtokoloUpdateForm();
+            frmProtoUpd.ShowDialog();
         }
     }
 }
