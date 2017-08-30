@@ -15,6 +15,7 @@ namespace Protocol
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show("Testing...");
         }
     }
 }
