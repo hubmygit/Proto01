@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Protocol
 {
-    public partial class Form1 : Form
+    public partial class MasterForm : Form
     {
-        public Form1()
+        public MasterForm()
         {
             InitializeComponent();
 
