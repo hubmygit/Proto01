@@ -16,7 +16,7 @@ namespace Protocol
         {
             InitializeComponent();
 
-            //new messagebox added
+            //new messagebox added - just for testing
             MessageBox.Show("Testing...");
         }
     }
