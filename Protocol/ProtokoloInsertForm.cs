@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SqlClient;
+
 namespace Protocol
 {
     public partial class ProtokoloInsertForm : Form
@@ -16,7 +18,7 @@ namespace Protocol
         {
             InitializeComponent();
 
-            //ToDo: From get values from database
+            //ToDo: Get values from database
             cbProtokoloKind.Items.AddRange(new object[] {
             "",
             "Εισερχόμενα",
@@ -26,6 +28,14 @@ namespace Protocol
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
+
+        private string[] GetProtocolKind()
+        {
+            List<string> KindOfProtocol = new List<string>();
+            KindOfProtocol.Add("");
+
+            return KindOfProtocol.ToArray();
+        }
 
         private void cbProtokoloKind_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -37,36 +37,40 @@
             // lblProtokoloKind
             // 
             this.lblProtokoloKind.AutoSize = true;
-            this.lblProtokoloKind.Location = new System.Drawing.Point(128, 65);
+            this.lblProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblProtokoloKind.Location = new System.Drawing.Point(92, 65);
             this.lblProtokoloKind.Name = "lblProtokoloKind";
-            this.lblProtokoloKind.Size = new System.Drawing.Size(129, 13);
+            this.lblProtokoloKind.Size = new System.Drawing.Size(165, 17);
             this.lblProtokoloKind.TabIndex = 0;
             this.lblProtokoloKind.Text = "Κατηγορία Πρωτοκόλλου";
             // 
             // cbProtokoloKind
             // 
+            this.cbProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbProtokoloKind.FormattingEnabled = true;
             this.cbProtokoloKind.Location = new System.Drawing.Point(263, 62);
             this.cbProtokoloKind.Name = "cbProtokoloKind";
-            this.cbProtokoloKind.Size = new System.Drawing.Size(130, 21);
+            this.cbProtokoloKind.Size = new System.Drawing.Size(173, 24);
             this.cbProtokoloKind.TabIndex = 1;
             this.cbProtokoloKind.SelectedIndexChanged += new System.EventHandler(this.cbProtokoloKind_SelectedIndexChanged);
             // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(128, 30);
+            this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblCompany.Location = new System.Drawing.Point(92, 28);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(45, 13);
+            this.lblCompany.Size = new System.Drawing.Size(54, 17);
             this.lblCompany.TabIndex = 3;
             this.lblCompany.Text = "Εταιρία";
             // 
             // cbCompany
             // 
+            this.cbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(263, 27);
+            this.cbCompany.Location = new System.Drawing.Point(263, 25);
             this.cbCompany.Name = "cbCompany";
-            this.cbCompany.Size = new System.Drawing.Size(130, 21);
+            this.cbCompany.Size = new System.Drawing.Size(173, 24);
             this.cbCompany.TabIndex = 4;
             // 
             // ProtokoloInsertForm

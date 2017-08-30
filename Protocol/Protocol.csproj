@@ -71,6 +71,7 @@
     <Compile Include="ProtokoloUpdateForm.Designer.cs">
       <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="InboxOutboxPanels.resx">
       <DependentUpon>InboxOutboxPanels.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbconfig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
