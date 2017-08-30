@@ -28,5 +28,17 @@ namespace Protocol
             ProtokoloUpdateForm frmProtoUpd = new ProtokoloUpdateForm();
             frmProtoUpd.ShowDialog();
         }
+
+        private void InsertToolStripBtn_Click(object sender, EventArgs e)
+        {
+            ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
+            frmProtoIns.ShowDialog();
+        }
+
+        private void UpdateToolStripBtn_Click(object sender, EventArgs e)
+        {
+            ProtokoloUpdateForm frmProtoUpd = new ProtokoloUpdateForm();
+            frmProtoUpd.ShowDialog();
+        }
     }
 }

@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InsertTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,20 +92,53 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(98, 17);
             this.toolStripStatusLabel1.Text = "© MOH IT - 2017";
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InsertToolStripBtn,
+            this.UpdateToolStripBtn});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(584, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // InsertToolStripBtn
+            // 
+            this.InsertToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("InsertToolStripBtn.Image")));
+            this.InsertToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InsertToolStripBtn.Name = "InsertToolStripBtn";
+            this.InsertToolStripBtn.Size = new System.Drawing.Size(80, 22);
+            this.InsertToolStripBtn.Text = "Εισαγωγή";
+            this.InsertToolStripBtn.Click += new System.EventHandler(this.InsertToolStripBtn_Click);
+            // 
+            // UpdateToolStripBtn
+            // 
+            this.UpdateToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateToolStripBtn.Image")));
+            this.UpdateToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateToolStripBtn.Name = "UpdateToolStripBtn";
+            this.UpdateToolStripBtn.Size = new System.Drawing.Size(83, 22);
+            this.UpdateToolStripBtn.Text = "Μεταβολή";
+            this.UpdateToolStripBtn.Click += new System.EventHandler(this.UpdateToolStripBtn_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 262);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MasterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Πρωτόκολλο";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +152,9 @@
         private System.Windows.Forms.ToolStripMenuItem UpdateTSMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton InsertToolStripBtn;
+        private System.Windows.Forms.ToolStripButton UpdateToolStripBtn;
     }
 }
 
