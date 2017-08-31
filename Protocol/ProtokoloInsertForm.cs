@@ -247,7 +247,7 @@ namespace Protocol
                     sqlConn.Open();
                     SqlCommand cmd = new SqlCommand(InsertSt, sqlConn);
 
-                    cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id]
+                    cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id] --> company, year, eiserxomena-ekserxomena, 
                     cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbInProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
                     //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current?
                     cmd.Parameters.AddWithValue("@ProcedureId", ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id); //get object from combobox
