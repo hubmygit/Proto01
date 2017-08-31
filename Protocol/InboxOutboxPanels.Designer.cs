@@ -33,9 +33,7 @@
             this.tbInSummary = new System.Windows.Forms.TextBox();
             this.tbInProeleusi = new System.Windows.Forms.TextBox();
             this.tbInFolderId = new System.Windows.Forms.TextBox();
-            this.tbInDocDate = new System.Windows.Forms.TextBox();
             this.tbInDocNum = new System.Windows.Forms.TextBox();
-            this.tbInGetDate = new System.Windows.Forms.TextBox();
             this.tbInProtokoloNum = new System.Windows.Forms.TextBox();
             this.lblInToText = new System.Windows.Forms.Label();
             this.lblInSummary = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
             this.tbOutSummary = new System.Windows.Forms.TextBox();
             this.tbOutKateuth = new System.Windows.Forms.TextBox();
             this.tbOutDocNum = new System.Windows.Forms.TextBox();
-            this.tbOutSetDate = new System.Windows.Forms.TextBox();
             this.tbOutProtokoloNum = new System.Windows.Forms.TextBox();
             this.lblOutSummary = new System.Windows.Forms.Label();
             this.lblOutKateuth = new System.Windows.Forms.Label();
@@ -58,19 +55,22 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokoloNum = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
+            this.dtpInGetDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.dtpInDocDate);
+            this.panelInbox.Controls.Add(this.dtpInGetDate);
             this.panelInbox.Controls.Add(this.tbInToText);
             this.panelInbox.Controls.Add(this.tbInSummary);
             this.panelInbox.Controls.Add(this.tbInProeleusi);
             this.panelInbox.Controls.Add(this.tbInFolderId);
-            this.panelInbox.Controls.Add(this.tbInDocDate);
             this.panelInbox.Controls.Add(this.tbInDocNum);
-            this.panelInbox.Controls.Add(this.tbInGetDate);
             this.panelInbox.Controls.Add(this.tbInProtokoloNum);
             this.panelInbox.Controls.Add(this.lblInToText);
             this.panelInbox.Controls.Add(this.lblInSummary);
@@ -121,14 +121,6 @@
             this.tbInFolderId.Size = new System.Drawing.Size(280, 23);
             this.tbInFolderId.TabIndex = 5;
             // 
-            // tbInDocDate
-            // 
-            this.tbInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbInDocDate.Location = new System.Drawing.Point(264, 150);
-            this.tbInDocDate.Name = "tbInDocDate";
-            this.tbInDocDate.Size = new System.Drawing.Size(280, 23);
-            this.tbInDocDate.TabIndex = 4;
-            // 
             // tbInDocNum
             // 
             this.tbInDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -137,16 +129,9 @@
             this.tbInDocNum.Size = new System.Drawing.Size(280, 23);
             this.tbInDocNum.TabIndex = 3;
             // 
-            // tbInGetDate
-            // 
-            this.tbInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbInGetDate.Location = new System.Drawing.Point(264, 78);
-            this.tbInGetDate.Name = "tbInGetDate";
-            this.tbInGetDate.Size = new System.Drawing.Size(280, 23);
-            this.tbInGetDate.TabIndex = 2;
-            // 
             // tbInProtokoloNum
             // 
+            this.tbInProtokoloNum.Enabled = false;
             this.tbInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbInProtokoloNum.Name = "tbInProtokoloNum";
@@ -245,10 +230,10 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.dtpOutSetDate);
             this.panelOutbox.Controls.Add(this.tbOutSummary);
             this.panelOutbox.Controls.Add(this.tbOutKateuth);
             this.panelOutbox.Controls.Add(this.tbOutDocNum);
-            this.panelOutbox.Controls.Add(this.tbOutSetDate);
             this.panelOutbox.Controls.Add(this.tbOutProtokoloNum);
             this.panelOutbox.Controls.Add(this.lblOutSummary);
             this.panelOutbox.Controls.Add(this.lblOutKateuth);
@@ -287,16 +272,9 @@
             this.tbOutDocNum.Size = new System.Drawing.Size(280, 23);
             this.tbOutDocNum.TabIndex = 3;
             // 
-            // tbOutSetDate
-            // 
-            this.tbOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbOutSetDate.Location = new System.Drawing.Point(264, 78);
-            this.tbOutSetDate.Name = "tbOutSetDate";
-            this.tbOutSetDate.Size = new System.Drawing.Size(280, 23);
-            this.tbOutSetDate.TabIndex = 2;
-            // 
             // tbOutProtokoloNum
             // 
+            this.tbOutProtokoloNum.Enabled = false;
             this.tbOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbOutProtokoloNum.Name = "tbOutProtokoloNum";
@@ -363,6 +341,33 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
+            // dtpInGetDate
+            // 
+            this.dtpInGetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInGetDate.Location = new System.Drawing.Point(264, 78);
+            this.dtpInGetDate.Name = "dtpInGetDate";
+            this.dtpInGetDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpInGetDate.TabIndex = 9;
+            // 
+            // dtpOutSetDate
+            // 
+            this.dtpOutSetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpOutSetDate.Location = new System.Drawing.Point(264, 78);
+            this.dtpOutSetDate.Name = "dtpOutSetDate";
+            this.dtpOutSetDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpOutSetDate.TabIndex = 10;
+            // 
+            // dtpInDocDate
+            // 
+            this.dtpInDocDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInDocDate.Location = new System.Drawing.Point(264, 148);
+            this.dtpInDocDate.Name = "dtpInDocDate";
+            this.dtpInDocDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpInDocDate.TabIndex = 10;
+            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,14 +408,14 @@
         public System.Windows.Forms.TextBox tbInSummary;
         public System.Windows.Forms.TextBox tbInProeleusi;
         public System.Windows.Forms.TextBox tbInFolderId;
-        public System.Windows.Forms.TextBox tbInDocDate;
         public System.Windows.Forms.TextBox tbInDocNum;
-        public System.Windows.Forms.TextBox tbInGetDate;
         public System.Windows.Forms.TextBox tbInProtokoloNum;
         public System.Windows.Forms.TextBox tbOutSummary;
         public System.Windows.Forms.TextBox tbOutKateuth;
         public System.Windows.Forms.TextBox tbOutDocNum;
-        public System.Windows.Forms.TextBox tbOutSetDate;
         public System.Windows.Forms.TextBox tbOutProtokoloNum;
+        public System.Windows.Forms.DateTimePicker dtpInGetDate;
+        public System.Windows.Forms.DateTimePicker dtpOutSetDate;
+        public System.Windows.Forms.DateTimePicker dtpInDocDate;
     }
 }
