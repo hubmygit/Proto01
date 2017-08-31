@@ -383,14 +383,6 @@
         #endregion
 
         public System.Windows.Forms.Panel panelInbox;
-        private System.Windows.Forms.TextBox tbInToText;
-        private System.Windows.Forms.TextBox tbInSummary;
-        private System.Windows.Forms.TextBox tbInProeleusi;
-        private System.Windows.Forms.TextBox tbInFolderId;
-        private System.Windows.Forms.TextBox tbInDocDate;
-        private System.Windows.Forms.TextBox tbInDocNum;
-        private System.Windows.Forms.TextBox tbInGetDate;
-        private System.Windows.Forms.TextBox tbInProtokoloNum;
         private System.Windows.Forms.Label lblInToText;
         private System.Windows.Forms.Label lblInSummary;
         private System.Windows.Forms.Label lblInProeleusi;
@@ -400,11 +392,6 @@
         private System.Windows.Forms.Label lblInGetDate;
         private System.Windows.Forms.Label lblInProtokoloNum;
         private System.Windows.Forms.Label lblInPanelTitle;
-        private System.Windows.Forms.TextBox tbOutSummary;
-        private System.Windows.Forms.TextBox tbOutKateuth;
-        private System.Windows.Forms.TextBox tbOutDocNum;
-        private System.Windows.Forms.TextBox tbOutSetDate;
-        private System.Windows.Forms.TextBox tbOutProtokoloNum;
         private System.Windows.Forms.Label lblOutSummary;
         private System.Windows.Forms.Label lblOutKateuth;
         private System.Windows.Forms.Label lblOutDocNum;
@@ -412,5 +399,18 @@
         private System.Windows.Forms.Label lblOutProtokoloNum;
         private System.Windows.Forms.Label lblOutPanelTitle;
         public System.Windows.Forms.Panel panelOutbox;
+        public System.Windows.Forms.TextBox tbInToText;
+        public System.Windows.Forms.TextBox tbInSummary;
+        public System.Windows.Forms.TextBox tbInProeleusi;
+        public System.Windows.Forms.TextBox tbInFolderId;
+        public System.Windows.Forms.TextBox tbInDocDate;
+        public System.Windows.Forms.TextBox tbInDocNum;
+        public System.Windows.Forms.TextBox tbInGetDate;
+        public System.Windows.Forms.TextBox tbInProtokoloNum;
+        public System.Windows.Forms.TextBox tbOutSummary;
+        public System.Windows.Forms.TextBox tbOutKateuth;
+        public System.Windows.Forms.TextBox tbOutDocNum;
+        public System.Windows.Forms.TextBox tbOutSetDate;
+        public System.Windows.Forms.TextBox tbOutProtokoloNum;
     }
 }

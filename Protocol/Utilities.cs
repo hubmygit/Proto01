@@ -56,4 +56,15 @@ namespace Protocol
         public static string username { get; set; }
         public static string password { get; set; }
     }
+
+    public class ComboboxItem
+    {
+        public string Text { get; set; }
+        public object Value { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
+        }
+    }
 }

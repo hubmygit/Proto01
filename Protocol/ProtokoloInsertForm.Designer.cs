@@ -73,6 +73,7 @@
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(173, 24);
             this.cbCompany.TabIndex = 1;
+            this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
             // btnInsert
             // 
