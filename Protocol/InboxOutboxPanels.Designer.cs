@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelInbox = new System.Windows.Forms.Panel();
+            this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpInGetDate = new System.Windows.Forms.DateTimePicker();
             this.tbInToText = new System.Windows.Forms.TextBox();
             this.tbInSummary = new System.Windows.Forms.TextBox();
             this.tbInProeleusi = new System.Windows.Forms.TextBox();
@@ -45,6 +47,7 @@
             this.lblInProtokoloNum = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
+            this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
             this.tbOutSummary = new System.Windows.Forms.TextBox();
             this.tbOutKateuth = new System.Windows.Forms.TextBox();
             this.tbOutDocNum = new System.Windows.Forms.TextBox();
@@ -55,9 +58,6 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokoloNum = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
-            this.dtpInGetDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +85,24 @@
             this.panelInbox.Name = "panelInbox";
             this.panelInbox.Size = new System.Drawing.Size(560, 440);
             this.panelInbox.TabIndex = 3;
+            // 
+            // dtpInDocDate
+            // 
+            this.dtpInDocDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInDocDate.Location = new System.Drawing.Point(264, 148);
+            this.dtpInDocDate.Name = "dtpInDocDate";
+            this.dtpInDocDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpInDocDate.TabIndex = 10;
+            // 
+            // dtpInGetDate
+            // 
+            this.dtpInGetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpInGetDate.Location = new System.Drawing.Point(264, 78);
+            this.dtpInGetDate.Name = "dtpInGetDate";
+            this.dtpInGetDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpInGetDate.TabIndex = 9;
             // 
             // tbInToText
             // 
@@ -246,6 +264,15 @@
             this.panelOutbox.Size = new System.Drawing.Size(560, 440);
             this.panelOutbox.TabIndex = 6;
             // 
+            // dtpOutSetDate
+            // 
+            this.dtpOutSetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.dtpOutSetDate.Location = new System.Drawing.Point(264, 78);
+            this.dtpOutSetDate.Name = "dtpOutSetDate";
+            this.dtpOutSetDate.Size = new System.Drawing.Size(280, 23);
+            this.dtpOutSetDate.TabIndex = 10;
+            // 
             // tbOutSummary
             // 
             this.tbOutSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -340,33 +367,6 @@
             this.lblOutPanelTitle.Size = new System.Drawing.Size(95, 20);
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
-            // 
-            // dtpInGetDate
-            // 
-            this.dtpInGetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpInGetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpInGetDate.Location = new System.Drawing.Point(264, 78);
-            this.dtpInGetDate.Name = "dtpInGetDate";
-            this.dtpInGetDate.Size = new System.Drawing.Size(280, 23);
-            this.dtpInGetDate.TabIndex = 9;
-            // 
-            // dtpOutSetDate
-            // 
-            this.dtpOutSetDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpOutSetDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpOutSetDate.Location = new System.Drawing.Point(264, 78);
-            this.dtpOutSetDate.Name = "dtpOutSetDate";
-            this.dtpOutSetDate.Size = new System.Drawing.Size(280, 23);
-            this.dtpOutSetDate.TabIndex = 10;
-            // 
-            // dtpInDocDate
-            // 
-            this.dtpInDocDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpInDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.dtpInDocDate.Location = new System.Drawing.Point(264, 148);
-            this.dtpInDocDate.Name = "dtpInDocDate";
-            this.dtpInDocDate.Size = new System.Drawing.Size(280, 23);
-            this.dtpInDocDate.TabIndex = 10;
             // 
             // InboxOutboxPanels
             // 

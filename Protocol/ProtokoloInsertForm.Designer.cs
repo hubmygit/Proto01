@@ -33,6 +33,7 @@
             this.lblCompany = new System.Windows.Forms.Label();
             this.cbCompany = new System.Windows.Forms.ComboBox();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblProtokoloKind
@@ -86,12 +87,23 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(451, 9);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.Visible = false;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // ProtokoloInsertForm
             // 
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 562);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.lblCompany);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Label lblCompany;
         private System.Windows.Forms.ComboBox cbCompany;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

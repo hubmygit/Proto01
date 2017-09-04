@@ -23,6 +23,16 @@ namespace Protocol
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
             cbCompany.Items.AddRange(GetObjCompanies());
             cbProtokoloKind.Items.AddRange(GetObjProtocolKind());
+
+
+            //test-->
+            List<string> fonts = new List<string>();
+            foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                fonts.Add(font.Name);
+            }
+            comboBox1.DataSource = fonts;
+            //test<--
         }
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
@@ -342,5 +352,13 @@ namespace Protocol
             //MessageBox.Show("Id: " + ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id + ", Name: " +((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Name +  ", Text: " + ((ComboboxItem)cbCompany.SelectedItem).Text);
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Font myfont = new Font(comboBox1.SelectedItem.ToString(), 10);
+
+            lblCompany.Font = myfont;
+            lblProtokoloKind.Font = myfont;
+            btnInsert.Font = myfont;
+        }
     }
 }
