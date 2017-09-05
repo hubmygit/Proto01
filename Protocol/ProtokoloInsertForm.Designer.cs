@@ -34,6 +34,7 @@
             this.cbCompany = new System.Windows.Forms.ComboBox();
             this.btnInsert = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblProtokoloKind
@@ -79,7 +80,7 @@
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnInsert.Location = new System.Drawing.Point(432, 36);
+            this.btnInsert.Location = new System.Drawing.Point(438, 12);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(100, 40);
             this.btnInsert.TabIndex = 4;
@@ -90,12 +91,23 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(451, 9);
+            this.comboBox1.Location = new System.Drawing.Point(4, 4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.Visible = false;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnCancel.Location = new System.Drawing.Point(438, 59);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "Ακύρωση";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ProtokoloInsertForm
             // 
@@ -103,6 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 562);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.cbCompany);
@@ -125,5 +138,6 @@
         private System.Windows.Forms.ComboBox cbCompany;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

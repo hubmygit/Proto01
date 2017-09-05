@@ -44,7 +44,7 @@ namespace Protocol
             List<string> KindOfProtocol = new List<string>();
 
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-            string SelectSt = "SELECT Name FROM [GramV3-Dev].[dbo].[Proced] ";
+            string SelectSt = "SELECT Name FROM [dbo].[Proced] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -70,7 +70,7 @@ namespace Protocol
             List<ComboboxItem> cbProceds = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-            string SelectSt = "SELECT Id, Name FROM [GramV3-Dev].[dbo].[Proced] ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Proced] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -100,7 +100,7 @@ namespace Protocol
             List<string> Companies = new List<string>();
 
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-            string SelectSt = "SELECT Id, Name FROM [GramV3-Dev].[dbo].[Company] ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -126,7 +126,7 @@ namespace Protocol
             List<ComboboxItem> cbCompanies = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-            string SelectSt = "SELECT Id, Name FROM [GramV3-Dev].[dbo].[Company] ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -246,7 +246,7 @@ namespace Protocol
                 //ToDo: new class - object
 
                 SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-                string InsertSt = "INSERT INTO [GramV3-Dev].[dbo].[Protok] " +
+                string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary, ToText, FolderId) " +
                                   "VALUES " +
@@ -260,7 +260,7 @@ namespace Protocol
 
                     cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id] --> company, year, eiserxomena-ekserxomena, 
                     cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbInProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
-                    //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current?
+                    //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current
                     cmd.Parameters.AddWithValue("@ProcedureId", ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentDate", DatetimePickerToSQLDate(IOBoxPanel.Controls["dtpInDocDate"])); //datepicker - no time
@@ -309,7 +309,7 @@ namespace Protocol
                 //ToDo: new class - object
 
                 SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-                string InsertSt = "INSERT INTO [GramV3-Dev].[dbo].[Protok] " +
+                string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary) " +
                                   "VALUES " +
@@ -323,7 +323,7 @@ namespace Protocol
 
                     cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id]
                     cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbOutProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
-                    //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current?
+                    //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current
                     cmd.Parameters.AddWithValue("@ProcedureId", ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(IOBoxPanel.Controls["dtpOutSetDate"])); //datepicker - no time
@@ -348,6 +348,15 @@ namespace Protocol
             
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
         private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show("Id: " + ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id + ", Name: " +((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Name +  ", Text: " + ((ComboboxItem)cbCompany.SelectedItem).Text);
@@ -361,5 +370,6 @@ namespace Protocol
             lblProtokoloKind.Font = myfont;
             btnInsert.Font = myfont;
         }
+
     }
 }

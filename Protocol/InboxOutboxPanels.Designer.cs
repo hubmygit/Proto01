@@ -155,6 +155,7 @@
             this.tbInProtokoloNum.Name = "tbInProtokoloNum";
             this.tbInProtokoloNum.Size = new System.Drawing.Size(280, 23);
             this.tbInProtokoloNum.TabIndex = 1;
+            this.tbInProtokoloNum.Visible = false;
             // 
             // lblInToText
             // 
@@ -235,14 +236,15 @@
             this.lblInProtokoloNum.Size = new System.Drawing.Size(195, 17);
             this.lblInProtokoloNum.TabIndex = 1;
             this.lblInProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
+            this.lblInProtokoloNum.Visible = false;
             // 
             // lblInPanelTitle
             // 
             this.lblInPanelTitle.AutoSize = true;
-            this.lblInPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblInPanelTitle.Location = new System.Drawing.Point(246, 9);
             this.lblInPanelTitle.Name = "lblInPanelTitle";
-            this.lblInPanelTitle.Size = new System.Drawing.Size(99, 20);
+            this.lblInPanelTitle.Size = new System.Drawing.Size(136, 24);
             this.lblInPanelTitle.TabIndex = 0;
             this.lblInPanelTitle.Text = "Εισερχόμενα";
             // 
@@ -307,6 +309,7 @@
             this.tbOutProtokoloNum.Name = "tbOutProtokoloNum";
             this.tbOutProtokoloNum.Size = new System.Drawing.Size(280, 23);
             this.tbOutProtokoloNum.TabIndex = 1;
+            this.tbOutProtokoloNum.Visible = false;
             // 
             // lblOutSummary
             // 
@@ -357,14 +360,15 @@
             this.lblOutProtokoloNum.Size = new System.Drawing.Size(195, 17);
             this.lblOutProtokoloNum.TabIndex = 1;
             this.lblOutProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
+            this.lblOutProtokoloNum.Visible = false;
             // 
             // lblOutPanelTitle
             // 
             this.lblOutPanelTitle.AutoSize = true;
-            this.lblOutPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblOutPanelTitle.Location = new System.Drawing.Point(246, 9);
             this.lblOutPanelTitle.Name = "lblOutPanelTitle";
-            this.lblOutPanelTitle.Size = new System.Drawing.Size(95, 20);
+            this.lblOutPanelTitle.Size = new System.Drawing.Size(129, 24);
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 

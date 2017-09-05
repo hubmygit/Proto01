@@ -102,7 +102,7 @@ namespace Protocol
             int ret = 0;
 
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-            string SelectSt = "SELECT Num FROM [GramV3-Dev].[dbo].[TableIds] WHERE tablename = 'VersionInfo' ";
+            string SelectSt = "SELECT Num FROM [dbo].[TableIds] WHERE tablename = 'VersionInfo' ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {

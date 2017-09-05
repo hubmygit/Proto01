@@ -38,6 +38,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.DeleteTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -57,7 +59,8 @@
             // 
             this.FileTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InsertTSMenuItem,
-            this.UpdateTSMenuItem});
+            this.UpdateTSMenuItem,
+            this.DeleteTSMenuItem});
             this.FileTSMenuItem.Name = "FileTSMenuItem";
             this.FileTSMenuItem.Size = new System.Drawing.Size(55, 20);
             this.FileTSMenuItem.Text = "Αρχείο";
@@ -96,7 +99,8 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InsertToolStripBtn,
-            this.UpdateToolStripBtn});
+            this.UpdateToolStripBtn,
+            this.DeleteToolStripBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(584, 25);
@@ -120,6 +124,23 @@
             this.UpdateToolStripBtn.Size = new System.Drawing.Size(83, 22);
             this.UpdateToolStripBtn.Text = "Μεταβολή";
             this.UpdateToolStripBtn.Click += new System.EventHandler(this.UpdateToolStripBtn_Click);
+            // 
+            // DeleteTSMenuItem
+            // 
+            this.DeleteTSMenuItem.Name = "DeleteTSMenuItem";
+            this.DeleteTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteTSMenuItem.Text = "Διαγραφή";
+            this.DeleteTSMenuItem.Click += new System.EventHandler(this.DeleteTSMenuItem_Click);
+            // 
+            // DeleteToolStripBtn
+            // 
+            this.DeleteToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteToolStripBtn.Image")));
+            this.DeleteToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteToolStripBtn.Name = "DeleteToolStripBtn";
+            this.DeleteToolStripBtn.Size = new System.Drawing.Size(81, 22);
+            this.DeleteToolStripBtn.Text = "Διαγραφή";
+            this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
+            this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
             // MasterForm
             // 
@@ -155,6 +176,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton InsertToolStripBtn;
         private System.Windows.Forms.ToolStripButton UpdateToolStripBtn;
+        private System.Windows.Forms.ToolStripMenuItem DeleteTSMenuItem;
+        private System.Windows.Forms.ToolStripButton DeleteToolStripBtn;
     }
 }
 

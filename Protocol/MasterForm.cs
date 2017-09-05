@@ -29,6 +29,11 @@ namespace Protocol
             frmProtoUpd.ShowDialog();
         }
 
+        private void DeleteTSMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void InsertToolStripBtn_Click(object sender, EventArgs e)
         {
             ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
@@ -39,6 +44,11 @@ namespace Protocol
         {
             ProtokoloUpdateForm frmProtoUpd = new ProtokoloUpdateForm();
             frmProtoUpd.ShowDialog();
+        }
+
+        private void DeleteToolStripBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
