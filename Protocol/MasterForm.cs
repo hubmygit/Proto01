@@ -31,7 +31,8 @@ namespace Protocol
 
         private void DeleteTSMenuItem_Click(object sender, EventArgs e)
         {
-
+            ProtokoloDeleteForm frmProtoDel = new ProtokoloDeleteForm();
+            frmProtoDel.ShowDialog();
         }
 
         private void InsertToolStripBtn_Click(object sender, EventArgs e)
@@ -48,7 +49,8 @@ namespace Protocol
 
         private void DeleteToolStripBtn_Click(object sender, EventArgs e)
         {
-
+            ProtokoloDeleteForm frmProtoDel = new ProtokoloDeleteForm();
+            frmProtoDel.ShowDialog();
         }
     }
 }

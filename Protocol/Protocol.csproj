@@ -66,6 +66,12 @@
     <Compile Include="ProtokoloInsertForm.Designer.cs">
       <DependentUpon>ProtokoloInsertForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtokoloDeleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtokoloDeleteForm.Designer.cs">
+      <DependentUpon>ProtokoloDeleteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProtokoloUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="ProtokoloInsertForm.resx">
       <DependentUpon>ProtokoloInsertForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtokoloDeleteForm.resx">
+      <DependentUpon>ProtokoloDeleteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokoloUpdateForm.resx">
       <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
