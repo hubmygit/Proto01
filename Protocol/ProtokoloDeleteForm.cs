@@ -68,7 +68,39 @@ namespace Protocol
 
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("ΑΑ Πρωτοκόλλου: " + lvRep.SelectedItems[0].SubItems[0].Text + ", Έτος: " + lvRep.SelectedItems[0].SubItems[1].Text);
+            string lvRowYear = lvRep.SelectedItems[0].SubItems[1].Text;
+            string lvRowProtocol = lvRep.SelectedItems[0].SubItems[0].Text;
+
+            if (lvRowYear.Trim() != "" && lvRowProtocol.Trim() != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή του Έτους " + lvRowYear + " με Αριθμό Πρωτοκόλλου " + lvRowProtocol + ";", "Διαγραφή", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
+
+                    try
+                    {
+                        sqlConn.Open();
+                        SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
+
+                        cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
+                        cmd.Parameters.AddWithValue("@Year", lvRowYear);
+
+                        cmd.CommandType = CommandType.Text;
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
+                        Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
+
+                    Close();
+                }
+            }
         }
 
         private void btnFilters_Click(object sender, EventArgs e)
