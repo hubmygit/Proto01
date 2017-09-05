@@ -16,7 +16,7 @@ namespace Protocol
         {
             InitializeComponent();
         }
-
+        
         private void InsertTSMenuItem_Click(object sender, EventArgs e)
         {
             ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();

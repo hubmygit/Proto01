@@ -16,7 +16,11 @@ namespace Protocol
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MasterForm());
+
+            if (AppVer.IsLatestVersion()) //check version
+            {
+                Application.Run(new MasterForm());
+            }            
         }
     }
 }

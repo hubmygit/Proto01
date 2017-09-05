@@ -40,7 +40,7 @@
             // 
             this.lblProtokoloKind.AutoSize = true;
             this.lblProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblProtokoloKind.Location = new System.Drawing.Point(40, 65);
+            this.lblProtokoloKind.Location = new System.Drawing.Point(40, 28);
             this.lblProtokoloKind.Name = "lblProtokoloKind";
             this.lblProtokoloKind.Size = new System.Drawing.Size(165, 17);
             this.lblProtokoloKind.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.cbProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbProtokoloKind.FormattingEnabled = true;
-            this.cbProtokoloKind.Location = new System.Drawing.Point(211, 62);
+            this.cbProtokoloKind.Location = new System.Drawing.Point(211, 25);
             this.cbProtokoloKind.Name = "cbProtokoloKind";
             this.cbProtokoloKind.Size = new System.Drawing.Size(173, 24);
             this.cbProtokoloKind.TabIndex = 2;
@@ -60,7 +60,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblCompany.Location = new System.Drawing.Point(40, 28);
+            this.lblCompany.Location = new System.Drawing.Point(40, 65);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 17);
             this.lblCompany.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             this.cbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(211, 25);
+            this.cbCompany.Location = new System.Drawing.Point(211, 62);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(173, 24);
             this.cbCompany.TabIndex = 1;

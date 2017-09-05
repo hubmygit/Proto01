@@ -14,10 +14,11 @@ namespace Protocol
 {
     public partial class ProtokoloInsertForm : Form
     {
+        
         public ProtokoloInsertForm()
         {
             InitializeComponent();
-
+            
             //Values from database
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
@@ -37,7 +38,7 @@ namespace Protocol
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
-
+        
         private string[] GetProtocolKind() //obsolete / depraced
         {
             List<string> KindOfProtocol = new List<string>();
