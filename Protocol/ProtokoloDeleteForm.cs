@@ -17,10 +17,8 @@ namespace Protocol
         public ProtokoloDeleteForm()
         {
             InitializeComponent();
-
-
-            ShowDataToListView();
             
+            ShowDataToListView();
         }
 
         public void ShowDataToListView()

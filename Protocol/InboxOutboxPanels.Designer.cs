@@ -242,7 +242,7 @@
             // 
             this.lblInPanelTitle.AutoSize = true;
             this.lblInPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblInPanelTitle.Location = new System.Drawing.Point(246, 9);
+            this.lblInPanelTitle.Location = new System.Drawing.Point(212, 9);
             this.lblInPanelTitle.Name = "lblInPanelTitle";
             this.lblInPanelTitle.Size = new System.Drawing.Size(136, 24);
             this.lblInPanelTitle.TabIndex = 0;
@@ -366,7 +366,7 @@
             // 
             this.lblOutPanelTitle.AutoSize = true;
             this.lblOutPanelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblOutPanelTitle.Location = new System.Drawing.Point(246, 9);
+            this.lblOutPanelTitle.Location = new System.Drawing.Point(215, 9);
             this.lblOutPanelTitle.Name = "lblOutPanelTitle";
             this.lblOutPanelTitle.Size = new System.Drawing.Size(129, 24);
             this.lblOutPanelTitle.TabIndex = 0;

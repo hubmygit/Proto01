@@ -18,7 +18,7 @@ namespace Protocol
         public ProtokoloInsertForm()
         {
             InitializeComponent();
-            
+
             //Values from database
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
@@ -159,7 +159,7 @@ namespace Protocol
                 IOBoxPanel = IOPanelsFrm.panelInbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
-                IOBoxPanel.Controls["tbInProtokoloNum"].Text = "131";            //ToDo
+                //IOBoxPanel.Controls["tbInProtokoloNum"].Text = "138";            //ToDo
                 IOBoxPanel.Controls["tbInDocNum"].Text = "AA-0000/01";           //to del
                 IOBoxPanel.Controls["tbInFolderId"].Text = "101";                //to del
                 IOBoxPanel.Controls["tbInProeleusi"].Text = "ABCD";              //to del
@@ -175,7 +175,7 @@ namespace Protocol
                 IOBoxPanel = IOPanelsFrm.panelOutbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
-                IOBoxPanel.Controls["tbOutProtokoloNum"].Text = "131";            //ToDo
+                //IOBoxPanel.Controls["tbOutProtokoloNum"].Text = "138";            //ToDo
                 IOBoxPanel.Controls["tbOutDocNum"].Text = "AA-0000/01";           //to del
                 IOBoxPanel.Controls["tbOutKateuth"].Text = "ABCD";                //to del
                 IOBoxPanel.Controls["tbOutSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
@@ -246,11 +246,17 @@ namespace Protocol
                 //ToDo: new class - object
 
                 SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+
+                string tableId = "select isnull(max(id), 0) + 1 from [dbo].[Protok]";
+
+                string ProtocolId = "select isnull(max(id), 0) + 1 from [dbo].[Protok] where [CompanyId] = @CompanyId and [Year] = year(getdate()) and [ProcedureId] = @ProcedureId";
+
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary, ToText, FolderId) " +
+                                  "OUTPUT inserted.Id, inserted.Sn " +
                                   "VALUES " +
-                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
+                                  "((" + tableId + "), (" + ProtocolId + "), year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
                                   "@ProeleusiKateuth, @Summary, @ToText, @FolderId) ";
 
                 try
@@ -258,8 +264,8 @@ namespace Protocol
                     sqlConn.Open();
                     SqlCommand cmd = new SqlCommand(InsertSt, sqlConn);
 
-                    cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id] --> company, year, eiserxomena-ekserxomena, 
-                    cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbInProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
+                    //cmd.Parameters.AddWithValue("@Id", 34745); //manually - show [sn + year] & [id] --> company, year, eiserxomena-ekserxomena, 
+                    //cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbInProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
                     //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current
                     cmd.Parameters.AddWithValue("@ProcedureId", ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id); //get object from combobox
@@ -272,9 +278,18 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@FolderId", IOBoxPanel.Controls["tbInFolderId"].Text); //int -> char (eg 106A)??
 
                     cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
+                    //cmd.ExecuteNonQuery();
+                    //--> get output fields!! 
+                    string InsertedId = "", InsertedSn = "";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        InsertedId = reader["Id"].ToString();
+                        InsertedSn = reader["Sn"].ToString();
+                    }
+                    reader.Close();
 
-                    MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς!");
+                    MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + InsertedSn + "]");
                     Close();
                 }
                 catch (Exception ex)
@@ -309,11 +324,17 @@ namespace Protocol
                 //ToDo: new class - object
 
                 SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+
+                string tableId = "select isnull(max(id), 0) + 1 from [dbo].[Protok]";
+
+                string ProtocolId = "select isnull(max(id), 0) + 1 from [dbo].[Protok] where [CompanyId] = @CompanyId and [Year] = year(getdate()) and [ProcedureId] = @ProcedureId";
+
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary) " +
+                                  "OUTPUT inserted.Id, inserted.Sn " +
                                   "VALUES " +
-                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
+                                  "((" + tableId + "), (" + ProtocolId + "), year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
                                   "@ProeleusiKateuth, @Summary) ";
 
                 try
@@ -321,8 +342,8 @@ namespace Protocol
                     sqlConn.Open();
                     SqlCommand cmd = new SqlCommand(InsertSt, sqlConn);
 
-                    cmd.Parameters.AddWithValue("@Id", 34739); //manually - show [sn + year] & [id]
-                    cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbOutProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
+                    //cmd.Parameters.AddWithValue("@Id", 34745); //manually - show [sn + year] & [id]
+                    //cmd.Parameters.AddWithValue("@Sn", IOBoxPanel.Controls["tbOutProtokoloNum"].Text); //2 users - insert with pdfs? disable field?
                     //cmd.Parameters.AddWithValue("@Year", 2017); //auto - current
                     cmd.Parameters.AddWithValue("@ProcedureId", ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id); //get object from combobox
@@ -332,9 +353,18 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@Summary", IOBoxPanel.Controls["tbOutSummary"].Text);
 
                     cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
+                    //cmd.ExecuteNonQuery();
+                    //--> get output fields!!  
+                    string InsertedId = "", InsertedSn = "";
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        InsertedId = reader["Id"].ToString();
+                        InsertedSn = reader["Sn"].ToString();
+                    }
+                    reader.Close();
 
-                    MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς!");
+                    MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + InsertedSn + "]");
                     Close();
                 }
                 catch (Exception ex)
