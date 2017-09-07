@@ -282,12 +282,16 @@ namespace Protocol
                     //--> get output fields!! 
                     string InsertedId = "", InsertedSn = "";
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    //while (reader.Read())
+                    if (reader.Read())
                     {
                         InsertedId = reader["Id"].ToString();
                         InsertedSn = reader["Sn"].ToString();
                     }
                     reader.Close();
+
+                    //UPDATE [dbo].[TableIds] SET id = " + InsertedId + " WHERE tablename = 'Protok'
+                    //UPDATE [dbo].[DocsIds] SET number = " + InsertedSn + " WHERE docstath = xxxx and docyear = xxxx and document 
 
                     MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + InsertedSn + "]");
                     Close();
@@ -357,7 +361,8 @@ namespace Protocol
                     //--> get output fields!!  
                     string InsertedId = "", InsertedSn = "";
                     SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    //while (reader.Read())
+                    if (reader.Read())
                     {
                         InsertedId = reader["Id"].ToString();
                         InsertedSn = reader["Sn"].ToString();
