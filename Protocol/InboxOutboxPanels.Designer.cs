@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelInbox = new System.Windows.Forms.Panel();
+            this.btnNewFolders = new System.Windows.Forms.Button();
+            this.cbInFolders = new System.Windows.Forms.ComboBox();
             this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
             this.dtpInGetDate = new System.Windows.Forms.DateTimePicker();
             this.tbInToText = new System.Windows.Forms.TextBox();
@@ -57,14 +59,17 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokoloNum = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
-            this.cbInFolders = new System.Windows.Forms.ComboBox();
-            this.btnNewFolders = new System.Windows.Forms.Button();
+            this.lvInAttachedFiles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvOutAttachedFiles = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.lvInAttachedFiles);
             this.panelInbox.Controls.Add(this.btnNewFolders);
             this.panelInbox.Controls.Add(this.cbInFolders);
             this.panelInbox.Controls.Add(this.dtpInDocDate);
@@ -85,8 +90,28 @@
             this.panelInbox.Controls.Add(this.lblInPanelTitle);
             this.panelInbox.Location = new System.Drawing.Point(12, 12);
             this.panelInbox.Name = "panelInbox";
-            this.panelInbox.Size = new System.Drawing.Size(560, 440);
+            this.panelInbox.Size = new System.Drawing.Size(560, 560);
             this.panelInbox.TabIndex = 3;
+            // 
+            // btnNewFolders
+            // 
+            this.btnNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnNewFolders.Location = new System.Drawing.Point(519, 184);
+            this.btnNewFolders.Name = "btnNewFolders";
+            this.btnNewFolders.Size = new System.Drawing.Size(25, 27);
+            this.btnNewFolders.TabIndex = 6;
+            this.btnNewFolders.Text = "*";
+            this.btnNewFolders.UseVisualStyleBackColor = true;
+            this.btnNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            // 
+            // cbInFolders
+            // 
+            this.cbInFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.cbInFolders.FormattingEnabled = true;
+            this.cbInFolders.Location = new System.Drawing.Point(264, 186);
+            this.cbInFolders.Name = "cbInFolders";
+            this.cbInFolders.Size = new System.Drawing.Size(251, 24);
+            this.cbInFolders.TabIndex = 5;
             // 
             // dtpInDocDate
             // 
@@ -244,6 +269,7 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.lvOutAttachedFiles);
             this.panelOutbox.Controls.Add(this.dtpOutSetDate);
             this.panelOutbox.Controls.Add(this.tbOutSummary);
             this.panelOutbox.Controls.Add(this.tbOutKateuth);
@@ -257,7 +283,7 @@
             this.panelOutbox.Controls.Add(this.lblOutPanelTitle);
             this.panelOutbox.Location = new System.Drawing.Point(578, 12);
             this.panelOutbox.Name = "panelOutbox";
-            this.panelOutbox.Size = new System.Drawing.Size(560, 440);
+            this.panelOutbox.Size = new System.Drawing.Size(560, 560);
             this.panelOutbox.TabIndex = 6;
             // 
             // dtpOutSetDate
@@ -366,31 +392,51 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
-            // cbInFolders
+            // lvInAttachedFiles
             // 
-            this.cbInFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.cbInFolders.FormattingEnabled = true;
-            this.cbInFolders.Location = new System.Drawing.Point(264, 186);
-            this.cbInFolders.Name = "cbInFolders";
-            this.cbInFolders.Size = new System.Drawing.Size(251, 24);
-            this.cbInFolders.TabIndex = 5;
+            this.lvInAttachedFiles.AllowDrop = true;
+            this.lvInAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvInAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvInAttachedFiles.Location = new System.Drawing.Point(264, 420);
+            this.lvInAttachedFiles.Name = "lvInAttachedFiles";
+            this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvInAttachedFiles.TabIndex = 11;
+            this.lvInAttachedFiles.UseCompatibleStateImageBehavior = false;
+            this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
+            this.lvInAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
+            this.lvInAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
             // 
-            // btnNewFolders
+            // columnHeader1
             // 
-            this.btnNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnNewFolders.Location = new System.Drawing.Point(519, 184);
-            this.btnNewFolders.Name = "btnNewFolders";
-            this.btnNewFolders.Size = new System.Drawing.Size(25, 27);
-            this.btnNewFolders.TabIndex = 6;
-            this.btnNewFolders.Text = "*";
-            this.btnNewFolders.UseVisualStyleBackColor = true;
-            this.btnNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            this.columnHeader1.Text = "Συνημμένα Αρχεία";
+            this.columnHeader1.Width = 250;
+            // 
+            // lvOutAttachedFiles
+            // 
+            this.lvOutAttachedFiles.AllowDrop = true;
+            this.lvOutAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvOutAttachedFiles.Location = new System.Drawing.Point(264, 282);
+            this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
+            this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvOutAttachedFiles.TabIndex = 12;
+            this.lvOutAttachedFiles.UseCompatibleStateImageBehavior = false;
+            this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
+            this.lvOutAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
+            this.lvOutAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Συνημμένα Αρχεία";
+            this.columnHeader2.Width = 250;
             // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 470);
+            this.ClientSize = new System.Drawing.Size(1155, 600);
             this.Controls.Add(this.panelOutbox);
             this.Controls.Add(this.panelInbox);
             this.Name = "InboxOutboxPanels";
@@ -436,5 +482,9 @@
         public System.Windows.Forms.DateTimePicker dtpInDocDate;
         public System.Windows.Forms.ComboBox cbInFolders;
         public System.Windows.Forms.Button btnNewFolders;
+        private System.Windows.Forms.ListView lvInAttachedFiles;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ListView lvOutAttachedFiles;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
