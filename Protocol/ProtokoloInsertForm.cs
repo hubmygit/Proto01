@@ -36,6 +36,8 @@ namespace Protocol
             //test<--
         }
 
+        public int Protok_Id_For_Updates = 0;
+
         //public ProtokoloInsertForm(string FieldNo1)
         //{
         //    InitializeComponent();
@@ -210,7 +212,7 @@ namespace Protocol
                 IOBoxPanel.Controls["tbInToText"].Text = "Mr Abcd";              //to del
 
                 Controls.Add(IOBoxPanel);
-                //fill folders combobox - add items.clear if needed
+                //fill folders combobox - add 'items.clear' if needed
                 ((ComboBox)IOBoxPanel.Controls["cbInFolders"]).Items.AddRange(GetObjFolders()); //fill folders combobox
                 cbProtokoloKind.Enabled = false;
             }
@@ -240,7 +242,13 @@ namespace Protocol
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
-        {            
+        {
+            if (Protok_Id_For_Updates != 0)
+            {
+                MessageBox.Show("Update Mode...");
+                return;
+            }
+                        
             if (cbCompany.Text.Trim() == "")
             {
                 MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Εταιρία'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

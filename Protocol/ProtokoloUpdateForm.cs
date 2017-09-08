@@ -18,14 +18,14 @@ namespace Protocol
         {
             InitializeComponent();
             
-            ShowDataToListView();
+            ShowDataToListView(lvRep);
         }
 
-        public void ShowDataToListView()
+        public void ShowDataToListView(ListView lvReport)
         {
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
             string SelectSt = "SELECT P.Sn, P.Year, PR.Name as ProcedName, C.Name as CompanyName, convert(varchar, P.DocumentDate, 104) as _DocumentDate, " +
-                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name " +
+                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id " +
                               "FROM [dbo].[Protok] P left outer join [dbo].[Proced] PR on PR.id = P.ProcedureId " +
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId left outer join [dbo].[Folders] F on F.id = P.FolderId " +
                               "WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ";
@@ -46,10 +46,11 @@ namespace Protocol
                                      reader[7].ToString(),
                                      reader[8].ToString(),
                                      reader[9].ToString(),
-                                     reader[10].ToString()};
+                                     reader[10].ToString(),
+                                     reader[11].ToString()};
 
                     ListViewItem listViewItem = new ListViewItem(row);
-                    lvRep.Items.Add(listViewItem);
+                    lvReport.Items.Add(listViewItem);
                 }
 
                 BindingSource bs = new BindingSource();
@@ -67,16 +68,49 @@ namespace Protocol
 
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("ΑΑ Πρωτοκόλλου: " + lvRep.SelectedItems[0].SubItems[0].Text + ", Έτος: " + lvRep.SelectedItems[0].SubItems[1].Text);
+            //MessageBox.Show("ΑΑ Πρωτοκόλλου: " + lvRep.SelectedItems[0].SubItems[0].Text + ", Έτος: " + lvRep.SelectedItems[0].SubItems[1].Text);
 
-            //go to insert screen...
             //todo: new constructor ProtokoloInsertForm(object Protokolo)
-
             ProtokoloInsertForm updScreen = new ProtokoloInsertForm();
-            //updScreen.cbProtokoloKind.SelectedText = "Εισερχόμενα";//lvRep.SelectedItems[0].SubItems[2].Text;
-            //updScreen.cbProtokoloKind.Refresh();
-            //updScreen.ShowDialog();
+            //updScreen.cbProtokoloKind.Text = "Εισερχόμενα";
 
+            ListViewItem.ListViewSubItemCollection lvic = new ListViewItem.ListViewSubItemCollection(lvRep.SelectedItems[0]);
+            string proced = lvic[2].Text;
+            string company = lvic[3].Text;
+
+            updScreen.Text = "Μεταβολή";
+            updScreen.Controls["btnInsert"].Text = "Μεταβολή";
+
+            updScreen.cbProtokoloKind.SelectedIndex = updScreen.cbProtokoloKind.FindStringExact(proced);
+            updScreen.cbCompany.SelectedIndex = updScreen.cbCompany.FindStringExact(company);
+
+            updScreen.Protok_Id_For_Updates = Convert.ToInt32(lvic[11].Text);
+
+            if (proced == "Εισερχόμενα")
+            {
+                //updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[0].Text;
+                ((DateTimePicker)updScreen.Controls["panelInbox"].Controls["dtpInGetDate"]).Value = DateTime.Parse(lvic[5].Text);
+                updScreen.Controls["panelInbox"].Controls["tbInDocNum"].Text = lvic[6].Text;
+                ((DateTimePicker)updScreen.Controls["panelInbox"].Controls["dtpInDocDate"]).Value = DateTime.Parse(lvic[4].Text);
+                ((ComboBox)updScreen.Controls["panelInbox"].Controls["cbInFolders"]).SelectedIndex = ((ComboBox)updScreen.Controls["panelInbox"].Controls["cbInFolders"]).FindStringExact(lvic[10].Text);
+                updScreen.Controls["panelInbox"].Controls["tbInProeleusi"].Text = lvic[7].Text;
+                updScreen.Controls["panelInbox"].Controls["tbInSummary"].Text = lvic[8].Text;
+                updScreen.Controls["panelInbox"].Controls["tbInToText"].Text = lvic[9].Text;
+            }
+            else if (proced == "Εξερχόμενα")
+            {
+                //updScreen.Controls["panelInbox"].Controls["tbOutProtokoloNum"].Text = lvic[0].Text;
+                ((DateTimePicker)updScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"]).Value = DateTime.Parse(lvic[5].Text);
+                updScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
+                updScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
+                updScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
+            }
+
+            updScreen.ShowDialog();
+
+            //refresh listView - ToDo: Not always. Only after real insert
+            lvRep.Items.Clear();
+            ShowDataToListView(lvRep);
         }
 
         private void btnFilters_Click(object sender, EventArgs e)
