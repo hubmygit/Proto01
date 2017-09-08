@@ -84,5 +84,12 @@ namespace Protocol
             ((ListView)sender).Items.Add(lvItem);
 
         }
+
+        private void btnAddFiles_Click(object sender, EventArgs e)
+        {
+            //Open File Dialog...
+
+            //Add Files into listView...
+        }
     }
 }

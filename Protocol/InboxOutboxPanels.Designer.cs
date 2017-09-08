@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panelInbox = new System.Windows.Forms.Panel();
+            this.btnInAddFiles = new System.Windows.Forms.Button();
+            this.lvInAttachedFiles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnNewFolders = new System.Windows.Forms.Button();
             this.cbInFolders = new System.Windows.Forms.ComboBox();
             this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
@@ -48,6 +51,9 @@
             this.lblInProtokoloNum = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
+            this.btnOutAddFiles = new System.Windows.Forms.Button();
+            this.lvOutAttachedFiles = new System.Windows.Forms.ListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
             this.tbOutSummary = new System.Windows.Forms.TextBox();
             this.tbOutKateuth = new System.Windows.Forms.TextBox();
@@ -59,16 +65,13 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokoloNum = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
-            this.lvInAttachedFiles = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvOutAttachedFiles = new System.Windows.Forms.ListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.btnInAddFiles);
             this.panelInbox.Controls.Add(this.lvInAttachedFiles);
             this.panelInbox.Controls.Add(this.btnNewFolders);
             this.panelInbox.Controls.Add(this.cbInFolders);
@@ -92,6 +95,37 @@
             this.panelInbox.Name = "panelInbox";
             this.panelInbox.Size = new System.Drawing.Size(560, 560);
             this.panelInbox.TabIndex = 3;
+            // 
+            // btnInAddFiles
+            // 
+            this.btnInAddFiles.Location = new System.Drawing.Point(183, 420);
+            this.btnInAddFiles.Name = "btnInAddFiles";
+            this.btnInAddFiles.Size = new System.Drawing.Size(75, 23);
+            this.btnInAddFiles.TabIndex = 12;
+            this.btnInAddFiles.Text = "Add Files";
+            this.btnInAddFiles.UseVisualStyleBackColor = true;
+            this.btnInAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // lvInAttachedFiles
+            // 
+            this.lvInAttachedFiles.AllowDrop = true;
+            this.lvInAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvInAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvInAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvInAttachedFiles.Location = new System.Drawing.Point(264, 420);
+            this.lvInAttachedFiles.Name = "lvInAttachedFiles";
+            this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvInAttachedFiles.TabIndex = 11;
+            this.lvInAttachedFiles.UseCompatibleStateImageBehavior = false;
+            this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
+            this.lvInAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
+            this.lvInAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Συνημμένα Αρχεία";
+            this.columnHeader1.Width = 250;
             // 
             // btnNewFolders
             // 
@@ -269,6 +303,7 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.btnOutAddFiles);
             this.panelOutbox.Controls.Add(this.lvOutAttachedFiles);
             this.panelOutbox.Controls.Add(this.dtpOutSetDate);
             this.panelOutbox.Controls.Add(this.tbOutSummary);
@@ -285,6 +320,37 @@
             this.panelOutbox.Name = "panelOutbox";
             this.panelOutbox.Size = new System.Drawing.Size(560, 560);
             this.panelOutbox.TabIndex = 6;
+            // 
+            // btnOutAddFiles
+            // 
+            this.btnOutAddFiles.Location = new System.Drawing.Point(183, 282);
+            this.btnOutAddFiles.Name = "btnOutAddFiles";
+            this.btnOutAddFiles.Size = new System.Drawing.Size(75, 23);
+            this.btnOutAddFiles.TabIndex = 13;
+            this.btnOutAddFiles.Text = "Add Files";
+            this.btnOutAddFiles.UseVisualStyleBackColor = true;
+            this.btnOutAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // lvOutAttachedFiles
+            // 
+            this.lvOutAttachedFiles.AllowDrop = true;
+            this.lvOutAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.lvOutAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvOutAttachedFiles.Location = new System.Drawing.Point(264, 282);
+            this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
+            this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvOutAttachedFiles.TabIndex = 12;
+            this.lvOutAttachedFiles.UseCompatibleStateImageBehavior = false;
+            this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
+            this.lvOutAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
+            this.lvOutAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Συνημμένα Αρχεία";
+            this.columnHeader2.Width = 250;
             // 
             // dtpOutSetDate
             // 
@@ -392,46 +458,6 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
-            // lvInAttachedFiles
-            // 
-            this.lvInAttachedFiles.AllowDrop = true;
-            this.lvInAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lvInAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvInAttachedFiles.Location = new System.Drawing.Point(264, 420);
-            this.lvInAttachedFiles.Name = "lvInAttachedFiles";
-            this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 120);
-            this.lvInAttachedFiles.TabIndex = 11;
-            this.lvInAttachedFiles.UseCompatibleStateImageBehavior = false;
-            this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
-            this.lvInAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
-            this.lvInAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Συνημμένα Αρχεία";
-            this.columnHeader1.Width = 250;
-            // 
-            // lvOutAttachedFiles
-            // 
-            this.lvOutAttachedFiles.AllowDrop = true;
-            this.lvOutAttachedFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
-            this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvOutAttachedFiles.Location = new System.Drawing.Point(264, 282);
-            this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
-            this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 120);
-            this.lvOutAttachedFiles.TabIndex = 12;
-            this.lvOutAttachedFiles.UseCompatibleStateImageBehavior = false;
-            this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
-            this.lvOutAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
-            this.lvOutAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Συνημμένα Αρχεία";
-            this.columnHeader2.Width = 250;
-            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,5 +512,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ListView lvOutAttachedFiles;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Button btnInAddFiles;
+        private System.Windows.Forms.Button btnOutAddFiles;
     }
 }
