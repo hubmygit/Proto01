@@ -68,6 +68,15 @@ namespace Protocol
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show("ΑΑ Πρωτοκόλλου: " + lvRep.SelectedItems[0].SubItems[0].Text + ", Έτος: " + lvRep.SelectedItems[0].SubItems[1].Text);
+
+            //go to insert screen...
+            //todo: new constructor ProtokoloInsertForm(object Protokolo)
+
+            ProtokoloInsertForm updScreen = new ProtokoloInsertForm();
+            //updScreen.cbProtokoloKind.SelectedText = "Εισερχόμενα";//lvRep.SelectedItems[0].SubItems[2].Text;
+            //updScreen.cbProtokoloKind.Refresh();
+            //updScreen.ShowDialog();
+
         }
 
         private void btnFilters_Click(object sender, EventArgs e)

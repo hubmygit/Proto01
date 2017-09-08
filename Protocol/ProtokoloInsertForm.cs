@@ -36,6 +36,16 @@ namespace Protocol
             //test<--
         }
 
+        //public ProtokoloInsertForm(string FieldNo1)
+        //{
+        //    InitializeComponent();
+        //    cbCompany.Items.AddRange(GetObjCompanies());
+        //    cbProtokoloKind.Items.AddRange(GetObjProtocolKind());
+
+        //    //cbProtokoloKind.SelectedText = FieldNo1;
+        //    //cbCompany.SelectedText = "Motor Oil Hellas";
+        //}
+
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
         
