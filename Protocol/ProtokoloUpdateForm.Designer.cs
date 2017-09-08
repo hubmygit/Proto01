@@ -128,6 +128,7 @@
             this.btnFilters.Name = "btnFilters";
             this.btnFilters.Size = new System.Drawing.Size(75, 23);
             this.btnFilters.TabIndex = 1;
+            this.btnFilters.Tag = "";
             this.btnFilters.Text = "Filters...";
             this.btnFilters.UseVisualStyleBackColor = true;
             this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);

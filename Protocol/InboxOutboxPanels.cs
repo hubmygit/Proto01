@@ -16,5 +16,17 @@ namespace Protocol
         {
             InitializeComponent();
         }
+
+        private void btnNewFolders_Click(object sender, EventArgs e)
+        {
+            FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
+            FoldersInsForm.ShowDialog();
+
+            //go to insert screen - create new folder
+
+            //refresh combobox items - clear/fill data
+
+            //set new record as selected  (if inserted successfully)
+        }
     }
 }

@@ -34,7 +34,6 @@
             this.tbInToText = new System.Windows.Forms.TextBox();
             this.tbInSummary = new System.Windows.Forms.TextBox();
             this.tbInProeleusi = new System.Windows.Forms.TextBox();
-            this.tbInFolderId = new System.Windows.Forms.TextBox();
             this.tbInDocNum = new System.Windows.Forms.TextBox();
             this.tbInProtokoloNum = new System.Windows.Forms.TextBox();
             this.lblInToText = new System.Windows.Forms.Label();
@@ -58,18 +57,21 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokoloNum = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
+            this.cbInFolders = new System.Windows.Forms.ComboBox();
+            this.btnNewFolders = new System.Windows.Forms.Button();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.btnNewFolders);
+            this.panelInbox.Controls.Add(this.cbInFolders);
             this.panelInbox.Controls.Add(this.dtpInDocDate);
             this.panelInbox.Controls.Add(this.dtpInGetDate);
             this.panelInbox.Controls.Add(this.tbInToText);
             this.panelInbox.Controls.Add(this.tbInSummary);
             this.panelInbox.Controls.Add(this.tbInProeleusi);
-            this.panelInbox.Controls.Add(this.tbInFolderId);
             this.panelInbox.Controls.Add(this.tbInDocNum);
             this.panelInbox.Controls.Add(this.tbInProtokoloNum);
             this.panelInbox.Controls.Add(this.lblInToText);
@@ -111,7 +113,7 @@
             this.tbInToText.Multiline = true;
             this.tbInToText.Name = "tbInToText";
             this.tbInToText.Size = new System.Drawing.Size(280, 50);
-            this.tbInToText.TabIndex = 8;
+            this.tbInToText.TabIndex = 9;
             // 
             // tbInSummary
             // 
@@ -120,7 +122,7 @@
             this.tbInSummary.Multiline = true;
             this.tbInSummary.Name = "tbInSummary";
             this.tbInSummary.Size = new System.Drawing.Size(280, 50);
-            this.tbInSummary.TabIndex = 7;
+            this.tbInSummary.TabIndex = 8;
             // 
             // tbInProeleusi
             // 
@@ -129,15 +131,7 @@
             this.tbInProeleusi.Multiline = true;
             this.tbInProeleusi.Name = "tbInProeleusi";
             this.tbInProeleusi.Size = new System.Drawing.Size(280, 50);
-            this.tbInProeleusi.TabIndex = 6;
-            // 
-            // tbInFolderId
-            // 
-            this.tbInFolderId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbInFolderId.Location = new System.Drawing.Point(264, 186);
-            this.tbInFolderId.Name = "tbInFolderId";
-            this.tbInFolderId.Size = new System.Drawing.Size(280, 23);
-            this.tbInFolderId.TabIndex = 5;
+            this.tbInProeleusi.TabIndex = 7;
             // 
             // tbInDocNum
             // 
@@ -372,6 +366,26 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
+            // cbInFolders
+            // 
+            this.cbInFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.cbInFolders.FormattingEnabled = true;
+            this.cbInFolders.Location = new System.Drawing.Point(264, 186);
+            this.cbInFolders.Name = "cbInFolders";
+            this.cbInFolders.Size = new System.Drawing.Size(251, 24);
+            this.cbInFolders.TabIndex = 5;
+            // 
+            // btnNewFolders
+            // 
+            this.btnNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnNewFolders.Location = new System.Drawing.Point(519, 184);
+            this.btnNewFolders.Name = "btnNewFolders";
+            this.btnNewFolders.Size = new System.Drawing.Size(25, 27);
+            this.btnNewFolders.TabIndex = 6;
+            this.btnNewFolders.Text = "*";
+            this.btnNewFolders.UseVisualStyleBackColor = true;
+            this.btnNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,7 +425,6 @@
         public System.Windows.Forms.TextBox tbInToText;
         public System.Windows.Forms.TextBox tbInSummary;
         public System.Windows.Forms.TextBox tbInProeleusi;
-        public System.Windows.Forms.TextBox tbInFolderId;
         public System.Windows.Forms.TextBox tbInDocNum;
         public System.Windows.Forms.TextBox tbInProtokoloNum;
         public System.Windows.Forms.TextBox tbOutSummary;
@@ -421,5 +434,7 @@
         public System.Windows.Forms.DateTimePicker dtpInGetDate;
         public System.Windows.Forms.DateTimePicker dtpOutSetDate;
         public System.Windows.Forms.DateTimePicker dtpInDocDate;
+        public System.Windows.Forms.ComboBox cbInFolders;
+        public System.Windows.Forms.Button btnNewFolders;
     }
 }

@@ -11,7 +11,6 @@ namespace Protocol
         public int Id { get; set; }
 
         public string Name { get; set; }
-
     }
 
     public class Proced
@@ -19,6 +18,16 @@ namespace Protocol
         public int Id { get; set; }
 
         public string Name { get; set; }
-
     }
+
+    public class Folders
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        //public string Description { get; set; }
+    }
+
+
 }
