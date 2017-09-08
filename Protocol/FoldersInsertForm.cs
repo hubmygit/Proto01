@@ -16,8 +16,11 @@ namespace Protocol
         public FoldersInsertForm()
         {
             InitializeComponent();
+
+            NewRecord = false;
         }
 
+        public bool NewRecord;
         private void btnInsert_Click(object sender, EventArgs e)
         {
             if (txtName.Text.Trim() == "")
@@ -32,10 +35,11 @@ namespace Protocol
             {
                 sqlConn.Open();
                 SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
-                cmd.Parameters.AddWithValue("@name", txtName.Text);
-                cmd.Parameters.AddWithValue("@descr", txtDescr.Text);
+                cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@descr", txtDescr.Text.Trim());
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+                NewRecord = true;
 
                 MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς!");
                 Close();

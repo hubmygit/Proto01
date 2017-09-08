@@ -22,11 +22,19 @@ namespace Protocol
             FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
             FoldersInsForm.ShowDialog();
 
-            //go to insert screen - create new folder
+            if (FoldersInsForm.NewRecord)
+            {
+                string InsertedFolderName = FoldersInsForm.txtName.Text.Trim();
 
-            //refresh combobox items - clear/fill data
+                cbInFolders.Items.Clear();
 
-            //set new record as selected  (if inserted successfully)
+                cbInFolders.Items.AddRange(ProtokoloInsertForm.GetObjFolders());
+
+                if (InsertedFolderName.Trim() != "")
+                {
+                    cbInFolders.SelectedText = InsertedFolderName;
+                }
+            }
         }
     }
 }

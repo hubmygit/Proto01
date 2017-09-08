@@ -152,7 +152,7 @@ namespace Protocol
             return cbCompanies.ToArray<ComboboxItem>();
         }
 
-        public ComboboxItem[] GetObjFolders()
+        public static ComboboxItem[] GetObjFolders()
         {
             List<Folders> Folders = new List<Folders>();
             List<ComboboxItem> cbInFolders = new List<ComboboxItem>();
@@ -194,7 +194,7 @@ namespace Protocol
                 //IOBoxPanel.Controls["tbInProtokoloNum"].Text = "138";          //ToDo
                 IOBoxPanel.Controls["tbInDocNum"].Text = "AA-0000/01";           //to del
                 //IOBoxPanel.Controls["tbInFolderId"].Text = "101";              //to del
-              //  IOBoxPanel.Controls["cbInFolders"].Text = "101";                 //to del
+                //IOBoxPanel.Controls["cbInFolders"].Text = "...";                 //to del
                 IOBoxPanel.Controls["tbInProeleusi"].Text = "ABCD";              //to del
                 IOBoxPanel.Controls["tbInSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
                 IOBoxPanel.Controls["tbInToText"].Text = "Mr Abcd";              //to del
