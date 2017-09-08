@@ -27,12 +27,12 @@ namespace Protocol
 
 
             //test-->
-            List<string> fonts = new List<string>();
-            foreach (FontFamily font in System.Drawing.FontFamily.Families)
-            {
-                fonts.Add(font.Name);
-            }
-            comboBox1.DataSource = fonts;
+            //List<string> fonts = new List<string>();
+            //foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            //{
+            //    fonts.Add(font.Name);
+            //}
+            //comboBox1.DataSource = fonts;
             //test<--
         }
 
@@ -533,11 +533,12 @@ namespace Protocol
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Font myfont = new Font(comboBox1.SelectedItem.ToString(), 10);
+            //Font myfont = new Font(comboBox1.SelectedItem.ToString(), 11);
 
-            lblCompany.Font = myfont;
-            lblProtokoloKind.Font = myfont;
-            btnInsert.Font = myfont;
+            //lblCompany.Font = myfont;
+            //lblProtokoloKind.Font = myfont;
+            //btnInsert.Font = myfont;
+            //btnCancel.Font = myfont;
         }
 
     }
