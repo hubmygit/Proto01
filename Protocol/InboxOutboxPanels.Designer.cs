@@ -121,6 +121,7 @@
             this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
             this.lvInAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
             this.lvInAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
+            this.lvInAttachedFiles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvAttachedFiles_MouseClick);
             // 
             // columnHeader1
             // 
@@ -346,6 +347,7 @@
             this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
             this.lvOutAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
             this.lvOutAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
+            this.lvOutAttachedFiles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvAttachedFiles_MouseClick);
             // 
             // columnHeader2
             // 

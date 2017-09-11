@@ -18,8 +18,20 @@ namespace Protocol
 
             //lvAttachedFiles.AllowDrop = true;
             //lvAttachedFiles.DragDrop += new DragEventHandler(lvAttachedFiles_DragDrop);
-            //lvAttachedFiles.DragEnter += new DragEventHandler(lvAttachedFiles_DragEnter);            
+            //lvAttachedFiles.DragEnter += new DragEventHandler(lvAttachedFiles_DragEnter);   
+
+
+            
+            //lvAttachedFileCms.Items.Clear();
+            lvAttachedFileCms.Name = "lvAttachedFileCms";
+            lvAttachedFileCms.Items.Add("Open File");
+            lvAttachedFileCms.Items.Add("Remove File");
+            lvAttachedFileCms.Items.Add("Remove All Files");
         }
+
+        ContextMenuStrip lvAttachedFileCms = new ContextMenuStrip();
+        
+        
 
         private void btnNewFolders_Click(object sender, EventArgs e)
         {
@@ -150,5 +162,53 @@ namespace Protocol
             //Add Files into listView...
             addFilesIntoListView(lvToAddFiles, ofd.FileNames);
         }
+
+        private void lvAttachedFileCms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //MessageBox.Show("Clicked Item: " + e.ClickedItem.Text);
+            if (e.ClickedItem.Text.ToUpper() == "OPEN FILE")
+            {
+                var aaa = ((ContextMenuStrip)sender);
+                Control bbb = aaa.SourceControl;
+                //Control ccc = aaa.Parent;
+                //lvAttachedFiles
+            }
+            else if (e.ClickedItem.Text.ToUpper() == "REMOVE FILE")
+            {
+
+            }
+            else if (e.ClickedItem.Text.ToUpper() == "REMOVE ALL FILES")
+            {
+
+            }
+
+        }
+
+        private void lvAttachedFiles_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            ((ListView)sender).ContextMenuStrip = lvAttachedFileCms;
+
+         //   lvAttachedFileCms.TopLevel = false;
+         //   ((ListView)sender).Controls.Add(lvAttachedFileCms);
+         //lvAttachedFileCms.Parent = ((ListView)sender);
+
+
+
+            lvAttachedFileCms.ItemClicked += new ToolStripItemClickedEventHandler(lvAttachedFileCms_ItemClicked);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                if (((ListView)sender).FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    lvAttachedFileCms.Show(Cursor.Position);
+
+                    //((ContextMenuStrip)((ListView)sender).Controls["lvAttachedFileCms"]).Show(Cursor.Position);
+
+                }
+            }
+            
+        }
+
     }
 }
