@@ -243,6 +243,19 @@ namespace Protocol
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            //insert attachments into db check -- remember to move it -- it's here only for testing
+            if (IOBoxPanel.Name == "panelInbox")
+            {
+                ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
+                foreach (ListViewItem lvi in lv.Items)
+                {
+                    //lvi[0] - file name
+                    //lvi[1] - file path
+                }
+            }
+
+
+
             if (Protok_Id_For_Updates != 0)
             {
                 MessageBox.Show("Update Mode...");

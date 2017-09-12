@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panelInbox = new System.Windows.Forms.Panel();
+            this.btnInOpenFile = new System.Windows.Forms.Button();
+            this.btnInRemoveAll = new System.Windows.Forms.Button();
+            this.btnInRemoveFile = new System.Windows.Forms.Button();
             this.btnInAddFiles = new System.Windows.Forms.Button();
             this.lvInAttachedFiles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,6 +54,9 @@
             this.lblInProtokoloNum = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
+            this.btnOutOpenFile = new System.Windows.Forms.Button();
+            this.btnOutRemoveAll = new System.Windows.Forms.Button();
+            this.btnOutRemoveFile = new System.Windows.Forms.Button();
             this.btnOutAddFiles = new System.Windows.Forms.Button();
             this.lvOutAttachedFiles = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,6 +77,9 @@
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.btnInOpenFile);
+            this.panelInbox.Controls.Add(this.btnInRemoveAll);
+            this.panelInbox.Controls.Add(this.btnInRemoveFile);
             this.panelInbox.Controls.Add(this.btnInAddFiles);
             this.panelInbox.Controls.Add(this.lvInAttachedFiles);
             this.panelInbox.Controls.Add(this.btnNewFolders);
@@ -96,13 +105,43 @@
             this.panelInbox.Size = new System.Drawing.Size(560, 560);
             this.panelInbox.TabIndex = 3;
             // 
+            // btnInOpenFile
+            // 
+            this.btnInOpenFile.Location = new System.Drawing.Point(183, 459);
+            this.btnInOpenFile.Name = "btnInOpenFile";
+            this.btnInOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnInOpenFile.TabIndex = 15;
+            this.btnInOpenFile.Text = "Open File";
+            this.btnInOpenFile.UseVisualStyleBackColor = true;
+            this.btnInOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnInRemoveAll
+            // 
+            this.btnInRemoveAll.Location = new System.Drawing.Point(183, 517);
+            this.btnInRemoveAll.Name = "btnInRemoveAll";
+            this.btnInRemoveAll.Size = new System.Drawing.Size(75, 23);
+            this.btnInRemoveAll.TabIndex = 14;
+            this.btnInRemoveAll.Text = "Remove All";
+            this.btnInRemoveAll.UseVisualStyleBackColor = true;
+            this.btnInRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnInRemoveFile
+            // 
+            this.btnInRemoveFile.Location = new System.Drawing.Point(183, 488);
+            this.btnInRemoveFile.Name = "btnInRemoveFile";
+            this.btnInRemoveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnInRemoveFile.TabIndex = 13;
+            this.btnInRemoveFile.Text = "Remove File";
+            this.btnInRemoveFile.UseVisualStyleBackColor = true;
+            this.btnInRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            // 
             // btnInAddFiles
             // 
-            this.btnInAddFiles.Location = new System.Drawing.Point(183, 420);
+            this.btnInAddFiles.Location = new System.Drawing.Point(183, 430);
             this.btnInAddFiles.Name = "btnInAddFiles";
             this.btnInAddFiles.Size = new System.Drawing.Size(75, 23);
             this.btnInAddFiles.TabIndex = 12;
-            this.btnInAddFiles.Text = "Add Files";
+            this.btnInAddFiles.Text = "Add File(s)";
             this.btnInAddFiles.UseVisualStyleBackColor = true;
             this.btnInAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
             // 
@@ -114,6 +153,7 @@
             this.lvInAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvInAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvInAttachedFiles.Location = new System.Drawing.Point(264, 420);
+            this.lvInAttachedFiles.MultiSelect = false;
             this.lvInAttachedFiles.Name = "lvInAttachedFiles";
             this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 120);
             this.lvInAttachedFiles.TabIndex = 11;
@@ -121,7 +161,6 @@
             this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
             this.lvInAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
             this.lvInAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
-            this.lvInAttachedFiles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvAttachedFiles_MouseClick);
             // 
             // columnHeader1
             // 
@@ -304,6 +343,9 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.btnOutOpenFile);
+            this.panelOutbox.Controls.Add(this.btnOutRemoveAll);
+            this.panelOutbox.Controls.Add(this.btnOutRemoveFile);
             this.panelOutbox.Controls.Add(this.btnOutAddFiles);
             this.panelOutbox.Controls.Add(this.lvOutAttachedFiles);
             this.panelOutbox.Controls.Add(this.dtpOutSetDate);
@@ -322,13 +364,43 @@
             this.panelOutbox.Size = new System.Drawing.Size(560, 560);
             this.panelOutbox.TabIndex = 6;
             // 
+            // btnOutOpenFile
+            // 
+            this.btnOutOpenFile.Location = new System.Drawing.Point(183, 321);
+            this.btnOutOpenFile.Name = "btnOutOpenFile";
+            this.btnOutOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOutOpenFile.TabIndex = 16;
+            this.btnOutOpenFile.Text = "Open File";
+            this.btnOutOpenFile.UseVisualStyleBackColor = true;
+            this.btnOutOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnOutRemoveAll
+            // 
+            this.btnOutRemoveAll.Location = new System.Drawing.Point(183, 379);
+            this.btnOutRemoveAll.Name = "btnOutRemoveAll";
+            this.btnOutRemoveAll.Size = new System.Drawing.Size(75, 23);
+            this.btnOutRemoveAll.TabIndex = 15;
+            this.btnOutRemoveAll.Text = "Remove All";
+            this.btnOutRemoveAll.UseVisualStyleBackColor = true;
+            this.btnOutRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnOutRemoveFile
+            // 
+            this.btnOutRemoveFile.Location = new System.Drawing.Point(183, 350);
+            this.btnOutRemoveFile.Name = "btnOutRemoveFile";
+            this.btnOutRemoveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnOutRemoveFile.TabIndex = 14;
+            this.btnOutRemoveFile.Text = "Remove File";
+            this.btnOutRemoveFile.UseVisualStyleBackColor = true;
+            this.btnOutRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            // 
             // btnOutAddFiles
             // 
-            this.btnOutAddFiles.Location = new System.Drawing.Point(183, 282);
+            this.btnOutAddFiles.Location = new System.Drawing.Point(183, 292);
             this.btnOutAddFiles.Name = "btnOutAddFiles";
             this.btnOutAddFiles.Size = new System.Drawing.Size(75, 23);
             this.btnOutAddFiles.TabIndex = 13;
-            this.btnOutAddFiles.Text = "Add Files";
+            this.btnOutAddFiles.Text = "Add File(s)";
             this.btnOutAddFiles.UseVisualStyleBackColor = true;
             this.btnOutAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
             // 
@@ -340,6 +412,7 @@
             this.lvOutAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvOutAttachedFiles.Location = new System.Drawing.Point(264, 282);
+            this.lvOutAttachedFiles.MultiSelect = false;
             this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
             this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 120);
             this.lvOutAttachedFiles.TabIndex = 12;
@@ -347,7 +420,6 @@
             this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
             this.lvOutAttachedFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragDrop);
             this.lvOutAttachedFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvAttachedFiles_DragEnter);
-            this.lvOutAttachedFiles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvAttachedFiles_MouseClick);
             // 
             // columnHeader2
             // 
@@ -510,11 +582,17 @@
         public System.Windows.Forms.DateTimePicker dtpInDocDate;
         public System.Windows.Forms.ComboBox cbInFolders;
         public System.Windows.Forms.Button btnNewFolders;
-        private System.Windows.Forms.ListView lvInAttachedFiles;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ListView lvOutAttachedFiles;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btnInAddFiles;
         private System.Windows.Forms.Button btnOutAddFiles;
+        private System.Windows.Forms.Button btnInOpenFile;
+        private System.Windows.Forms.Button btnInRemoveAll;
+        private System.Windows.Forms.Button btnInRemoveFile;
+        private System.Windows.Forms.Button btnOutOpenFile;
+        private System.Windows.Forms.Button btnOutRemoveAll;
+        private System.Windows.Forms.Button btnOutRemoveFile;
+        public System.Windows.Forms.ListView lvInAttachedFiles;
+        public System.Windows.Forms.ListView lvOutAttachedFiles;
     }
 }

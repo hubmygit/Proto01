@@ -23,15 +23,15 @@ namespace Protocol
 
             
             //lvAttachedFileCms.Items.Clear();
-            lvAttachedFileCms.Name = "lvAttachedFileCms";
-            lvAttachedFileCms.Items.Add("Open File");
-            lvAttachedFileCms.Items.Add("Remove File");
-            lvAttachedFileCms.Items.Add("Remove All Files");
+            //lvAttachedFileCms.Name = "lvAttachedFileCms";
+            //lvAttachedFileCms.Items.Add("Open File");
+            //lvAttachedFileCms.Items.Add("Remove File");
+            //lvAttachedFileCms.Items.Add("Remove All Files");
         }
 
-        ContextMenuStrip lvAttachedFileCms = new ContextMenuStrip();
-        
-        
+        //ContextMenuStrip lvAttachedFileCms = new ContextMenuStrip();
+
+        //int lvSelIndex = 0;
 
         private void btnNewFolders_Click(object sender, EventArgs e)
         {
@@ -163,29 +163,164 @@ namespace Protocol
             addFilesIntoListView(lvToAddFiles, ofd.FileNames);
         }
 
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            //get the right listview
+            Control ctrl = ((Control)sender).Parent;
+            //Control ctrl2 = ((Control)sender)
+            //check if selected
+
+            ListView lv = new ListView();
+
+            if (ctrl.Name == "panelOutbox")
+            {
+                lv = lvOutAttachedFiles;
+            }
+            else if (ctrl.Name == "panelInbox")
+            {
+                lv = lvInAttachedFiles;
+            }
+
+            if (lv.SelectedItems.Count > 0)
+            {
+                //get text
+                string lvPath = lv.SelectedItems[0].SubItems[1].Text;
+
+                System.Diagnostics.Process.Start(lvPath);
+            }
+
+
+
+        }
+
+        private void btnRemoveFile_Click(object sender, EventArgs e)
+        {
+            //get the right listview
+            Control ctrl = ((Control)sender).Parent;
+            //Control ctrl2 = ((Control)sender)
+            //check if selected
+
+            ListView lv = new ListView();
+
+            if (ctrl.Name == "panelOutbox")
+            {
+                lv = lvOutAttachedFiles;
+            }
+            else if (ctrl.Name == "panelInbox")
+            {
+                lv = lvInAttachedFiles;
+            }
+
+            if (lv.SelectedItems.Count > 0)
+            {
+                //get text
+                //string lvIndex = lv.SelectedItems[0].Index;
+
+                lv.SelectedItems[0].Remove();
+            }
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            //get the right listview
+            Control ctrl = ((Control)sender).Parent;
+            //Control ctrl2 = ((Control)sender)
+            //check if selected
+
+            ListView lv = new ListView();
+
+            if (ctrl.Name == "panelOutbox")
+            {
+                lv = lvOutAttachedFiles;
+            }
+            else if (ctrl.Name == "panelInbox")
+            {
+                lv = lvInAttachedFiles;
+            }
+
+            lv.Items.Clear();
+        }
+
+        /*
         private void lvAttachedFileCms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             //MessageBox.Show("Clicked Item: " + e.ClickedItem.Text);
             if (e.ClickedItem.Text.ToUpper() == "OPEN FILE")
             {
-                var aaa = ((ContextMenuStrip)sender);
-                Control bbb = aaa.SourceControl;
-                //Control ccc = aaa.Parent;
+                var cms = ((ContextMenuStrip)sender);
+                Control ctrl = cms.SourceControl;
+                string lvPath = ((ListView)ctrl).SelectedItems[0].SubItems[1].Text;
+
+                //System.Diagnostics.Process.Start(@"file path");
+                System.Diagnostics.Process.Start(lvPath);
                 //lvAttachedFiles
             }
             else if (e.ClickedItem.Text.ToUpper() == "REMOVE FILE")
             {
+                
+                var cms = ((ContextMenuStrip)sender);
+                Control ctrl = cms.SourceControl;
+
+                
+                ////Point mousePos = ((ListView)ctrl).PointToClient(Control.MousePosition);
+                ////ListViewHitTestInfo hitTest = ((ListView)ctrl).HitTest(mousePos);
+                ////int lvIndex = hitTest.Item.SubItems.IndexOf(hitTest.SubItem);
+
+                //int lvIndex2 = -1;
+                //try
+                //{
+                //    lvIndex2 = ((ListView)ctrl).FocusedItem.Index;
+                //}
+                //catch (Exception ex)
+                //{
+                //    string aa = ex.Message;
+                //}
+
+
+                //int lvIndex = -1;
+                //try
+                //{
+                //    lvIndex = ((ListView)ctrl).SelectedItems[0].Index;
+                //}
+                //catch (Exception ex)
+                //{
+                //    string aa = ex.Message;
+                //}
+
+                //if (lvIndex == -1)
+                //{
+                //    lvIndex = lvIndex2;
+                //}
+                //else
+                //{
+                //    int zzz = 0;
+                //}
+
+                //((ListView)ctrl).Items.RemoveAt(lvIndex);
+
+                //((ListView)ctrl).SelectedItems.Clear();
+                
+
+
+                ((ListView)ctrl).Items.RemoveAt(lvSelIndex);
 
             }
             else if (e.ClickedItem.Text.ToUpper() == "REMOVE ALL FILES")
             {
-
+                var cms = ((ContextMenuStrip)sender);
+                Control ctrl = cms.SourceControl;
+                ((ListView)ctrl).Items.Clear();
             }
 
         }
+        */
 
+        /*
         private void lvAttachedFiles_MouseClick(object sender, MouseEventArgs e)
         {
+
+
+
 
             ((ListView)sender).ContextMenuStrip = lvAttachedFileCms;
 
@@ -201,6 +336,12 @@ namespace Protocol
             {
                 if (((ListView)sender).FocusedItem.Bounds.Contains(e.Location) == true)
                 {
+
+                    Point mousePos = ((ListView)sender).PointToClient(Control.MousePosition);
+                    ListViewHitTestInfo hitTest = ((ListView)sender).HitTest(mousePos);
+                    lvSelIndex = hitTest.Item.Index;
+                    //int columnIndex = hitTest.Item.SubItems.IndexOf(hitTest.SubItem);
+
                     lvAttachedFileCms.Show(Cursor.Position);
 
                     //((ContextMenuStrip)((ListView)sender).Controls["lvAttachedFileCms"]).Show(Cursor.Position);
@@ -209,6 +350,7 @@ namespace Protocol
             }
             
         }
+        */
 
     }
 }
