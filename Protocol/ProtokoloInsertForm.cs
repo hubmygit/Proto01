@@ -243,19 +243,6 @@ namespace Protocol
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            //insert attachments into db check -- remember to move it -- it's here only for testing
-            if (IOBoxPanel.Name == "panelInbox")
-            {
-                ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
-                foreach (ListViewItem lvi in lv.Items)
-                {
-                    //lvi[0] - file name
-                    //lvi[1] - file path
-                }
-            }
-
-
-
             if (Protok_Id_For_Updates != 0)
             {
                 MessageBox.Show("Update Mode...");
@@ -399,6 +386,36 @@ namespace Protocol
                         MessageBox.Show("The following error occurred: " + ex.Message);
                     }
 
+                    //insert attachments into db
+                    ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
+                    foreach (ListViewItem lvi in lv.Items)
+                    {
+                        string attFileName = lvi.SubItems[1].Text;
+                        byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
+
+                        //INSERT [dbo].[ProtokPdf]
+                        SqlConnection sqlConn4 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                        string InsSt4 = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
+                        try
+                        {
+                            sqlConn4.Open();
+                            SqlCommand cmd4 = new SqlCommand(InsSt4, sqlConn4);
+                            //cmd4.Parameters.AddWithValue("@Id", 17); //ToDo...Auto incr.
+                            cmd4.Parameters.AddWithValue("@ProtokId", InsertedId);
+                            cmd4.Parameters.AddWithValue("@PdfText", lvi.SubItems[0].Text); //filename
+                            cmd4.Parameters.Add("@PdfCont", SqlDbType.VarBinary).Value = attFileBytes;
+                            cmd4.Parameters.Add("@FileCont", SqlDbType.VarBinary).Value = attFileBytes;
+                            cmd4.CommandType = CommandType.Text;
+                            cmd4.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("The following error occurred: " + ex.Message);
+                        }
+                        //lvi.SubItems[0] - file name
+                        //lvi.SubItems[1] - file path
+                    }
+
                     MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + InsertedSn + "]");
                     Close();
                 }
@@ -514,6 +531,36 @@ namespace Protocol
                     catch (Exception ex)
                     {
                         MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
+
+                    //insert attachments into db
+                    ListView lv = ((ListView)IOBoxPanel.Controls["lvOutAttachedFiles"]);
+                    foreach (ListViewItem lvi in lv.Items)
+                    {
+                        string attFileName = lvi.SubItems[1].Text;
+                        byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
+
+                        //INSERT [dbo].[ProtokPdf]
+                        SqlConnection sqlConn4 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                        string InsSt4 = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
+                        try
+                        {
+                            sqlConn4.Open();
+                            SqlCommand cmd4 = new SqlCommand(InsSt4, sqlConn4);
+                            //cmd4.Parameters.AddWithValue("@Id", 17); //ToDo...Auto incr.
+                            cmd4.Parameters.AddWithValue("@ProtokId", InsertedId); 
+                            cmd4.Parameters.AddWithValue("@PdfText", lvi.SubItems[0].Text); //filename
+                            cmd4.Parameters.Add("@PdfCont", SqlDbType.VarBinary).Value = attFileBytes;
+                            cmd4.Parameters.Add("@FileCont", SqlDbType.VarBinary).Value = attFileBytes;
+                            cmd4.CommandType = CommandType.Text;
+                            cmd4.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("The following error occurred: " + ex.Message);
+                        }
+                        //lvi.SubItems[0] - file name
+                        //lvi.SubItems[1] - file path
                     }
 
                     MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + InsertedSn + "]");

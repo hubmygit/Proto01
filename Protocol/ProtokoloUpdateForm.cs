@@ -66,6 +66,32 @@ namespace Protocol
             
         }
 
+        string[] getSavedAttachments(int ProtokId)
+        {
+            List<string> ret = new List<string>();
+
+            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            string SelectSt = "SELECT pdftext FROM [dbo].[ProtokPdf] WHERE ProtokId = " + ProtokId.ToString();
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ret.Add(reader["pdftext"].ToString().Trim());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret.ToArray();
+        }
+
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
             //MessageBox.Show("ΑΑ Πρωτοκόλλου: " + lvRep.SelectedItems[0].SubItems[0].Text + ", Έτος: " + lvRep.SelectedItems[0].SubItems[1].Text);
@@ -96,6 +122,18 @@ namespace Protocol
                 updScreen.Controls["panelInbox"].Controls["tbInProeleusi"].Text = lvic[7].Text;
                 updScreen.Controls["panelInbox"].Controls["tbInSummary"].Text = lvic[8].Text;
                 updScreen.Controls["panelInbox"].Controls["tbInToText"].Text = lvic[9].Text;
+
+
+                updScreen.Controls["panelInbox"].Controls["btnInAddFiles"].Enabled = false;
+                updScreen.Controls["panelInbox"].Controls["btnInRemoveFile"].Enabled = false;
+                updScreen.Controls["panelInbox"].Controls["btnInRemoveAll"].Enabled = false;
+                //get results as string array
+                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[11].Text));
+                //fill listview
+                foreach (string thisFileName in fileNames)
+                {
+                    ((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
+                }
             }
             else if (proced == "Εξερχόμενα")
             {
@@ -104,7 +142,20 @@ namespace Protocol
                 updScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
                 updScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
                 updScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
+
+
+                updScreen.Controls["panelOutbox"].Controls["btnOutAddFiles"].Enabled = false;
+                updScreen.Controls["panelOutbox"].Controls["btnOutRemoveFile"].Enabled = false;
+                updScreen.Controls["panelOutbox"].Controls["btnOutRemoveAll"].Enabled = false;
+                //get results as string array
+                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[11].Text));
+                //fill listview
+                foreach (string thisFileName in fileNames)
+                {
+                    ((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
+                }
             }
+
 
             updScreen.ShowDialog();
 

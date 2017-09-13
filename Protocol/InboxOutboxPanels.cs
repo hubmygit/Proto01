@@ -101,6 +101,8 @@ namespace Protocol
 
         }
 
+        /*
+        //original function with images into ListView
         void addFilesIntoListView(ListView myListView, string[] fileNames)
         {
             //lvAttachedFiles.Items.Add(e.Data.ToString());
@@ -137,6 +139,28 @@ namespace Protocol
                 lvItem.ImageKey = newFile.Extension;
 
                 //lvAttachedFiles.Items.Add(lvItem);
+                myListView.Items.Add(lvItem);
+            }
+        }
+        */
+
+        //new function without images
+        void addFilesIntoListView(ListView myListView, string[] fileNames)
+        {
+
+            foreach (string thisFile in fileNames)
+            {
+                System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
+
+                if (newFile.Attributes == System.IO.FileAttributes.Directory)
+                {
+                    MessageBox.Show("Please drop only archives not directories!");
+
+                    return;
+                }
+
+                ListViewItem lvItem = new ListViewItem(new string[] { newFile.Name, newFile.FullName });
+
                 myListView.Items.Add(lvItem);
             }
         }
