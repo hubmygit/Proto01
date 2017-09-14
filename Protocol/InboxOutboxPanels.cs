@@ -173,6 +173,7 @@ namespace Protocol
 
                 if (exists)
                 {
+                    MessageBox.Show("File already exists!");
                     continue;
                 }
 
