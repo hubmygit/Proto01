@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SqlClient;
+using System.IO;
+
 namespace Protocol
 {
     public partial class InboxOutboxPanels : Form
@@ -207,8 +210,47 @@ namespace Protocol
 
             if (lv.SelectedItems.Count > 0)
             {
-                //get text
-                string lvPath = lv.SelectedItems[0].SubItems[1].Text;
+                string lvPath = "";
+
+                if (ctrl.Parent.Text == "Μεταβολή") //update mode
+                {
+                    string ext = "";
+                    string tempFile = Path.Combine(Application.StartupPath + "\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+
+                    SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    string SelectSt = "SELECT [FileCont] FROM [dbo].[ProtokPdf] WHERE ProtokId = @ProtokId and PdfText = @PdfText";
+                    SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+                    try
+                    {
+                        sqlConn.Open();
+                                                
+                        ProtokoloInsertForm pif = (ProtokoloInsertForm)ctrl.FindForm();
+
+                        cmd.Parameters.AddWithValue("@ProtokId", pif.Protok_Id_For_Updates);
+                        cmd.Parameters.AddWithValue("@PdfText", lv.SelectedItems[0].SubItems[0].Text);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            string fname = lv.SelectedItems[0].SubItems[0].Text;
+                            ext = fname.Substring(fname.LastIndexOf("."));
+                            lvPath = tempFile + ext;
+                            //reader["FileCont"].ToString()
+                            File.WriteAllBytes(tempFile + ext, (byte[])reader["FileCont"]);
+                        }
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
+                }
+                else //insert mode
+                {
+                    //get text
+                    lvPath = lv.SelectedItems[0].SubItems[1].Text;
+                }
 
                 System.Diagnostics.Process.Start(lvPath);
             }
