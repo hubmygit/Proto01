@@ -150,7 +150,7 @@ namespace Protocol
         //new function without images
         void addFilesIntoListView(ListView myListView, string[] fileNames)
         {
-
+            bool exists = false;
             foreach (string thisFile in fileNames)
             {
                 System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
@@ -159,7 +159,21 @@ namespace Protocol
                 {
                     MessageBox.Show("Please drop only archives not directories!");
 
-                    return;
+                    continue;
+                }
+
+                foreach (ListViewItem lvi in myListView.Items)
+                {
+                    if (lvi.SubItems[0].Text.ToUpper() == newFile.Name.ToUpper())
+                    {
+                        exists = true;
+                        break; 
+                    }
+                }
+
+                if (exists)
+                {
+                    continue;
                 }
 
                 ListViewItem lvItem = new ListViewItem(new string[] { newFile.Name, newFile.FullName });
@@ -215,7 +229,19 @@ namespace Protocol
                 if (ctrl.Parent.Text == "Μεταβολή") //update mode
                 {
                     string ext = "";
-                    string tempFile = Path.Combine(Application.StartupPath + "\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    string tempFile = Path.Combine(Application.StartupPath + "\\Temp\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    try
+                    {
+                        if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+                        {
+                            Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                        return;
+                    }
 
                     SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
                     string SelectSt = "SELECT [FileCont] FROM [dbo].[ProtokPdf] WHERE ProtokId = @ProtokId and PdfText = @PdfText";
@@ -244,6 +270,7 @@ namespace Protocol
                     catch (Exception ex)
                     {
                         MessageBox.Show("The following error occurred: " + ex.Message);
+                        return;
                     }
                 }
                 else //insert mode
