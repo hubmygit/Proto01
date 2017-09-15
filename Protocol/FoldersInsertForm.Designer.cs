@@ -118,7 +118,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblId);
             this.Name = "FoldersInsertForm";
-            this.Text = "Καταχώρηση Φακέλου";
+            this.Text = "Δημιουργία Νέου Φακέλου";
             this.ResumeLayout(false);
             this.PerformLayout();
 

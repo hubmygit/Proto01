@@ -125,6 +125,7 @@
             this.Name = "ProtokoloInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Εισαγωγή";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProtokoloInsertForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -159,7 +159,6 @@ namespace Protocol
                 if (newFile.Attributes == System.IO.FileAttributes.Directory)
                 {
                     MessageBox.Show("Please drop only archives not directories!");
-
                     continue;
                 }
 
@@ -179,7 +178,6 @@ namespace Protocol
                 }
 
                 ListViewItem lvItem = new ListViewItem(new string[] { newFile.Name, newFile.FullName });
-
                 myListView.Items.Add(lvItem);
             }
         }

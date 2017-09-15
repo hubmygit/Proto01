@@ -586,6 +586,13 @@ namespace Protocol
             }
         }
 
+        private void ProtokoloInsertForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
+
+            e.Cancel = (dialogResult == DialogResult.No);
+        }
+
         private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show("Id: " + ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id + ", Name: " +((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Name +  ", Text: " + ((ComboboxItem)cbCompany.SelectedItem).Text);
@@ -601,5 +608,6 @@ namespace Protocol
             //btnCancel.Font = myfont;
         }
 
+        
     }
 }

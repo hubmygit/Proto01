@@ -123,6 +123,11 @@ namespace Protocol
                 updScreen.Controls["panelInbox"].Controls["tbInSummary"].Text = lvic[8].Text;
                 updScreen.Controls["panelInbox"].Controls["tbInToText"].Text = lvic[9].Text;
 
+                updScreen.Controls["panelInbox"].Controls["lblInProtokolo"].Visible = true;
+                updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Visible = true;
+                updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[0].Text;
+                updScreen.Controls["panelInbox"].Controls["tbInYear"].Visible = true;
+                updScreen.Controls["panelInbox"].Controls["tbInYear"].Text = lvic[1].Text;
 
                 updScreen.Controls["panelInbox"].Controls["btnInAddFiles"].Enabled = false;
                 updScreen.Controls["panelInbox"].Controls["btnInRemoveFile"].Enabled = false;
@@ -143,6 +148,11 @@ namespace Protocol
                 updScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
                 updScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
 
+                updScreen.Controls["panelOutbox"].Controls["lblOutProtokolo"].Visible = true;
+                updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Visible = true;
+                updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Text = lvic[0].Text;
+                updScreen.Controls["panelOutbox"].Controls["tbOutYear"].Visible = true;
+                updScreen.Controls["panelOutbox"].Controls["tbOutYear"].Text = lvic[1].Text;
 
                 updScreen.Controls["panelOutbox"].Controls["btnOutAddFiles"].Enabled = false;
                 updScreen.Controls["panelOutbox"].Controls["btnOutRemoveFile"].Enabled = false;

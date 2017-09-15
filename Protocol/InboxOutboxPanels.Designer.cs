@@ -51,7 +51,7 @@
             this.lblInDocDate = new System.Windows.Forms.Label();
             this.lblInDocNum = new System.Windows.Forms.Label();
             this.lblInGetDate = new System.Windows.Forms.Label();
-            this.lblInProtokoloNum = new System.Windows.Forms.Label();
+            this.lblInProtokolo = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
             this.btnOutOpenFile = new System.Windows.Forms.Button();
@@ -69,14 +69,17 @@
             this.lblOutKateuth = new System.Windows.Forms.Label();
             this.lblOutDocNum = new System.Windows.Forms.Label();
             this.lblOutSetDate = new System.Windows.Forms.Label();
-            this.lblOutProtokoloNum = new System.Windows.Forms.Label();
+            this.lblOutProtokolo = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
+            this.tbInYear = new System.Windows.Forms.TextBox();
+            this.tbOutYear = new System.Windows.Forms.TextBox();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
+            this.panelInbox.Controls.Add(this.tbInYear);
             this.panelInbox.Controls.Add(this.btnInOpenFile);
             this.panelInbox.Controls.Add(this.btnInRemoveAll);
             this.panelInbox.Controls.Add(this.btnInRemoveFile);
@@ -98,7 +101,7 @@
             this.panelInbox.Controls.Add(this.lblInDocDate);
             this.panelInbox.Controls.Add(this.lblInDocNum);
             this.panelInbox.Controls.Add(this.lblInGetDate);
-            this.panelInbox.Controls.Add(this.lblInProtokoloNum);
+            this.panelInbox.Controls.Add(this.lblInProtokolo);
             this.panelInbox.Controls.Add(this.lblInPanelTitle);
             this.panelInbox.Location = new System.Drawing.Point(12, 12);
             this.panelInbox.Name = "panelInbox";
@@ -246,7 +249,7 @@
             this.tbInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbInProtokoloNum.Name = "tbInProtokoloNum";
-            this.tbInProtokoloNum.Size = new System.Drawing.Size(280, 23);
+            this.tbInProtokoloNum.Size = new System.Drawing.Size(199, 23);
             this.tbInProtokoloNum.TabIndex = 1;
             this.tbInProtokoloNum.Visible = false;
             // 
@@ -320,16 +323,16 @@
             this.lblInGetDate.TabIndex = 2;
             this.lblInGetDate.Text = "Ημερομηνία Λήψης";
             // 
-            // lblInProtokoloNum
+            // lblInProtokolo
             // 
-            this.lblInProtokoloNum.AutoSize = true;
-            this.lblInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblInProtokoloNum.Location = new System.Drawing.Point(8, 45);
-            this.lblInProtokoloNum.Name = "lblInProtokoloNum";
-            this.lblInProtokoloNum.Size = new System.Drawing.Size(195, 17);
-            this.lblInProtokoloNum.TabIndex = 1;
-            this.lblInProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
-            this.lblInProtokoloNum.Visible = false;
+            this.lblInProtokolo.AutoSize = true;
+            this.lblInProtokolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblInProtokolo.Location = new System.Drawing.Point(8, 45);
+            this.lblInProtokolo.Name = "lblInProtokolo";
+            this.lblInProtokolo.Size = new System.Drawing.Size(241, 17);
+            this.lblInProtokolo.TabIndex = 1;
+            this.lblInProtokolo.Text = "Αύξων Αριθμός Πρωτοκόλλου / Έτος";
+            this.lblInProtokolo.Visible = false;
             // 
             // lblInPanelTitle
             // 
@@ -343,6 +346,7 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.tbOutYear);
             this.panelOutbox.Controls.Add(this.btnOutOpenFile);
             this.panelOutbox.Controls.Add(this.btnOutRemoveAll);
             this.panelOutbox.Controls.Add(this.btnOutRemoveFile);
@@ -357,7 +361,7 @@
             this.panelOutbox.Controls.Add(this.lblOutKateuth);
             this.panelOutbox.Controls.Add(this.lblOutDocNum);
             this.panelOutbox.Controls.Add(this.lblOutSetDate);
-            this.panelOutbox.Controls.Add(this.lblOutProtokoloNum);
+            this.panelOutbox.Controls.Add(this.lblOutProtokolo);
             this.panelOutbox.Controls.Add(this.lblOutPanelTitle);
             this.panelOutbox.Location = new System.Drawing.Point(578, 12);
             this.panelOutbox.Name = "panelOutbox";
@@ -467,7 +471,7 @@
             this.tbOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbOutProtokoloNum.Name = "tbOutProtokoloNum";
-            this.tbOutProtokoloNum.Size = new System.Drawing.Size(280, 23);
+            this.tbOutProtokoloNum.Size = new System.Drawing.Size(199, 23);
             this.tbOutProtokoloNum.TabIndex = 1;
             this.tbOutProtokoloNum.Visible = false;
             // 
@@ -511,16 +515,16 @@
             this.lblOutSetDate.TabIndex = 2;
             this.lblOutSetDate.Text = "Ημερομηνία Αποστολής";
             // 
-            // lblOutProtokoloNum
+            // lblOutProtokolo
             // 
-            this.lblOutProtokoloNum.AutoSize = true;
-            this.lblOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblOutProtokoloNum.Location = new System.Drawing.Point(8, 45);
-            this.lblOutProtokoloNum.Name = "lblOutProtokoloNum";
-            this.lblOutProtokoloNum.Size = new System.Drawing.Size(195, 17);
-            this.lblOutProtokoloNum.TabIndex = 1;
-            this.lblOutProtokoloNum.Text = "Αύξων Αριθμός Πρωτοκόλλου";
-            this.lblOutProtokoloNum.Visible = false;
+            this.lblOutProtokolo.AutoSize = true;
+            this.lblOutProtokolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutProtokolo.Location = new System.Drawing.Point(8, 45);
+            this.lblOutProtokolo.Name = "lblOutProtokolo";
+            this.lblOutProtokolo.Size = new System.Drawing.Size(241, 17);
+            this.lblOutProtokolo.TabIndex = 1;
+            this.lblOutProtokolo.Text = "Αύξων Αριθμός Πρωτοκόλλου / Έτος";
+            this.lblOutProtokolo.Visible = false;
             // 
             // lblOutPanelTitle
             // 
@@ -531,6 +535,26 @@
             this.lblOutPanelTitle.Size = new System.Drawing.Size(129, 24);
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
+            // 
+            // tbInYear
+            // 
+            this.tbInYear.Enabled = false;
+            this.tbInYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbInYear.Location = new System.Drawing.Point(469, 42);
+            this.tbInYear.Name = "tbInYear";
+            this.tbInYear.Size = new System.Drawing.Size(75, 23);
+            this.tbInYear.TabIndex = 16;
+            this.tbInYear.Visible = false;
+            // 
+            // tbOutYear
+            // 
+            this.tbOutYear.Enabled = false;
+            this.tbOutYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutYear.Location = new System.Drawing.Point(469, 42);
+            this.tbOutYear.Name = "tbOutYear";
+            this.tbOutYear.Size = new System.Drawing.Size(75, 23);
+            this.tbOutYear.TabIndex = 17;
+            this.tbOutYear.Visible = false;
             // 
             // InboxOutboxPanels
             // 
@@ -559,13 +583,13 @@
         private System.Windows.Forms.Label lblInDocDate;
         private System.Windows.Forms.Label lblInDocNum;
         private System.Windows.Forms.Label lblInGetDate;
-        private System.Windows.Forms.Label lblInProtokoloNum;
+        private System.Windows.Forms.Label lblInProtokolo;
         private System.Windows.Forms.Label lblInPanelTitle;
         private System.Windows.Forms.Label lblOutSummary;
         private System.Windows.Forms.Label lblOutKateuth;
         private System.Windows.Forms.Label lblOutDocNum;
         private System.Windows.Forms.Label lblOutSetDate;
-        private System.Windows.Forms.Label lblOutProtokoloNum;
+        private System.Windows.Forms.Label lblOutProtokolo;
         private System.Windows.Forms.Label lblOutPanelTitle;
         public System.Windows.Forms.Panel panelOutbox;
         public System.Windows.Forms.TextBox tbInToText;
@@ -594,5 +618,7 @@
         private System.Windows.Forms.Button btnOutRemoveFile;
         public System.Windows.Forms.ListView lvInAttachedFiles;
         public System.Windows.Forms.ListView lvOutAttachedFiles;
+        public System.Windows.Forms.TextBox tbInYear;
+        public System.Windows.Forms.TextBox tbOutYear;
     }
 }
