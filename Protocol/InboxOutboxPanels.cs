@@ -153,6 +153,7 @@ namespace Protocol
             bool exists = false;
             foreach (string thisFile in fileNames)
             {
+                exists = false;
                 System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
 
                 if (newFile.Attributes == System.IO.FileAttributes.Directory)
