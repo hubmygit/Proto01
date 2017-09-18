@@ -18,14 +18,14 @@ namespace Protocol
         {
             InitializeComponent();
             
-            ShowDataToListView();
+            ShowDataToListView(lvRep);
         }
 
-        public void ShowDataToListView()
+        public void ShowDataToListView(ListView lvReport)
         {
             SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
             string SelectSt = "SELECT P.Sn, P.Year, PR.Name as ProcedName, C.Name as CompanyName, convert(varchar, P.DocumentDate, 104) as _DocumentDate, " +
-                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name " +
+                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id " +
                               "FROM [dbo].[Protok] P left outer join [dbo].[Proced] PR on PR.id = P.ProcedureId " +
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId left outer join [dbo].[Folders] F on F.id = P.FolderId " +
                               "WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ";
@@ -46,10 +46,11 @@ namespace Protocol
                                      reader[7].ToString(),
                                      reader[8].ToString(),
                                      reader[9].ToString(),
-                                     reader[10].ToString()};
+                                     reader[10].ToString(),
+                                     reader[11].ToString()};
 
                     ListViewItem listViewItem = new ListViewItem(row);
-                    lvRep.Items.Add(listViewItem);
+                    lvReport.Items.Add(listViewItem);
                 }
 
                 BindingSource bs = new BindingSource();
@@ -69,22 +70,29 @@ namespace Protocol
         {
             string lvRowYear = lvRep.SelectedItems[0].SubItems[1].Text;
             string lvRowProtocol = lvRep.SelectedItems[0].SubItems[0].Text;
+            string lvRowId = lvRep.SelectedItems[0].SubItems[11].Text;
+            string lvRowEisEx = lvRep.SelectedItems[0].SubItems[2].Text;
+            string lvRowCompany = lvRep.SelectedItems[0].SubItems[3].Text;
 
-            if (lvRowYear.Trim() != "" && lvRowProtocol.Trim() != "")
+            //if (lvRowYear.Trim() != "" && lvRowProtocol.Trim() != "")
+            if (lvRowId.Trim() != "")
             {
-                DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή του Έτους " + lvRowYear + " με Αριθμό Πρωτοκόλλου " + lvRowProtocol + ";", "Διαγραφή", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή του Έτους " + lvRowYear + " με Αριθμό Πρωτοκόλλου " + lvRowProtocol + 
+                    " (" + lvRowEisEx + ") της Εταιρίας" + lvRowCompany + ";", "Διαγραφή", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
+                    //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
+                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Id = @Id ";
 
                     try
                     {
                         sqlConn.Open();
                         SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
 
-                        cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
-                        cmd.Parameters.AddWithValue("@Year", lvRowYear);
+                        //cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
+                        //cmd.Parameters.AddWithValue("@Year", lvRowYear);
+                        cmd.Parameters.AddWithValue("@Id", lvRowId);
 
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();

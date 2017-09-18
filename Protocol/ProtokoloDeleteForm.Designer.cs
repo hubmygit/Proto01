@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnFilters = new System.Windows.Forms.Button();
             this.lvRep = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,8 +41,18 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnFilters = new System.Windows.Forms.Button();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
+            // 
+            // btnFilters
+            // 
+            this.btnFilters.Location = new System.Drawing.Point(12, 25);
+            this.btnFilters.Name = "btnFilters";
+            this.btnFilters.Size = new System.Drawing.Size(75, 23);
+            this.btnFilters.TabIndex = 1;
+            this.btnFilters.Text = "Filters...";
+            this.btnFilters.UseVisualStyleBackColor = true;
+            this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);
             // 
             // lvRep
             // 
@@ -56,7 +67,8 @@
             this.columnHeader8,
             this.columnHeader9,
             this.columnHeader10,
-            this.columnHeader11});
+            this.columnHeader11,
+            this.columnHeader12});
             this.lvRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvRep.FullRowSelect = true;
             this.lvRep.GridLines = true;
@@ -64,10 +76,9 @@
             this.lvRep.MultiSelect = false;
             this.lvRep.Name = "lvRep";
             this.lvRep.Size = new System.Drawing.Size(1248, 459);
-            this.lvRep.TabIndex = 0;
+            this.lvRep.TabIndex = 2;
             this.lvRep.UseCompatibleStateImageBehavior = false;
             this.lvRep.View = System.Windows.Forms.View.Details;
-            this.lvRep.DoubleClick += new System.EventHandler(this.lvRep_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -122,23 +133,18 @@
             this.columnHeader11.Text = "Αρ.Φακέλου Αρχείου";
             this.columnHeader11.Width = 117;
             // 
-            // btnFilters
+            // columnHeader12
             // 
-            this.btnFilters.Location = new System.Drawing.Point(12, 25);
-            this.btnFilters.Name = "btnFilters";
-            this.btnFilters.Size = new System.Drawing.Size(75, 23);
-            this.btnFilters.TabIndex = 1;
-            this.btnFilters.Text = "Filters...";
-            this.btnFilters.UseVisualStyleBackColor = true;
-            this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);
+            this.columnHeader12.Text = "Id";
+            this.columnHeader12.Width = 51;
             // 
             // ProtokoloDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 545);
-            this.Controls.Add(this.btnFilters);
             this.Controls.Add(this.lvRep);
+            this.Controls.Add(this.btnFilters);
             this.Name = "ProtokoloDeleteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Διαγραφή";
@@ -147,7 +153,7 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Button btnFilters;
         private System.Windows.Forms.ListView lvRep;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -160,6 +166,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.Button btnFilters;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
     }
 }
