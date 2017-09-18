@@ -55,7 +55,7 @@ namespace Protocol
         {
             List<string> KindOfProtocol = new List<string>();
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Name FROM [dbo].[Proced] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -81,7 +81,7 @@ namespace Protocol
             List<Proced> Proceds = new List<Proced>();
             List<ComboboxItem> cbProceds = new List<ComboboxItem>();
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Proced] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -111,7 +111,7 @@ namespace Protocol
         {
             List<string> Companies = new List<string>();
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -138,7 +138,7 @@ namespace Protocol
             List<Company> Companies = new List<Company>();
             List<ComboboxItem> cbCompanies = new List<ComboboxItem>();
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -169,7 +169,7 @@ namespace Protocol
             List<Folders> Folders = new List<Folders>();
             List<ComboboxItem> cbInFolders = new List<ComboboxItem>();
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -197,9 +197,11 @@ namespace Protocol
 
         private void cbProtokoloKind_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Controls.Remove(IOBoxPanel);
+
             if (cbProtokoloKind.Text == "Εισερχόμενα")
             {
-                Controls.Remove(IOBoxPanel);
+                //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelInbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
@@ -218,7 +220,7 @@ namespace Protocol
             }
             else if (cbProtokoloKind.Text == "Εξερχόμενα")
             {
-                Controls.Remove(IOBoxPanel);
+                //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelOutbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
@@ -232,7 +234,7 @@ namespace Protocol
             }
             else
             {
-                Controls.Remove(IOBoxPanel);
+                //Controls.Remove(IOBoxPanel);
             }
         }
 
@@ -299,7 +301,7 @@ namespace Protocol
 
                 //ToDo: new class - object
 
-                SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
 
                 string tableId = "select isnull(max(id), 0) + 1 from [dbo].[Protok]";
 
@@ -352,7 +354,7 @@ namespace Protocol
                     reader.Close();
 
                     //UPDATE [dbo].[TableIds] 
-                    SqlConnection sqlConn2 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    SqlConnection sqlConn2 = new SqlConnection(DBInfo.connectionString);
                     string UpdSt1 = "UPDATE [dbo].[TableIds] SET num = " + InsertedId + " WHERE tablename = 'Protok' ";
                     try
                     {
@@ -367,7 +369,7 @@ namespace Protocol
                     }
 
                     //UPDATE [dbo].[DocsIds] 
-                    SqlConnection sqlConn3 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    SqlConnection sqlConn3 = new SqlConnection(DBInfo.connectionString);
                     string UpdSt2 = "UPDATE [dbo].[DocsIds] SET number = @InsertedSn WHERE docstath = @company and docyear = @year and " +
                         "document = (SELECT [Counter] FROM [dbo].[Proced] WHERE ProcedId = @procedId) ";
                     try
@@ -394,7 +396,7 @@ namespace Protocol
                         byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
 
                         //INSERT [dbo].[ProtokPdf]
-                        SqlConnection sqlConn4 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                        SqlConnection sqlConn4 = new SqlConnection(DBInfo.connectionString);
                         string InsSt4 = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
                         try
                         {
@@ -450,7 +452,7 @@ namespace Protocol
 
                 //ToDo: new class - object
 
-                SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
 
                 string tableId = "select isnull(max(id), 0) + 1 from [dbo].[Protok]";
 
@@ -499,7 +501,7 @@ namespace Protocol
                     reader.Close();
 
                     //UPDATE [dbo].[TableIds] 
-                    SqlConnection sqlConn2 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    SqlConnection sqlConn2 = new SqlConnection(DBInfo.connectionString);
                     string UpdSt = "UPDATE [dbo].[TableIds] SET num = " + InsertedId + " WHERE tablename = 'Protok' ";
                     try
                     {
@@ -514,7 +516,7 @@ namespace Protocol
                     }
                     
                     //UPDATE [dbo].[DocsIds] 
-                    SqlConnection sqlConn3 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    SqlConnection sqlConn3 = new SqlConnection(DBInfo.connectionString);
                     string UpdSt2 = "UPDATE [dbo].[DocsIds] SET number = @InsertedSn WHERE docstath = @company and docyear = @year and " +
                         "document = (SELECT [Counter] FROM [dbo].[Proced] WHERE ProcedId = @procedId) ";
                     try
@@ -541,7 +543,7 @@ namespace Protocol
                         byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
 
                         //INSERT [dbo].[ProtokPdf]
-                        SqlConnection sqlConn4 = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                        SqlConnection sqlConn4 = new SqlConnection(DBInfo.connectionString);
                         string InsSt4 = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
                         try
                         {

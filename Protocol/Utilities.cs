@@ -20,6 +20,8 @@ namespace Protocol
             username = "GramV3";
             password = "8093570";
 
+            connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
+
             string configFile_Path = @"dbconfig.txt";
             List<string> ConfigLines = new List<string>();
 
@@ -43,6 +45,8 @@ namespace Protocol
                         database = ConfigLines[1];
                         username = ConfigLines[2];
                         password = ConfigLines[3];
+
+                        connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
                     }
                 }
             }
@@ -56,6 +60,7 @@ namespace Protocol
         public static string database { get; set; }
         public static string username { get; set; }
         public static string password { get; set; }
+        public static string connectionString { get; set; }
     }
 
     public class ComboboxItem
@@ -101,7 +106,7 @@ namespace Protocol
         {
             int ret = 0;
 
-            SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Num FROM [dbo].[TableIds] WHERE tablename = 'VersionInfo' ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try

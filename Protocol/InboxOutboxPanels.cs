@@ -243,7 +243,7 @@ namespace Protocol
                         return;
                     }
 
-                    SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
+                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                     string SelectSt = "SELECT [FileCont] FROM [dbo].[ProtokPdf] WHERE ProtokId = @ProtokId and PdfText = @PdfText";
                     SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
                     try
