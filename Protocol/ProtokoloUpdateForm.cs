@@ -105,7 +105,7 @@ namespace Protocol
             string company = lvic[3].Text;
 
             updScreen.Text = "Μεταβολή";
-            updScreen.Controls["btnInsert"].Text = "Μεταβολή";
+            updScreen.btnInsert.Text = "Μεταβολή";
 
             updScreen.cbProtokoloKind.SelectedIndex = updScreen.cbProtokoloKind.FindStringExact(proced);
             updScreen.cbCompany.SelectedIndex = updScreen.cbCompany.FindStringExact(company);
@@ -137,7 +137,7 @@ namespace Protocol
                 //fill listview
                 foreach (string thisFileName in fileNames)
                 {
-                    ((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
+                    ((ListView)updScreen.Controls["panelInbox"].Controls["lvInAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
                 }
             }
             else if (proced == "Εξερχόμενα")
