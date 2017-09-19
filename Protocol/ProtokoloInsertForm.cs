@@ -331,6 +331,9 @@ namespace Protocol
                             ret.deleted = 0;
                             ret.inserted = 1;
                         }
+                        //else
+                        //{
+                        //}
                     }
                 }
             }
