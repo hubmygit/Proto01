@@ -158,7 +158,7 @@ namespace Protocol
 
                 if (newFile.Attributes == System.IO.FileAttributes.Directory)
                 {
-                    MessageBox.Show("Please drop only archives not directories!");
+                    MessageBox.Show("Παρακαλώ επιλέξτε μόνο αρχεία...");//Please drop only archives not directories!");
                     continue;
                 }
 
@@ -173,7 +173,7 @@ namespace Protocol
 
                 if (exists)
                 {
-                    MessageBox.Show("File already exists!");
+                    MessageBox.Show("Υπάρχει ήδη αρχείο στη λίστα με όνομα '" + newFile.Name + "'");//File already exists!");
                     continue;
                 }
 

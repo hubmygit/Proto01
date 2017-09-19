@@ -74,6 +74,23 @@ namespace Protocol
         }
     }
 
+    public class UpdatedId
+    {
+        public UpdatedId()
+        {
+            deleted = 0;
+            inserted = 0;
+        }
+
+        public UpdatedId(int oldValue, int newValue)
+        {
+            deleted = oldValue;
+            inserted = newValue;
+        }
+
+        public int deleted { get; set; }
+        public int inserted { get; set; }
+    }
     public static class AppVer
     {
 

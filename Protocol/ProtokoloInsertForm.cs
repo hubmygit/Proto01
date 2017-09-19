@@ -276,16 +276,18 @@ namespace Protocol
             return ret;
         }
 
-        private int getNextSnAndUpdateTable_DocsIds(int company, int procedId)
+        private UpdatedId getNextSnAndUpdateTable_DocsIds(int company, int procedId)
         {
-            int ret = 0;
+            //int ret = 0;
+            UpdatedId ret = new UpdatedId();
+            //UpdSn.inserted = 0;
 
             if (company > 0 && procedId > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string UpdSt = "UPDATE [dbo].[DocsIds] SET number = number + 1 " +
-                    "OUTPUT inserted.number " +
-                    "WHERE docstath = @company and docyear = year(getdate()) and ProcedId = @procedId";
+                    "OUTPUT deleted.number as oldValue, inserted.number as newValue " +
+                    "WHERE company = @company and docyear = year(getdate()) and ProcedId = @procedId";
                 try
                 {
                     sqlConn.Open();
@@ -298,7 +300,9 @@ namespace Protocol
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        ret = Convert.ToInt32(reader["number"].ToString());
+                        //ret = Convert.ToInt32(reader["number"].ToString());
+                        ret.deleted = Convert.ToInt32(reader["oldValue"].ToString());
+                        ret.inserted = Convert.ToInt32(reader["newValue"].ToString());
                     }
                     reader.Close();
                     //cmd.ExecuteNonQuery();
@@ -308,10 +312,21 @@ namespace Protocol
                     MessageBox.Show("The following error occurred: " + ex.Message);
                 }
 
-                if (ret == 0)
+                if (ret.inserted == 0)
                 {
-                    //new record ===> insert
-                    //INSERT INTO [dbo].[DocsIds] (Id, number, docstath, docyear, ProcedId) VALUES (?????@Id?????, @InsertedSn, @company, @year, @procedId)
+                    //UPDATE [dbo].[TableIds] 
+                    int DocsIdsId = getNextIdAndUpdateTable_TableIds("DocsIds");
+
+                    if (DocsIdsId > 0)
+                    {
+                        //INSERT [dbo].[DocsIds]
+                        bool Inserted = InertIntoTable_DocsIds(DocsIdsId, 1, company, procedId);
+                        if (Inserted)
+                        {
+                            ret.deleted = 0;
+                            ret.inserted = 1;
+                        }
+                    }
                 }
             }
 
@@ -346,35 +361,29 @@ namespace Protocol
             return ret;
         }
 
-        private bool UpdateTable_DocIds(int newProtokId, int company, int year, int procedId) //UPDATE [dbo].[DocsIds] 
+        private bool InertIntoTable_DocsIds(int id, int number, int company, int procedId) //INSERT [dbo].[DocsIds]
         {
             bool ret = false;
-            if (newProtokId > 0 && company > 0 && year > 0 && procedId > 0)
+
+            if (id > 0 && number > 0 && company > 0 && procedId > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                //string UpdSt = "UPDATE [dbo].[DocsIds] SET number = @InsertedSn WHERE docstath = @company and docyear = @year and " +
-                //"document = (SELECT [Counter] FROM [dbo].[Proced] WHERE ProcedId = @procedId) ";
-                string UpdSt = "UPDATE [dbo].[DocsIds] SET number = @InsertedSn WHERE docstath = @company and docyear = @year and ProcedId = @procedId ";
-
+                string InsSt = "INSERT INTO [dbo].[ProtokPdf] (Id, number, company, docyear, ProcedId) VALUES (@Id, @Sn, @Company, year(getdate()), @ProcedId) ";
                 try
                 {
                     sqlConn.Open();
-                    SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
-                    cmd.Parameters.AddWithValue("@InsertedSn", newProtokId);
-                    cmd.Parameters.AddWithValue("@company", company);
-                    cmd.Parameters.AddWithValue("@year", year);
-                    cmd.Parameters.AddWithValue("@procedId", procedId);
+                    SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@Sn", number);
+                    cmd.Parameters.AddWithValue("@Company", company);
+                    cmd.Parameters.AddWithValue("@ProcedId", procedId);
+
                     cmd.CommandType = CommandType.Text;
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
                         ret = true;
-                    }
-                    else
-                    {
-                        //new record ===> insert
-                        //INSERT INTO [dbo].[DocsIds] (Id, number, docstath, docyear, ProcedId) VALUES (?????@Id?????, @InsertedSn, @company, @year, @procedId)
                     }
                 }
                 catch (Exception ex)
@@ -385,6 +394,40 @@ namespace Protocol
 
             return ret;
         }
+
+        
+        private bool UpdateTable_DocIds(int newProtokId, int company, int procedId) //UPDATE [dbo].[DocsIds] 
+        {
+            bool ret = false;
+            if (newProtokId > 0 && company > 0 && year > 0 && procedId > 0)
+            {
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                string UpdSt = "UPDATE [dbo].[DocsIds] SET number = @Sn WHERE company = @company and docyear = year(getdate()) and ProcedId = @procedId ";
+
+                try
+                {
+                    sqlConn.Open();
+                    SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
+                    cmd.Parameters.AddWithValue("@Sn", newProtokId);
+                    cmd.Parameters.AddWithValue("@company", company);
+                    cmd.Parameters.AddWithValue("@procedId", procedId);
+                    cmd.CommandType = CommandType.Text;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        ret = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The following error occurred: " + ex.Message);
+                }
+            }
+
+            return ret;
+        }
+        
 
         private bool InertIntoTable_ProtokPdf(int newProtokId, string fileName, byte[] fileBytes) //INSERT [dbo].[ProtokPdf]
         {
@@ -568,12 +611,13 @@ namespace Protocol
                 int ProtokId = getNextIdAndUpdateTable_TableIds("Protok");
 
                 //UPDATE [dbo].[DocsIds] 
-                int ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+                //int ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+                UpdatedId ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
 
-                if (ProtokId > 0 && ProtokSn > 0)
+                if (ProtokId > 0 && ProtokSn.inserted > 0)
                 {
                     //INSERT INTO [dbo].[Protok] 
-                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
+                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
 
                     if (wasSuccessful)
                     {
@@ -593,12 +637,22 @@ namespace Protocol
                             }
                         }
 
-                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.ToString() + "]");
+                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        //UPDATE [dbo].[DocsIds] 
+                        bool resetSn = UpdateTable_DocIds(ProtokSn.deleted, company_Id, proced_Id); //number -= 1
+
+                        if (resetSn)
+                        {
+                            MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Σφάλμα κατά την καταχώρηση! Δώθηκε ο αριθμός πρωτοκόλλου " + ProtokSn.inserted.ToString() + " χωρίς να ολοκληρωθεί η καταχώρηση!");
+                        }
                     }
                 }
                 else
@@ -679,12 +733,13 @@ namespace Protocol
                 int ProtokId = getNextIdAndUpdateTable_TableIds("Protok");
 
                 //UPDATE [dbo].[DocsIds] 
-                int ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+                //int ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+                UpdatedId ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
 
-                if (ProtokId > 0 && ProtokSn > 0)
+                if (ProtokId > 0 && ProtokSn.inserted > 0)
                 {
                     //INSERT INTO [dbo].[Protok] 
-                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
+                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
 
                     if (wasSuccessful)
                     {
@@ -704,12 +759,22 @@ namespace Protocol
                             }
                         }
 
-                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.ToString() + "]");
+                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
                         Close();
                     }
                     else
                     {
-                        MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        //UPDATE [dbo].[DocsIds] 
+                        bool resetSn = UpdateTable_DocIds(ProtokSn.deleted, company_Id, proced_Id); //number -= 1
+
+                        if (resetSn)
+                        {
+                            MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Σφάλμα κατά την καταχώρηση! Δώθηκε ο αριθμός πρωτοκόλλου " + ProtokSn.inserted.ToString() + " χωρίς να ολοκληρωθεί η καταχώρηση!");
+                        }
                     }
                 }
                 else
