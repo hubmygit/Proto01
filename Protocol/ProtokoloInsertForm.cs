@@ -399,7 +399,7 @@ namespace Protocol
         private bool UpdateTable_DocIds(int newProtokId, int company, int procedId) //UPDATE [dbo].[DocsIds] 
         {
             bool ret = false;
-            if (newProtokId > 0 && company > 0 && year > 0 && procedId > 0)
+            if (newProtokId > 0 && company > 0 && procedId > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string UpdSt = "UPDATE [dbo].[DocsIds] SET number = @Sn WHERE company = @company and docyear = year(getdate()) and ProcedId = @procedId ";
