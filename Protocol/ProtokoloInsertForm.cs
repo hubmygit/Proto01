@@ -14,11 +14,11 @@ namespace Protocol
 {
     public partial class ProtokoloInsertForm : Form
     {
-        
+
         public ProtokoloInsertForm()
         {
             InitializeComponent();
-
+                       
             //Values from database
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
@@ -36,6 +36,7 @@ namespace Protocol
             //test<--
         }
 
+
         public int Protok_Id_For_Updates = 0;
 
         //public ProtokoloInsertForm(string FieldNo1)
@@ -50,7 +51,7 @@ namespace Protocol
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
-        
+
         private string[] GetProtocolKind() //obsolete / depraced
         {
             List<string> KindOfProtocol = new List<string>();
@@ -72,7 +73,7 @@ namespace Protocol
             {
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
-            
+
             return KindOfProtocol.ToArray();
         }
 
@@ -118,7 +119,7 @@ namespace Protocol
             {
                 sqlConn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                
+
                 while (reader.Read())
                 {
                     Companies.Add(reader["Name"].ToString());
@@ -147,7 +148,7 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Companies.Add(new Company() { Id = Convert.ToInt32(reader["Id"].ToString()), Name = reader["Name"].ToString() } );
+                    Companies.Add(new Company() { Id = Convert.ToInt32(reader["Id"].ToString()), Name = reader["Name"].ToString() });
                 }
                 reader.Close();
             }
@@ -156,7 +157,7 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
 
-            foreach(Company com in Companies)
+            foreach (Company com in Companies)
             {
                 cbCompanies.Add(new ComboboxItem() { Value = com, Text = com.Name });
             }
@@ -250,8 +251,8 @@ namespace Protocol
             if (tableName.Trim().Length > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                string UpdSt = "UPDATE [dbo].[TableIds] SET NUM = NUM + 1 " + 
-                    "OUTPUT inserted.NUM " + 
+                string UpdSt = "UPDATE [dbo].[TableIds] SET NUM = NUM + 1 " +
+                    "OUTPUT inserted.NUM " +
                     "WHERE TABLENAME = '" + tableName + "'";
                 try
                 {
@@ -355,7 +356,7 @@ namespace Protocol
                 catch (Exception ex)
                 {
                     MessageBox.Show("The following error occurred: " + ex.Message);
-                }                
+                }
             }
 
             return ret;
@@ -368,7 +369,7 @@ namespace Protocol
             if (id > 0 && number > 0 && company > 0 && procedId > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                string InsSt = "INSERT INTO [dbo].[ProtokPdf] (Id, number, company, docyear, ProcedId) VALUES (@Id, @Sn, @Company, year(getdate()), @ProcedId) ";
+                string InsSt = "INSERT INTO [dbo].[DocsIds] (Id, number, company, docyear, ProcedId) VALUES (@Id, @Sn, @Company, year(getdate()), @ProcedId) ";
                 try
                 {
                     sqlConn.Open();
@@ -395,7 +396,7 @@ namespace Protocol
             return ret;
         }
 
-        
+
         private bool UpdateTable_DocIds(int newProtokId, int company, int procedId) //UPDATE [dbo].[DocsIds] 
         {
             bool ret = false;
@@ -427,14 +428,14 @@ namespace Protocol
 
             return ret;
         }
-        
+
 
         private bool InertIntoTable_ProtokPdf(int newProtokId, string fileName, byte[] fileBytes) //INSERT [dbo].[ProtokPdf]
         {
             bool ret = false;
 
             if (newProtokId > 0 && fileName.Trim().Length > 0)
-            { 
+            {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsSt = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
                 try
@@ -442,7 +443,7 @@ namespace Protocol
                     sqlConn.Open();
                     SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
                     cmd.Parameters.AddWithValue("@ProtokId", newProtokId);
-                    cmd.Parameters.AddWithValue("@PdfText", fileName); //filename
+                    cmd.Parameters.AddWithValue("@PdfText", fileName.Left(100)); //filename
                     cmd.Parameters.Add("@PdfCont", SqlDbType.VarBinary).Value = fileBytes;
                     cmd.Parameters.Add("@FileCont", SqlDbType.VarBinary).Value = fileBytes;
                     cmd.CommandType = CommandType.Text;
@@ -487,10 +488,10 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInDocDate"])); //datepicker - no time
                     cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInGetDate"])); //datepicker - no time
-                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbInDocNum"].Text);
-                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbInProeleusi"].Text);
+                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbInDocNum"].Text.Left(50));
+                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbInProeleusi"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbInSummary"].Text);
-                    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text);
+                    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text.Left(255));
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbInFolders"]).SelectedItem).Value).Id); //get object from combobox
 
                     cmd.CommandType = CommandType.Text;
@@ -526,8 +527,8 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpOutSetDate"])); //datepicker - no time
-                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text);
-                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text);
+                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
+                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
 
                     cmd.CommandType = CommandType.Text;
@@ -552,9 +553,12 @@ namespace Protocol
             if (Protok_Id_For_Updates != 0)
             {
                 MessageBox.Show("Update Mode...");
+
+                //update table Protok set field1 = @field1, upddt = 'getdate()' where id = @id
+
                 return;
             }
-                        
+
             if (cbCompany.Text.Trim() == "")
             {
                 MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Εταιρία'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -823,7 +827,7 @@ namespace Protocol
 
 
             }
-            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -857,6 +861,28 @@ namespace Protocol
             //btnCancel.Font = myfont;
         }
 
-        
+
+    }
+
+    public static class MyExtensions
+    {
+        /// <summary>
+        /// Haris' method - Extended method of string class. 
+        /// Gets first N:len characters starting from the left side of string.
+        /// </summary>
+        /// <param name="str">your string</param>
+        /// <param name="len">length of new string</param>
+        /// <returns></returns>
+        public static string Left(this String str, int len)
+        {
+            string formattedString = str;
+
+            if (len > 0 && str.Length >= len)
+            {
+                formattedString = str.Substring(0, len);
+            }
+
+            return formattedString;
+        }
     }
 }
