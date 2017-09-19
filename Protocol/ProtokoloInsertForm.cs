@@ -18,7 +18,8 @@ namespace Protocol
         public ProtokoloInsertForm()
         {
             InitializeComponent();
-                       
+            
+
             //Values from database
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
@@ -33,6 +34,9 @@ namespace Protocol
             //    fonts.Add(font.Name);
             //}
             //comboBox1.DataSource = fonts;
+
+            //MessageBox.Show(Environment.MachineName + Environment.UserName + Environment.OSVersion.VersionString + Environment.UserDomainName);
+
             //test<--
         }
 
@@ -463,11 +467,11 @@ namespace Protocol
             return ret;
         }
 
-        private bool InsertIntoTable_Protok(int Id, int Sn, int procedId, int companyId, Panel myPanel, string panelName)
+        private bool InsertIntoTable_Protok(int Id, int Sn, int procedId, int companyId, Panel myPanel)
         {
             bool ret = false;
 
-            if (panelName == "panelInbox")
+            if (myPanel.Name == "panelInbox")
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
@@ -507,7 +511,7 @@ namespace Protocol
                     MessageBox.Show("The following error occurred: " + ex.Message);
                 }
             }
-            else if (panelName == "panelOutbox")
+            else if (myPanel.Name == "panelOutbox")
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
@@ -548,13 +552,92 @@ namespace Protocol
             return ret;
         }
 
+        //ToDo...
+        private bool UpdateTable_Protok(int ProtokId, Panel myPanel) //UPDATE [dbo].[Protok] 
+        {
+            bool ret = false;
+            if (ProtokId > 0)
+            {
+                if (myPanel.Name == "panelInbox")
+                {
+                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                    string UpdSt = "UPDATE [dbo].[Protok] SET field1 = @field1, ................., upddt = getdate() WHERE id = @Id ";
+                    //                  "(DocumentDate, DocumentGetSetDate, DocumentNumber, ProeleusiKateuth, Summary, ToText, FolderId) " +
+                    //                  "VALUES " +
+                    //                  "(@DocumentDate, @DocumentGetSetDate, @DocumentNumber, @ProeleusiKateuth, @Summary, @ToText, @FolderId) ";
+                    
+                    try
+                    {
+                        sqlConn.Open();
+                        SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
+                        cmd.Parameters.AddWithValue("@Id", ProtokId);
+                        //    cmd.Parameters.AddWithValue("@DocumentDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInDocDate"])); //datepicker - no time
+                        //    cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInGetDate"])); //datepicker - no time
+                        //    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbInDocNum"].Text.Left(50));
+                        //    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbInProeleusi"].Text.Left(150));
+                        //    cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbInSummary"].Text);
+                        //    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text.Left(255));
+                        //    cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbInFolders"]).SelectedItem).Value).Id); //get object from combobox
+                        //...
+                        //...
+                        cmd.CommandType = CommandType.Text;
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            ret = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
+                }
+                else if (myPanel.Name == "panelOutbox")
+                {
+                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                    string UpdSt = "UPDATE [dbo].[Protok] SET field1 = @field1, ................., upddt = getdate() WHERE id = @Id ";
+                    //              "(DocumentGetSetDate, DocumentNumber, ProeleusiKateuth, Summary) " +
+                    //              "VALUES " +
+                    //              "(@DocumentGetSetDate, @DocumentNumber, @ProeleusiKateuth, @Summary) ";
+                    
+                    try
+                    {
+                        sqlConn.Open();
+                        SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
+                        cmd.Parameters.AddWithValue("@Id", ProtokId);
+                        //    cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpOutSetDate"])); //datepicker - no time
+                        //    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
+                        //    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
+                        //    cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
+                        //...
+                        //...
+                        cmd.CommandType = CommandType.Text;
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            ret = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
             if (Protok_Id_For_Updates != 0)
             {
                 MessageBox.Show("Update Mode...");
 
-                //update table Protok set field1 = @field1, upddt = 'getdate()' where id = @id
+                //UPDATE [dbo].[Protok] 
+                bool xxx = UpdateTable_Protok(Protok_Id_For_Updates, IOBoxPanel); 
 
                 return;
             }
@@ -621,7 +704,7 @@ namespace Protocol
                 if (ProtokId > 0 && ProtokSn.inserted > 0)
                 {
                     //INSERT INTO [dbo].[Protok] 
-                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
+                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel);
 
                     if (wasSuccessful)
                     {
@@ -743,7 +826,7 @@ namespace Protocol
                 if (ProtokId > 0 && ProtokSn.inserted > 0)
                 {
                     //INSERT INTO [dbo].[Protok] 
-                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel, IOBoxPanel.Name);
+                    bool wasSuccessful = InsertIntoTable_Protok(ProtokId, ProtokSn.inserted, proced_Id, company_Id, IOBoxPanel);
 
                     if (wasSuccessful)
                     {
