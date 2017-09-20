@@ -58,6 +58,8 @@ namespace Protocol
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
 
+        public ListView lvAttFiles = new ListView();
+
         private string[] GetProtocolKind() //obsolete / depraced
         {
             List<string> KindOfProtocol = new List<string>();
@@ -715,6 +717,8 @@ namespace Protocol
                     {
                         //insert attachments into db
                         ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
+                        lvAttFiles = lv;
+
                         foreach (ListViewItem lvi in lv.Items)
                         {
                             string attFileName = lvi.SubItems[1].Text;
@@ -839,6 +843,8 @@ namespace Protocol
                     {
                         //insert attachments into db
                         ListView lv = ((ListView)IOBoxPanel.Controls["lvOutAttachedFiles"]);
+                        lvAttFiles = lv;
+
                         foreach (ListViewItem lvi in lv.Items)
                         {
                             string attFileName = lvi.SubItems[1].Text;

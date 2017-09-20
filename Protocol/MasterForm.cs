@@ -50,8 +50,18 @@ namespace Protocol
 
                 if (oF.RecipientsList.Count > 0)
                 {
-                    //Show Mail...
+                    //attachments as parameter........ToDo........filepath as string[] or List<string>
+                    //foreach (ListViewItem lvi in frmProtoIns.lvAttFiles.Items)
+                    //{
+                    //    //string attFileName = lvi.SubItems[1].Text;
+                    //}
+                    
+
+                    //Show Mail... 
                     oF.ShowMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls");
+
+                    //Save Mail... ToDo: once complete and test ShowMail, uncomment Save Mail
+                    //oF.SaveMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls");
                 }
             }
             else if (frmProtoIns.chbSendMail.Checked)

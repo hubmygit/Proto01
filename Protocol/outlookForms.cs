@@ -106,7 +106,8 @@ namespace Protocol
 
             oMailItem.Subject = subject;
             oMailItem.Body = body;
-            //oMailItem.Attachments
+
+            oMailItem.Attachments.Add("C:\\Tests\\aaa.txt");
 
         }
 
