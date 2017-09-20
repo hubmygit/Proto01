@@ -35,6 +35,7 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.chbSendMail = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblProtokoloKind
@@ -109,12 +110,24 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // chbSendMail
+            // 
+            this.chbSendMail.AutoSize = true;
+            this.chbSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.chbSendMail.Location = new System.Drawing.Point(453, 105);
+            this.chbSendMail.Name = "chbSendMail";
+            this.chbSendMail.Size = new System.Drawing.Size(66, 21);
+            this.chbSendMail.TabIndex = 9;
+            this.chbSendMail.Text = "E-mail";
+            this.chbSendMail.UseVisualStyleBackColor = true;
+            // 
             // ProtokoloInsertForm
             // 
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 672);
+            this.Controls.Add(this.chbSendMail);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnInsert);
@@ -140,5 +153,6 @@
         public System.Windows.Forms.ComboBox cbCompany;
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.CheckBox chbSendMail;
     }
 }

@@ -42,6 +42,7 @@ namespace Protocol
 
 
         public int Protok_Id_For_Updates = 0;
+        public bool ShowClosingDialog = true;
 
         //public ProtokoloInsertForm(string FieldNo1)
         //{
@@ -728,6 +729,7 @@ namespace Protocol
                         }
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
+                        ShowClosingDialog = false;
                         Close();
                     }
                     else
@@ -850,6 +852,7 @@ namespace Protocol
                         }
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
+                        ShowClosingDialog = false;
                         Close();
                     }
                     else
@@ -927,9 +930,12 @@ namespace Protocol
 
         private void ProtokoloInsertForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
+            if (ShowClosingDialog)
+            {
+                DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
 
-            e.Cancel = (dialogResult == DialogResult.No);
+                e.Cancel = (dialogResult == DialogResult.No);
+            }
         }
 
         private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
