@@ -43,6 +43,7 @@ namespace Protocol
 
         public int Protok_Id_For_Updates = 0;
         public bool ShowClosingDialog = true;
+        public bool successfulInsertion = false;
 
         //public ProtokoloInsertForm(string FieldNo1)
         //{
@@ -729,6 +730,7 @@ namespace Protocol
                         }
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
+                        successfulInsertion = wasSuccessful;
                         ShowClosingDialog = false;
                         Close();
                     }
@@ -852,6 +854,7 @@ namespace Protocol
                         }
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
+                        successfulInsertion = wasSuccessful;
                         ShowClosingDialog = false;
                         Close();
                     }

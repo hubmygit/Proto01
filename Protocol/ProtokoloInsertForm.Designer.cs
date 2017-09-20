@@ -153,6 +153,6 @@
         public System.Windows.Forms.ComboBox cbCompany;
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.CheckBox chbSendMail;
+        public System.Windows.Forms.CheckBox chbSendMail;
     }
 }

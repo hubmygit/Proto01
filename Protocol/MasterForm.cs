@@ -39,6 +39,16 @@ namespace Protocol
         {
             ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
             frmProtoIns.ShowDialog();
+
+            if (frmProtoIns.successfulInsertion && frmProtoIns.chbSendMail.Checked)
+            {
+                //Mail here...
+            }
+            else if (frmProtoIns.chbSendMail.Checked)
+            {
+                MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί e-mail!");
+            }
+
         }
 
         private void UpdateToolStripBtn_Click(object sender, EventArgs e)
