@@ -918,11 +918,11 @@ namespace Protocol
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
+            //DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
                 Close();
-            }
+            //}
         }
 
         private void ProtokoloInsertForm_FormClosing(object sender, FormClosingEventArgs e)
