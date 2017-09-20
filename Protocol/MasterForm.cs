@@ -15,6 +15,8 @@ namespace Protocol
         public MasterForm()
         {
             InitializeComponent();
+
+            
         }
         
         private void InsertTSMenuItem_Click(object sender, EventArgs e)
@@ -42,11 +44,19 @@ namespace Protocol
 
             if (frmProtoIns.successfulInsertion && frmProtoIns.chbSendMail.Checked)
             {
-                //Mail here...
+                //Show Contacts...
+                outlookForms oF = new outlookForms();
+                oF.showContacts();
+
+                if (oF.RecipientsList.Count > 0)
+                {
+                    //Show Mail...
+                    oF.ShowMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls");
+                }
             }
             else if (frmProtoIns.chbSendMail.Checked)
             {
-                MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί e-mail!");
+                MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί το e-mail!");
             }
 
         }
