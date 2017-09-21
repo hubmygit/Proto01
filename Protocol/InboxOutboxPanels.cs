@@ -39,29 +39,29 @@ namespace Protocol
         private void btnNewFolders_Click(object sender, EventArgs e)
         {
             ComboBox cbFolders = new ComboBox();
-            if (((Button)sender).Parent.Name == "PanelInbox")
+            if (((Button)sender).Parent.Name == "panelInbox")
             {
                 cbFolders = cbInFolders;
             }
-            else if (((Button)sender).Parent.Name == "PanelOutbox")
+            else if (((Button)sender).Parent.Name == "panelOutbox")
             {
                 cbFolders = cbOutFolders;
             }
 
-            FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
+            Company objCompany = ((Company)((ComboboxItem)((ComboBox)((Button)sender).TopLevelControl.Controls["cbCompany"]).SelectedItem).Value);
+            Proced objProced = ((Proced)((ComboboxItem)((ComboBox)((Button)sender).TopLevelControl.Controls["cbProtokoloKind"]).SelectedItem).Value);
+
+            FoldersInsertForm FoldersInsForm = new FoldersInsertForm(objCompany, objProced);
             FoldersInsForm.ShowDialog();
 
             if (FoldersInsForm.NewRecord)
             {
                 string InsertedFolderName = FoldersInsForm.txtName.Text.Trim();
-
                 cbFolders.Items.Clear();
-
-                cbFolders.Items.AddRange(ProtokoloInsertForm.GetObjFolders());
-
+                cbFolders.Items.AddRange(ProtokoloInsertForm.GetObjFolders(objCompany.Id, objProced.Id));
                 if (InsertedFolderName.Trim() != "")
                 {
-                    cbFolders.SelectedText = InsertedFolderName;
+                    cbFolders.SelectedIndex = cbFolders.FindStringExact(InsertedFolderName);
                 }
             }
         }

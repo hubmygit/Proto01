@@ -85,7 +85,7 @@ namespace Protocol
             return KindOfProtocol.ToArray();
         }
 
-        private ComboboxItem[] GetObjProtocolKind()
+        public static ComboboxItem[] GetObjProtocolKind()
         {
             List<Proced> Proceds = new List<Proced>();
             List<ComboboxItem> cbProceds = new List<ComboboxItem>();
@@ -142,7 +142,7 @@ namespace Protocol
             return Companies.ToArray();
         }
 
-        private ComboboxItem[] GetObjCompanies()
+        public static ComboboxItem[] GetObjCompanies()
         {
             List<Company> Companies = new List<Company>();
             List<ComboboxItem> cbCompanies = new List<ComboboxItem>();
@@ -204,6 +204,38 @@ namespace Protocol
             return cbFolders.ToArray<ComboboxItem>();
         }
 
+        public static ComboboxItem[] GetObjFolders(int CompanyId, int ProcedId)
+        {
+            List<Folders> Folders = new List<Folders>();
+            List<ComboboxItem> cbFolders = new List<ComboboxItem>();
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] WHERE CompanyId = @company and ProcedId = @proced";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            cmd.Parameters.AddWithValue("@company", CompanyId);
+            cmd.Parameters.AddWithValue("@proced", ProcedId);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Folders.Add(new Folders() { Id = Convert.ToInt32(reader["Id"].ToString()), Name = reader["Name"].ToString() });
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            foreach (Folders com in Folders)
+            {
+                cbFolders.Add(new ComboboxItem() { Value = com, Text = com.Name });
+            }
+
+            return cbFolders.ToArray<ComboboxItem>();
+        }
 
         void ShowPanel()
         {
@@ -222,7 +254,9 @@ namespace Protocol
 
                 Controls.Add(IOBoxPanel);
                 //fill folders combobox - add 'items.clear' if needed
-                ((ComboBox)IOBoxPanel.Controls["cbInFolders"]).Items.AddRange(GetObjFolders()); //fill folders combobox
+                int comId = ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id;
+                int procedId = ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id;
+                ((ComboBox)IOBoxPanel.Controls["cbInFolders"]).Items.AddRange(GetObjFolders(comId, procedId)); //fill folders combobox
                 
             }
             else if (cbProtokoloKind.Text == "Εξερχόμενα" && cbCompany.Text.Trim() != "")
@@ -237,7 +271,10 @@ namespace Protocol
 
                 Controls.Add(IOBoxPanel);
                 //fill folders combobox - add 'items.clear' if needed
-                ((ComboBox)IOBoxPanel.Controls["cbOutFolders"]).Items.AddRange(GetObjFolders()); //fill folders combobox
+                int comId = ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id;
+                int procedId = ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id;
+                ((ComboBox)IOBoxPanel.Controls["cbOutFolders"]).Items.AddRange(GetObjFolders(comId, procedId)); //fill folders combobox
+
             }
             else
             {

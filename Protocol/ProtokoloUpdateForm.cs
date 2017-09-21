@@ -27,7 +27,8 @@ namespace Protocol
             string SelectSt = "SELECT P.Sn, P.Year, PR.Name as ProcedName, C.Name as CompanyName, convert(varchar, P.DocumentDate, 104) as _DocumentDate, " +
                                      "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id " +
                               "FROM [dbo].[Protok] P left outer join [dbo].[Proced] PR on PR.id = P.ProcedureId " +
-                              "left outer join [dbo].[Company] C on C.id = P.CompanyId left outer join [dbo].[Folders] F on F.id = P.FolderId " +
+                              "left outer join [dbo].[Company] C on C.id = P.CompanyId " +
+                              "left outer join [dbo].[Folders] F on F.id = P.FolderId " + //and F.CompanyId = P.CompanyId and F.ProcedId = P.ProcedureId " +
                               "WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -117,7 +118,6 @@ namespace Protocol
 
             if (proced == "Εισερχόμενα")
             {
-                //updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[0].Text;
                 ((DateTimePicker)updScreen.Controls["panelInbox"].Controls["dtpInGetDate"]).Value = DateTime.Parse(lvic[5].Text);
                 updScreen.Controls["panelInbox"].Controls["tbInDocNum"].Text = lvic[6].Text;
                 ((DateTimePicker)updScreen.Controls["panelInbox"].Controls["dtpInDocDate"]).Value = DateTime.Parse(lvic[4].Text);
@@ -145,9 +145,9 @@ namespace Protocol
             }
             else if (proced == "Εξερχόμενα")
             {
-                //updScreen.Controls["panelInbox"].Controls["tbOutProtokoloNum"].Text = lvic[0].Text;
                 ((DateTimePicker)updScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"]).Value = DateTime.Parse(lvic[5].Text);
                 updScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
+                ((ComboBox)updScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)updScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[10].Text);
                 updScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
                 updScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
 
