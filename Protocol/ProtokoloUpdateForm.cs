@@ -112,6 +112,9 @@ namespace Protocol
 
             updScreen.Protok_Id_For_Updates = Convert.ToInt32(lvic[11].Text);
 
+            //updScreen.cbCompany.Font = new Font(updScreen.cbCompany.Font, FontStyle.Bold);
+            updScreen.cbCompany.Enabled = false;
+
             if (proced == "Εισερχόμενα")
             {
                 //updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[0].Text;

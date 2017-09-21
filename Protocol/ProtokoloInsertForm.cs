@@ -58,7 +58,7 @@ namespace Protocol
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
         Panel IOBoxPanel = new Panel();
 
-        public ListView lvAttFiles = new ListView();
+        public List<string> AttFilesList = new List<string>();
 
         private string[] GetProtocolKind() //obsolete / depraced
         {
@@ -176,7 +176,7 @@ namespace Protocol
         public static ComboboxItem[] GetObjFolders()
         {
             List<Folders> Folders = new List<Folders>();
-            List<ComboboxItem> cbInFolders = new List<ComboboxItem>();
+            List<ComboboxItem> cbFolders = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] ";
@@ -198,26 +198,24 @@ namespace Protocol
 
             foreach (Folders com in Folders)
             {
-                cbInFolders.Add(new ComboboxItem() { Value = com, Text = com.Name });
+                cbFolders.Add(new ComboboxItem() { Value = com, Text = com.Name });
             }
 
-            return cbInFolders.ToArray<ComboboxItem>();
+            return cbFolders.ToArray<ComboboxItem>();
         }
 
-        private void cbProtokoloKind_SelectedIndexChanged(object sender, EventArgs e)
+
+        void ShowPanel()
         {
             Controls.Remove(IOBoxPanel);
 
-            if (cbProtokoloKind.Text == "Εισερχόμενα")
+            if (cbProtokoloKind.Text == "Εισερχόμενα" && cbCompany.Text.Trim() != "")
             {
                 //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelInbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
-                //IOBoxPanel.Controls["tbInProtokoloNum"].Text = "138";          //ToDo
                 IOBoxPanel.Controls["tbInDocNum"].Text = "AA-0000/01";           //to del
-                //IOBoxPanel.Controls["tbInFolderId"].Text = "101";              //to del
-                //IOBoxPanel.Controls["cbInFolders"].Text = "...";                 //to del
                 IOBoxPanel.Controls["tbInProeleusi"].Text = "ABCD";              //to del
                 IOBoxPanel.Controls["tbInSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
                 IOBoxPanel.Controls["tbInToText"].Text = "Mr Abcd";              //to del
@@ -225,26 +223,46 @@ namespace Protocol
                 Controls.Add(IOBoxPanel);
                 //fill folders combobox - add 'items.clear' if needed
                 ((ComboBox)IOBoxPanel.Controls["cbInFolders"]).Items.AddRange(GetObjFolders()); //fill folders combobox
-                cbProtokoloKind.Enabled = false;
+                
             }
-            else if (cbProtokoloKind.Text == "Εξερχόμενα")
+            else if (cbProtokoloKind.Text == "Εξερχόμενα" && cbCompany.Text.Trim() != "")
             {
                 //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelOutbox;
                 IOBoxPanel.Location = new Point(12, 110);
 
-                //IOBoxPanel.Controls["tbOutProtokoloNum"].Text = "138";          //ToDo
                 IOBoxPanel.Controls["tbOutDocNum"].Text = "AA-0000/01";           //to del
                 IOBoxPanel.Controls["tbOutKateuth"].Text = "ABCD";                //to del
                 IOBoxPanel.Controls["tbOutSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
 
                 Controls.Add(IOBoxPanel);
-                cbProtokoloKind.Enabled = false;
+                //fill folders combobox - add 'items.clear' if needed
+                ((ComboBox)IOBoxPanel.Controls["cbOutFolders"]).Items.AddRange(GetObjFolders()); //fill folders combobox
             }
             else
             {
                 //Controls.Remove(IOBoxPanel);
             }
+        }
+        private void cbProtokoloKind_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbProtokoloKind.Text.Trim() != "")
+            {
+                cbProtokoloKind.Enabled = false;
+            }
+
+            ShowPanel();
+        }
+
+        private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCompany.Text.Trim() != "")
+            {
+                cbCompany.Enabled = false;
+            }
+
+            ShowPanel();
+            //MessageBox.Show("Id: " + ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id + ", Name: " +((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Name +  ", Text: " + ((ComboboxItem)cbCompany.SelectedItem).Text);
         }
 
         string DatetimePickerToSQLDate(Control DatetimePicker)
@@ -541,6 +559,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
                     cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
+                    cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbOutFolders"]).SelectedItem).Value).Id); //get object from combobox
 
                     cmd.CommandType = CommandType.Text;
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -639,15 +658,16 @@ namespace Protocol
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            if (Protok_Id_For_Updates != 0)
-            {
-                MessageBox.Show("Update Mode...");
+            //No updates in this phase...
+            //if (Protok_Id_For_Updates != 0)
+            //{
+            //    MessageBox.Show("Update Mode...");
 
-                //UPDATE [dbo].[Protok] 
-                bool xxx = UpdateTable_Protok(Protok_Id_For_Updates, IOBoxPanel); 
+            //    //UPDATE [dbo].[Protok] 
+            //    bool xxx = UpdateTable_Protok(Protok_Id_For_Updates, IOBoxPanel); 
 
-                return;
-            }
+            //    return;
+            //}
 
             if (cbCompany.Text.Trim() == "")
             {
@@ -717,11 +737,11 @@ namespace Protocol
                     {
                         //insert attachments into db
                         ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
-                        lvAttFiles = lv;
 
                         foreach (ListViewItem lvi in lv.Items)
                         {
                             string attFileName = lvi.SubItems[1].Text;
+                            AttFilesList.Add(attFileName);
                             byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
 
                             //INSERT [dbo].[ProtokPdf]
@@ -809,7 +829,11 @@ namespace Protocol
                     MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Σχετικοί Αριθμοί'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                if (IOBoxPanel.Controls["cbOutFolders"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Φακέλου Αρχείου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (IOBoxPanel.Controls["tbOutKateuth"].Text.Trim() == "")
                 {
                     MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Κατεύθυνση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -843,11 +867,11 @@ namespace Protocol
                     {
                         //insert attachments into db
                         ListView lv = ((ListView)IOBoxPanel.Controls["lvOutAttachedFiles"]);
-                        lvAttFiles = lv;
 
                         foreach (ListViewItem lvi in lv.Items)
                         {
                             string attFileName = lvi.SubItems[1].Text;
+                            AttFilesList.Add(attFileName);
                             byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
 
                             //INSERT [dbo].[ProtokPdf]
@@ -945,11 +969,6 @@ namespace Protocol
 
                 e.Cancel = (dialogResult == DialogResult.No);
             }
-        }
-
-        private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Id: " + ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id + ", Name: " +((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Name +  ", Text: " + ((ComboboxItem)cbCompany.SelectedItem).Text);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

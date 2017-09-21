@@ -78,10 +78,11 @@ namespace Protocol
             }
         }
 
-        private void FillMailForm(string subject, string body)
+        private void FillMailForm(string subject, string body, List<string> attachments)
         {
             Subject = subject;
             Body = body;
+            Attachments = attachments;
 
             oMailItem = (Outlook._MailItem)outlookApplication.CreateItem(Outlook.OlItemType.olMailItem);
 
@@ -107,19 +108,21 @@ namespace Protocol
             oMailItem.Subject = subject;
             oMailItem.Body = body;
 
-            oMailItem.Attachments.Add("C:\\Tests\\aaa.txt");
-
+            foreach (string attachmentPath in attachments)
+            {
+                oMailItem.Attachments.Add(attachmentPath);
+            }
         }
 
-        public void SaveMail(string MailSubject, string MailBody)
+        public void SaveMail(string MailSubject, string MailBody, List<string> Attachments)
         {
-            FillMailForm(MailSubject, MailBody);
+            FillMailForm(MailSubject, MailBody, Attachments);
             oMailItem.Save(); //drafts
         }
 
-        public void ShowMail(string MailSubject, string MailBody)
+        public void ShowMail(string MailSubject, string MailBody, List<string> Attachments)
         {
-            FillMailForm(MailSubject, MailBody);
+            FillMailForm(MailSubject, MailBody, Attachments);
             oMailItem.Display(true); //show
         }
 
@@ -129,6 +132,8 @@ namespace Protocol
 
         public string Subject { get; set; }
         public string Body { get; set; }
+
+        public List<string> Attachments { get; set; }
     }
 
     class Recipient

@@ -55,7 +55,7 @@
             this.cbProtokoloKind.Location = new System.Drawing.Point(211, 25);
             this.cbProtokoloKind.Name = "cbProtokoloKind";
             this.cbProtokoloKind.Size = new System.Drawing.Size(173, 24);
-            this.cbProtokoloKind.TabIndex = 2;
+            this.cbProtokoloKind.TabIndex = 1;
             this.cbProtokoloKind.SelectedIndexChanged += new System.EventHandler(this.cbProtokoloKind_SelectedIndexChanged);
             // 
             // lblCompany
@@ -75,7 +75,7 @@
             this.cbCompany.Location = new System.Drawing.Point(211, 62);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(173, 24);
-            this.cbCompany.TabIndex = 1;
+            this.cbCompany.TabIndex = 2;
             this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
             // btnInsert

@@ -38,6 +38,16 @@ namespace Protocol
 
         private void btnNewFolders_Click(object sender, EventArgs e)
         {
+            ComboBox cbFolders = new ComboBox();
+            if (((Button)sender).Parent.Name == "PanelInbox")
+            {
+                cbFolders = cbInFolders;
+            }
+            else if (((Button)sender).Parent.Name == "PanelOutbox")
+            {
+                cbFolders = cbOutFolders;
+            }
+
             FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
             FoldersInsForm.ShowDialog();
 
@@ -45,13 +55,13 @@ namespace Protocol
             {
                 string InsertedFolderName = FoldersInsForm.txtName.Text.Trim();
 
-                cbInFolders.Items.Clear();
+                cbFolders.Items.Clear();
 
-                cbInFolders.Items.AddRange(ProtokoloInsertForm.GetObjFolders());
+                cbFolders.Items.AddRange(ProtokoloInsertForm.GetObjFolders());
 
                 if (InsertedFolderName.Trim() != "")
                 {
-                    cbInFolders.SelectedText = InsertedFolderName;
+                    cbFolders.SelectedText = InsertedFolderName;
                 }
             }
         }
@@ -156,9 +166,16 @@ namespace Protocol
                 exists = false;
                 System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
 
-                if (newFile.Attributes == System.IO.FileAttributes.Directory)
+                //if (newFile.Attributes == System.IO.FileAttributes.Directory)
+                //{
+                //    MessageBox.Show("Παρακαλώ επιλέξτε μόνο αρχεία!");//Please drop only archives not directories!");
+                //    continue;
+                //}
+                
+                //only pdf allowed!
+                if (newFile.Extension != ".pdf")
                 {
-                    MessageBox.Show("Παρακαλώ επιλέξτε μόνο αρχεία...");//Please drop only archives not directories!");
+                    MessageBox.Show("Παρακαλώ επιλέξτε μόνο αρχεία τύπου '.pdf'!");//Please drop only archives not directories!");
                     continue;
                 }
 
@@ -333,6 +350,7 @@ namespace Protocol
 
             lv.Items.Clear();
         }
+
 
         /*
         private void lvAttachedFileCms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
