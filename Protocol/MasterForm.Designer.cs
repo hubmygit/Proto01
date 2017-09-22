@@ -173,6 +173,7 @@
             this.FolderInsTSMenuItem.Name = "FolderInsTSMenuItem";
             this.FolderInsTSMenuItem.Size = new System.Drawing.Size(212, 22);
             this.FolderInsTSMenuItem.Text = "Εισαγωγή";
+            this.FolderInsTSMenuItem.Click += new System.EventHandler(this.FolderInsTSMenuItem_Click);
             // 
             // FolderUpdTSMenuItem
             // 

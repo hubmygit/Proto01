@@ -86,5 +86,14 @@ namespace Protocol
             ProtokoloDeleteForm frmProtoDel = new ProtokoloDeleteForm();
             frmProtoDel.ShowDialog();
         }
+
+        private void FolderInsTSMenuItem_Click(object sender, EventArgs e)
+        {
+            FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
+            FoldersInsForm.ShowDialog();
+
+            //.......
+
+        }
     }
 }

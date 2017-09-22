@@ -137,6 +137,7 @@
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(280, 24);
             this.cbCompany.TabIndex = 22;
+            this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
             // cbProced
             // 
@@ -146,6 +147,7 @@
             this.cbProced.Name = "cbProced";
             this.cbProced.Size = new System.Drawing.Size(280, 24);
             this.cbProced.TabIndex = 23;
+            this.cbProced.SelectedIndexChanged += new System.EventHandler(this.cbProced_SelectedIndexChanged);
             // 
             // FoldersInsertForm
             // 

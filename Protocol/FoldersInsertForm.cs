@@ -79,5 +79,15 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
         }
+
+        private void cbCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbCompany.Enabled = false;
+        }
+
+        private void cbProced_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbProced.Enabled = false;
+        }
     }
 }
