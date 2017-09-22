@@ -94,15 +94,15 @@ namespace Protocol
             //oMailItem.BCC = "";
             foreach (Recipient thisRec in RecipientsList)
             {
-                if (thisRec.ExchType == "To")
+                if (thisRec.ExchTypeStr == "To")
                 {
                     oMailItem.To += thisRec.ExchUser + ";";
                 }
-                else if (thisRec.ExchType == "CC")
+                else if (thisRec.ExchTypeStr == "CC")
                 {
                     oMailItem.CC += thisRec.ExchUser + ";";
                 }
-                else if (thisRec.ExchType == "BCC")
+                else if (thisRec.ExchTypeStr == "BCC")
                 {
                     oMailItem.BCC += thisRec.ExchUser + ";";
                 }
@@ -129,33 +129,48 @@ namespace Protocol
             oMailItem.Display(true); //show
         }
 
+        public int exchangeTypeToInt(string exchangeType)
+        {
+            int ret = 0;
+
+            RecipientType recType;
+
+
+
+            Enum.TryParse(exchangeType, out recType);
+
+
+
+
+            return ret;
+        }
+
         private bool InertIntoTable_ReceiverList(int protokId) //INSERT [dbo].[ReceiverList]
         {
-            bool ret = false;
+            bool ret = true;
 
-            if (protokId > 0) // && RecipientsList.Count > 0)
+            if (protokId > 0 && RecipientsList.Count > 0)
             {
-                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                string InsSt = "INSERT INTO [dbo].[ReceiverList] (ProtokId, ToCcBcc, MailAddress, InsDt) VALUES (@ProtokId, @ToCcBcc, @MailAddress, getdate())";
-                try
+                foreach (Recipient thisRec in RecipientsList)
                 {
-                    sqlConn.Open();
-                    SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
-                    cmd.Parameters.AddWithValue("@ProtokId", protokId);
-                    cmd.Parameters.AddWithValue("@ToCcBcc", xxxxxxxx);
-                    cmd.Parameters.AddWithValue("@MailAddress", yyyyyyyy); //foreach....................
-
-                    cmd.CommandType = CommandType.Text;
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                    string InsSt = "INSERT INTO [dbo].[ReceiverList] (ProtokId, ToCcBcc, MailAddress, InsDt) VALUES (@ProtokId, @ToCcBcc, @MailAddress, getdate())";
+                    try
                     {
-                        ret = true;
+                        sqlConn.Open();
+                        SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
+                        cmd.Parameters.AddWithValue("@ProtokId", protokId);
+                        cmd.Parameters.AddWithValue("@ToCcBcc", thisRec.ExchTypeInt());
+                        cmd.Parameters.AddWithValue("@MailAddress", thisRec.ExchUser); 
+
+                        cmd.CommandType = CommandType.Text;
+                        int rowsAffected = cmd.ExecuteNonQuery();
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("The following error occurred: " + ex.Message);
+                    catch (Exception ex)
+                    {
+                        ret = false;
+                        MessageBox.Show("The following error occurred: " + ex.Message);
+                    }
                 }
             }
 
@@ -165,15 +180,12 @@ namespace Protocol
         public void SendMail(int ProtokId, string MailSubject, string MailBody, List<string> Attachments)
         {
             FillMailForm(ProtokId, MailSubject, MailBody, Attachments);
-            oMailItem.Send(); //send
+            oMailItem.Send(); //send !!!Asynchronous!!!
+            
+            //INSERT [dbo].[ReceiverList]
+            InertIntoTable_ReceiverList(ProtokId);
 
-            if (oMailItem.Sent)
-            {
-                //INSERT [dbo].[ReceiverList]
-                InertIntoTable_ReceiverList();
-
-                MessageBox.Show("Η αποστολή του email ολοκληρώθηκε επιτυχώς!");
-            }
+            MessageBox.Show("Η αποστολή του email ολοκληρώθηκε!");
         }
 
         public string CurrentUserName { get; set; }
@@ -182,8 +194,15 @@ namespace Protocol
         public int ProtokId { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
-
         public List<string> Attachments { get; set; }
+    }
+
+    public enum RecipientType
+    {
+        //None...
+        To = 1,
+        CC = 2,
+        BCC = 3
     }
 
     class Recipient
@@ -195,13 +214,33 @@ namespace Protocol
         {
             ExchName = exchCompany;
             ExchUser = exchUser;
-            ExchType = exchType;
+            ExchTypeStr = exchType;
             ExchCompany = exchCompany;
         }
-
+        
         public string ExchName { get; set; }
         public string ExchUser { get; set; }
-        public string ExchType { get; set; } //olTo: To, olCC: CC, olBCC: BCC
+        public string ExchTypeStr { get; set; } //olTo: To, olCC: CC, olBCC: BCC
+        public RecipientType ExchTypeEnum()
+        {
+            RecipientType ret;
+
+            //Enum.TryParse(ExchTypeStr, out ret);
+            ret = (RecipientType)Enum.Parse(typeof(RecipientType), ExchTypeStr);
+
+            return ret;
+        }
+        public int ExchTypeInt()
+        {
+            int ret;
+
+            RecipientType recType;
+            recType = (RecipientType)Enum.Parse(typeof(RecipientType), ExchTypeStr);
+
+            ret = (int)recType;
+
+            return ret;
+        }
         public string ExchCompany { get; set; }
     }
 }

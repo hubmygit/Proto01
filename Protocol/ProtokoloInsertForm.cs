@@ -699,6 +699,20 @@ namespace Protocol
             return ret;
         }
 
+        public string createInMailSubject(string protokType, int protokSn, string getDate, string proeleusi, string summary)
+        {
+            string ret = "";
+            ret = protokType.Left(3) + "." + protokSn.ToString() + "/" + getDate + " " + proeleusi.Left(30) + "-" + summary.Left(30);
+            return ret;
+        }
+
+        public string createInMailBody(string protokType, int protokSn, string getDate, string proeleusi, string summary)
+        {
+            string ret = "";
+            ret = protokType + "\r\n" + "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Προέλευση: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
+            return ret;
+        }
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
             //No updates in this phase...
@@ -796,7 +810,7 @@ namespace Protocol
                             }
                         }
 
-                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
+                        MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [ " + ProtokSn.inserted.ToString() + " ]");
                         successfulInsertion = wasSuccessful;
 
                         if (chbSendMail.Checked)
@@ -804,14 +818,17 @@ namespace Protocol
                             myEmail = new Email();
                             myEmail.ProtokId = ProtokId;
 
-                            string aaa = "ΕΙΣΕΡΧΟΜΕΝΑ";
-                            string bbb = ProtokSn.inserted.ToString();
-                            string ccc = DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]);
-                            string ddd = IOBoxPanel.Controls["tbInProeleusi"].Text;
-                            string eee = IOBoxPanel.Controls["tbInSummary"].Text;
+                            //myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
+                            myEmail.Subject = createInMailSubject("ΕΙΣΕΡΧΟΜΕΝΑ", 
+                                                ProtokSn.inserted, DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]), 
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text, 
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
 
-                            myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
-                            myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
+                            //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ProtokSn.inserted, DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
                         }
 
                         ShowClosingDialog = false;
@@ -944,6 +961,16 @@ namespace Protocol
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
                         successfulInsertion = wasSuccessful;
+
+                        if (chbSendMail.Checked)
+                        {
+                            myEmail = new Email();
+                            myEmail.ProtokId = ProtokId;
+
+                            myEmail.Subject = "outbox subject"; //createOutMailSubject
+                            myEmail.Body = "outbox body"; //createOutMailBody
+                        }
+
                         ShowClosingDialog = false;
                         Close();
                     }

@@ -53,13 +53,13 @@ namespace Protocol
                     if (oF.RecipientsList.Count > 0)
                     {
                         //Show Mail... 
-                        oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        //oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
                         //Save Mail... 
-                        //oF.SaveMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+                        //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
-                        //Send Mail... ToDo: once complete and test ShowMail, uncomment Send Mail
-                        //oF.SendMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+                        //Send Mail...
+                        oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
                     }
                 }
