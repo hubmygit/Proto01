@@ -5,6 +5,8 @@ using System.Text;
 
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Protocol
 {
@@ -78,8 +80,9 @@ namespace Protocol
             }
         }
 
-        private void FillMailForm(string subject, string body, List<string> attachments)
+        private void FillMailForm(int protokId, string subject, string body, List<string> attachments)
         {
+            ProtokId = protokId;
             Subject = subject;
             Body = body;
             Attachments = attachments;
@@ -114,22 +117,69 @@ namespace Protocol
             }
         }
 
-        public void SaveMail(string MailSubject, string MailBody, List<string> Attachments)
+        public void SaveMail(int ProtokId, string MailSubject, string MailBody, List<string> Attachments)
         {
-            FillMailForm(MailSubject, MailBody, Attachments);
+            FillMailForm(ProtokId, MailSubject, MailBody, Attachments);
             oMailItem.Save(); //drafts
         }
 
-        public void ShowMail(string MailSubject, string MailBody, List<string> Attachments)
+        public void ShowMail(int ProtokId, string MailSubject, string MailBody, List<string> Attachments)
         {
-            FillMailForm(MailSubject, MailBody, Attachments);
+            FillMailForm(ProtokId, MailSubject, MailBody, Attachments);
             oMailItem.Display(true); //show
+        }
+
+        private bool InertIntoTable_ReceiverList(int protokId) //INSERT [dbo].[ReceiverList]
+        {
+            bool ret = false;
+
+            if (protokId > 0) // && RecipientsList.Count > 0)
+            {
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                string InsSt = "INSERT INTO [dbo].[ReceiverList] (ProtokId, ToCcBcc, MailAddress, InsDt) VALUES (@ProtokId, @ToCcBcc, @MailAddress, getdate())";
+                try
+                {
+                    sqlConn.Open();
+                    SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
+                    cmd.Parameters.AddWithValue("@ProtokId", protokId);
+                    cmd.Parameters.AddWithValue("@ToCcBcc", xxxxxxxx);
+                    cmd.Parameters.AddWithValue("@MailAddress", yyyyyyyy); //foreach....................
+
+                    cmd.CommandType = CommandType.Text;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        ret = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The following error occurred: " + ex.Message);
+                }
+            }
+
+            return ret;
+        }
+
+        public void SendMail(int ProtokId, string MailSubject, string MailBody, List<string> Attachments)
+        {
+            FillMailForm(ProtokId, MailSubject, MailBody, Attachments);
+            oMailItem.Send(); //send
+
+            if (oMailItem.Sent)
+            {
+                //INSERT [dbo].[ReceiverList]
+                InertIntoTable_ReceiverList();
+
+                MessageBox.Show("Η αποστολή του email ολοκληρώθηκε επιτυχώς!");
+            }
         }
 
         public string CurrentUserName { get; set; }
         public string CurrentUserMail { get; set; }
         public List<Recipient> RecipientsList { get; set; }
-
+        public int ProtokId { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
 

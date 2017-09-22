@@ -29,5 +29,11 @@ namespace Protocol
         //public string Description { get; set; }
     }
 
+    public class Email
+    {
+        public int ProtokId { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+    }
 
 }

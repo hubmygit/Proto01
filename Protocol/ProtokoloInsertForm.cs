@@ -44,6 +44,7 @@ namespace Protocol
         public int Protok_Id_For_Updates = 0;
         public bool ShowClosingDialog = true;
         public bool successfulInsertion = false;
+        public Email myEmail;
 
         //public ProtokoloInsertForm(string FieldNo1)
         //{
@@ -56,7 +57,7 @@ namespace Protocol
         //}
 
         InboxOutboxPanels IOPanelsFrm = new InboxOutboxPanels();
-        Panel IOBoxPanel = new Panel();
+        public Panel IOBoxPanel = new Panel();
 
         public List<string> AttFilesList = new List<string>();
 
@@ -305,6 +306,11 @@ namespace Protocol
         string DatetimePickerToSQLDate(Control DatetimePicker)
         {
             return ((DateTimePicker)DatetimePicker).Value.ToString("yyyy-MM-dd");
+        }
+
+        string DatetimePickerToReadableDate(Control DatetimePicker)
+        {
+            return ((DateTimePicker)DatetimePicker).Value.ToString("dd.MM.yyyy");
         }
 
         private int getNextIdAndUpdateTable_TableIds(string tableName)
@@ -792,6 +798,22 @@ namespace Protocol
 
                         MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς! \r\nΑριθμός Πρωτοκόλλου: [" + ProtokSn.inserted.ToString() + "]");
                         successfulInsertion = wasSuccessful;
+
+                        if (chbSendMail.Checked)
+                        {
+                            myEmail = new Email();
+                            myEmail.ProtokId = ProtokId;
+
+                            string aaa = "ΕΙΣΕΡΧΟΜΕΝΑ";
+                            string bbb = ProtokSn.inserted.ToString();
+                            string ccc = DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]);
+                            string ddd = IOBoxPanel.Controls["tbInProeleusi"].Text;
+                            string eee = IOBoxPanel.Controls["tbInSummary"].Text;
+
+                            myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
+                            myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
+                        }
+
                         ShowClosingDialog = false;
                         Close();
                     }

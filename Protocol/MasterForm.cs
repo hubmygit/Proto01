@@ -41,20 +41,31 @@ namespace Protocol
         {
             ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
             frmProtoIns.ShowDialog();
-
+            
             if (frmProtoIns.successfulInsertion && frmProtoIns.chbSendMail.Checked)
             {
-                //Show Contacts...
-                outlookForms oF = new outlookForms();
-                oF.showContacts();
-
-                if (oF.RecipientsList.Count > 0)
+                if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELINBOX")
                 {
-                    //Show Mail... 
-                    oF.ShowMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+                    //Show Contacts...
+                    outlookForms oF = new outlookForms();
+                    oF.showContacts();
 
-                    //Save Mail... ToDo: once complete and test ShowMail, uncomment Save Mail
-                    //oF.SaveMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+                    if (oF.RecipientsList.Count > 0)
+                    {
+                        //Show Mail... 
+                        oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                        //Save Mail... 
+                        //oF.SaveMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+
+                        //Send Mail... ToDo: once complete and test ShowMail, uncomment Send Mail
+                        //oF.SendMail("Get 'Subject' from Form.Controls", "Get 'Body' from Form.Controls", frmProtoIns.AttFilesList);
+
+                    }
+                }
+                else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
+                {
+                    //...
                 }
             }
             else if (frmProtoIns.chbSendMail.Checked)
