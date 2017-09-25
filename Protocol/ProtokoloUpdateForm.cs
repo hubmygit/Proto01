@@ -25,7 +25,9 @@ namespace Protocol
         {
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT P.Sn, P.Year, PR.Name as ProcedName, C.Name as CompanyName, convert(varchar, P.DocumentDate, 104) as _DocumentDate, " +
-                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id " +
+                                     "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id, " +
+                                     "(select count(*) from [dbo].[ProtokPdf] PA where PA.ProtokId = P.id) as Att, " +
+                                     "(select count(*) from [dbo].[ReceiverList] RL where RL.ProtokId = P.id) as Mails " +
                               "FROM [dbo].[Protok] P left outer join [dbo].[Proced] PR on PR.id = P.ProcedureId " +
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId " +
                               "left outer join [dbo].[Folders] F on F.id = P.FolderId " + //and F.CompanyId = P.CompanyId and F.ProcedId = P.ProcedureId " +
@@ -48,7 +50,9 @@ namespace Protocol
                                      reader[8].ToString(),
                                      reader[9].ToString(),
                                      reader[10].ToString(),
-                                     reader[11].ToString()};
+                                     reader[11].ToString(),
+                                     reader[12].ToString(),
+                                     reader[13].ToString()};
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);

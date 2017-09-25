@@ -150,10 +150,21 @@ namespace Protocol
     {
         static UserInfo()
         {
-            WindowsUser = Environment.UserName;
-            EmailAddress = UserPrincipal.Current.EmailAddress;
-            FullName = UserPrincipal.Current.DisplayName;
-            //DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+            WindowsUser = "unknown";
+            EmailAddress = "";
+            FullName = "Unknown";
+
+            try
+            {
+                WindowsUser = Environment.UserName;
+                EmailAddress = UserPrincipal.Current.EmailAddress;
+                FullName = UserPrincipal.Current.DisplayName;
+                //DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
         }
         public static string FullName { get; set; }
         public static string EmailAddress { get; set; }

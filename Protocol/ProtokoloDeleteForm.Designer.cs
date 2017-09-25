@@ -42,6 +42,8 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnFilters
@@ -68,14 +70,16 @@
             this.columnHeader9,
             this.columnHeader10,
             this.columnHeader11,
-            this.columnHeader12});
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14});
             this.lvRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvRep.FullRowSelect = true;
             this.lvRep.GridLines = true;
             this.lvRep.Location = new System.Drawing.Point(12, 74);
             this.lvRep.MultiSelect = false;
             this.lvRep.Name = "lvRep";
-            this.lvRep.Size = new System.Drawing.Size(1248, 459);
+            this.lvRep.Size = new System.Drawing.Size(1360, 459);
             this.lvRep.TabIndex = 2;
             this.lvRep.UseCompatibleStateImageBehavior = false;
             this.lvRep.View = System.Windows.Forms.View.Details;
@@ -139,11 +143,20 @@
             this.columnHeader12.Text = "Id";
             this.columnHeader12.Width = 51;
             // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Attachments";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Emails";
+            this.columnHeader14.Width = 55;
+            // 
             // ProtokoloDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 545);
+            this.ClientSize = new System.Drawing.Size(1384, 545);
             this.Controls.Add(this.lvRep);
             this.Controls.Add(this.btnFilters);
             this.Name = "ProtokoloDeleteForm";
@@ -168,5 +181,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
     }
 }
