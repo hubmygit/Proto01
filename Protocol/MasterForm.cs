@@ -91,9 +91,12 @@ namespace Protocol
         {
             FoldersInsertForm FoldersInsForm = new FoldersInsertForm();
             FoldersInsForm.ShowDialog();
+        }
 
-            //.......
-
+        private void FolderDelTSMenuItem_Click(object sender, EventArgs e)
+        {
+            FoldersDeleteForm FoldersDelForm = new FoldersDeleteForm();
+            FoldersDelForm.ShowDialog();
         }
     }
 }
