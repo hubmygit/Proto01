@@ -15,8 +15,6 @@ namespace Protocol
         public MasterForm()
         {
             InitializeComponent();
-
-            
         }
         
         private void InsertTSMenuItem_Click(object sender, EventArgs e)
@@ -109,6 +107,12 @@ namespace Protocol
         {
             ProtokPerFolderForm ProtokPerFolderForm = new ProtokPerFolderForm();
             ProtokPerFolderForm.ShowDialog();
+        }
+
+        private void UserInfoTSMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutUserInfoForm UserInfoForm = new AboutUserInfoForm();
+            UserInfoForm.ShowDialog();
         }
     }
 }

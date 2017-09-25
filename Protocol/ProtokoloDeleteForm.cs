@@ -84,7 +84,7 @@ namespace Protocol
                 {
                     SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                     //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
-                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Id = @Id ";
+                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr WHERE Id = @Id ";
 
                     try
                     {
@@ -94,6 +94,7 @@ namespace Protocol
                         //cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
                         //cmd.Parameters.AddWithValue("@Year", lvRowYear);
                         cmd.Parameters.AddWithValue("@Id", lvRowId);
+                        cmd.Parameters.AddWithValue("@DelUsr", UserInfo.DB_AppUser_Id);
 
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();

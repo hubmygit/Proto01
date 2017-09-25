@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
+using System.DirectoryServices.AccountManagement;
 
 namespace Protocol
 {
@@ -145,7 +146,49 @@ namespace Protocol
         }
     }
 
+    public static class UserInfo
+    {
+        static UserInfo()
+        {
+            WindowsUser = Environment.UserName;
+            EmailAddress = UserPrincipal.Current.EmailAddress;
+            FullName = UserPrincipal.Current.DisplayName;
+            //DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+        }
+        public static string FullName { get; set; }
+        public static string EmailAddress { get; set; }
+        public static string WindowsUser { get; set; }
+        public static int DB_AppUser_Id
+        {
+            get { return Get_DB_AppUser_Id(Environment.UserName); }
 
+            set { }
+        }
+        private static int Get_DB_AppUser_Id(string UserName)
+        {
+            int ret = 0;
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT Id FROM [dbo].[AppUsers] WHERE WinUser = '" + UserName + "'";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ret = Convert.ToInt32(reader["Id"].ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+    }
 
     //public enum Procedure { Inbox = 1, Outbox = 2 };
     //++++++++++++ Company ?????? ++++++++++++

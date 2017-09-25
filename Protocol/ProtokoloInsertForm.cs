@@ -544,10 +544,10 @@ namespace Protocol
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
-                                  "ProeleusiKateuth, Summary, ToText, FolderId) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
                                   "VALUES " +
                                   "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
-                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr) ";
 
                 try
                 {
@@ -565,6 +565,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbInSummary"].Text);
                     cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text.Left(255));
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbInFolders"]).SelectedItem).Value).Id); //get object from combobox
+                    cmd.Parameters.AddWithValue("@InsUsr", UserInfo.DB_AppUser_Id);
 
                     cmd.CommandType = CommandType.Text;
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -584,10 +585,10 @@ namespace Protocol
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
-                                  "ProeleusiKateuth, Summary) " +
+                                  "ProeleusiKateuth, Summary, InsDt, InsUsr) " +
                                   "VALUES " +
                                   "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
-                                  "@ProeleusiKateuth, @Summary) ";
+                                  "@ProeleusiKateuth, @Summary, getdate(), @InsUsr) ";
 
                 try
                 {
@@ -603,6 +604,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbOutFolders"]).SelectedItem).Value).Id); //get object from combobox
+                    cmd.Parameters.AddWithValue("@InsUsr", UserInfo.DB_AppUser_Id);
 
                     cmd.CommandType = CommandType.Text;
                     int rowsAffected = cmd.ExecuteNonQuery();
