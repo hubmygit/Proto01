@@ -124,6 +124,7 @@
             this.FolderUpdTSMenuItem.Name = "FolderUpdTSMenuItem";
             this.FolderUpdTSMenuItem.Size = new System.Drawing.Size(212, 22);
             this.FolderUpdTSMenuItem.Text = "Μεταβολή";
+            this.FolderUpdTSMenuItem.Click += new System.EventHandler(this.FolderUpdTSMenuItem_Click);
             // 
             // FolderDelTSMenuItem
             // 

@@ -98,5 +98,11 @@ namespace Protocol
             FoldersDeleteForm FoldersDelForm = new FoldersDeleteForm();
             FoldersDelForm.ShowDialog();
         }
+
+        private void FolderUpdTSMenuItem_Click(object sender, EventArgs e)
+        {
+            FoldersUpdateForm FoldersUpdForm = new FoldersUpdateForm();
+            FoldersUpdForm.ShowDialog();
+        }
     }
 }

@@ -181,10 +181,10 @@
         public System.Windows.Forms.TextBox txtId;
         public System.Windows.Forms.TextBox txtName;
         public System.Windows.Forms.TextBox txtDescr;
-        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Label lblCompany;
         private System.Windows.Forms.Label lblProced;
         public System.Windows.Forms.ComboBox cbCompany;
         public System.Windows.Forms.ComboBox cbProced;
+        public System.Windows.Forms.Button btnInsert;
     }
 }
