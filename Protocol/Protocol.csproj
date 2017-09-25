@@ -53,6 +53,12 @@
       <DependentUpon>AboutUserInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DbModels.cs" />
+    <Compile Include="DeletionReasonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeletionReasonForm.Designer.cs">
+      <DependentUpon>DeletionReasonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FolderProtoksForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="AboutUserInfoForm.resx">
       <DependentUpon>AboutUserInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeletionReasonForm.resx">
+      <DependentUpon>DeletionReasonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FolderProtoksForm.resx">
       <DependentUpon>FolderProtoksForm.cs</DependentUpon>

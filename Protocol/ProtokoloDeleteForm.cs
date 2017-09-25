@@ -82,32 +82,39 @@ namespace Protocol
                     " (" + lvRowEisEx + ") της Εταιρίας" + lvRowCompany + ";", "Διαγραφή", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                    //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
-                    string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr WHERE Id = @Id ";
+                    DeletionReasonForm delReasonFrm = new DeletionReasonForm();
+                    delReasonFrm.ShowDialog();
 
-                    try
+                    if (delReasonFrm.Successful)
                     {
-                        sqlConn.Open();
-                        SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
+                        SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                        //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
+                        string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr, DelReason = @DelReason WHERE Id = @Id ";
 
-                        //cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
-                        //cmd.Parameters.AddWithValue("@Year", lvRowYear);
-                        cmd.Parameters.AddWithValue("@Id", lvRowId);
-                        cmd.Parameters.AddWithValue("@DelUsr", UserInfo.DB_AppUser_Id);
+                        try
+                        {
+                            sqlConn.Open();
+                            SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
 
-                        cmd.CommandType = CommandType.Text;
-                        cmd.ExecuteNonQuery();
+                            //cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
+                            //cmd.Parameters.AddWithValue("@Year", lvRowYear);
+                            cmd.Parameters.AddWithValue("@Id", lvRowId);
+                            cmd.Parameters.AddWithValue("@DelUsr", UserInfo.DB_AppUser_Id);
+                            cmd.Parameters.AddWithValue("@DelReason", delReasonFrm.txtDelReason.Text);
 
-                        MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
+                            cmd.CommandType = CommandType.Text;
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
+                            Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("The following error occurred: " + ex.Message);
+                        }
+
                         Close();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("The following error occurred: " + ex.Message);
-                    }
-
-                    Close();
                 }
             }
         }
