@@ -138,6 +138,7 @@
             this.FolderToProtokTSMenuItem.Name = "FolderToProtokTSMenuItem";
             this.FolderToProtokTSMenuItem.Size = new System.Drawing.Size(212, 22);
             this.FolderToProtokTSMenuItem.Text = "Πρωτόκολλα ανά Φάκελο";
+            this.FolderToProtokTSMenuItem.Click += new System.EventHandler(this.FolderToProtokTSMenuItem_Click);
             // 
             // statusStrip1
             // 

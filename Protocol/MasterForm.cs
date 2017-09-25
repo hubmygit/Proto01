@@ -104,5 +104,11 @@ namespace Protocol
             FoldersUpdateForm FoldersUpdForm = new FoldersUpdateForm();
             FoldersUpdForm.ShowDialog();
         }
+
+        private void FolderToProtokTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtokPerFolderForm ProtokPerFolderForm = new ProtokPerFolderForm();
+            ProtokPerFolderForm.ShowDialog();
+        }
     }
 }
