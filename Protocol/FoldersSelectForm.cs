@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace Protocol
 {
-    public partial class FoldersDeleteForm : Form
+    public partial class FoldersSelectForm : Form
     {
-        public FoldersDeleteForm()
+        public FoldersSelectForm()
         {
             InitializeComponent();
             
@@ -62,48 +62,36 @@ namespace Protocol
 
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
-            string lvRowCnt = lvRep.SelectedItems[0].SubItems[4].Text;
-            string lvRowFolder = lvRep.SelectedItems[0].SubItems[2].Text;
+            //string lvRowCnt = lvRep.SelectedItems[0].SubItems[4].Text;
+            //string lvRowFolder = lvRep.SelectedItems[0].SubItems[2].Text;
             string lvRowId = lvRep.SelectedItems[0].SubItems[5].Text;
             string lvRowEisEx = lvRep.SelectedItems[0].SubItems[1].Text;
             string lvRowCompany = lvRep.SelectedItems[0].SubItems[0].Text;
 
-            if (lvRowId.Trim() != "")
-            {
-                if (Convert.ToInt32(lvRowCnt) > 0)
-                {
-                    MessageBox.Show("Υπάρχουν " + lvRowCnt + " αναφορές Πρωτοκόλλων για αυτό το Φάκελο. \r\nΔε θα πραγματοποιηθεί η διαγραφή του Φακέλου;", "Διαγραφή", MessageBoxButtons.YesNo);
-                    return;
-                }
+            //ListViewItem.ListViewSubItemCollection lvic = new ListViewItem.ListViewSubItemCollection(lvRep.SelectedItems[0]);
 
-                DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή με Αριθμό Φακέλου Αρχείου '" + lvRowFolder +
-                    "' (" + lvRowEisEx + ") της Εταιρίας" + lvRowCompany + ";", "Διαγραφή", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {                    
-                    SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                    string DeleteSt = "DELETE FROM [dbo].[Folders] WHERE Id = @Id ";
+            FoldersInsertForm updScreen = new FoldersInsertForm(new Company { Name = lvRowCompany }, new Proced { Name = lvRowEisEx });
 
-                    try
-                    {
-                        sqlConn.Open();
-                        SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
+            updScreen.Text = "Εμφάνιση";
+            //updScreen.btnInsert.Text = "Μεταβολή";
+            updScreen.txtId.Visible = true;
+            //updScreen.txtId.Enabled = false;
+            updScreen.txtId.Text = lvRowId;
 
-                        cmd.Parameters.AddWithValue("@Id", lvRowId);
+            updScreen.txtName.Text = lvRep.SelectedItems[0].SubItems[2].Text;
+            updScreen.txtDescr.Text = lvRep.SelectedItems[0].SubItems[3].Text;
 
-                        cmd.CommandType = CommandType.Text;
-                        cmd.ExecuteNonQuery();
+            updScreen.btnInsert.Enabled = false;
+            updScreen.txtName.ReadOnly = true;
+            updScreen.txtName.BackColor = Color.White;
+            updScreen.txtDescr.ReadOnly = true;
+            updScreen.txtDescr.BackColor = Color.White;
 
-                        MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
-                        Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("The following error occurred: " + ex.Message);
-                    }
+            updScreen.ShowDialog();
 
-                    Close();
-                }
-            }
+            //refresh listView - ToDo: Not always. Only after real insert
+            lvRep.Items.Clear();
+            ShowDataToListView(lvRep);
         }
 
         private void btnFilters_Click(object sender, EventArgs e)

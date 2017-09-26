@@ -13,7 +13,7 @@ namespace Protocol
         public excelForms()
         {
             excelApplication = new Excel.Application();
-            //excelApplication.Visible = true;
+            //excelApplication.Visible = true; //delay...
             wbk = excelApplication.Workbooks.Add(Excel.XlSheetType.xlWorksheet);
             wsh = (Excel.Worksheet)excelApplication.ActiveSheet;
         }
@@ -38,6 +38,19 @@ namespace Protocol
                 foreach (ColumnHeader ch in lv.Columns)
                 {
                     wsh.Cells[i, j] = ch.Text;
+
+                    //wsh.Cells[i, j].Font.Bold = true;
+                    //wsh.Cells[i, j] = "Bold";
+
+
+                    //wsh.Cells[10, 1].EntireRow.Font.Bold = true;
+
+                    //Bold entire row...
+                    //Excel.Range formatRange;
+                    //formatRange = wsh.get_Range("A1");
+                    //formatRange.EntireRow.Font.Bold = true;
+                    //wsh.Cells[1, 5] = "Bold";
+
                     j++;
                 }
                 j = 1;
@@ -60,3 +73,10 @@ namespace Protocol
         }
     }
 }
+
+//How to use it...
+/*
+    excelForms eF = new excelForms();
+    eF.ExportListViewToExcel(lvRep, true);
+    eF.Visible = true; 
+ */

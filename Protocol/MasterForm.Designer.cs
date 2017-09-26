@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InsertTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,10 +47,10 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.SelectTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.FolderSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -85,11 +86,19 @@
             this.InsertTSMenuItem.Text = "Εισαγωγή";
             this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
+            // SelectTSMenuItem
+            // 
+            this.SelectTSMenuItem.Name = "SelectTSMenuItem";
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SelectTSMenuItem.Text = "Εμφάνιση";
+            this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
+            // 
             // UpdateTSMenuItem
             // 
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
             this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
+            this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
             // 
             // DeleteTSMenuItem
@@ -111,6 +120,7 @@
             // 
             this.FoldersTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FolderInsTSMenuItem,
+            this.FolderSelTSMenuItem,
             this.FolderUpdTSMenuItem,
             this.FolderDelTSMenuItem,
             this.FolderToProtokTSMenuItem});
@@ -200,6 +210,15 @@
             this.InsertToolStripBtn.Text = "Εισαγωγή";
             this.InsertToolStripBtn.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
+            // SelectToolStripBtn
+            // 
+            this.SelectToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("SelectToolStripBtn.Image")));
+            this.SelectToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SelectToolStripBtn.Name = "SelectToolStripBtn";
+            this.SelectToolStripBtn.Size = new System.Drawing.Size(79, 22);
+            this.SelectToolStripBtn.Text = "Εμφάνιση";
+            this.SelectToolStripBtn.Click += new System.EventHandler(this.SelectToolStripBtn_Click);
+            // 
             // UpdateToolStripBtn
             // 
             this.UpdateToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateToolStripBtn.Image")));
@@ -207,6 +226,7 @@
             this.UpdateToolStripBtn.Name = "UpdateToolStripBtn";
             this.UpdateToolStripBtn.Size = new System.Drawing.Size(83, 22);
             this.UpdateToolStripBtn.Text = "Μεταβολή";
+            this.UpdateToolStripBtn.Visible = false;
             this.UpdateToolStripBtn.Click += new System.EventHandler(this.UpdateToolStripBtn_Click);
             // 
             // DeleteToolStripBtn
@@ -219,21 +239,12 @@
             this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
-            // SelectTSMenuItem
+            // FolderSelTSMenuItem
             // 
-            this.SelectTSMenuItem.Name = "SelectTSMenuItem";
-            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.SelectTSMenuItem.Text = "Εμφάνιση";
-            this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
-            // 
-            // SelectToolStripBtn
-            // 
-            this.SelectToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("SelectToolStripBtn.Image")));
-            this.SelectToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SelectToolStripBtn.Name = "SelectToolStripBtn";
-            this.SelectToolStripBtn.Size = new System.Drawing.Size(79, 22);
-            this.SelectToolStripBtn.Text = "Εμφάνιση";
-            this.SelectToolStripBtn.Click += new System.EventHandler(this.SelectToolStripBtn_Click);
+            this.FolderSelTSMenuItem.Name = "FolderSelTSMenuItem";
+            this.FolderSelTSMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.FolderSelTSMenuItem.Text = "Εμφάνιση";
+            this.FolderSelTSMenuItem.Click += new System.EventHandler(this.FolderSelTSMenuItem_Click);
             // 
             // MasterForm
             // 
@@ -281,6 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem UserInfoTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SelectTSMenuItem;
         private System.Windows.Forms.ToolStripButton SelectToolStripBtn;
+        private System.Windows.Forms.ToolStripMenuItem FolderSelTSMenuItem;
     }
 }
 

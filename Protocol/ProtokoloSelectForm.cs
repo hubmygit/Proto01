@@ -123,6 +123,7 @@ namespace Protocol
             if (Convert.ToInt32(lvic[13].Text) > 0)
             {
                 selScreen.chbSendMail.Checked = true;
+                selScreen.btnShowRecipients.Enabled = true;
             }
             //selScreen.chbSendMail.Enabled = false;
             selScreen.chbSendMail.AutoCheck = false;

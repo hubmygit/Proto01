@@ -1070,7 +1070,51 @@ namespace Protocol
             //btnCancel.Font = myfont;
         }
 
+        private void btnShowRecipients_Click(object sender, EventArgs e)
+        {
+            string Recipients = "";
+            string RecipientsTo = "";
+            string RecipientsCc = "";
+            string RecipientsBcc = "";
 
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress " +
+                "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc WHERE R.ProtokId = " + Protok_Id_For_Updates;
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (Convert.ToInt32(reader["ToCcBcc"].ToString()) == 1) //to
+                    {
+                        RecipientsTo += reader["MailAddress"].ToString() + ";";
+                    }
+                    else if (Convert.ToInt32(reader["ToCcBcc"].ToString()) == 2) //cc
+                    {
+                        RecipientsCc += reader["MailAddress"].ToString() + ";";
+                    }
+                    else if (Convert.ToInt32(reader["ToCcBcc"].ToString()) == 3) //bcc
+                    {
+                        RecipientsBcc += reader["MailAddress"].ToString() + ";";
+                    }
+
+                }
+                
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            Recipients = "To: " + RecipientsTo + "\r\n" +
+                "CC: " + RecipientsCc + "\r\n" +
+                "BCC: " + RecipientsBcc;
+
+            MessageBox.Show(Recipients, "Recipients");
+        }
     }
 
     public static class MyExtensions

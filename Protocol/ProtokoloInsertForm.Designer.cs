@@ -36,6 +36,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chbSendMail = new System.Windows.Forms.CheckBox();
+            this.btnShowRecipients = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblProtokoloKind
@@ -114,12 +115,24 @@
             // 
             this.chbSendMail.AutoSize = true;
             this.chbSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.chbSendMail.Location = new System.Drawing.Point(453, 105);
+            this.chbSendMail.Location = new System.Drawing.Point(438, 105);
             this.chbSendMail.Name = "chbSendMail";
             this.chbSendMail.Size = new System.Drawing.Size(66, 21);
             this.chbSendMail.TabIndex = 9;
             this.chbSendMail.Text = "E-mail";
             this.chbSendMail.UseVisualStyleBackColor = true;
+            // 
+            // btnShowRecipients
+            // 
+            this.btnShowRecipients.Enabled = false;
+            this.btnShowRecipients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnShowRecipients.Location = new System.Drawing.Point(513, 101);
+            this.btnShowRecipients.Name = "btnShowRecipients";
+            this.btnShowRecipients.Size = new System.Drawing.Size(25, 27);
+            this.btnShowRecipients.TabIndex = 10;
+            this.btnShowRecipients.Text = "*";
+            this.btnShowRecipients.UseVisualStyleBackColor = true;
+            this.btnShowRecipients.Click += new System.EventHandler(this.btnShowRecipients_Click);
             // 
             // ProtokoloInsertForm
             // 
@@ -127,6 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 672);
+            this.Controls.Add(this.btnShowRecipients);
             this.Controls.Add(this.chbSendMail);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.comboBox1);
@@ -154,5 +168,6 @@
         public System.Windows.Forms.Button btnInsert;
         public System.Windows.Forms.CheckBox chbSendMail;
         public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnShowRecipients;
     }
 }

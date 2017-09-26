@@ -1,6 +1,6 @@
 ﻿namespace Protocol
 {
-    partial class FoldersDeleteForm
+    partial class FoldersSelectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -99,16 +99,16 @@
             this.columnHeader6.Text = "Id";
             this.columnHeader6.Width = 50;
             // 
-            // FoldersDeleteForm
+            // FoldersSelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 545);
             this.Controls.Add(this.lvRep);
             this.Controls.Add(this.btnFilters);
-            this.Name = "FoldersDeleteForm";
+            this.Name = "FoldersSelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Διαγραφή";
+            this.Text = "Εμφάνιση";
             this.ResumeLayout(false);
 
         }

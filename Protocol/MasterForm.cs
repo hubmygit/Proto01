@@ -127,5 +127,11 @@ namespace Protocol
             ProtokoloSelectForm frmProtoSel = new ProtokoloSelectForm();
             frmProtoSel.ShowDialog();
         }
+
+        private void FolderSelTSMenuItem_Click(object sender, EventArgs e)
+        {
+            FoldersSelectForm FoldersSelForm = new FoldersSelectForm();
+            FoldersSelForm.ShowDialog();
+        }
     }
 }
