@@ -59,6 +59,7 @@
     <Compile Include="DeletionReasonForm.Designer.cs">
       <DependentUpon>DeletionReasonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="excelForms.cs" />
     <Compile Include="FolderProtoksForm.cs">
       <SubType>Form</SubType>
     </Compile>

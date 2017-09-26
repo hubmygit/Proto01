@@ -109,6 +109,12 @@ namespace Protocol
         private void btnFilters_Click(object sender, EventArgs e)
         {
             //Do something with Filters
+
+            excelForms eF = new excelForms();
+            //ExportListViewToExcel(ListView lv)
+            eF.ExportListViewToExcel(lvRep, true);
+
+            eF.Visible = true;
         }
     }
 }
