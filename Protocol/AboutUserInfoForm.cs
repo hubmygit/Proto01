@@ -18,6 +18,11 @@ namespace Protocol
             txtWinUser.Text = UserInfo.WindowsUser;
             txtFullName.Text = UserInfo.FullName;
             txtEmail.Text = UserInfo.EmailAddress;
+
+            txtMachine.Text = UserInfo.MachineName;
+            txtDomain.Text = UserInfo.DomainName;
+            txtOs.Text = UserInfo.OsVersion;
+
         }
     }
 }

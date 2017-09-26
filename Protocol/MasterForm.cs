@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Data.SqlClient;
+
 namespace Protocol
 {
     public partial class MasterForm : Form
@@ -15,8 +17,32 @@ namespace Protocol
         public MasterForm()
         {
             InitializeComponent();
+                        
+
         }
-        
+
+        private void zzzzzzz()
+        {
+            int UserId = UserInfo.DB_AppUser_Id;
+            string UserName = UserInfo.WindowsUser;
+            string FullName = "";
+            string EmailAddress = "";
+
+            if (UserId > 0) //exists - found
+            {
+                //update...
+                string UpdSt = "UPDATE [dbo].[AppUsers] SET FullName = @fullName, EmailAddress = @emailAddr, InsDate = getdate() WHERE Id = @id";
+            }
+            else //not exists - not found
+            {
+                //insert...
+                string InsSt = "INSERT INTO [dbo].[AppUsers] (WinUser, FullName, EmailAddress, InsDate) VALUES (@winUser, @fullName, @emailAddr, getdate())";
+
+                string SelSt = "SELECT Id FROM [dbo].[AppUsers] WHERE WinUser = @winUser";
+            }
+
+        }
+
         //private void InsertTSMenuItem_Click(object sender, EventArgs e)
         //{
         //}
