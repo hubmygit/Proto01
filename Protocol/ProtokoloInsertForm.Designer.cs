@@ -148,11 +148,11 @@
 
         private System.Windows.Forms.Label lblProtokoloKind;
         private System.Windows.Forms.Label lblCompany;
-        private System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.ComboBox cbProtokoloKind;
         public System.Windows.Forms.ComboBox cbCompany;
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button btnInsert;
         public System.Windows.Forms.CheckBox chbSendMail;
+        public System.Windows.Forms.Button btnCancel;
     }
 }

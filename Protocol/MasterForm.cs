@@ -17,11 +17,9 @@ namespace Protocol
             InitializeComponent();
         }
         
-        private void InsertTSMenuItem_Click(object sender, EventArgs e)
-        {
-            ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
-            frmProtoIns.ShowDialog();
-        }
+        //private void InsertTSMenuItem_Click(object sender, EventArgs e)
+        //{
+        //}
 
         private void UpdateTSMenuItem_Click(object sender, EventArgs e)
         {
@@ -35,11 +33,11 @@ namespace Protocol
             frmProtoDel.ShowDialog();
         }
 
-        private void InsertToolStripBtn_Click(object sender, EventArgs e)
+        private void InsertProtocol_Click(object sender, EventArgs e)
         {
             ProtokoloInsertForm frmProtoIns = new ProtokoloInsertForm();
             frmProtoIns.ShowDialog();
-            
+
             if (frmProtoIns.successfulInsertion && frmProtoIns.chbSendMail.Checked)
             {
                 if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELINBOX")
@@ -66,12 +64,15 @@ namespace Protocol
                     //...
                 }
             }
-            else if (frmProtoIns.chbSendMail.Checked)
-            {
-                MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί το e-mail!");
-            }
-
+            //else if (frmProtoIns.successfulInsertion == false && frmProtoIns.chbSendMail.Checked == true)
+            //{
+            //    MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί e-mail!");
+            //}
         }
+
+        //private void InsertToolStripBtn_Click(object sender, EventArgs e)
+        //{
+        //}
 
         private void UpdateToolStripBtn_Click(object sender, EventArgs e)
         {
@@ -113,6 +114,18 @@ namespace Protocol
         {
             AboutUserInfoForm UserInfoForm = new AboutUserInfoForm();
             UserInfoForm.ShowDialog();
+        }
+
+        private void SelectTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtokoloSelectForm frmProtoSel = new ProtokoloSelectForm();
+            frmProtoSel.ShowDialog();
+        }
+
+        private void SelectToolStripBtn_Click(object sender, EventArgs e)
+        {
+            ProtokoloSelectForm frmProtoSel = new ProtokoloSelectForm();
+            frmProtoSel.ShowDialog();
         }
     }
 }

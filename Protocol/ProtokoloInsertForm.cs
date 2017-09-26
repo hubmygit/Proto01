@@ -45,6 +45,7 @@ namespace Protocol
         public bool ShowClosingDialog = true;
         public bool successfulInsertion = false;
         public Email myEmail;
+        //public CRUD_Mode formCRUDMode; //
 
         //public ProtokoloInsertForm(string FieldNo1)
         //{
@@ -1051,7 +1052,7 @@ namespace Protocol
 
         private void ProtokoloInsertForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (ShowClosingDialog)
+            if (ShowClosingDialog && this.Text == "Εισαγωγή")
             {
                 DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
 
@@ -1093,4 +1094,13 @@ namespace Protocol
             return formattedString;
         }
     }
+
+    //public enum CRUD_Mode
+    //{
+    //    //None...
+    //    SELECT = 1,
+    //    INSERT = 2,
+    //    UPDATE = 3,
+    //    DELETE = 4
+    //}
 }

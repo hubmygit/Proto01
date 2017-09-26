@@ -160,8 +160,12 @@ namespace Protocol
                 EmailAddress = UserPrincipal.Current.EmailAddress;
                 FullName = UserPrincipal.Current.DisplayName;
                 //DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+
+                //MachineName = Environment.MachineName;
+                //OsVersion = Environment.OSVersion.VersionString;
+                //DomainName = Environment.UserDomainName;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
@@ -169,10 +173,14 @@ namespace Protocol
         public static string FullName { get; set; }
         public static string EmailAddress { get; set; }
         public static string WindowsUser { get; set; }
+
+        public static string MachineName { get { return Environment.MachineName; } set { } }
+        public static string OsVersion { get { return Environment.OSVersion.VersionString; } set { } }
+        public static string DomainName { get { return Environment.UserDomainName; } set { } }
+
         public static int DB_AppUser_Id
         {
             get { return Get_DB_AppUser_Id(Environment.UserName); }
-
             set { }
         }
         private static int Get_DB_AppUser_Id(string UserName)
@@ -201,85 +209,5 @@ namespace Protocol
         }
     }
 
-    //public enum Procedure { Inbox = 1, Outbox = 2 };
-    //++++++++++++ Company ?????? ++++++++++++
-    //public class Ids
-    //{
 
-    //    public Ids()
-    //    {
-
-    //    }
-    //    public Ids(Procedure procedure)
-    //    {
-    //        //year = 0;
-    //        proced = procedure;
-
-    //        tableMaxId = getTableMaxId();
-    //        tableNextId = tableMaxId + 1;
-
-    //        protocolMaxId = getProtocolMaxId(procedure);
-    //        protocolNextId = protocolMaxId + 1;
-    //    }
-
-    //    public int year { get; set; }
-    //    public Procedure proced { get; set; }
-    //    public int tableMaxId { get; set; }
-    //    public int tableNextId { get; set; }
-    //    public int protocolMaxId { get; set; }
-    //    public int protocolNextId { get; set; }
-
-    //    public int getTableMaxId()
-    //    {
-    //        int ret = 0;
-
-    //        SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-    //        string SelectSt = "SELECT isnull(max(id), 0) AS TableId FROM [dbo].[Protok] ";
-    //        SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
-    //        try
-    //        {
-    //            sqlConn.Open();
-    //            SqlDataReader reader = cmd.ExecuteReader();
-    //            while (reader.Read())
-    //            {
-    //                ret = Convert.ToInt32(reader["TableId"].ToString());
-    //            }
-    //            reader.Close();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            MessageBox.Show("The following error occurred: " + ex.Message);
-    //        }
-
-    //        return ret;
-    //    }
-
-    //    public int getProtocolMaxId(Procedure proced)
-    //    {
-    //        int ret = 0;
-
-    //        this.proced = proced;
-
-    //        SqlConnection sqlConn = new SqlConnection("Persist Security Info=False; User ID=" + DBInfo.username + "; Password=" + DBInfo.password + "; Initial Catalog=" + DBInfo.database + "; Server=" + DBInfo.server);
-    //        string SelectSt = "SELECT isnull(max(id), 0) AS TableId, year(getdate()) AS CurrentYear FROM [dbo].[Protok] WHERE [Year] = year(getdate()) AND [ProcedureId] = " + ((int)proced).ToString();
-    //        SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
-    //        try
-    //        {
-    //            sqlConn.Open();
-    //            SqlDataReader reader = cmd.ExecuteReader();
-    //            while (reader.Read())
-    //            {
-    //                ret = Convert.ToInt32(reader["TableId"].ToString());
-    //                year = Convert.ToInt32(reader["CurrentYear"].ToString());
-    //            }
-    //            reader.Close();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            MessageBox.Show("The following error occurred: " + ex.Message);
-    //        }
-
-    //        return ret;
-    //    }
-    //}
 }

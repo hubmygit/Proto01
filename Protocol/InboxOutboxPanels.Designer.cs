@@ -113,7 +113,6 @@
             // 
             // tbInYear
             // 
-            this.tbInYear.Enabled = false;
             this.tbInYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInYear.Location = new System.Drawing.Point(469, 42);
             this.tbInYear.Name = "tbInYear";
@@ -258,7 +257,6 @@
             // 
             // tbInProtokoloNum
             // 
-            this.tbInProtokoloNum.Enabled = false;
             this.tbInProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbInProtokoloNum.Name = "tbInProtokoloNum";
@@ -416,7 +414,6 @@
             // 
             // tbOutYear
             // 
-            this.tbOutYear.Enabled = false;
             this.tbOutYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutYear.Location = new System.Drawing.Point(469, 42);
             this.tbOutYear.Name = "tbOutYear";
@@ -523,7 +520,6 @@
             // 
             // tbOutProtokoloNum
             // 
-            this.tbOutProtokoloNum.Enabled = false;
             this.tbOutProtokoloNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutProtokoloNum.Location = new System.Drawing.Point(264, 42);
             this.tbOutProtokoloNum.Name = "tbOutProtokoloNum";

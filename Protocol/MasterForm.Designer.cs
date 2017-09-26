@@ -40,14 +40,16 @@
             this.FolderUpdTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderDelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderToProtokTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -69,6 +71,7 @@
             // 
             this.FileTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InsertTSMenuItem,
+            this.SelectTSMenuItem,
             this.UpdateTSMenuItem,
             this.DeleteTSMenuItem});
             this.FileTSMenuItem.Name = "FileTSMenuItem";
@@ -80,7 +83,7 @@
             this.InsertTSMenuItem.Name = "InsertTSMenuItem";
             this.InsertTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.InsertTSMenuItem.Text = "Εισαγωγή";
-            this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertTSMenuItem_Click);
+            this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // UpdateTSMenuItem
             // 
@@ -143,6 +146,21 @@
             this.FolderToProtokTSMenuItem.Text = "Πρωτόκολλα ανά Φάκελο";
             this.FolderToProtokTSMenuItem.Click += new System.EventHandler(this.FolderToProtokTSMenuItem_Click);
             // 
+            // HelpTSMenuItem
+            // 
+            this.HelpTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UserInfoTSMenuItem});
+            this.HelpTSMenuItem.Name = "HelpTSMenuItem";
+            this.HelpTSMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.HelpTSMenuItem.Text = "Βοήθεια";
+            // 
+            // UserInfoTSMenuItem
+            // 
+            this.UserInfoTSMenuItem.Name = "UserInfoTSMenuItem";
+            this.UserInfoTSMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.UserInfoTSMenuItem.Text = "Στοιχεία Χρήστη";
+            this.UserInfoTSMenuItem.Click += new System.EventHandler(this.UserInfoTSMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -164,6 +182,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.InsertToolStripBtn,
+            this.SelectToolStripBtn,
             this.UpdateToolStripBtn,
             this.DeleteToolStripBtn});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -179,7 +198,7 @@
             this.InsertToolStripBtn.Name = "InsertToolStripBtn";
             this.InsertToolStripBtn.Size = new System.Drawing.Size(80, 22);
             this.InsertToolStripBtn.Text = "Εισαγωγή";
-            this.InsertToolStripBtn.Click += new System.EventHandler(this.InsertToolStripBtn_Click);
+            this.InsertToolStripBtn.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // UpdateToolStripBtn
             // 
@@ -200,20 +219,21 @@
             this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
-            // HelpTSMenuItem
+            // SelectTSMenuItem
             // 
-            this.HelpTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UserInfoTSMenuItem});
-            this.HelpTSMenuItem.Name = "HelpTSMenuItem";
-            this.HelpTSMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.HelpTSMenuItem.Text = "Βοήθεια";
+            this.SelectTSMenuItem.Name = "SelectTSMenuItem";
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SelectTSMenuItem.Text = "Εμφάνιση";
+            this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
             // 
-            // UserInfoTSMenuItem
+            // SelectToolStripBtn
             // 
-            this.UserInfoTSMenuItem.Name = "UserInfoTSMenuItem";
-            this.UserInfoTSMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.UserInfoTSMenuItem.Text = "Στοιχεία Χρήστη";
-            this.UserInfoTSMenuItem.Click += new System.EventHandler(this.UserInfoTSMenuItem_Click);
+            this.SelectToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("SelectToolStripBtn.Image")));
+            this.SelectToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SelectToolStripBtn.Name = "SelectToolStripBtn";
+            this.SelectToolStripBtn.Size = new System.Drawing.Size(79, 22);
+            this.SelectToolStripBtn.Text = "Εμφάνιση";
+            this.SelectToolStripBtn.Click += new System.EventHandler(this.SelectToolStripBtn_Click);
             // 
             // MasterForm
             // 
@@ -259,6 +279,8 @@
         private System.Windows.Forms.ToolStripMenuItem FolderToProtokTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UserInfoTSMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SelectTSMenuItem;
+        private System.Windows.Forms.ToolStripButton SelectToolStripBtn;
     }
 }
 

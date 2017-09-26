@@ -243,7 +243,7 @@ namespace Protocol
             {
                 string lvPath = "";
 
-                if (ctrl.Parent.Text == "Μεταβολή") //update mode
+                if (ctrl.Parent.Text == "Μεταβολή" || ctrl.Parent.Text == "Εμφάνιση") //update mode
                 {
                     string ext = "";
                     string tempFile = Path.Combine(Application.StartupPath + "\\Temp\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));

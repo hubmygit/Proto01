@@ -65,6 +65,12 @@
     <Compile Include="FolderProtoksForm.Designer.cs">
       <DependentUpon>FolderProtoksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtokoloSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtokoloSelectForm.Designer.cs">
+      <DependentUpon>ProtokoloSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProtokPerFolderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FolderProtoksForm.resx">
       <DependentUpon>FolderProtoksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtokoloSelectForm.resx">
+      <DependentUpon>ProtokoloSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokPerFolderForm.resx">
       <DependentUpon>ProtokPerFolderForm.cs</DependentUpon>
