@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeletionReasonForm));
             this.lblDelReason = new System.Windows.Forms.Label();
             this.txtDelReason = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDelReason);
             this.Controls.Add(this.lblDelReason);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(750, 300);
             this.MinimumSize = new System.Drawing.Size(750, 300);
             this.Name = "DeletionReasonForm";

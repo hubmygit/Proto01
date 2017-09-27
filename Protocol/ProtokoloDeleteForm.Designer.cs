@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtokoloDeleteForm));
             this.btnFilters = new System.Windows.Forms.Button();
             this.lvRep = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -164,6 +165,7 @@
             this.ClientSize = new System.Drawing.Size(1272, 534);
             this.Controls.Add(this.lvRep);
             this.Controls.Add(this.btnFilters);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1288, 572);
             this.Name = "ProtokoloDeleteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

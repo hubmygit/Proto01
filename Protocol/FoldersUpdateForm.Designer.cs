@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoldersUpdateForm));
             this.btnFilters = new System.Windows.Forms.Button();
             this.lvRep = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,6 +73,11 @@
             this.lvRep.View = System.Windows.Forms.View.Details;
             this.lvRep.DoubleClick += new System.EventHandler(this.lvRep_DoubleClick);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Αρ.Φακέλου Αρχείου";
+            this.columnHeader1.Width = 180;
+            // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Εταιρία";
@@ -81,11 +87,6 @@
             // 
             this.columnHeader3.Text = "Κατηγ. Πρωτοκόλλου";
             this.columnHeader3.Width = 160;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Αρ.Φακέλου Αρχείου";
-            this.columnHeader1.Width = 180;
             // 
             // columnHeader4
             // 
@@ -109,6 +110,7 @@
             this.ClientSize = new System.Drawing.Size(1000, 474);
             this.Controls.Add(this.lvRep);
             this.Controls.Add(this.btnFilters);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1016, 512);
             this.Name = "FoldersUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

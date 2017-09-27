@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutUserInfoForm));
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblWinUser = new System.Windows.Forms.Label();
@@ -203,6 +204,7 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.lblWinUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(680, 330);
             this.MinimumSize = new System.Drawing.Size(680, 330);
             this.Name = "AboutUserInfoForm";

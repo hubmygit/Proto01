@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtokoloInsertForm));
             this.lblProtokoloKind = new System.Windows.Forms.Label();
             this.cbProtokoloKind = new System.Windows.Forms.ComboBox();
             this.lblCompany = new System.Windows.Forms.Label();
@@ -149,6 +150,7 @@
             this.Controls.Add(this.lblCompany);
             this.Controls.Add(this.cbProtokoloKind);
             this.Controls.Add(this.lblProtokoloKind);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(600, 710);
             this.MinimumSize = new System.Drawing.Size(600, 710);
             this.Name = "ProtokoloInsertForm";
