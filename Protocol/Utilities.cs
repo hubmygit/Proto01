@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 using System.DirectoryServices.AccountManagement;
+using System.Data;
 
 namespace Protocol
 {
@@ -154,12 +155,15 @@ namespace Protocol
             EmailAddress = "";
             FullName = "Unknown";
 
+            DB_AppUser_Id = 0;
+
             try
             {
                 WindowsUser = Environment.UserName;
                 EmailAddress = UserPrincipal.Current.EmailAddress;
                 FullName = UserPrincipal.Current.DisplayName;
-                //DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+
+                DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
 
                 //MachineName = Environment.MachineName;
                 //OsVersion = Environment.OSVersion.VersionString;
@@ -178,11 +182,73 @@ namespace Protocol
         public static string OsVersion { get { return Environment.OSVersion.VersionString; } set { } }
         public static string DomainName { get { return Environment.UserDomainName; } set { } }
 
-        public static int DB_AppUser_Id
+        public static int DB_AppUser_Id { get; set; }
+        //public static int DB_AppUser_Id
+        //{
+        //    get { return Get_DB_AppUser_Id(Environment.UserName); }
+        //    set { }
+        //}
+
+        public static void UserLogIn()
         {
-            get { return Get_DB_AppUser_Id(Environment.UserName); }
-            set { }
+            //select
+            if (DB_AppUser_Id != 0) //found
+            {
+                //update record with last infos
+                Update_AppUser();
+            }
+            else //not found
+            {
+                //insert new record infos
+                Insert_AppUser();
+
+                //select new id
+                DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
+            }
         }
+
+        private static void Update_AppUser()
+        {
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string UpdSt = "UPDATE [dbo].[AppUsers] SET FullName = @fullName, EmailAddress = @emailAddr, InsDate = getdate() WHERE Id = @id ";
+
+            try
+            {
+                sqlConn.Open();
+                SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
+                cmd.Parameters.AddWithValue("@id", DB_AppUser_Id);
+                cmd.Parameters.AddWithValue("@fullName", FullName);
+                cmd.Parameters.AddWithValue("@emailAddr", EmailAddress);
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+        }
+
+        private static void Insert_AppUser()
+        {
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string InsSt = "INSERT INTO [dbo].[AppUsers] (WinUser, FullName, EmailAddress, InsDate) VALUES (@winUser, @fullName, @emailAddr, getdate()) ";
+
+            try
+            {
+                sqlConn.Open();
+                SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
+                cmd.Parameters.AddWithValue("@winUser", WindowsUser);
+                cmd.Parameters.AddWithValue("@fullName", FullName);
+                cmd.Parameters.AddWithValue("@emailAddr", EmailAddress);
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+        }
+
         private static int Get_DB_AppUser_Id(string UserName)
         {
             int ret = 0;

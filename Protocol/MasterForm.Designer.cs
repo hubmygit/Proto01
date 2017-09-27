@@ -38,19 +38,19 @@
             this.ParamsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FoldersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderInsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FolderSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderUpdTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderDelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderToProtokTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsStatusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.FolderSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -82,21 +82,21 @@
             // InsertTSMenuItem
             // 
             this.InsertTSMenuItem.Name = "InsertTSMenuItem";
-            this.InsertTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.InsertTSMenuItem.Size = new System.Drawing.Size(130, 22);
             this.InsertTSMenuItem.Text = "Εισαγωγή";
             this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // SelectTSMenuItem
             // 
             this.SelectTSMenuItem.Name = "SelectTSMenuItem";
-            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(130, 22);
             this.SelectTSMenuItem.Text = "Εμφάνιση";
             this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
             // 
             // UpdateTSMenuItem
             // 
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
-            this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UpdateTSMenuItem.Size = new System.Drawing.Size(130, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
             this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
@@ -104,7 +104,7 @@
             // DeleteTSMenuItem
             // 
             this.DeleteTSMenuItem.Name = "DeleteTSMenuItem";
-            this.DeleteTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.DeleteTSMenuItem.Size = new System.Drawing.Size(130, 22);
             this.DeleteTSMenuItem.Text = "Διαγραφή";
             this.DeleteTSMenuItem.Click += new System.EventHandler(this.DeleteTSMenuItem_Click);
             // 
@@ -125,7 +125,7 @@
             this.FolderDelTSMenuItem,
             this.FolderToProtokTSMenuItem});
             this.FoldersTSMenuItem.Name = "FoldersTSMenuItem";
-            this.FoldersTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.FoldersTSMenuItem.Size = new System.Drawing.Size(117, 22);
             this.FoldersTSMenuItem.Text = "Φάκελοι";
             // 
             // FolderInsTSMenuItem
@@ -134,6 +134,13 @@
             this.FolderInsTSMenuItem.Size = new System.Drawing.Size(212, 22);
             this.FolderInsTSMenuItem.Text = "Εισαγωγή";
             this.FolderInsTSMenuItem.Click += new System.EventHandler(this.FolderInsTSMenuItem_Click);
+            // 
+            // FolderSelTSMenuItem
+            // 
+            this.FolderSelTSMenuItem.Name = "FolderSelTSMenuItem";
+            this.FolderSelTSMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.FolderSelTSMenuItem.Text = "Εμφάνιση";
+            this.FolderSelTSMenuItem.Click += new System.EventHandler(this.FolderSelTSMenuItem_Click);
             // 
             // FolderUpdTSMenuItem
             // 
@@ -174,19 +181,19 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.tsStatusLblUser});
             this.statusStrip1.Location = new System.Drawing.Point(0, 240);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // tsStatusLblUser
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(98, 17);
-            this.toolStripStatusLabel1.Text = "© MOH IT - 2017";
+            this.tsStatusLblUser.Name = "tsStatusLblUser";
+            this.tsStatusLblUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsStatusLblUser.Size = new System.Drawing.Size(87, 17);
+            this.tsStatusLblUser.Text = "User: Unknown";
             // 
             // toolStrip1
             // 
@@ -239,13 +246,6 @@
             this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
-            // FolderSelTSMenuItem
-            // 
-            this.FolderSelTSMenuItem.Name = "FolderSelTSMenuItem";
-            this.FolderSelTSMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.FolderSelTSMenuItem.Text = "Εμφάνιση";
-            this.FolderSelTSMenuItem.Click += new System.EventHandler(this.FolderSelTSMenuItem_Click);
-            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,7 +276,7 @@
         private System.Windows.Forms.ToolStripMenuItem InsertTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateTSMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tsStatusLblUser;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton InsertToolStripBtn;
         private System.Windows.Forms.ToolStripButton UpdateToolStripBtn;
