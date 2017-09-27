@@ -51,6 +51,7 @@
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -82,21 +83,21 @@
             // InsertTSMenuItem
             // 
             this.InsertTSMenuItem.Name = "InsertTSMenuItem";
-            this.InsertTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.InsertTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.InsertTSMenuItem.Text = "Εισαγωγή";
             this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // SelectTSMenuItem
             // 
             this.SelectTSMenuItem.Name = "SelectTSMenuItem";
-            this.SelectTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SelectTSMenuItem.Text = "Εμφάνιση";
             this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
             // 
             // UpdateTSMenuItem
             // 
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
-            this.UpdateTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
             this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
@@ -104,7 +105,7 @@
             // DeleteTSMenuItem
             // 
             this.DeleteTSMenuItem.Name = "DeleteTSMenuItem";
-            this.DeleteTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.DeleteTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DeleteTSMenuItem.Text = "Διαγραφή";
             this.DeleteTSMenuItem.Click += new System.EventHandler(this.DeleteTSMenuItem_Click);
             // 
@@ -125,7 +126,7 @@
             this.FolderDelTSMenuItem,
             this.FolderToProtokTSMenuItem});
             this.FoldersTSMenuItem.Name = "FoldersTSMenuItem";
-            this.FoldersTSMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.FoldersTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.FoldersTSMenuItem.Text = "Φάκελοι";
             // 
             // FolderInsTSMenuItem
@@ -166,7 +167,8 @@
             // HelpTSMenuItem
             // 
             this.HelpTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UserInfoTSMenuItem});
+            this.UserInfoTSMenuItem,
+            this.VersionTSMenuItem});
             this.HelpTSMenuItem.Name = "HelpTSMenuItem";
             this.HelpTSMenuItem.Size = new System.Drawing.Size(62, 20);
             this.HelpTSMenuItem.Text = "Βοήθεια";
@@ -246,6 +248,13 @@
             this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
+            // VersionTSMenuItem
+            // 
+            this.VersionTSMenuItem.Name = "VersionTSMenuItem";
+            this.VersionTSMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.VersionTSMenuItem.Text = "Έκδοση";
+            this.VersionTSMenuItem.Click += new System.EventHandler(this.VersionTSMenuItem_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +302,7 @@
         private System.Windows.Forms.ToolStripMenuItem SelectTSMenuItem;
         private System.Windows.Forms.ToolStripButton SelectToolStripBtn;
         private System.Windows.Forms.ToolStripMenuItem FolderSelTSMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem VersionTSMenuItem;
     }
 }
 

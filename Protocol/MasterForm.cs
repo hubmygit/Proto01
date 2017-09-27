@@ -140,6 +140,12 @@ namespace Protocol
             FoldersSelectForm FoldersSelForm = new FoldersSelectForm();
             FoldersSelForm.ShowDialog();
         }
+
+        private void VersionTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtocolAboutBox pAboutBox = new ProtocolAboutBox();
+            pAboutBox.ShowDialog();
+        }
     }
 
 }

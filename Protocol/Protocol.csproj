@@ -72,6 +72,12 @@
     <Compile Include="FoldersSelectForm.Designer.cs">
       <DependentUpon>FoldersSelectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtocolAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtocolAboutBox.Designer.cs">
+      <DependentUpon>ProtocolAboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProtokoloSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FoldersSelectForm.resx">
       <DependentUpon>FoldersSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtocolAboutBox.resx">
+      <DependentUpon>ProtocolAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokoloSelectForm.resx">
       <DependentUpon>ProtokoloSelectForm.cs</DependentUpon>
