@@ -149,6 +149,8 @@
             this.Controls.Add(this.lblCompany);
             this.Controls.Add(this.cbProtokoloKind);
             this.Controls.Add(this.lblProtokoloKind);
+            this.MaximumSize = new System.Drawing.Size(600, 710);
+            this.MinimumSize = new System.Drawing.Size(600, 710);
             this.Name = "ProtokoloInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Εισαγωγή";

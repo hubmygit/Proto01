@@ -166,6 +166,8 @@
             this.Controls.Add(this.lblDescr);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblId);
+            this.MaximumSize = new System.Drawing.Size(710, 300);
+            this.MinimumSize = new System.Drawing.Size(710, 300);
             this.Name = "FoldersInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Δημιουργία Νέου Φακέλου";

@@ -224,6 +224,7 @@
             // 
             this.tbInToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInToText.Location = new System.Drawing.Point(264, 354);
+            this.tbInToText.MaxLength = 255;
             this.tbInToText.Multiline = true;
             this.tbInToText.Name = "tbInToText";
             this.tbInToText.Size = new System.Drawing.Size(280, 50);
@@ -242,6 +243,7 @@
             // 
             this.tbInProeleusi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInProeleusi.Location = new System.Drawing.Point(264, 222);
+            this.tbInProeleusi.MaxLength = 150;
             this.tbInProeleusi.Multiline = true;
             this.tbInProeleusi.Name = "tbInProeleusi";
             this.tbInProeleusi.Size = new System.Drawing.Size(280, 50);
@@ -251,6 +253,7 @@
             // 
             this.tbInDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbInDocNum.Location = new System.Drawing.Point(264, 114);
+            this.tbInDocNum.MaxLength = 50;
             this.tbInDocNum.Name = "tbInDocNum";
             this.tbInDocNum.Size = new System.Drawing.Size(280, 23);
             this.tbInDocNum.TabIndex = 4;
@@ -505,6 +508,7 @@
             // 
             this.tbOutKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutKateuth.Location = new System.Drawing.Point(264, 186);
+            this.tbOutKateuth.MaxLength = 150;
             this.tbOutKateuth.Multiline = true;
             this.tbOutKateuth.Name = "tbOutKateuth";
             this.tbOutKateuth.Size = new System.Drawing.Size(280, 50);
@@ -514,6 +518,7 @@
             // 
             this.tbOutDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.tbOutDocNum.Location = new System.Drawing.Point(264, 114);
+            this.tbOutDocNum.MaxLength = 50;
             this.tbOutDocNum.Name = "tbOutDocNum";
             this.tbOutDocNum.Size = new System.Drawing.Size(280, 23);
             this.tbOutDocNum.TabIndex = 4;

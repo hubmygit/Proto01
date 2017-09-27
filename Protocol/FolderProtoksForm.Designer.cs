@@ -58,6 +58,9 @@
             // 
             // lvRep
             // 
+            this.lvRep.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRep.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -76,10 +79,10 @@
             this.lvRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvRep.FullRowSelect = true;
             this.lvRep.GridLines = true;
-            this.lvRep.Location = new System.Drawing.Point(12, 74);
+            this.lvRep.Location = new System.Drawing.Point(0, 74);
             this.lvRep.MultiSelect = false;
             this.lvRep.Name = "lvRep";
-            this.lvRep.Size = new System.Drawing.Size(1360, 459);
+            this.lvRep.Size = new System.Drawing.Size(1272, 460);
             this.lvRep.TabIndex = 4;
             this.lvRep.UseCompatibleStateImageBehavior = false;
             this.lvRep.View = System.Windows.Forms.View.Details;
@@ -88,16 +91,17 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "ΑΑ Πρωτοκόλλου";
-            this.columnHeader1.Width = 96;
+            this.columnHeader1.Width = 80;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Έτος";
+            this.columnHeader2.Width = 50;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Κατηγ. Πρωτοκόλλου";
-            this.columnHeader3.Width = 115;
+            this.columnHeader3.Text = "Κατ.Πρωτοκόλλου";
+            this.columnHeader3.Width = 98;
             // 
             // columnHeader4
             // 
@@ -110,8 +114,8 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Ημ/νία Λήψης/Αποστ.";
-            this.columnHeader6.Width = 122;
+            this.columnHeader6.Text = "Ημ.Λήψης/Αποστ.";
+            this.columnHeader6.Width = 118;
             // 
             // columnHeader7
             // 
@@ -121,7 +125,7 @@
             // columnHeader8
             // 
             this.columnHeader8.Text = "Προέλευση/Κατεύθυνση";
-            this.columnHeader8.Width = 136;
+            this.columnHeader8.Width = 138;
             // 
             // columnHeader9
             // 
@@ -130,7 +134,7 @@
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Παρ. για ενέργεια/Παρατηρήσεις";
+            this.columnHeader10.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
             this.columnHeader10.Width = 181;
             // 
             // columnHeader11
@@ -141,24 +145,26 @@
             // columnHeader12
             // 
             this.columnHeader12.Text = "Id";
-            this.columnHeader12.Width = 51;
+            this.columnHeader12.Width = 0;
             // 
             // columnHeader13
             // 
             this.columnHeader13.Text = "Attachments";
+            this.columnHeader13.Width = 58;
             // 
             // columnHeader14
             // 
             this.columnHeader14.Text = "Emails";
-            this.columnHeader14.Width = 55;
+            this.columnHeader14.Width = 54;
             // 
             // FolderProtoksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 545);
+            this.ClientSize = new System.Drawing.Size(1272, 534);
             this.Controls.Add(this.lvRep);
             this.Controls.Add(this.btnFilters);
+            this.MinimumSize = new System.Drawing.Size(1288, 572);
             this.Name = "FolderProtoksForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Πρωτόκολλα ανά Φάκελο";

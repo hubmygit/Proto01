@@ -188,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 293);
+            this.ClientSize = new System.Drawing.Size(664, 292);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.lblUserId);
             this.Controls.Add(this.txtOs);
@@ -203,6 +203,8 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.lblWinUser);
+            this.MaximumSize = new System.Drawing.Size(680, 330);
+            this.MinimumSize = new System.Drawing.Size(680, 330);
             this.Name = "AboutUserInfoForm";
             this.Text = "Στοιχεία Χρήστη";
             this.ResumeLayout(false);

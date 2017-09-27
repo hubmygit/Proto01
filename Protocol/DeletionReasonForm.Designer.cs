@@ -56,7 +56,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnSave.Location = new System.Drawing.Point(615, 73);
+            this.btnSave.Location = new System.Drawing.Point(612, 73);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 40);
             this.btnSave.TabIndex = 7;
@@ -68,10 +68,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 262);
+            this.ClientSize = new System.Drawing.Size(734, 262);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDelReason);
             this.Controls.Add(this.lblDelReason);
+            this.MaximumSize = new System.Drawing.Size(750, 300);
+            this.MinimumSize = new System.Drawing.Size(750, 300);
             this.Name = "DeletionReasonForm";
             this.Text = "Διαγραφή Πρωτοκόλλου";
             this.ResumeLayout(false);
