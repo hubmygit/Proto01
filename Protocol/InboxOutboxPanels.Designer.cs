@@ -31,13 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InboxOutboxPanels));
             this.panelInbox = new System.Windows.Forms.Panel();
             this.tbInYear = new System.Windows.Forms.TextBox();
-            this.btnInOpenFile = new System.Windows.Forms.Button();
-            this.btnInRemoveAll = new System.Windows.Forms.Button();
-            this.btnInRemoveFile = new System.Windows.Forms.Button();
-            this.btnInAddFiles = new System.Windows.Forms.Button();
             this.lvInAttachedFiles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnInNewFolders = new System.Windows.Forms.Button();
             this.cbInFolders = new System.Windows.Forms.ComboBox();
             this.dtpInDocDate = new System.Windows.Forms.DateTimePicker();
             this.dtpInGetDate = new System.Windows.Forms.DateTimePicker();
@@ -56,14 +51,10 @@
             this.lblInProtokolo = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
-            this.btnOutNewFolders = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblOutFolderId = new System.Windows.Forms.Label();
             this.cbOutFolders = new System.Windows.Forms.ComboBox();
             this.tbOutYear = new System.Windows.Forms.TextBox();
-            this.btnOutOpenFile = new System.Windows.Forms.Button();
-            this.btnOutRemoveAll = new System.Windows.Forms.Button();
-            this.btnOutRemoveFile = new System.Windows.Forms.Button();
-            this.btnOutAddFiles = new System.Windows.Forms.Button();
             this.lvOutAttachedFiles = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
@@ -77,6 +68,16 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokolo = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
+            this.btnOutNewFolders = new System.Windows.Forms.Button();
+            this.btnOutOpenFile = new System.Windows.Forms.Button();
+            this.btnOutRemoveAll = new System.Windows.Forms.Button();
+            this.btnOutRemoveFile = new System.Windows.Forms.Button();
+            this.btnOutAddFiles = new System.Windows.Forms.Button();
+            this.btnInOpenFile = new System.Windows.Forms.Button();
+            this.btnInRemoveAll = new System.Windows.Forms.Button();
+            this.btnInRemoveFile = new System.Windows.Forms.Button();
+            this.btnInAddFiles = new System.Windows.Forms.Button();
+            this.btnInNewFolders = new System.Windows.Forms.Button();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
@@ -121,46 +122,6 @@
             this.tbInYear.TabIndex = 2;
             this.tbInYear.Visible = false;
             // 
-            // btnInOpenFile
-            // 
-            this.btnInOpenFile.Location = new System.Drawing.Point(183, 459);
-            this.btnInOpenFile.Name = "btnInOpenFile";
-            this.btnInOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnInOpenFile.TabIndex = 23;
-            this.btnInOpenFile.Text = "Open File";
-            this.btnInOpenFile.UseVisualStyleBackColor = true;
-            this.btnInOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
-            // btnInRemoveAll
-            // 
-            this.btnInRemoveAll.Location = new System.Drawing.Point(183, 517);
-            this.btnInRemoveAll.Name = "btnInRemoveAll";
-            this.btnInRemoveAll.Size = new System.Drawing.Size(75, 23);
-            this.btnInRemoveAll.TabIndex = 25;
-            this.btnInRemoveAll.Text = "Remove All";
-            this.btnInRemoveAll.UseVisualStyleBackColor = true;
-            this.btnInRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
-            // 
-            // btnInRemoveFile
-            // 
-            this.btnInRemoveFile.Location = new System.Drawing.Point(183, 488);
-            this.btnInRemoveFile.Name = "btnInRemoveFile";
-            this.btnInRemoveFile.Size = new System.Drawing.Size(75, 23);
-            this.btnInRemoveFile.TabIndex = 24;
-            this.btnInRemoveFile.Text = "Remove File";
-            this.btnInRemoveFile.UseVisualStyleBackColor = true;
-            this.btnInRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
-            // 
-            // btnInAddFiles
-            // 
-            this.btnInAddFiles.Location = new System.Drawing.Point(183, 430);
-            this.btnInAddFiles.Name = "btnInAddFiles";
-            this.btnInAddFiles.Size = new System.Drawing.Size(75, 23);
-            this.btnInAddFiles.TabIndex = 22;
-            this.btnInAddFiles.Text = "Add File(s)";
-            this.btnInAddFiles.UseVisualStyleBackColor = true;
-            this.btnInAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
-            // 
             // lvInAttachedFiles
             // 
             this.lvInAttachedFiles.AllowDrop = true;
@@ -171,7 +132,7 @@
             this.lvInAttachedFiles.Location = new System.Drawing.Point(264, 420);
             this.lvInAttachedFiles.MultiSelect = false;
             this.lvInAttachedFiles.Name = "lvInAttachedFiles";
-            this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvInAttachedFiles.Size = new System.Drawing.Size(280, 130);
             this.lvInAttachedFiles.TabIndex = 10;
             this.lvInAttachedFiles.UseCompatibleStateImageBehavior = false;
             this.lvInAttachedFiles.View = System.Windows.Forms.View.Details;
@@ -183,24 +144,13 @@
             this.columnHeader1.Text = "Συνημμένα Αρχεία";
             this.columnHeader1.Width = 250;
             // 
-            // btnInNewFolders
-            // 
-            this.btnInNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnInNewFolders.Location = new System.Drawing.Point(519, 184);
-            this.btnInNewFolders.Name = "btnInNewFolders";
-            this.btnInNewFolders.Size = new System.Drawing.Size(25, 27);
-            this.btnInNewFolders.TabIndex = 21;
-            this.btnInNewFolders.Text = "*";
-            this.btnInNewFolders.UseVisualStyleBackColor = true;
-            this.btnInNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
-            // 
             // cbInFolders
             // 
             this.cbInFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbInFolders.FormattingEnabled = true;
             this.cbInFolders.Location = new System.Drawing.Point(264, 186);
             this.cbInFolders.Name = "cbInFolders";
-            this.cbInFolders.Size = new System.Drawing.Size(251, 24);
+            this.cbInFolders.Size = new System.Drawing.Size(245, 24);
             this.cbInFolders.TabIndex = 6;
             // 
             // dtpInDocDate
@@ -362,6 +312,7 @@
             // panelOutbox
             // 
             this.panelOutbox.Controls.Add(this.btnOutNewFolders);
+            this.panelOutbox.Controls.Add(this.button1);
             this.panelOutbox.Controls.Add(this.lblOutFolderId);
             this.panelOutbox.Controls.Add(this.cbOutFolders);
             this.panelOutbox.Controls.Add(this.tbOutYear);
@@ -386,16 +337,18 @@
             this.panelOutbox.Size = new System.Drawing.Size(560, 560);
             this.panelOutbox.TabIndex = 6;
             // 
-            // btnOutNewFolders
+            // button1
             // 
-            this.btnOutNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnOutNewFolders.Location = new System.Drawing.Point(521, 146);
-            this.btnOutNewFolders.Name = "btnOutNewFolders";
-            this.btnOutNewFolders.Size = new System.Drawing.Size(25, 27);
-            this.btnOutNewFolders.TabIndex = 21;
-            this.btnOutNewFolders.Text = "*";
-            this.btnOutNewFolders.UseVisualStyleBackColor = true;
-            this.btnOutNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-428, 454);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 28);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Open File";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // lblOutFolderId
             // 
@@ -413,7 +366,7 @@
             this.cbOutFolders.FormattingEnabled = true;
             this.cbOutFolders.Location = new System.Drawing.Point(264, 148);
             this.cbOutFolders.Name = "cbOutFolders";
-            this.cbOutFolders.Size = new System.Drawing.Size(251, 24);
+            this.cbOutFolders.Size = new System.Drawing.Size(245, 24);
             this.cbOutFolders.TabIndex = 5;
             // 
             // tbOutYear
@@ -425,46 +378,6 @@
             this.tbOutYear.TabIndex = 2;
             this.tbOutYear.Visible = false;
             // 
-            // btnOutOpenFile
-            // 
-            this.btnOutOpenFile.Location = new System.Drawing.Point(183, 357);
-            this.btnOutOpenFile.Name = "btnOutOpenFile";
-            this.btnOutOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOutOpenFile.TabIndex = 23;
-            this.btnOutOpenFile.Text = "Open File";
-            this.btnOutOpenFile.UseVisualStyleBackColor = true;
-            this.btnOutOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
-            // 
-            // btnOutRemoveAll
-            // 
-            this.btnOutRemoveAll.Location = new System.Drawing.Point(183, 415);
-            this.btnOutRemoveAll.Name = "btnOutRemoveAll";
-            this.btnOutRemoveAll.Size = new System.Drawing.Size(75, 23);
-            this.btnOutRemoveAll.TabIndex = 25;
-            this.btnOutRemoveAll.Text = "Remove All";
-            this.btnOutRemoveAll.UseVisualStyleBackColor = true;
-            this.btnOutRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
-            // 
-            // btnOutRemoveFile
-            // 
-            this.btnOutRemoveFile.Location = new System.Drawing.Point(183, 386);
-            this.btnOutRemoveFile.Name = "btnOutRemoveFile";
-            this.btnOutRemoveFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOutRemoveFile.TabIndex = 24;
-            this.btnOutRemoveFile.Text = "Remove File";
-            this.btnOutRemoveFile.UseVisualStyleBackColor = true;
-            this.btnOutRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
-            // 
-            // btnOutAddFiles
-            // 
-            this.btnOutAddFiles.Location = new System.Drawing.Point(183, 328);
-            this.btnOutAddFiles.Name = "btnOutAddFiles";
-            this.btnOutAddFiles.Size = new System.Drawing.Size(75, 23);
-            this.btnOutAddFiles.TabIndex = 22;
-            this.btnOutAddFiles.Text = "Add File(s)";
-            this.btnOutAddFiles.UseVisualStyleBackColor = true;
-            this.btnOutAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
-            // 
             // lvOutAttachedFiles
             // 
             this.lvOutAttachedFiles.AllowDrop = true;
@@ -475,7 +388,7 @@
             this.lvOutAttachedFiles.Location = new System.Drawing.Point(264, 318);
             this.lvOutAttachedFiles.MultiSelect = false;
             this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
-            this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 120);
+            this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 130);
             this.lvOutAttachedFiles.TabIndex = 8;
             this.lvOutAttachedFiles.UseCompatibleStateImageBehavior = false;
             this.lvOutAttachedFiles.View = System.Windows.Forms.View.Details;
@@ -594,6 +507,142 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
+            // btnOutNewFolders
+            // 
+            this.btnOutNewFolders.BackgroundImage = global::Protocol.Properties.Resources.NewSolutionFolder_32x;
+            this.btnOutNewFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOutNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOutNewFolders.Location = new System.Drawing.Point(512, 143);
+            this.btnOutNewFolders.Name = "btnOutNewFolders";
+            this.btnOutNewFolders.Size = new System.Drawing.Size(32, 32);
+            this.btnOutNewFolders.TabIndex = 21;
+            this.btnOutNewFolders.UseVisualStyleBackColor = true;
+            this.btnOutNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            // 
+            // btnOutOpenFile
+            // 
+            this.btnOutOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOutOpenFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutOpenFile.Image")));
+            this.btnOutOpenFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutOpenFile.Location = new System.Drawing.Point(138, 352);
+            this.btnOutOpenFile.Name = "btnOutOpenFile";
+            this.btnOutOpenFile.Size = new System.Drawing.Size(120, 28);
+            this.btnOutOpenFile.TabIndex = 23;
+            this.btnOutOpenFile.Text = "Open File";
+            this.btnOutOpenFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOutOpenFile.UseVisualStyleBackColor = true;
+            this.btnOutOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnOutRemoveAll
+            // 
+            this.btnOutRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOutRemoveAll.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveAll.Image")));
+            this.btnOutRemoveAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutRemoveAll.Location = new System.Drawing.Point(138, 420);
+            this.btnOutRemoveAll.Name = "btnOutRemoveAll";
+            this.btnOutRemoveAll.Size = new System.Drawing.Size(120, 28);
+            this.btnOutRemoveAll.TabIndex = 25;
+            this.btnOutRemoveAll.Text = "Remove All";
+            this.btnOutRemoveAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOutRemoveAll.UseVisualStyleBackColor = true;
+            this.btnOutRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnOutRemoveFile
+            // 
+            this.btnOutRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOutRemoveFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveFile.Image")));
+            this.btnOutRemoveFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutRemoveFile.Location = new System.Drawing.Point(138, 386);
+            this.btnOutRemoveFile.Name = "btnOutRemoveFile";
+            this.btnOutRemoveFile.Size = new System.Drawing.Size(120, 28);
+            this.btnOutRemoveFile.TabIndex = 24;
+            this.btnOutRemoveFile.Text = "Remove File";
+            this.btnOutRemoveFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOutRemoveFile.UseVisualStyleBackColor = true;
+            this.btnOutRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            // 
+            // btnOutAddFiles
+            // 
+            this.btnOutAddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnOutAddFiles.Image = global::Protocol.Properties.Resources.AddAttachment_16x;
+            this.btnOutAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOutAddFiles.Location = new System.Drawing.Point(138, 318);
+            this.btnOutAddFiles.Name = "btnOutAddFiles";
+            this.btnOutAddFiles.Size = new System.Drawing.Size(120, 28);
+            this.btnOutAddFiles.TabIndex = 22;
+            this.btnOutAddFiles.Text = "Add File(s)";
+            this.btnOutAddFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOutAddFiles.UseVisualStyleBackColor = true;
+            this.btnOutAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // btnInOpenFile
+            // 
+            this.btnInOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInOpenFile.Image = ((System.Drawing.Image)(resources.GetObject("btnInOpenFile.Image")));
+            this.btnInOpenFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInOpenFile.Location = new System.Drawing.Point(136, 454);
+            this.btnInOpenFile.Name = "btnInOpenFile";
+            this.btnInOpenFile.Size = new System.Drawing.Size(120, 28);
+            this.btnInOpenFile.TabIndex = 23;
+            this.btnInOpenFile.Text = "Open File";
+            this.btnInOpenFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInOpenFile.UseVisualStyleBackColor = true;
+            this.btnInOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // btnInRemoveAll
+            // 
+            this.btnInRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInRemoveAll.Image = ((System.Drawing.Image)(resources.GetObject("btnInRemoveAll.Image")));
+            this.btnInRemoveAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInRemoveAll.Location = new System.Drawing.Point(136, 522);
+            this.btnInRemoveAll.Name = "btnInRemoveAll";
+            this.btnInRemoveAll.Size = new System.Drawing.Size(120, 28);
+            this.btnInRemoveAll.TabIndex = 25;
+            this.btnInRemoveAll.Text = "Remove All";
+            this.btnInRemoveAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInRemoveAll.UseVisualStyleBackColor = true;
+            this.btnInRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
+            // 
+            // btnInRemoveFile
+            // 
+            this.btnInRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInRemoveFile.Image = ((System.Drawing.Image)(resources.GetObject("btnInRemoveFile.Image")));
+            this.btnInRemoveFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInRemoveFile.Location = new System.Drawing.Point(136, 488);
+            this.btnInRemoveFile.Name = "btnInRemoveFile";
+            this.btnInRemoveFile.Size = new System.Drawing.Size(120, 28);
+            this.btnInRemoveFile.TabIndex = 24;
+            this.btnInRemoveFile.Text = "Remove File";
+            this.btnInRemoveFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInRemoveFile.UseVisualStyleBackColor = true;
+            this.btnInRemoveFile.Click += new System.EventHandler(this.btnRemoveFile_Click);
+            // 
+            // btnInAddFiles
+            // 
+            this.btnInAddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInAddFiles.Image = global::Protocol.Properties.Resources.AddAttachment_16x;
+            this.btnInAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInAddFiles.Location = new System.Drawing.Point(138, 420);
+            this.btnInAddFiles.Name = "btnInAddFiles";
+            this.btnInAddFiles.Size = new System.Drawing.Size(120, 28);
+            this.btnInAddFiles.TabIndex = 22;
+            this.btnInAddFiles.Text = "Add File(s)";
+            this.btnInAddFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInAddFiles.UseVisualStyleBackColor = true;
+            this.btnInAddFiles.Click += new System.EventHandler(this.btnAddFiles_Click);
+            // 
+            // btnInNewFolders
+            // 
+            this.btnInNewFolders.BackgroundImage = global::Protocol.Properties.Resources.NewSolutionFolder_32x;
+            this.btnInNewFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInNewFolders.Location = new System.Drawing.Point(512, 181);
+            this.btnInNewFolders.Name = "btnInNewFolders";
+            this.btnInNewFolders.Size = new System.Drawing.Size(32, 32);
+            this.btnInNewFolders.TabIndex = 21;
+            this.btnInNewFolders.UseVisualStyleBackColor = true;
+            this.btnInNewFolders.Click += new System.EventHandler(this.btnNewFolders_Click);
+            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -662,5 +711,6 @@
         private System.Windows.Forms.Label lblOutFolderId;
         public System.Windows.Forms.ComboBox cbOutFolders;
         public System.Windows.Forms.Button btnOutNewFolders;
+        private System.Windows.Forms.Button button1;
     }
 }

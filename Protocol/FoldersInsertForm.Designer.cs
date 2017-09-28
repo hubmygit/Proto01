@@ -35,11 +35,13 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDescr = new System.Windows.Forms.TextBox();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.lblCompany = new System.Windows.Forms.Label();
             this.lblProced = new System.Windows.Forms.Label();
             this.cbCompany = new System.Windows.Forms.ComboBox();
             this.cbProced = new System.Windows.Forms.ComboBox();
+            this.pbFolder = new System.Windows.Forms.PictureBox();
+            this.btnInsert = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFolder)).BeginInit();
             this.SuspendLayout();
             // 
             // lblId
@@ -100,17 +102,6 @@
             this.txtDescr.Size = new System.Drawing.Size(280, 50);
             this.txtDescr.TabIndex = 5;
             // 
-            // btnInsert
-            // 
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnInsert.Location = new System.Drawing.Point(547, 48);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(100, 40);
-            this.btnInsert.TabIndex = 6;
-            this.btnInsert.Text = "Καταχώρηση";
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
@@ -151,11 +142,36 @@
             this.cbProced.TabIndex = 23;
             this.cbProced.SelectedIndexChanged += new System.EventHandler(this.cbProced_SelectedIndexChanged);
             // 
+            // pbFolder
+            // 
+            this.pbFolder.Image = global::Protocol.Properties.Resources.FolderOpen_32x;
+            this.pbFolder.Location = new System.Drawing.Point(585, 168);
+            this.pbFolder.Name = "pbFolder";
+            this.pbFolder.Size = new System.Drawing.Size(32, 32);
+            this.pbFolder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbFolder.TabIndex = 24;
+            this.pbFolder.TabStop = false;
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnInsert.Image = global::Protocol.Properties.Resources.Save_32x;
+            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInsert.Location = new System.Drawing.Point(532, 48);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(135, 40);
+            this.btnInsert.TabIndex = 6;
+            this.btnInsert.Text = "Καταχώρηση";
+            this.btnInsert.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // FoldersInsertForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 262);
+            this.Controls.Add(this.pbFolder);
             this.Controls.Add(this.cbProced);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.lblProced);
@@ -173,6 +189,7 @@
             this.Name = "FoldersInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Δημιουργία Νέου Φακέλου";
+            ((System.ComponentModel.ISupportInitialize)(this.pbFolder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +208,6 @@
         public System.Windows.Forms.ComboBox cbCompany;
         public System.Windows.Forms.ComboBox cbProced;
         public System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.PictureBox pbFolder;
     }
 }

@@ -43,13 +43,15 @@
             this.lblOs = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.lblUserId = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblEmail.Location = new System.Drawing.Point(97, 129);
+            this.lblEmail.Location = new System.Drawing.Point(115, 129);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(56, 20);
             this.lblEmail.TabIndex = 8;
@@ -59,7 +61,7 @@
             // 
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblFullName.Location = new System.Drawing.Point(65, 97);
+            this.lblFullName.Location = new System.Drawing.Point(83, 97);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(88, 20);
             this.lblFullName.TabIndex = 7;
@@ -69,7 +71,7 @@
             // 
             this.lblWinUser.AutoSize = true;
             this.lblWinUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblWinUser.Location = new System.Drawing.Point(71, 65);
+            this.lblWinUser.Location = new System.Drawing.Point(89, 65);
             this.lblWinUser.Name = "lblWinUser";
             this.lblWinUser.Size = new System.Drawing.Size(82, 20);
             this.lblWinUser.TabIndex = 6;
@@ -79,7 +81,7 @@
             // 
             this.txtWinUser.BackColor = System.Drawing.Color.White;
             this.txtWinUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtWinUser.Location = new System.Drawing.Point(195, 62);
+            this.txtWinUser.Location = new System.Drawing.Point(213, 62);
             this.txtWinUser.Name = "txtWinUser";
             this.txtWinUser.ReadOnly = true;
             this.txtWinUser.Size = new System.Drawing.Size(403, 26);
@@ -89,7 +91,7 @@
             // 
             this.txtFullName.BackColor = System.Drawing.Color.White;
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtFullName.Location = new System.Drawing.Point(195, 94);
+            this.txtFullName.Location = new System.Drawing.Point(213, 94);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.ReadOnly = true;
             this.txtFullName.Size = new System.Drawing.Size(403, 26);
@@ -99,7 +101,7 @@
             // 
             this.txtEmail.BackColor = System.Drawing.Color.White;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtEmail.Location = new System.Drawing.Point(195, 126);
+            this.txtEmail.Location = new System.Drawing.Point(213, 126);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(403, 26);
@@ -109,7 +111,7 @@
             // 
             this.txtMachine.BackColor = System.Drawing.Color.White;
             this.txtMachine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtMachine.Location = new System.Drawing.Point(195, 158);
+            this.txtMachine.Location = new System.Drawing.Point(213, 158);
             this.txtMachine.Name = "txtMachine";
             this.txtMachine.ReadOnly = true;
             this.txtMachine.Size = new System.Drawing.Size(403, 26);
@@ -119,7 +121,7 @@
             // 
             this.lblMachine.AutoSize = true;
             this.lblMachine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblMachine.Location = new System.Drawing.Point(30, 161);
+            this.lblMachine.Location = new System.Drawing.Point(48, 161);
             this.lblMachine.Name = "lblMachine";
             this.lblMachine.Size = new System.Drawing.Size(123, 20);
             this.lblMachine.TabIndex = 12;
@@ -129,7 +131,7 @@
             // 
             this.txtDomain.BackColor = System.Drawing.Color.White;
             this.txtDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtDomain.Location = new System.Drawing.Point(195, 190);
+            this.txtDomain.Location = new System.Drawing.Point(213, 190);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.ReadOnly = true;
             this.txtDomain.Size = new System.Drawing.Size(403, 26);
@@ -139,7 +141,7 @@
             // 
             this.lblDomain.AutoSize = true;
             this.lblDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblDomain.Location = new System.Drawing.Point(35, 193);
+            this.lblDomain.Location = new System.Drawing.Point(53, 193);
             this.lblDomain.Name = "lblDomain";
             this.lblDomain.Size = new System.Drawing.Size(118, 20);
             this.lblDomain.TabIndex = 14;
@@ -149,7 +151,7 @@
             // 
             this.txtOs.BackColor = System.Drawing.Color.White;
             this.txtOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtOs.Location = new System.Drawing.Point(195, 222);
+            this.txtOs.Location = new System.Drawing.Point(213, 222);
             this.txtOs.Name = "txtOs";
             this.txtOs.ReadOnly = true;
             this.txtOs.Size = new System.Drawing.Size(403, 26);
@@ -159,7 +161,7 @@
             // 
             this.lblOs.AutoSize = true;
             this.lblOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblOs.Location = new System.Drawing.Point(55, 225);
+            this.lblOs.Location = new System.Drawing.Point(73, 225);
             this.lblOs.Name = "lblOs";
             this.lblOs.Size = new System.Drawing.Size(98, 20);
             this.lblOs.TabIndex = 16;
@@ -169,7 +171,7 @@
             // 
             this.txtUserId.BackColor = System.Drawing.Color.White;
             this.txtUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtUserId.Location = new System.Drawing.Point(195, 30);
+            this.txtUserId.Location = new System.Drawing.Point(213, 30);
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(403, 26);
@@ -179,17 +181,28 @@
             // 
             this.lblUserId.AutoSize = true;
             this.lblUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblUserId.Location = new System.Drawing.Point(81, 33);
+            this.lblUserId.Location = new System.Drawing.Point(99, 33);
             this.lblUserId.Name = "lblUserId";
             this.lblUserId.Size = new System.Drawing.Size(72, 20);
             this.lblUserId.TabIndex = 18;
             this.lblUserId.Text = "User ID: ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Protocol.Properties.Resources.User_32x;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // AboutUserInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 292);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.lblUserId);
             this.Controls.Add(this.txtOs);
@@ -209,6 +222,7 @@
             this.MinimumSize = new System.Drawing.Size(680, 330);
             this.Name = "AboutUserInfoForm";
             this.Text = "Στοιχεία Χρήστη";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +244,6 @@
         private System.Windows.Forms.Label lblOs;
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label lblUserId;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -46,12 +46,12 @@
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsStatusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.tsStatusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -197,13 +197,6 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tsStatusLblUser
-            // 
-            this.tsStatusLblUser.Name = "tsStatusLblUser";
-            this.tsStatusLblUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsStatusLblUser.Size = new System.Drawing.Size(87, 17);
-            this.tsStatusLblUser.Text = "User: Unknown";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -219,7 +212,7 @@
             // 
             // InsertToolStripBtn
             // 
-            this.InsertToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("InsertToolStripBtn.Image")));
+            this.InsertToolStripBtn.Image = global::Protocol.Properties.Resources.AccountGroup_16x;
             this.InsertToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.InsertToolStripBtn.Name = "InsertToolStripBtn";
             this.InsertToolStripBtn.Size = new System.Drawing.Size(80, 22);
@@ -228,7 +221,7 @@
             // 
             // SelectToolStripBtn
             // 
-            this.SelectToolStripBtn.Image = ((System.Drawing.Image)(resources.GetObject("SelectToolStripBtn.Image")));
+            this.SelectToolStripBtn.Image = global::Protocol.Properties.Resources.FindResults_16x;
             this.SelectToolStripBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SelectToolStripBtn.Name = "SelectToolStripBtn";
             this.SelectToolStripBtn.Size = new System.Drawing.Size(79, 22);
@@ -253,7 +246,16 @@
             this.DeleteToolStripBtn.Size = new System.Drawing.Size(81, 22);
             this.DeleteToolStripBtn.Text = "Διαγραφή";
             this.DeleteToolStripBtn.ToolTipText = "Διαγραφή";
+            this.DeleteToolStripBtn.Visible = false;
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
+            // 
+            // tsStatusLblUser
+            // 
+            this.tsStatusLblUser.Image = global::Protocol.Properties.Resources.User_16x;
+            this.tsStatusLblUser.Name = "tsStatusLblUser";
+            this.tsStatusLblUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsStatusLblUser.Size = new System.Drawing.Size(103, 16);
+            this.tsStatusLblUser.Text = "User: Unknown";
             // 
             // MasterForm
             // 

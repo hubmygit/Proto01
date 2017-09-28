@@ -233,6 +233,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ImgProtocol.ico" />
+    <None Include="Resources\FindResults_16x.png" />
+    <None Include="Resources\AccountGroup_16x.png" />
+    <None Include="Resources\User_16x.png" />
+    <None Include="Resources\User_7x_16x.png" />
+    <None Include="Resources\AccountGroup_64x.png" />
+    <None Include="Resources\AccountGroup_256x.png" />
+    <None Include="Resources\User_32x.png" />
+    <None Include="Resources\AccountGroup_32x.png" />
+    <None Include="Resources\FolderOpen_32x.png" />
+    <None Include="Resources\Cancel_32x.png" />
+    <None Include="Resources\Save_32x.png" />
+    <None Include="Resources\Outlook2013Logo_32xMD.png" />
+    <None Include="Resources\OpenAttachment_16x.png" />
+    <None Include="Resources\DeleteAttachment_16x.png" />
+    <None Include="Resources\AddAttachment_16x.png" />
+    <None Include="Resources\NewSolutionFolder_32x.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
