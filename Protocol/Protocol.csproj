@@ -165,6 +165,7 @@
     <Compile Include="ProtokoloUpdateForm.Designer.cs">
       <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SavedDatasources.cs" />
     <Compile Include="Utilities.cs" />
     <EmbeddedResource Include="MailRecipients.resx">
       <DependentUpon>MailRecipients.cs</DependentUpon>
