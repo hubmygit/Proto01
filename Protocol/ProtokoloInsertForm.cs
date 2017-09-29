@@ -1077,7 +1077,9 @@ namespace Protocol
 
         private void btnShowRecipients_Click(object sender, EventArgs e)
         {
-            string Recipients = "";
+            MailRecipients mailRec = new MailRecipients();
+            
+            //string Recipients = "";
             string RecipientsTo = "";
             string RecipientsCc = "";
             string RecipientsBcc = "";
@@ -1114,11 +1116,15 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
 
-            Recipients = "To: " + RecipientsTo + "\r\n" +
-                "CC: " + RecipientsCc + "\r\n" +
-                "BCC: " + RecipientsBcc;
-
-            MessageBox.Show(Recipients, "Recipients");
+            //Recipients = "To: " + RecipientsTo + "\r\n" +
+            //    "CC: " + RecipientsCc + "\r\n" +
+            //    "BCC: " + RecipientsBcc;
+            //MessageBox.Show(Recipients, "Recipients");
+            
+            mailRec.txtRecipientsTo.Text = RecipientsTo;
+            mailRec.txtRecipientsCc.Text = RecipientsCc;
+            mailRec.txtRecipientsBcc.Text = RecipientsBcc;
+            mailRec.ShowDialog();
         }
     }
 
