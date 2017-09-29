@@ -45,6 +45,7 @@
             // 
             this.lblProtokoloKind.AutoSize = true;
             this.lblProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblProtokoloKind.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblProtokoloKind.Location = new System.Drawing.Point(65, 28);
             this.lblProtokoloKind.Name = "lblProtokoloKind";
             this.lblProtokoloKind.Size = new System.Drawing.Size(165, 17);
@@ -65,6 +66,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblCompany.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblCompany.Location = new System.Drawing.Point(65, 65);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 17);
@@ -121,6 +123,7 @@
             // 
             this.chbSendMail.AutoSize = true;
             this.chbSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.chbSendMail.ForeColor = System.Drawing.Color.DarkBlue;
             this.chbSendMail.Image = global::Protocol.Properties.Resources.Outlook2013Logo_32xMD;
             this.chbSendMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.chbSendMail.Location = new System.Drawing.Point(430, 109);

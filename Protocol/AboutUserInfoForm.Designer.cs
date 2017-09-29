@@ -51,6 +51,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblEmail.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblEmail.Location = new System.Drawing.Point(115, 129);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(56, 20);
@@ -61,6 +62,7 @@
             // 
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblFullName.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblFullName.Location = new System.Drawing.Point(83, 97);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(88, 20);
@@ -71,6 +73,7 @@
             // 
             this.lblWinUser.AutoSize = true;
             this.lblWinUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblWinUser.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblWinUser.Location = new System.Drawing.Point(89, 65);
             this.lblWinUser.Name = "lblWinUser";
             this.lblWinUser.Size = new System.Drawing.Size(82, 20);
@@ -121,6 +124,7 @@
             // 
             this.lblMachine.AutoSize = true;
             this.lblMachine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblMachine.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblMachine.Location = new System.Drawing.Point(48, 161);
             this.lblMachine.Name = "lblMachine";
             this.lblMachine.Size = new System.Drawing.Size(123, 20);
@@ -141,6 +145,7 @@
             // 
             this.lblDomain.AutoSize = true;
             this.lblDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblDomain.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblDomain.Location = new System.Drawing.Point(53, 193);
             this.lblDomain.Name = "lblDomain";
             this.lblDomain.Size = new System.Drawing.Size(118, 20);
@@ -161,6 +166,7 @@
             // 
             this.lblOs.AutoSize = true;
             this.lblOs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOs.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblOs.Location = new System.Drawing.Point(73, 225);
             this.lblOs.Name = "lblOs";
             this.lblOs.Size = new System.Drawing.Size(98, 20);
@@ -181,6 +187,7 @@
             // 
             this.lblUserId.AutoSize = true;
             this.lblUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblUserId.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblUserId.Location = new System.Drawing.Point(99, 33);
             this.lblUserId.Name = "lblUserId";
             this.lblUserId.Size = new System.Drawing.Size(72, 20);

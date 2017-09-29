@@ -39,10 +39,11 @@
             // lblDelReason
             // 
             this.lblDelReason.AutoSize = true;
-            this.lblDelReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblDelReason.Location = new System.Drawing.Point(175, 28);
+            this.lblDelReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblDelReason.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblDelReason.Location = new System.Drawing.Point(166, 25);
             this.lblDelReason.Name = "lblDelReason";
-            this.lblDelReason.Size = new System.Drawing.Size(234, 17);
+            this.lblDelReason.Size = new System.Drawing.Size(359, 24);
             this.lblDelReason.TabIndex = 0;
             this.lblDelReason.Text = "Αιτιολογία Διαγραφής Πρωτοκόλλου";
             // 

@@ -48,6 +48,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblId.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblId.Location = new System.Drawing.Point(39, 17);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(19, 17);
@@ -59,6 +60,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblName.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblName.Location = new System.Drawing.Point(39, 119);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(111, 17);
@@ -69,6 +71,7 @@
             // 
             this.lblDescr.AutoSize = true;
             this.lblDescr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblDescr.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblDescr.Location = new System.Drawing.Point(39, 153);
             this.lblDescr.Name = "lblDescr";
             this.lblDescr.Size = new System.Drawing.Size(76, 17);
@@ -106,6 +109,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblCompany.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblCompany.Location = new System.Drawing.Point(39, 51);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 17);
@@ -116,6 +120,7 @@
             // 
             this.lblProced.AutoSize = true;
             this.lblProced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblProced.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblProced.Location = new System.Drawing.Point(39, 85);
             this.lblProced.Name = "lblProced";
             this.lblProced.Size = new System.Drawing.Size(165, 17);
