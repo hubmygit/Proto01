@@ -18,8 +18,6 @@ namespace Protocol
         {
             InitializeComponent();
 
-            UserInfo.UserLogIn();
-
             tsStatusLblUser.Text = "User: " + UserInfo.WindowsUser + " - " + UserInfo.FullName;
         }
 

@@ -28,6 +28,11 @@ namespace Protocol
 
 
             //test-->
+
+            //ComboBox comboBox1 = new ComboBox();
+            //Location
+            //Controls.Add
+
             //List<string> fonts = new List<string>();
             //foreach (FontFamily font in System.Drawing.FontFamily.Families)
             //{
@@ -1060,15 +1065,15 @@ namespace Protocol
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
             //Font myfont = new Font(comboBox1.SelectedItem.ToString(), 11);
 
             //lblCompany.Font = myfont;
             //lblProtokoloKind.Font = myfont;
             //btnInsert.Font = myfont;
             //btnCancel.Font = myfont;
-        }
+        //}
 
         private void btnShowRecipients_Click(object sender, EventArgs e)
         {

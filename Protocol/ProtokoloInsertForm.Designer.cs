@@ -33,10 +33,9 @@
             this.cbProtokoloKind = new System.Windows.Forms.ComboBox();
             this.lblCompany = new System.Windows.Forms.Label();
             this.cbCompany = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnShowRecipients = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.pbProtocol = new System.Windows.Forms.PictureBox();
+            this.btnShowRecipients = new System.Windows.Forms.Button();
             this.chbSendMail = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtocol)).BeginInit();
@@ -82,28 +81,6 @@
             this.cbCompany.TabIndex = 2;
             this.cbCompany.SelectedIndexChanged += new System.EventHandler(this.cbCompany_SelectedIndexChanged);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.Visible = false;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // btnShowRecipients
-            // 
-            this.btnShowRecipients.Enabled = false;
-            this.btnShowRecipients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnShowRecipients.Location = new System.Drawing.Point(540, 104);
-            this.btnShowRecipients.Name = "btnShowRecipients";
-            this.btnShowRecipients.Size = new System.Drawing.Size(25, 27);
-            this.btnShowRecipients.TabIndex = 10;
-            this.btnShowRecipients.Text = "*";
-            this.btnShowRecipients.UseVisualStyleBackColor = true;
-            this.btnShowRecipients.Click += new System.EventHandler(this.btnShowRecipients_Click);
-            // 
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -128,13 +105,25 @@
             this.pbProtocol.TabIndex = 11;
             this.pbProtocol.TabStop = false;
             // 
+            // btnShowRecipients
+            // 
+            this.btnShowRecipients.Enabled = false;
+            this.btnShowRecipients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnShowRecipients.Image = global::Protocol.Properties.Resources.AccountAttribute_32x;
+            this.btnShowRecipients.Location = new System.Drawing.Point(525, 104);
+            this.btnShowRecipients.Name = "btnShowRecipients";
+            this.btnShowRecipients.Size = new System.Drawing.Size(40, 40);
+            this.btnShowRecipients.TabIndex = 10;
+            this.btnShowRecipients.UseVisualStyleBackColor = true;
+            this.btnShowRecipients.Click += new System.EventHandler(this.btnShowRecipients_Click);
+            // 
             // chbSendMail
             // 
             this.chbSendMail.AutoSize = true;
             this.chbSendMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chbSendMail.Image = global::Protocol.Properties.Resources.Outlook2013Logo_32xMD;
             this.chbSendMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chbSendMail.Location = new System.Drawing.Point(430, 99);
+            this.chbSendMail.Location = new System.Drawing.Point(430, 109);
             this.chbSendMail.Name = "chbSendMail";
             this.chbSendMail.Size = new System.Drawing.Size(93, 32);
             this.chbSendMail.TabIndex = 9;
@@ -167,7 +156,6 @@
             this.Controls.Add(this.btnShowRecipients);
             this.Controls.Add(this.chbSendMail);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.cbCompany);
             this.Controls.Add(this.lblCompany);
@@ -192,7 +180,6 @@
         private System.Windows.Forms.Label lblCompany;
         public System.Windows.Forms.ComboBox cbProtokoloKind;
         public System.Windows.Forms.ComboBox cbCompany;
-        public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.Button btnInsert;
         public System.Windows.Forms.CheckBox chbSendMail;
         public System.Windows.Forms.Button btnCancel;

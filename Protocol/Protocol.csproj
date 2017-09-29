@@ -233,6 +233,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ImgProtocol.ico" />
+    <None Include="Resources\AccountAttribute_32x.png" />
     <None Include="Resources\FindResults_16x.png" />
     <None Include="Resources\AccountGroup_16x.png" />
     <None Include="Resources\User_16x.png" />

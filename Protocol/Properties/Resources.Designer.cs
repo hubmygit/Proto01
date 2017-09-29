@@ -63,6 +63,16 @@ namespace Protocol.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AccountAttribute_32x {
+            get {
+                object obj = ResourceManager.GetObject("AccountAttribute_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AccountGroup_16x {
             get {
                 object obj = ResourceManager.GetObject("AccountGroup_16x", resourceCulture);

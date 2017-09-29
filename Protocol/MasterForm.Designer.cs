@@ -46,12 +46,12 @@
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsStatusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.InsertToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.tsStatusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -197,6 +197,14 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // tsStatusLblUser
+            // 
+            this.tsStatusLblUser.Image = global::Protocol.Properties.Resources.User_16x;
+            this.tsStatusLblUser.Name = "tsStatusLblUser";
+            this.tsStatusLblUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsStatusLblUser.Size = new System.Drawing.Size(103, 17);
+            this.tsStatusLblUser.Text = "User: Unknown";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -249,14 +257,6 @@
             this.DeleteToolStripBtn.Visible = false;
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
-            // tsStatusLblUser
-            // 
-            this.tsStatusLblUser.Image = global::Protocol.Properties.Resources.User_16x;
-            this.tsStatusLblUser.Name = "tsStatusLblUser";
-            this.tsStatusLblUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsStatusLblUser.Size = new System.Drawing.Size(103, 16);
-            this.tsStatusLblUser.Text = "User: Unknown";
-            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,7 +290,6 @@
         private System.Windows.Forms.ToolStripMenuItem InsertTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UpdateTSMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsStatusLblUser;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton InsertToolStripBtn;
         private System.Windows.Forms.ToolStripButton UpdateToolStripBtn;
@@ -308,6 +307,7 @@
         private System.Windows.Forms.ToolStripButton SelectToolStripBtn;
         private System.Windows.Forms.ToolStripMenuItem FolderSelTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VersionTSMenuItem;
+        public System.Windows.Forms.ToolStripStatusLabel tsStatusLblUser;
     }
 }
 
