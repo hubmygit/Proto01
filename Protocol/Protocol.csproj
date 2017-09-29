@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LK_Criteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LK_Criteria.designer.cs">
+      <DependentUpon>LK_Criteria.cs</DependentUpon>
+    </Compile>
     <Compile Include="MailRecipients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,8 +171,11 @@
     <Compile Include="ProtokoloUpdateForm.Designer.cs">
       <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SavedDatasources.cs" />
+    <Compile Include="LK_SavedDatasources.cs" />
     <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="LK_Criteria.resx">
+      <DependentUpon>LK_Criteria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MailRecipients.resx">
       <DependentUpon>MailRecipients.cs</DependentUpon>
     </EmbeddedResource>
