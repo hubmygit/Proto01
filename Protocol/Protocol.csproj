@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contacts.Designer.cs">
+      <DependentUpon>Contacts.cs</DependentUpon>
+    </Compile>
     <Compile Include="LK_Criteria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     <Compile Include="_GramV3_DevDataSet_Contact.Designer.cs">
       <DependentUpon>_GramV3_DevDataSet_Contact.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Contacts.resx">
+      <DependentUpon>Contacts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LK_Criteria.resx">
       <DependentUpon>LK_Criteria.cs</DependentUpon>
     </EmbeddedResource>
