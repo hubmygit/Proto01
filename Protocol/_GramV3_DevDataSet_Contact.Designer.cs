@@ -2152,7 +2152,7 @@ SELECT Id, Company, LastName, FirstName, Email, JobTitle, BusinessPhone, MobileP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.GramV3_DevConnectionString;
+            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.connString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2582,7 +2582,7 @@ SELECT Id, Company, LastName, FirstName, Email, JobTitle, BusinessPhone, MobileP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.GramV3_DevConnectionString;
+            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.connString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2763,7 +2763,7 @@ SELECT Id, Company, LastName, FirstName, Email, JobTitle, BusinessPhone, MobileP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.GramV3_DevConnectionString;
+            this._connection.ConnectionString = global::Protocol.Properties.Settings.Default.connString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

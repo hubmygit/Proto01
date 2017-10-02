@@ -28,9 +28,9 @@ namespace Protocol.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AVINDOMC\\SQLSERVERR2;Initial Catalog=GramV3-Dev;Persist Security Info" +
             "=True;User ID=GramV3;Password=8093570")]
-        public string GramV3_DevConnectionString {
+        public string connString {
             get {
-                return ((string)(this["GramV3_DevConnectionString"]));
+                return ((string)(this["connString"]));
             }
         }
     }
