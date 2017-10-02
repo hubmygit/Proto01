@@ -173,6 +173,12 @@
     </Compile>
     <Compile Include="LK_SavedDatasources.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="_GramV3_DevDataSet_Contact.cs">
+      <DependentUpon>_GramV3_DevDataSet_Contact.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_GramV3_DevDataSet_Contact.Designer.cs">
+      <DependentUpon>_GramV3_DevDataSet_Contact.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LK_Criteria.resx">
       <DependentUpon>LK_Criteria.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,9 +249,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_GramV3_DevDataSet_Contact.xsc">
+      <DependentUpon>_GramV3_DevDataSet_Contact.xsd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_GramV3_DevDataSet_Contact.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_GramV3_DevDataSet_Contact1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_GramV3_DevDataSet_Contact.xss">
+      <DependentUpon>_GramV3_DevDataSet_Contact.xsd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="dbconfig.txt">
