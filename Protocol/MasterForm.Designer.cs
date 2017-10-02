@@ -52,6 +52,7 @@
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
+            this.ContactsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -112,7 +113,8 @@
             // ParamsTSMenuItem
             // 
             this.ParamsTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FoldersTSMenuItem});
+            this.FoldersTSMenuItem,
+            this.ContactsTSMenuItem});
             this.ParamsTSMenuItem.Name = "ParamsTSMenuItem";
             this.ParamsTSMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ParamsTSMenuItem.Text = "Παράμετροι";
@@ -126,7 +128,7 @@
             this.FolderDelTSMenuItem,
             this.FolderToProtokTSMenuItem});
             this.FoldersTSMenuItem.Name = "FoldersTSMenuItem";
-            this.FoldersTSMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.FoldersTSMenuItem.Size = new System.Drawing.Size(176, 22);
             this.FoldersTSMenuItem.Text = "Φάκελοι";
             // 
             // FolderInsTSMenuItem
@@ -257,6 +259,13 @@
             this.DeleteToolStripBtn.Visible = false;
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
+            // ContactsTSMenuItem
+            // 
+            this.ContactsTSMenuItem.Name = "ContactsTSMenuItem";
+            this.ContactsTSMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.ContactsTSMenuItem.Text = "Διευθυνσιογράφος";
+            this.ContactsTSMenuItem.Click += new System.EventHandler(this.ContactsTSMenuItem_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +317,7 @@
         private System.Windows.Forms.ToolStripMenuItem FolderSelTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem VersionTSMenuItem;
         public System.Windows.Forms.ToolStripStatusLabel tsStatusLblUser;
+        private System.Windows.Forms.ToolStripMenuItem ContactsTSMenuItem;
     }
 }
 

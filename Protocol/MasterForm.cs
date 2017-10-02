@@ -144,6 +144,12 @@ namespace Protocol
             ProtocolAboutBox pAboutBox = new ProtocolAboutBox();
             pAboutBox.ShowDialog();
         }
+
+        private void ContactsTSMenuItem_Click(object sender, EventArgs e)
+        {
+            Contacts ContactsForm = new Contacts();
+            ContactsForm.ShowDialog();
+        }
     }
 
 }
