@@ -12,6 +12,7 @@ using System.Data;
 
 namespace Protocol
 {
+    /*
     public static class DBInfo
     {
         static DBInfo()
@@ -24,6 +25,7 @@ namespace Protocol
 
             connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
 
+            
             string configFile_Path = @"dbconfig.txt";
             List<string> ConfigLines = new List<string>();
 
@@ -56,12 +58,39 @@ namespace Protocol
             {
                 MessageBox.Show("Config file could not be read:" + e.Message);
             }
+
         }
 
         public static string server { get; set; }
         public static string database { get; set; }
         public static string username { get; set; }
         public static string password { get; set; }
+        public static string connectionString { get; set; }
+    }
+    */
+
+
+    public static class DBInfo
+    {
+        static DBInfo()
+        {
+            //default values
+            string server = "AVINDOMC\\SQLSERVERR2";
+            string database = "GramV3-Dev";
+            string username = "GramV3";
+            string password = "8093570";
+            connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
+            
+            try
+            {
+                connectionString = Properties.Settings.Default.connString;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Config file could not be read:" + e.Message);
+            }
+
+        }
         public static string connectionString { get; set; }
     }
 
