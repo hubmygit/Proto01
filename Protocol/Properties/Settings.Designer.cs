@@ -27,7 +27,7 @@ namespace Protocol.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AVINDOMC\\SQLSERVERR2;Initial Catalog=GramV3-Dev;Persist Security Info" +
-            "=True;User ID=GramV3;Password=8093570")]
+            "=False;User ID=GramV3;Password=8093570")]
         public string connString {
             get {
                 return ((string)(this["connString"]));
