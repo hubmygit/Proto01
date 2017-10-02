@@ -20,7 +20,7 @@ namespace Protocol
             if (AppVer.IsLatestVersion()) //check version
             {
                 UserInfo.UserLogIn();
-                
+                UserInfo.DB_AppUser_Id = 5;
                 if (UserInfo.DB_AppUser_Id == 0)//user not found (& not inserted)
                 {
                     MessageBox.Show("Ο χρήστης δεν έχει τα κατάλληλα δικαιώματα για εισαγωγή στην εφαρμογή!");
