@@ -163,6 +163,26 @@ namespace Protocol.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LookupUser_16x {
+            get {
+                object obj = ResourceManager.GetObject("LookupUser_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LookupUser_32x {
+            get {
+                object obj = ResourceManager.GetObject("LookupUser_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NewSolutionFolder_32x {
             get {
                 object obj = ResourceManager.GetObject("NewSolutionFolder_32x", resourceCulture);
