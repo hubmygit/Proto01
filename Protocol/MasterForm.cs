@@ -332,6 +332,39 @@ namespace Protocol
             return yearlyData;
         }
 
+
+        //test and delete!!!
+        void TestReader()
+        {
+            string connectionString = "Persist Security Info=False; User ID=" + "GramV3" + "; Password=" + "8093570" + "; Initial Catalog=" + "GramV3-Dev" + "; Server=" + "AVINDOMC\\SQLSERVERR2";
+
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            string SelectSt = "SELECT Name FROM [dbo].[Proced] ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string aaaa = reader["Name"].ToString();
+
+                    string aa = reader["Name"].GetType().ToString();
+                }
+
+                var dotNetType = reader.GetFieldType(0);
+                var sqlType = reader.GetDataTypeName(0);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+        }
+
     }
 
     public class ChartData
