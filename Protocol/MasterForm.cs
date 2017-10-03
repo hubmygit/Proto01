@@ -66,7 +66,11 @@ namespace Protocol
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
                 {
-                    //...
+                    //Show Contacts...
+                    Contacts contactsFrm = new Contacts("GoToSelected!");
+                    contactsFrm.ShowDialog();
+
+                    int help = 0;
                 }
             }
             //else if (frmProtoIns.successfulInsertion == false && frmProtoIns.chbSendMail.Checked == true)
