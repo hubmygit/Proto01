@@ -78,9 +78,22 @@ namespace Protocol
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
                 {
-                    //Show Contacts...
+                    //Show ContactsToEmail Form
+
+                    //and on click event
+                    //Show Contacts Form...
                     Contacts contactsFrm = new Contacts("GoToSelected!");
                     contactsFrm.ShowDialog();
+
+                    //get Contacts
+                    foreach (string thisContact in contactsFrm.ReturnEmailList)
+                    {
+
+                    }
+
+                    //send them to ContactsToEmail Form
+
+                    //show/save/send email
 
                     int help = 0;
                 }
