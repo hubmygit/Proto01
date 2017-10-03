@@ -31,28 +31,23 @@ namespace Protocol
             }
 
             SearchText2.AutoCompleteCustomSource = col;
+            textBoxCompany.AutoCompleteCustomSource = col;
+            textSelectedMails.Visible = false;
 
             LstSDS = new List<SavedDatasources>();
             StoreBinding();
         }
-        public Contacts(string DummyState)
+        public Contacts(string DummyState):this()
         {
-            InitializeComponent();
-            SetMenuState("Selection");
-            UpdateHeader(dataGridView1);
-            tabControl1.ItemSize = new System.Drawing.Size(1, 1);
 
-            AutoCompleteStringCollection col = new AutoCompleteStringCollection();
-            viewDistCompanyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.ViewDistCompany);
-            foreach (DataRow Nam in this._GramV3_DevDataSet_Contact.ViewDistCompany.Rows)
+            if ((ReturnEmailList is null) || (ReturnEmailList.Count == 0))
             {
-                col.Add((String)Nam[0]);
+                ReturnEmailList = new List<String>();
             }
-
-            SearchText2.AutoCompleteCustomSource = col;
-
-            LstSDS = new List<SavedDatasources>();
-            StoreBinding();
+            dataGridView1.MultiSelect = true;
+            textSelectedMails.Visible = true;
+            SetMenuState("Selection");
+            textSelectedMails.Visible = true;
         }
 
         private void Contacts_Load(object sender, EventArgs e)
@@ -79,10 +74,34 @@ namespace Protocol
         {
             tabControl1.SelectedTab = tabPage2;
             SetMenuState("Update");
+            RestoreBinding();
         }
 
         private void postToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            label10.Focus();
+            if (textFirstName.Text.ToString().Trim().Length == 0)
+            {
+                MessageBox.Show("Δεν έχει γίνει καταχώρηση στο πεδίο");
+                textFirstName.Focus();
+                return;
+            }
+
+            if (textLastName.Text.ToString().Trim().Length == 0)
+            {
+                MessageBox.Show("Δεν έχει γίνει καταχώρηση στο πεδίο");
+                textLastName.Focus();
+                return;
+            }
+
+            if (textemail.Text.ToString().Trim().Length == 0)
+            {
+                MessageBox.Show("Δεν έχει γίνει καταχώρηση στο πεδίο");
+                textemail.Focus();
+                return;
+            }
+
+
             if (InsertState)
             {
                 BindingSource bs = (BindingSource)dataGridView1.DataSource;
@@ -100,16 +119,57 @@ namespace Protocol
                 dr["id"] = NumId;
                 dt.Rows.Add(dr);
                 contactsTableAdapter.Update(dr);
+                RestoreBinding();
             }
             else
             {
-                foreach (DataRow dr in dataGridView1.SelectedRows)
-                    contactsTableAdapter.Update(dr);
+                BindingSource bs = (BindingSource)dataGridView1.DataSource;
+                DataSet dsTempDataTable = (DataSet)bs.DataSource;
+                DataTable dt = dsTempDataTable.Tables[0]; // use table index/name to get the exact table
+
+                foreach (DataGridViewRow drrow in dataGridView1.SelectedRows)
+                {
+                    //dt.Rows[drrow.Index]
+                    contactsTableAdapter.Update(
+                                                drrow.Cells["Company"].Value.ToString(),
+                                                drrow.Cells["LastName"].Value.ToString(),
+                                                drrow.Cells["FirstName"].Value.ToString(),
+                                                drrow.Cells["email"].Value.ToString(),
+                                                drrow.Cells["JobTitle"].Value.ToString(),
+                                                drrow.Cells["BusinessPhone"].Value.ToString(),
+                                                drrow.Cells["MobilePhone"].Value.ToString(),
+                                                drrow.Cells["Address"].Value.ToString(),
+                                                drrow.Cells["City"].Value.ToString(),
+                                                drrow.Cells["ZIP"].Value.ToString(),
+                                                drrow.Cells["Country"].Value.ToString(),
+                                                drrow.Cells["Notes"].Value.ToString(),
+                                                drrow.Cells["Category"].Value.ToString(),
+                                                (int)drrow.Cells["Id"].Value);
+                }
+
+                //dataGridView1.CurrentRow["id"];
+
+                //BindingSource bs = (BindingSource)dataGridView1.DataSource;
+                //DataSet dsTempDataTable = (DataSet)bs.DataSource;
+                //DataTable dt = dsTempDataTable.Tables[0]; // use table index/name to get the exact table
+                //string aaaa = dataGridView1.CurrentRow.Cells["id"].Value.ToString();
+                //DataRow dr = dt.NewRow();
+                //dr = ((DataRowView)dataGridView1.CurrentRow.DataBoundItem).Row;
+                //dr["id"] = dataGridView1.CurrentRow.Cells["id"].Value.ToString();
+                //DRV.Row;
+                //contactsTableAdapter.Update(dr);
+                //dt.AcceptChanges();
+
+                //foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+                //{
+                //datar = dt.Rows[dr.Index];
+                //contactsTableAdapter.Update(datar);
+                //}
+
             }
 
             tabControl1.SelectedTab = tabPage1;
             SetMenuState("Browse");
-            RestoreBinding();
             InsertState = false;
         }
 
@@ -409,6 +469,11 @@ namespace Protocol
                     MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
                     this.SearchText2.Select();
                 }
+                if (this.SearchText3.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText3.Select();
+                }
             }
             if (((TextBox)sender).Name == "SearchText1")
             {
@@ -422,8 +487,13 @@ namespace Protocol
                     MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
                     this.SearchText2.Select();
                 }
+                if (this.SearchText3.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText3.Select();
+                }
             }
-                if (((TextBox)sender).Name == "SearchText2")
+            if (((TextBox)sender).Name == "SearchText2")
                 {
                     if (this.SearchText1.Text.Trim().Length > 0)
                     {
@@ -435,7 +505,33 @@ namespace Protocol
                         MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
                         this.SearchText0.Select();
                     }
+                if (this.SearchText3.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText3.Select();
                 }
+
+            }
+            if (((TextBox)sender).Name == "SearchText3")
+            {
+                if (this.SearchText0.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText0.Select();
+                }
+                if (this.SearchText2.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText2.Select();
+                }
+                if (this.SearchText1.Text.Trim().Length > 0)
+                {
+                    MessageBox.Show("Υπάρχει καταχώσηση σε άλλο πεδίο εύρεσης");
+                    this.SearchText1.Select();
+                }
+            }
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -493,27 +589,32 @@ namespace Protocol
                ReturnEmailList = new List<String>();
             }
             dataGridView1.MultiSelect = true;
+            textSelectedMails.Visible = true;
             SetMenuState("Selection");
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+            if (!(ReturnEmailList is null))
             {
-                //                int ro = dataGridView1.CurrentCell.RowIndex;
-                //int ro = dr.Index;
-                String ro = dr.Cells["email"].Value.ToString();
-                if (ro.Trim().Length < 1)
+                foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
                 {
-                    MessageBox.Show("Η επαφή " + dr.Cells["LastName"].Value.ToString() + " " + dr.Cells["FirstName"].Value.ToString() + " δεν έχει διεύθυνση email.");
+                    String ro = dr.Cells["email"].Value.ToString();
+                    if (ro.Trim().Length < 1)
+                    {
+                        MessageBox.Show("Η επαφή " + dr.Cells["LastName"].Value.ToString() + " " + dr.Cells["FirstName"].Value.ToString() + " δεν έχει διεύθυνση email.");
+                    }
+                    else
+                    {
+                        ReturnEmailList.Add(ro.ToString());
+                        //MessageBox.Show(dr.Cells["LastName"].Value.ToString()+" "+ dr.Cells["FirstName"].Value.ToString());
+                    }
                 }
-                else
-                {
-                    ReturnEmailList.Add(ro.ToString());
-                    //MessageBox.Show(dr.Cells["LastName"].Value.ToString()+" "+ dr.Cells["FirstName"].Value.ToString());
+                    textSelectedMails.Text = string.Join(",", ReturnEmailList);
+                this.Text = "Διευθυνσιογράφος (" + ReturnEmailList.Count.ToString()+")" ;
                 }
-            }
+            
+
         }
 
         private void επιλεγμέναToolStripMenuItem_Click(object sender, EventArgs e)
@@ -560,5 +661,11 @@ namespace Protocol
                 }
         }
 
+        private void έξοδοςToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.MultiSelect = false;
+            textSelectedMails.Visible = false;
+            SetMenuState("Browse");
+        }
     }
 }

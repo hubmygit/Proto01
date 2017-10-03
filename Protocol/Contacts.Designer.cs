@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchText2 = new System.Windows.Forms.TextBox();
             this.SearchText1 = new System.Windows.Forms.TextBox();
@@ -45,50 +45,12 @@
             this.postToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.επιλογήToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.επιλεγμέναToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.έξοδοςToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textSelectedMails = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filterOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filterExactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.export2ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._GramV3_DevDataSet_Contact = new Protocol._GramV3_DevDataSet_Contact();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contactsTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ContactsTableAdapter();
-            this.updateKeyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter();
-            this.tableAdapterManager = new Protocol._GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager();
-            this.viewDistCompanyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter();
             this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,6 +79,47 @@
             this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterExactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.export2ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._GramV3_DevDataSet_Contact = new Protocol._GramV3_DevDataSet_Contact();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxCompany = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textemail = new System.Windows.Forms.TextBox();
+            this.textLastName = new System.Windows.Forms.TextBox();
+            this.textFirstName = new System.Windows.Forms.TextBox();
+            this.contactsTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ContactsTableAdapter();
+            this.updateKeyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter();
+            this.tableAdapterManager = new Protocol._GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager();
+            this.viewDistCompanyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter();
+            this.SearchText3 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -131,6 +134,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SearchText3);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.SearchText2);
             this.panel1.Controls.Add(this.SearchText1);
             this.panel1.Controls.Add(this.label3);
@@ -148,9 +153,9 @@
             // 
             this.SearchText2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.SearchText2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.SearchText2.Location = new System.Drawing.Point(522, 30);
+            this.SearchText2.Location = new System.Drawing.Point(409, 30);
             this.SearchText2.Name = "SearchText2";
-            this.SearchText2.Size = new System.Drawing.Size(161, 20);
+            this.SearchText2.Size = new System.Drawing.Size(105, 20);
             this.SearchText2.TabIndex = 8;
             this.SearchText2.Tag = "Company";
             this.SearchText2.Enter += new System.EventHandler(this.SearchText_Enter);
@@ -158,9 +163,9 @@
             // 
             // SearchText1
             // 
-            this.SearchText1.Location = new System.Drawing.Point(301, 30);
+            this.SearchText1.Location = new System.Drawing.Point(240, 30);
             this.SearchText1.Name = "SearchText1";
-            this.SearchText1.Size = new System.Drawing.Size(161, 20);
+            this.SearchText1.Size = new System.Drawing.Size(107, 20);
             this.SearchText1.TabIndex = 7;
             this.SearchText1.Tag = "FirstName";
             this.SearchText1.Enter += new System.EventHandler(this.SearchText_Enter);
@@ -169,7 +174,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(471, 33);
+            this.label3.Location = new System.Drawing.Point(358, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 6;
@@ -178,7 +183,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(254, 33);
+            this.label2.Location = new System.Drawing.Point(193, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 5;
@@ -197,7 +202,7 @@
             // 
             this.SearchText0.Location = new System.Drawing.Point(78, 30);
             this.SearchText0.Name = "SearchText0";
-            this.SearchText0.Size = new System.Drawing.Size(161, 20);
+            this.SearchText0.Size = new System.Drawing.Size(103, 20);
             this.SearchText0.TabIndex = 3;
             this.SearchText0.Tag = "LastName";
             this.SearchText0.Enter += new System.EventHandler(this.SearchText_Enter);
@@ -212,7 +217,6 @@
             this.postToolStripMenuItem,
             this.cancelToolStripMenuItem,
             this.επιλογήToolStripMenuItem,
-            this.επιλεγμέναToolStripMenuItem,
             this.έξοδοςToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -268,20 +272,13 @@
             this.επιλογήToolStripMenuItem.Text = "Επιλογή";
             this.επιλογήToolStripMenuItem.Click += new System.EventHandler(this.επιλογήToolStripMenuItem_Click);
             // 
-            // επιλεγμέναToolStripMenuItem
-            // 
-            this.επιλεγμέναToolStripMenuItem.Name = "επιλεγμέναToolStripMenuItem";
-            this.επιλεγμέναToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.επιλεγμέναToolStripMenuItem.Tag = "Selection";
-            this.επιλεγμέναToolStripMenuItem.Text = "Επιλεγμένα";
-            this.επιλεγμέναToolStripMenuItem.Click += new System.EventHandler(this.επιλεγμέναToolStripMenuItem_Click);
-            // 
             // έξοδοςToolStripMenuItem
             // 
             this.έξοδοςToolStripMenuItem.Name = "έξοδοςToolStripMenuItem";
             this.έξοδοςToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.έξοδοςToolStripMenuItem.Tag = "Selection";
             this.έξοδοςToolStripMenuItem.Text = "Έξοδος";
+            this.έξοδοςToolStripMenuItem.Click += new System.EventHandler(this.έξοδοςToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -307,6 +304,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textSelectedMails);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -315,12 +313,23 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "_";
             // 
+            // textSelectedMails
+            // 
+            this.textSelectedMails.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textSelectedMails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textSelectedMails.Location = new System.Drawing.Point(3, 514);
+            this.textSelectedMails.MaximumSize = new System.Drawing.Size(755, 44);
+            this.textSelectedMails.MinimumSize = new System.Drawing.Size(755, 44);
+            this.textSelectedMails.Name = "textSelectedMails";
+            this.textSelectedMails.Size = new System.Drawing.Size(755, 44);
+            this.textSelectedMails.TabIndex = 1;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSalmon;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSalmon;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -355,22 +364,196 @@
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.contactsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Size = new System.Drawing.Size(755, 555);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // Company
+            // 
+            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Company.DataPropertyName = "Company";
+            this.Company.HeaderText = "Company";
+            this.Company.Name = "Company";
+            this.Company.Width = 21;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "LastName";
+            this.LastName.Name = "LastName";
+            this.LastName.Width = 21;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Width = 21;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // BusinessPhone
+            // 
+            this.BusinessPhone.DataPropertyName = "BusinessPhone";
+            this.BusinessPhone.HeaderText = "BusinessPhone";
+            this.BusinessPhone.Name = "BusinessPhone";
+            // 
+            // MobilePhone
+            // 
+            this.MobilePhone.DataPropertyName = "MobilePhone";
+            this.MobilePhone.HeaderText = "MobilePhone";
+            this.MobilePhone.Name = "MobilePhone";
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            // 
+            // City
+            // 
+            this.City.DataPropertyName = "City";
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            // 
+            // ZIP
+            // 
+            this.ZIP.DataPropertyName = "ZIP";
+            this.ZIP.HeaderText = "ZIP";
+            this.ZIP.Name = "ZIP";
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            // 
+            // Notes
+            // 
+            this.Notes.DataPropertyName = "Notes";
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // companyDataGridViewTextBoxColumn
+            // 
+            this.companyDataGridViewTextBoxColumn.DataPropertyName = "Company";
+            this.companyDataGridViewTextBoxColumn.HeaderText = "Company";
+            this.companyDataGridViewTextBoxColumn.Name = "companyDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // jobTitleDataGridViewTextBoxColumn
+            // 
+            this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
+            this.jobTitleDataGridViewTextBoxColumn.HeaderText = "JobTitle";
+            this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
+            // 
+            // businessPhoneDataGridViewTextBoxColumn
+            // 
+            this.businessPhoneDataGridViewTextBoxColumn.DataPropertyName = "BusinessPhone";
+            this.businessPhoneDataGridViewTextBoxColumn.HeaderText = "BusinessPhone";
+            this.businessPhoneDataGridViewTextBoxColumn.Name = "businessPhoneDataGridViewTextBoxColumn";
+            // 
+            // mobilePhoneDataGridViewTextBoxColumn
+            // 
+            this.mobilePhoneDataGridViewTextBoxColumn.DataPropertyName = "MobilePhone";
+            this.mobilePhoneDataGridViewTextBoxColumn.HeaderText = "MobilePhone";
+            this.mobilePhoneDataGridViewTextBoxColumn.Name = "mobilePhoneDataGridViewTextBoxColumn";
+            // 
+            // JobTitle
+            // 
+            this.JobTitle.DataPropertyName = "JobTitle";
+            this.JobTitle.HeaderText = "JobTitle";
+            this.JobTitle.Name = "JobTitle";
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            // 
+            // zIPDataGridViewTextBoxColumn
+            // 
+            this.zIPDataGridViewTextBoxColumn.DataPropertyName = "ZIP";
+            this.zIPDataGridViewTextBoxColumn.HeaderText = "ZIP";
+            this.zIPDataGridViewTextBoxColumn.Name = "zIPDataGridViewTextBoxColumn";
+            // 
+            // countryDataGridViewTextBoxColumn
+            // 
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
             // 
             // contextMenuStrip1
             // 
@@ -423,6 +606,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label15);
@@ -431,7 +615,7 @@
             this.tabPage2.Controls.Add(this.textBox11);
             this.tabPage2.Controls.Add(this.textBox8);
             this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.textBoxCompany);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label9);
@@ -446,9 +630,9 @@
             this.tabPage2.Controls.Add(this.textBox7);
             this.tabPage2.Controls.Add(this.textBox5);
             this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.textemail);
+            this.tabPage2.Controls.Add(this.textLastName);
+            this.tabPage2.Controls.Add(this.textFirstName);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -500,7 +684,7 @@
             this.textBox14.Multiline = true;
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(161, 74);
-            this.textBox14.TabIndex = 27;
+            this.textBox14.TabIndex = 13;
             // 
             // textBox11
             // 
@@ -508,7 +692,7 @@
             this.textBox11.Location = new System.Drawing.Point(163, 321);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(161, 20);
-            this.textBox11.TabIndex = 26;
+            this.textBox11.TabIndex = 12;
             // 
             // textBox8
             // 
@@ -516,7 +700,7 @@
             this.textBox8.Location = new System.Drawing.Point(163, 242);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(161, 20);
-            this.textBox8.TabIndex = 24;
+            this.textBox8.TabIndex = 9;
             // 
             // label13
             // 
@@ -527,15 +711,15 @@
             this.label13.TabIndex = 23;
             this.label13.Text = "Εταιρεία";
             // 
-            // textBox6
+            // textBoxCompany
             // 
-            this.textBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-            this.textBox6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Company", true));
-            this.textBox6.Location = new System.Drawing.Point(163, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(161, 20);
-            this.textBox6.TabIndex = 22;
+            this.textBoxCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxCompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBoxCompany.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Company", true));
+            this.textBoxCompany.Location = new System.Drawing.Point(163, 22);
+            this.textBoxCompany.Name = "textBoxCompany";
+            this.textBoxCompany.Size = new System.Drawing.Size(161, 20);
+            this.textBoxCompany.TabIndex = 1;
             // 
             // label12
             // 
@@ -616,7 +800,7 @@
             this.textBox13.Location = new System.Drawing.Point(163, 295);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(161, 20);
-            this.textBox13.TabIndex = 12;
+            this.textBox13.TabIndex = 11;
             // 
             // textBox12
             // 
@@ -624,7 +808,7 @@
             this.textBox12.Location = new System.Drawing.Point(163, 269);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(72, 20);
-            this.textBox12.TabIndex = 11;
+            this.textBox12.TabIndex = 10;
             // 
             // textBox10
             // 
@@ -632,7 +816,7 @@
             this.textBox10.Location = new System.Drawing.Point(163, 216);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(161, 20);
-            this.textBox10.TabIndex = 9;
+            this.textBox10.TabIndex = 8;
             // 
             // textBox7
             // 
@@ -640,7 +824,7 @@
             this.textBox7.Location = new System.Drawing.Point(163, 190);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(161, 20);
-            this.textBox7.TabIndex = 6;
+            this.textBox7.TabIndex = 7;
             // 
             // textBox5
             // 
@@ -648,7 +832,7 @@
             this.textBox5.Location = new System.Drawing.Point(163, 164);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(161, 20);
-            this.textBox5.TabIndex = 4;
+            this.textBox5.TabIndex = 6;
             // 
             // textBox4
             // 
@@ -656,31 +840,31 @@
             this.textBox4.Location = new System.Drawing.Point(163, 138);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(161, 20);
-            this.textBox4.TabIndex = 3;
+            this.textBox4.TabIndex = 5;
             // 
-            // textBox3
+            // textemail
             // 
-            this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Email", true));
-            this.textBox3.Location = new System.Drawing.Point(163, 112);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(161, 20);
-            this.textBox3.TabIndex = 2;
+            this.textemail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "Email", true));
+            this.textemail.Location = new System.Drawing.Point(163, 112);
+            this.textemail.Name = "textemail";
+            this.textemail.Size = new System.Drawing.Size(161, 20);
+            this.textemail.TabIndex = 4;
             // 
-            // textBox2
+            // textLastName
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "LastName", true));
-            this.textBox2.Location = new System.Drawing.Point(163, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(161, 20);
-            this.textBox2.TabIndex = 1;
+            this.textLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "LastName", true));
+            this.textLastName.Location = new System.Drawing.Point(163, 86);
+            this.textLastName.Name = "textLastName";
+            this.textLastName.Size = new System.Drawing.Size(161, 20);
+            this.textLastName.TabIndex = 3;
             // 
-            // textBox1
+            // textFirstName
             // 
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "FirstName", true));
-            this.textBox1.Location = new System.Drawing.Point(163, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 20);
-            this.textBox1.TabIndex = 0;
+            this.textFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.contactsBindingSource, "FirstName", true));
+            this.textFirstName.Location = new System.Drawing.Point(163, 59);
+            this.textFirstName.Name = "textFirstName";
+            this.textFirstName.Size = new System.Drawing.Size(161, 20);
+            this.textFirstName.TabIndex = 2;
             // 
             // contactsTableAdapter
             // 
@@ -701,208 +885,33 @@
             // 
             this.viewDistCompanyTableAdapter.ClearBeforeFill = true;
             // 
-            // Company
+            // SearchText3
             // 
-            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Company.DataPropertyName = "Company";
-            this.Company.HeaderText = "Company";
-            this.Company.Name = "Company";
-            this.Company.ReadOnly = true;
-            this.Company.Width = 21;
+            this.SearchText3.Location = new System.Drawing.Point(585, 30);
+            this.SearchText3.Name = "SearchText3";
+            this.SearchText3.Size = new System.Drawing.Size(105, 20);
+            this.SearchText3.TabIndex = 10;
+            this.SearchText3.Tag = "email";
+            this.SearchText3.Enter += new System.EventHandler(this.SearchText_Enter);
+            this.SearchText3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchText_KeyPress);
             // 
-            // Id
+            // label10
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(534, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "email";
             // 
-            // LastName
+            // label18
             // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "LastName";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            this.LastName.Width = 21;
-            // 
-            // FirstName
-            // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            this.FirstName.Width = 21;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // BusinessPhone
-            // 
-            this.BusinessPhone.DataPropertyName = "BusinessPhone";
-            this.BusinessPhone.HeaderText = "BusinessPhone";
-            this.BusinessPhone.Name = "BusinessPhone";
-            this.BusinessPhone.ReadOnly = true;
-            // 
-            // MobilePhone
-            // 
-            this.MobilePhone.DataPropertyName = "MobilePhone";
-            this.MobilePhone.HeaderText = "MobilePhone";
-            this.MobilePhone.Name = "MobilePhone";
-            this.MobilePhone.ReadOnly = true;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // City
-            // 
-            this.City.DataPropertyName = "City";
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
-            // 
-            // ZIP
-            // 
-            this.ZIP.DataPropertyName = "ZIP";
-            this.ZIP.HeaderText = "ZIP";
-            this.ZIP.Name = "ZIP";
-            this.ZIP.ReadOnly = true;
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
-            // 
-            // Notes
-            // 
-            this.Notes.DataPropertyName = "Notes";
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // companyDataGridViewTextBoxColumn
-            // 
-            this.companyDataGridViewTextBoxColumn.DataPropertyName = "Company";
-            this.companyDataGridViewTextBoxColumn.HeaderText = "Company";
-            this.companyDataGridViewTextBoxColumn.Name = "companyDataGridViewTextBoxColumn";
-            this.companyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // jobTitleDataGridViewTextBoxColumn
-            // 
-            this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.HeaderText = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
-            this.jobTitleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // businessPhoneDataGridViewTextBoxColumn
-            // 
-            this.businessPhoneDataGridViewTextBoxColumn.DataPropertyName = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.HeaderText = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.Name = "businessPhoneDataGridViewTextBoxColumn";
-            this.businessPhoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mobilePhoneDataGridViewTextBoxColumn
-            // 
-            this.mobilePhoneDataGridViewTextBoxColumn.DataPropertyName = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.HeaderText = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.Name = "mobilePhoneDataGridViewTextBoxColumn";
-            this.mobilePhoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // JobTitle
-            // 
-            this.JobTitle.DataPropertyName = "JobTitle";
-            this.JobTitle.HeaderText = "JobTitle";
-            this.JobTitle.Name = "JobTitle";
-            this.JobTitle.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // zIPDataGridViewTextBoxColumn
-            // 
-            this.zIPDataGridViewTextBoxColumn.DataPropertyName = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.HeaderText = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.Name = "zIPDataGridViewTextBoxColumn";
-            this.zIPDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // notesDataGridViewTextBoxColumn
-            // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
-            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(160, 443);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 13);
+            this.label18.TabIndex = 32;
+            this.label18.Text = "label18";
             // 
             // Contacts
             // 
@@ -922,6 +931,7 @@
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
@@ -946,8 +956,8 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textLastName;
+        private System.Windows.Forms.TextBox textFirstName;
         private _GramV3_DevDataSet_Contact _GramV3_DevDataSet_Contact;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox12;
@@ -955,7 +965,7 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textemail;
         private System.Windows.Forms.ToolStripMenuItem postToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -978,7 +988,7 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxCompany;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
@@ -990,7 +1000,6 @@
         private _GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager tableAdapterManager;
         private _GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter viewDistCompanyTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem επιλογήToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem επιλεγμέναToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem έξοδοςToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Company;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -1020,5 +1029,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textSelectedMails;
+        private System.Windows.Forms.TextBox SearchText3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label18;
     }
 }
