@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InsertTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +46,7 @@
             this.FolderUpdTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderDelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderToProtokTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContactsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,10 +57,17 @@
             this.SelectToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
-            this.ContactsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chartYearly = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartMonthly = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblYearlyChart = new System.Windows.Forms.Label();
+            this.lblMonthlyChart = new System.Windows.Forms.Label();
+            this.lblchartYearly = new System.Windows.Forms.Label();
+            this.lblchartMonthly = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartYearly)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMonthly)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -166,6 +178,13 @@
             this.FolderToProtokTSMenuItem.Text = "Πρωτόκολλα ανά Φάκελο";
             this.FolderToProtokTSMenuItem.Click += new System.EventHandler(this.FolderToProtokTSMenuItem_Click);
             // 
+            // ContactsTSMenuItem
+            // 
+            this.ContactsTSMenuItem.Name = "ContactsTSMenuItem";
+            this.ContactsTSMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.ContactsTSMenuItem.Text = "Διευθυνσιογράφος";
+            this.ContactsTSMenuItem.Click += new System.EventHandler(this.ContactsTSMenuItem_Click);
+            // 
             // HelpTSMenuItem
             // 
             this.HelpTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,7 +212,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsStatusLblUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 240);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 340);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 1;
@@ -259,25 +278,100 @@
             this.DeleteToolStripBtn.Visible = false;
             this.DeleteToolStripBtn.Click += new System.EventHandler(this.DeleteToolStripBtn_Click);
             // 
-            // ContactsTSMenuItem
+            // chartYearly
             // 
-            this.ContactsTSMenuItem.Name = "ContactsTSMenuItem";
-            this.ContactsTSMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.ContactsTSMenuItem.Text = "Διευθυνσιογράφος";
-            this.ContactsTSMenuItem.Click += new System.EventHandler(this.ContactsTSMenuItem_Click);
+            chartArea3.Name = "ChartArea1";
+            this.chartYearly.ChartAreas.Add(chartArea3);
+            this.chartYearly.Location = new System.Drawing.Point(12, 83);
+            this.chartYearly.Name = "chartYearly";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.IsValueShownAsLabel = true;
+            series3.Name = "Series1";
+            series3.ToolTip = "#VALX (#VAL)";
+            this.chartYearly.Series.Add(series3);
+            this.chartYearly.Size = new System.Drawing.Size(260, 240);
+            this.chartYearly.TabIndex = 3;
+            this.chartYearly.Text = "chart1";
+            // 
+            // chartMonthly
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartMonthly.ChartAreas.Add(chartArea4);
+            this.chartMonthly.Location = new System.Drawing.Point(312, 83);
+            this.chartMonthly.Name = "chartMonthly";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series4.IsValueShownAsLabel = true;
+            series4.Name = "Series1";
+            series4.ToolTip = "#VALX (#VAL)";
+            this.chartMonthly.Series.Add(series4);
+            this.chartMonthly.Size = new System.Drawing.Size(260, 240);
+            this.chartMonthly.TabIndex = 4;
+            this.chartMonthly.Text = "chart1";
+            // 
+            // lblYearlyChart
+            // 
+            this.lblYearlyChart.AutoSize = true;
+            this.lblYearlyChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblYearlyChart.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblYearlyChart.Location = new System.Drawing.Point(58, 60);
+            this.lblYearlyChart.Name = "lblYearlyChart";
+            this.lblYearlyChart.Size = new System.Drawing.Size(168, 20);
+            this.lblYearlyChart.TabIndex = 5;
+            this.lblYearlyChart.Text = "Πρωτόκολλα Έτους";
+            // 
+            // lblMonthlyChart
+            // 
+            this.lblMonthlyChart.AutoSize = true;
+            this.lblMonthlyChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblMonthlyChart.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblMonthlyChart.Location = new System.Drawing.Point(363, 60);
+            this.lblMonthlyChart.Name = "lblMonthlyChart";
+            this.lblMonthlyChart.Size = new System.Drawing.Size(158, 20);
+            this.lblMonthlyChart.TabIndex = 6;
+            this.lblMonthlyChart.Text = "Πρωτόκολλα Μήνα";
+            // 
+            // lblchartYearly
+            // 
+            this.lblchartYearly.AutoSize = true;
+            this.lblchartYearly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblchartYearly.Location = new System.Drawing.Point(55, 323);
+            this.lblchartYearly.Name = "lblchartYearly";
+            this.lblchartYearly.Size = new System.Drawing.Size(164, 17);
+            this.lblchartYearly.TabIndex = 7;
+            this.lblchartYearly.Text = "(Δε βρέθηκαν εγγραφές)";
+            this.lblchartYearly.Visible = false;
+            // 
+            // lblchartMonthly
+            // 
+            this.lblchartMonthly.AutoSize = true;
+            this.lblchartMonthly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblchartMonthly.Location = new System.Drawing.Point(375, 323);
+            this.lblchartMonthly.Name = "lblchartMonthly";
+            this.lblchartMonthly.Size = new System.Drawing.Size(164, 17);
+            this.lblchartMonthly.TabIndex = 8;
+            this.lblchartMonthly.Text = "(Δε βρέθηκαν εγγραφές)";
+            this.lblchartMonthly.Visible = false;
             // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 262);
+            this.ClientSize = new System.Drawing.Size(584, 362);
+            this.Controls.Add(this.lblchartMonthly);
+            this.Controls.Add(this.lblchartYearly);
+            this.Controls.Add(this.lblMonthlyChart);
+            this.Controls.Add(this.lblYearlyChart);
+            this.Controls.Add(this.chartMonthly);
+            this.Controls.Add(this.chartYearly);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(600, 300);
-            this.MinimumSize = new System.Drawing.Size(600, 300);
+            this.MaximumSize = new System.Drawing.Size(600, 400);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MasterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Πρωτόκολλο";
@@ -287,6 +381,8 @@
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartYearly)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMonthly)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,6 +414,12 @@
         private System.Windows.Forms.ToolStripMenuItem VersionTSMenuItem;
         public System.Windows.Forms.ToolStripStatusLabel tsStatusLblUser;
         private System.Windows.Forms.ToolStripMenuItem ContactsTSMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartYearly;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartMonthly;
+        private System.Windows.Forms.Label lblYearlyChart;
+        private System.Windows.Forms.Label lblMonthlyChart;
+        private System.Windows.Forms.Label lblchartYearly;
+        private System.Windows.Forms.Label lblchartMonthly;
     }
 }
 
