@@ -15,12 +15,30 @@ namespace Protocol
     {
         List<SavedDatasources> LstSDS;
         bool InsertState;
+        public List<String> ReturnEmailList;
         public Contacts()
         {
             InitializeComponent();
+            SetMenuState("Browse");
+            UpdateHeader(dataGridView1);
+            tabControl1.ItemSize = new System.Drawing.Size(1, 1);
 
-            postToolStripMenuItem.Visible = false;
-            cancelToolStripMenuItem.Visible = false;
+            AutoCompleteStringCollection col = new AutoCompleteStringCollection();
+            viewDistCompanyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.ViewDistCompany);
+            foreach (DataRow Nam in this._GramV3_DevDataSet_Contact.ViewDistCompany.Rows)
+            {
+                col.Add((String)Nam[0]);
+            }
+
+            SearchText2.AutoCompleteCustomSource = col;
+
+            LstSDS = new List<SavedDatasources>();
+            StoreBinding();
+        }
+        public Contacts(string DummyState)
+        {
+            InitializeComponent();
+            SetMenuState("Selection");
             UpdateHeader(dataGridView1);
             tabControl1.ItemSize = new System.Drawing.Size(1, 1);
 
@@ -50,73 +68,21 @@ namespace Protocol
             a.PopulateForm(dataGridView1);
             a.Show();
         }
-
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //            BindingSource bs = (BindingSource)dataGridView1.DataSource;
-            //            DataSet dsTempDataTable = (DataSet)bs.DataSource;
-            //            DataTable dt = dsTempDataTable.Tables[0]; // use table index/name to get the exact table
-            //            DataRow dr = dt.NewRow();
-            //            dr["id"] = 0;
-            //            //  code to fill record
-            //            dt.Rows.Add(dr);
-            //            int c = dataGridView1.RowCount;
-            //            int a = dataGridView1.Rows.GetLastRow(DataGridViewElementStates.None);
-            //            dataGridView1.Rows[a].Selected = true;
-
             InsertState = true;
-
-            addToolStripMenuItem.Visible = false;
-            updateToolStripMenuItem.Visible = false;
-            deleteToolStripMenuItem.Visible = false;
-            postToolStripMenuItem.Visible = true;
-            cancelToolStripMenuItem.Visible = true;
             tabControl1.SelectedTab = tabPage2;
-
+            SetMenuState("Update");
             ClearBinding();
-
         }
-
-
-        //private void διαγραφήToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    tabControl1.SelectedTab = tabPage2;
-        //    addToolStripMenuItem.Visible = false;
-        //    updateToolStripMenuItem.Visible = false;
-        //    deleteToolStripMenuItem.Visible = false;
-        //    postToolStripMenuItem.Visible = true;
-        //    cancelToolStripMenuItem.Visible = true;
-        //}
-
         private void updToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabPage2;
-            addToolStripMenuItem.Visible = false;
-            updateToolStripMenuItem.Visible = false;
-            deleteToolStripMenuItem.Visible = false;
-            postToolStripMenuItem.Visible = true;
-            cancelToolStripMenuItem.Visible = true;
-        }
-
-        private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            tabControl1.SelectedTab = tabPage2;
-            addToolStripMenuItem.Visible = false;
-            updateToolStripMenuItem.Visible = false;
-            deleteToolStripMenuItem.Visible = false;
-            postToolStripMenuItem.Visible = true;
-            cancelToolStripMenuItem.Visible = true;
+            SetMenuState("Update");
         }
 
         private void postToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabPage1;
-            addToolStripMenuItem.Visible = !addToolStripMenuItem.Visible;
-            updateToolStripMenuItem.Visible = !updateToolStripMenuItem.Visible;
-            deleteToolStripMenuItem.Visible = !deleteToolStripMenuItem.Visible;
-            postToolStripMenuItem.Visible = !postToolStripMenuItem.Visible;
-            cancelToolStripMenuItem.Visible = !cancelToolStripMenuItem.Visible;
-
             if (InsertState)
             {
                 BindingSource bs = (BindingSource)dataGridView1.DataSource;
@@ -140,6 +106,9 @@ namespace Protocol
                 foreach (DataRow dr in dataGridView1.SelectedRows)
                     contactsTableAdapter.Update(dr);
             }
+
+            tabControl1.SelectedTab = tabPage1;
+            SetMenuState("Browse");
             RestoreBinding();
             InsertState = false;
         }
@@ -147,11 +116,7 @@ namespace Protocol
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabPage1;
-            addToolStripMenuItem.Visible = !addToolStripMenuItem.Visible;
-            updateToolStripMenuItem.Visible = !updateToolStripMenuItem.Visible;
-            deleteToolStripMenuItem.Visible = !deleteToolStripMenuItem.Visible;
-            postToolStripMenuItem.Visible = !postToolStripMenuItem.Visible;
-            cancelToolStripMenuItem.Visible = !cancelToolStripMenuItem.Visible;
+            SetMenuState("Browse");
             RestoreBinding();
             InsertState = false;
         }
@@ -262,7 +227,7 @@ namespace Protocol
                 // creating new Excelsheet in workbook  
                 Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
                 // see the excel sheet behind the program  
-                app.Visible = false;
+                //app.Visible = false;
                 // get the reference of first sheet. By default its name is Sheet1.  
                 // store its reference to worksheet  
                 worksheet = workbook.Sheets["Sheet1"];
@@ -283,10 +248,10 @@ namespace Protocol
                     }
                 }
                 // save the application  
-                workbook.SaveAs("output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                workbook.SaveAs("Leooutput1.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             // Exit from the application  
-            app.Visible = true;
-            app.Quit();
+            //app.Visible = true;
+            //app.Quit();
             /*                 }
     }
 
@@ -352,7 +317,7 @@ namespace Protocol
             // creating new Excelsheet in workbook  
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
             // see the excel sheet behind the program  
-            app.Visible = false;
+            //app.Visible = false;
             // get the reference of first sheet. By default its name is Sheet1.  
             // store its reference to worksheet  
             worksheet = workbook.Sheets["Sheet1"];
@@ -373,7 +338,7 @@ namespace Protocol
                 }
             }
             // save the application  
-            workbook.SaveAs("output.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            workbook.SaveAs("Leooutput.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             // Exit from the application  
             app.Visible = true;
             app.Quit();
@@ -520,5 +485,80 @@ namespace Protocol
                 dt.Rows.Remove(datar);
             }
         }
+
+        private void επιλογήToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((ReturnEmailList is null) ||  (ReturnEmailList.Count == 0))
+            { 
+               ReturnEmailList = new List<String>();
+            }
+            dataGridView1.MultiSelect = true;
+            SetMenuState("Selection");
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+            {
+                //                int ro = dataGridView1.CurrentCell.RowIndex;
+                //int ro = dr.Index;
+                String ro = dr.Cells["email"].Value.ToString();
+                if (ro.Trim().Length < 1)
+                {
+                    MessageBox.Show("Η επαφή " + dr.Cells["LastName"].Value.ToString() + " " + dr.Cells["FirstName"].Value.ToString() + " δεν έχει διεύθυνση email.");
+                }
+                else
+                {
+                    ReturnEmailList.Add(ro.ToString());
+                    //MessageBox.Show(dr.Cells["LastName"].Value.ToString()+" "+ dr.Cells["FirstName"].Value.ToString());
+                }
+            }
+        }
+
+        private void επιλεγμέναToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s = string.Join(",", ReturnEmailList);
+            MessageBox.Show(string.Join(",", ReturnEmailList)); 
+            //foreach (String a in ReturnEmailList)
+            //{ MessageBox.Show(a); }
+        }
+
+
+        public List<Control> GetAllControls(Control searchWithin, List<Control> returnList)
+        {
+
+            foreach (Control ctrlt in searchWithin.Controls)
+            {
+                if (ctrlt.HasChildren)
+                    foreach (Control ctrl in ctrlt.Controls)
+                        if (ctrl.HasChildren)
+                            GetAllControls(ctrl, returnList);
+                        else
+                            returnList.Add(ctrl);
+                else //if searchWithin.HasChildren = False Then
+                    foreach (Control ctrl in ctrlt.Controls)
+                        returnList.AddRange(GetAllControls(ctrl, returnList));
+            }
+            return returnList;
+        }
+
+
+        private void SetMenuState(string TagState)
+        {
+            List<Control> FormControls = new List<Control>();
+
+            FormControls = GetAllControls(this, FormControls);
+            foreach (Control c in FormControls)
+                {
+                    if (c.GetType().Name.ToUpper() == "MENUSTRIP")
+                      foreach (System.Windows.Forms.ToolStripItem item in ((System.Windows.Forms.ToolStrip)c).Items)
+                    if (item.Tag.ToString().ToUpper() == TagState.ToUpper())
+                            item.Visible = true;
+                    else
+                            item.Visible = false;
+                }
+        }
+
     }
 }

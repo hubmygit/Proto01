@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchText2 = new System.Windows.Forms.TextBox();
             this.SearchText1 = new System.Windows.Forms.TextBox();
@@ -44,37 +44,13 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.postToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.επιλογήToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.επιλεγμέναToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.έξοδοςToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JobTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BusinessPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MobilePhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.businessPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobilePhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,6 +89,34 @@
             this.updateKeyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter();
             this.tableAdapterManager = new Protocol._GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager();
             this.viewDistCompanyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter();
+            this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BusinessPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MobilePhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.businessPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mobilePhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -206,7 +210,10 @@
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.postToolStripMenuItem,
-            this.cancelToolStripMenuItem});
+            this.cancelToolStripMenuItem,
+            this.επιλογήToolStripMenuItem,
+            this.επιλεγμέναToolStripMenuItem,
+            this.έξοδοςToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(769, 24);
@@ -217,6 +224,7 @@
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.addToolStripMenuItem.Tag = "Browse";
             this.addToolStripMenuItem.Text = "Προσθήκη";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -224,6 +232,7 @@
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
             this.updateToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.updateToolStripMenuItem.Tag = "Browse";
             this.updateToolStripMenuItem.Text = "Μεταβολή";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updToolStripMenuItem_Click);
             // 
@@ -231,6 +240,7 @@
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.deleteToolStripMenuItem.Tag = "Browse";
             this.deleteToolStripMenuItem.Text = "Διαγραφή";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -238,6 +248,7 @@
             // 
             this.postToolStripMenuItem.Name = "postToolStripMenuItem";
             this.postToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.postToolStripMenuItem.Tag = "Update";
             this.postToolStripMenuItem.Text = "Post";
             this.postToolStripMenuItem.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
             // 
@@ -245,8 +256,32 @@
             // 
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.cancelToolStripMenuItem.Tag = "Update";
             this.cancelToolStripMenuItem.Text = "Cancel";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
+            // 
+            // επιλογήToolStripMenuItem
+            // 
+            this.επιλογήToolStripMenuItem.Name = "επιλογήToolStripMenuItem";
+            this.επιλογήToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.επιλογήToolStripMenuItem.Tag = "Browse";
+            this.επιλογήToolStripMenuItem.Text = "Επιλογή";
+            this.επιλογήToolStripMenuItem.Click += new System.EventHandler(this.επιλογήToolStripMenuItem_Click);
+            // 
+            // επιλεγμέναToolStripMenuItem
+            // 
+            this.επιλεγμέναToolStripMenuItem.Name = "επιλεγμέναToolStripMenuItem";
+            this.επιλεγμέναToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.επιλεγμέναToolStripMenuItem.Tag = "Selection";
+            this.επιλεγμέναToolStripMenuItem.Text = "Επιλεγμένα";
+            this.επιλεγμέναToolStripMenuItem.Click += new System.EventHandler(this.επιλεγμέναToolStripMenuItem_Click);
+            // 
+            // έξοδοςToolStripMenuItem
+            // 
+            this.έξοδοςToolStripMenuItem.Name = "έξοδοςToolStripMenuItem";
+            this.έξοδοςToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.έξοδοςToolStripMenuItem.Tag = "Selection";
+            this.έξοδοςToolStripMenuItem.Text = "Έξοδος";
             // 
             // panel2
             // 
@@ -268,6 +303,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(769, 587);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabStop = false;
             // 
             // tabPage1
             // 
@@ -277,22 +313,22 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(761, 561);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "_";
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSalmon;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSalmon;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Company,
+            this.Id,
             this.LastName,
             this.FirstName,
             this.Email,
-            this.JobTitle,
             this.BusinessPhone,
             this.MobilePhone,
             this.Address,
@@ -309,6 +345,7 @@
             this.jobTitleDataGridViewTextBoxColumn,
             this.businessPhoneDataGridViewTextBoxColumn,
             this.mobilePhoneDataGridViewTextBoxColumn,
+            this.JobTitle,
             this.addressDataGridViewTextBoxColumn,
             this.cityDataGridViewTextBoxColumn,
             this.zIPDataGridViewTextBoxColumn,
@@ -323,211 +360,17 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Size = new System.Drawing.Size(755, 555);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Company
-            // 
-            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Company.DataPropertyName = "Company";
-            this.Company.HeaderText = "Company";
-            this.Company.Name = "Company";
-            this.Company.ReadOnly = true;
-            this.Company.Width = 21;
-            // 
-            // LastName
-            // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "LastName";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            this.LastName.Width = 21;
-            // 
-            // FirstName
-            // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            this.FirstName.Width = 21;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // JobTitle
-            // 
-            this.JobTitle.DataPropertyName = "JobTitle";
-            this.JobTitle.HeaderText = "JobTitle";
-            this.JobTitle.Name = "JobTitle";
-            this.JobTitle.ReadOnly = true;
-            // 
-            // BusinessPhone
-            // 
-            this.BusinessPhone.DataPropertyName = "BusinessPhone";
-            this.BusinessPhone.HeaderText = "BusinessPhone";
-            this.BusinessPhone.Name = "BusinessPhone";
-            this.BusinessPhone.ReadOnly = true;
-            // 
-            // MobilePhone
-            // 
-            this.MobilePhone.DataPropertyName = "MobilePhone";
-            this.MobilePhone.HeaderText = "MobilePhone";
-            this.MobilePhone.Name = "MobilePhone";
-            this.MobilePhone.ReadOnly = true;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // City
-            // 
-            this.City.DataPropertyName = "City";
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
-            // 
-            // ZIP
-            // 
-            this.ZIP.DataPropertyName = "ZIP";
-            this.ZIP.HeaderText = "ZIP";
-            this.ZIP.Name = "ZIP";
-            this.ZIP.ReadOnly = true;
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
-            // 
-            // Notes
-            // 
-            this.Notes.DataPropertyName = "Notes";
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            this.Notes.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // companyDataGridViewTextBoxColumn
-            // 
-            this.companyDataGridViewTextBoxColumn.DataPropertyName = "Company";
-            this.companyDataGridViewTextBoxColumn.HeaderText = "Company";
-            this.companyDataGridViewTextBoxColumn.Name = "companyDataGridViewTextBoxColumn";
-            this.companyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // jobTitleDataGridViewTextBoxColumn
-            // 
-            this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.HeaderText = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
-            this.jobTitleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // businessPhoneDataGridViewTextBoxColumn
-            // 
-            this.businessPhoneDataGridViewTextBoxColumn.DataPropertyName = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.HeaderText = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.Name = "businessPhoneDataGridViewTextBoxColumn";
-            this.businessPhoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mobilePhoneDataGridViewTextBoxColumn
-            // 
-            this.mobilePhoneDataGridViewTextBoxColumn.DataPropertyName = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.HeaderText = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.Name = "mobilePhoneDataGridViewTextBoxColumn";
-            this.mobilePhoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // zIPDataGridViewTextBoxColumn
-            // 
-            this.zIPDataGridViewTextBoxColumn.DataPropertyName = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.HeaderText = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.Name = "zIPDataGridViewTextBoxColumn";
-            this.zIPDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // notesDataGridViewTextBoxColumn
-            // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
-            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -611,7 +454,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(761, 561);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "_";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label17
@@ -858,6 +701,209 @@
             // 
             this.viewDistCompanyTableAdapter.ClearBeforeFill = true;
             // 
+            // Company
+            // 
+            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Company.DataPropertyName = "Company";
+            this.Company.HeaderText = "Company";
+            this.Company.Name = "Company";
+            this.Company.ReadOnly = true;
+            this.Company.Width = 21;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "LastName";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            this.LastName.Width = 21;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            this.FirstName.Width = 21;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // BusinessPhone
+            // 
+            this.BusinessPhone.DataPropertyName = "BusinessPhone";
+            this.BusinessPhone.HeaderText = "BusinessPhone";
+            this.BusinessPhone.Name = "BusinessPhone";
+            this.BusinessPhone.ReadOnly = true;
+            // 
+            // MobilePhone
+            // 
+            this.MobilePhone.DataPropertyName = "MobilePhone";
+            this.MobilePhone.HeaderText = "MobilePhone";
+            this.MobilePhone.Name = "MobilePhone";
+            this.MobilePhone.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // City
+            // 
+            this.City.DataPropertyName = "City";
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.ReadOnly = true;
+            // 
+            // ZIP
+            // 
+            this.ZIP.DataPropertyName = "ZIP";
+            this.ZIP.HeaderText = "ZIP";
+            this.ZIP.Name = "ZIP";
+            this.ZIP.ReadOnly = true;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            // 
+            // Notes
+            // 
+            this.Notes.DataPropertyName = "Notes";
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // companyDataGridViewTextBoxColumn
+            // 
+            this.companyDataGridViewTextBoxColumn.DataPropertyName = "Company";
+            this.companyDataGridViewTextBoxColumn.HeaderText = "Company";
+            this.companyDataGridViewTextBoxColumn.Name = "companyDataGridViewTextBoxColumn";
+            this.companyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobTitleDataGridViewTextBoxColumn
+            // 
+            this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
+            this.jobTitleDataGridViewTextBoxColumn.HeaderText = "JobTitle";
+            this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
+            this.jobTitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // businessPhoneDataGridViewTextBoxColumn
+            // 
+            this.businessPhoneDataGridViewTextBoxColumn.DataPropertyName = "BusinessPhone";
+            this.businessPhoneDataGridViewTextBoxColumn.HeaderText = "BusinessPhone";
+            this.businessPhoneDataGridViewTextBoxColumn.Name = "businessPhoneDataGridViewTextBoxColumn";
+            this.businessPhoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mobilePhoneDataGridViewTextBoxColumn
+            // 
+            this.mobilePhoneDataGridViewTextBoxColumn.DataPropertyName = "MobilePhone";
+            this.mobilePhoneDataGridViewTextBoxColumn.HeaderText = "MobilePhone";
+            this.mobilePhoneDataGridViewTextBoxColumn.Name = "mobilePhoneDataGridViewTextBoxColumn";
+            this.mobilePhoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // JobTitle
+            // 
+            this.JobTitle.DataPropertyName = "JobTitle";
+            this.JobTitle.HeaderText = "JobTitle";
+            this.JobTitle.Name = "JobTitle";
+            this.JobTitle.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // zIPDataGridViewTextBoxColumn
+            // 
+            this.zIPDataGridViewTextBoxColumn.DataPropertyName = "ZIP";
+            this.zIPDataGridViewTextBoxColumn.HeaderText = "ZIP";
+            this.zIPDataGridViewTextBoxColumn.Name = "zIPDataGridViewTextBoxColumn";
+            this.zIPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countryDataGridViewTextBoxColumn
+            // 
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Contacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -865,8 +911,9 @@
             this.ClientSize = new System.Drawing.Size(769, 657);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "Contacts";
-            this.Text = "Contacts";
+            this.Text = "Διευθυνσιογράφος";
             this.Load += new System.EventHandler(this.Contacts_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -942,11 +989,14 @@
         private _GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter updateKeyTableAdapter;
         private _GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager tableAdapterManager;
         private _GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter viewDistCompanyTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem επιλογήToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem επιλεγμέναToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem έξοδοςToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Company;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JobTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn BusinessPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn MobilePhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
@@ -963,6 +1013,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn jobTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn businessPhoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mobilePhoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zIPDataGridViewTextBoxColumn;
