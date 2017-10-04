@@ -721,6 +721,19 @@ namespace Protocol
             return ret;
         }
 
+        public string createOutMailSubject(int protokSn, string summary)
+        {
+            string ret = "";
+            ret = "ΑΑΠ." + protokSn.ToString() + "/" + summary.Left(30);
+            return ret;
+        }
+
+        public string createOutMailBody(int protokSn, string summary)
+        {
+            string ret = "";
+            ret = "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Περίληψη: " + summary;
+            return ret;
+        }
         private void btnInsert_Click(object sender, EventArgs e)
         {
             //No updates in this phase...
@@ -828,13 +841,15 @@ namespace Protocol
 
                             //myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
                             myEmail.Subject = createInMailSubject("ΕΙΣΕΡΧΟΜΕΝΑ", 
-                                                ProtokSn.inserted, DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]), 
+                                                ProtokSn.inserted, 
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]), 
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text, 
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
 
                             //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
                             myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
-                                                ProtokSn.inserted, DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                ProtokSn.inserted, 
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text,
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
                         }
@@ -975,8 +990,8 @@ namespace Protocol
                             myEmail = new Email();
                             myEmail.ProtokId = ProtokId;
 
-                            myEmail.Subject = "outbox subject"; //createOutMailSubject
-                            myEmail.Body = "outbox body"; //createOutMailBody
+                            myEmail.Subject = createOutMailSubject(ProtokSn.inserted, IOBoxPanel.Controls["tbOutSummary"].Text);
+                            myEmail.Body = createOutMailBody(ProtokSn.inserted, IOBoxPanel.Controls["tbOutSummary"].Text);
                         }
 
                         ShowClosingDialog = false;

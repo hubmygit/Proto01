@@ -71,31 +71,30 @@ namespace Protocol
                         //Save Mail... 
                         //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
-                        //Send Mail...
+                        //Send Mail... 
                         oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
-
                     }
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
                 {
                     //Show ContactsToEmail Form
+                    ContactsToEmail cteFrm = new ContactsToEmail();
+                    cteFrm.ShowDialog();
 
-                    //and on click event
-                    //Show Contacts Form...
-                    Contacts contactsFrm = new Contacts("GoToSelected!");
-                    contactsFrm.ShowDialog();
-
-                    //get Contacts
-                    foreach (string thisContact in contactsFrm.ReturnEmailList)
+                    if (cteFrm.frmSaved)
                     {
+                        outlookForms oF = new outlookForms();
+                        oF.fillRecipientList(cteFrm.txtRecipientsTo.Text, cteFrm.txtRecipientsCc.Text, cteFrm.txtRecipientsBcc.Text);
 
+                        //Show Mail... 
+                        oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                        //Save Mail... 
+                        //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                        //Send Mail... 
+                        //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
                     }
-
-                    //send them to ContactsToEmail Form
-
-                    //show/save/send email
-
-                    int help = 0;
                 }
             }
             //else if (frmProtoIns.successfulInsertion == false && frmProtoIns.chbSendMail.Checked == true)

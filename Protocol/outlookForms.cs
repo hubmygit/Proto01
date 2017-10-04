@@ -80,6 +80,51 @@ namespace Protocol
             }
         }
 
+        public void fillRecipientList(string RecTo, string RecCc, string RecBcc)
+        {
+            string[] recs;
+            
+            if (RecTo.Trim().Length > 0)
+            {
+                recs = RecTo.Split(';');
+
+                foreach (string thisRec in recs)
+                {
+                    if (thisRec.Trim().Length > 0)
+                    {
+                        RecipientsList.Add(new Recipient("", thisRec.Trim(), "To", ""));
+                    }
+                }
+            }
+
+            if (RecCc.Trim().Length > 0)
+            {
+                recs = RecCc.Split(';');
+
+                foreach (string thisRec in recs)
+                {
+                    if (thisRec.Trim().Length > 0)
+                    {
+                        RecipientsList.Add(new Recipient("", thisRec.Trim(), "CC", ""));
+                    }
+                }
+            }
+
+            if (RecBcc.Trim().Length > 0)
+            {
+                recs = RecBcc.Split(';');
+
+                foreach (string thisRec in recs)
+                {
+                    if (thisRec.Trim().Length > 0)
+                    {
+                        RecipientsList.Add(new Recipient("", thisRec.Trim(), "BCC", ""));
+                    }
+                }
+            }
+
+        }
+
         private void FillMailForm(int protokId, string subject, string body, List<string> attachments)
         {
             ProtokId = protokId;
@@ -92,21 +137,37 @@ namespace Protocol
             //oMailItem.To = "";
             //oMailItem.CC = "";
             //oMailItem.BCC = "";
+
+            Outlook.Recipients oRecips = oMailItem.Recipients;
             foreach (Recipient thisRec in RecipientsList)
             {
+                //string strToAdd = thisRec.ExchUser + "; ";
                 if (thisRec.ExchTypeStr == "To")
                 {
-                    oMailItem.To += thisRec.ExchUser + ";";
+                    //oMailItem.To += strToAdd;
+                    Outlook.Recipient oTORecip = oRecips.Add(thisRec.ExchUser);
+                    oTORecip.Type = (int)Outlook.OlMailRecipientType.olTo;
+                    oTORecip.Resolve();
                 }
                 else if (thisRec.ExchTypeStr == "CC")
                 {
-                    oMailItem.CC += thisRec.ExchUser + ";";
+                    //oMailItem.CC += strToAdd;
+                    Outlook.Recipient oCCRecip = oRecips.Add(thisRec.ExchUser);
+                    oCCRecip.Type = (int)Outlook.OlMailRecipientType.olCC;
+                    oCCRecip.Resolve();
                 }
                 else if (thisRec.ExchTypeStr == "BCC")
                 {
-                    oMailItem.BCC += thisRec.ExchUser + ";";
+                    //oMailItem.BCC += strToAdd;
+                    Outlook.Recipient oBCCRecip = oRecips.Add(thisRec.ExchUser);
+                    oBCCRecip.Type = (int)Outlook.OlMailRecipientType.olBCC;
+                    oBCCRecip.Resolve();
                 }
             }
+
+            string test = oMailItem.To;
+            test = oMailItem.CC;
+            test = oMailItem.BCC;
 
             oMailItem.Subject = subject;
             oMailItem.Body = body;
