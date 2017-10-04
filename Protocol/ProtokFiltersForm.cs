@@ -19,6 +19,9 @@ namespace Protocol
 
             //cbCompany.Items.AddRange(ProtokoloInsertForm.GetObjCompanies());
             //cbProced.Items.AddRange(ProtokoloInsertForm.GetObjProtocolKind());
+
+            chlbProced.Items.AddRange(ProtokoloInsertForm.GetObjProtocolKind());
+            chlbCompany.Items.AddRange(ProtokoloInsertForm.GetObjCompanies());
         }
 
         public bool saveFilters = false;
@@ -43,7 +46,6 @@ namespace Protocol
                 if (thisFilter.FieldName == "chbDeleted")
                 {
                     chbDeleted.Checked = Convert.ToBoolean(thisFilter.FieldValue);
-                    
                 }
                 if (thisFilter.FieldName == "dtpGetSetDate_From")
                 {
@@ -53,6 +55,20 @@ namespace Protocol
                 {
                     dtpGetSetDate_To.Value = Convert.ToDateTime(thisFilter.FieldValue);
                 }
+                if (thisFilter.FieldName == "chlbProced")
+                {
+                    foreach (string str in thisFilter.FieldMultipleValues)
+                    {
+                        //chlbProced.SetItemChecked(chlbProced.Items.IndexOf(str), true);
+                    }
+                }
+                if (thisFilter.FieldName == "chlbCompany")
+                {
+                    foreach (string str in thisFilter.FieldMultipleValues)
+                    {
+                        chlbProced.SetItemChecked(chlbCompany.Items.IndexOf(str), true);
+                    }
+                }
             }
         }
 
@@ -61,17 +77,41 @@ namespace Protocol
             saveFilters = true;
 
             savedFilters.Clear();//not needed right now
-            
+            whereStr = "WHERE ";
+
             //foreach( in Controls)
-            //
             savedFilters.Add(new Filter("chbDeleted", chbDeleted.Checked.ToString()));
+            whereStr += " isnull(P.deleted, 0) = 0 ";
+
             savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("dd-MM-yyyy")));
             savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("dd-MM-yyyy")));
+            whereStr += " AND P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                     "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 
-            //where TODO!!!!!!!!!!!
-            whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+            List<string> checkedItems = new List<string>();
+            string whereItems = "";
+            foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
+            {
+                checkedItems.Add(thisItem.Text);
+                whereItems += ("'" + thisItem.Text + "',");
+            }
+            whereItems = whereItems.Substring(0, whereItems.Length - 1);
+            savedFilters.Add(new Filter("chlbProced", checkedItems.ToArray()));
+            whereStr += " AND PR.Name in (" + whereItems + ") ";
 
+
+
+
+            //if (Control.Text.Trim() != "") ...
+
+
+
+
+            //whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+            //                          "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+
+
+            saveFilters = true;
             Close();
         }
     }
@@ -94,6 +134,12 @@ namespace Protocol
             FieldValue = fieldValue;
         }
 
+        public Filter(string fieldName, string[] fieldMultipleValues)
+        {
+            FieldName = fieldName;
+            FieldMultipleValues = fieldMultipleValues;
+        }
+
         public Filter(string fieldName, string fieldValue, Control fieldControl)
         {
             FieldName = fieldName;
@@ -104,6 +150,7 @@ namespace Protocol
         public Control FieldControl { get; set; }
         public string FieldName { get; set; }
         public string FieldValue { get; set; }
+        public string [] FieldMultipleValues { get; set; }
 
     }
 }

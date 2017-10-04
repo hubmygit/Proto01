@@ -296,18 +296,23 @@ namespace Protocol
             }
             else //change filters
             {
+                FiltersFrm.saveFilters = false;
                 //set initial values
-                FiltersFrm.savedFilters.Clear();
+                //FiltersFrm.savedFilters.Clear();
                 //FiltersFrm.savedFilters.Add(new Filter("chbDeleted", "true"));
-                FiltersFrm.JoinFiltersWithControls();
 
-                //set where... 
+                FiltersFrm.JoinFiltersWithControls();
             }
 
             FiltersFrm.ShowDialog();
-            
-            //get where
-            ShowDataToListView(lvRep, FiltersFrm.whereStr);
+
+            if (FiltersFrm.saveFilters == true)
+            {
+                FiltersFrm.saveFilters = false;
+                FiltersFrm.JoinFiltersWithControls();
+
+                ShowDataToListView(lvRep, FiltersFrm.whereStr);
+            }
         }
 
         //private void lvRep_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
