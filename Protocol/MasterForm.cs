@@ -351,22 +351,27 @@ namespace Protocol
             string connectionString = "Persist Security Info=False; User ID=" + "GramV3" + "; Password=" + "8093570" + "; Initial Catalog=" + "GramV3-Dev" + "; Server=" + "AVINDOMC\\SQLSERVERR2";
 
             SqlConnection sqlConn = new SqlConnection(connectionString);
-            string SelectSt = "SELECT Name FROM [dbo].[Proced] ";
+            string SelectSt = "SELECT * FROM [dbo].[Protok] ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
                 sqlConn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
+                DataTable Schemadt = reader.GetSchemaTable();
 
-                while (reader.Read())
-                {
-                    string aaaa = reader["Name"].ToString();
-
-                    string aa = reader["Name"].GetType().ToString();
-                }
-
+//                while (reader.Read())
+//                {
+//                    string aaaa = reader["Name"].ToString();
+//
+//                    string aa = reader["Name"].GetType().ToString();
+//                }
+                
                 var dotNetType = reader.GetFieldType(0);
                 var sqlType = reader.GetDataTypeName(0);
+
+                frmFilter a = new frmFilter();
+                a.PopulateForm(reader, Schemadt);
+                a.ShowDialog();
 
                 reader.Close();
             }
@@ -377,6 +382,10 @@ namespace Protocol
 
         }
 
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestReader();
+        }
     }
 
     public class ChartData
