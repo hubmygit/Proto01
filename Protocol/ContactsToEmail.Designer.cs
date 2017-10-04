@@ -36,6 +36,7 @@
             this.btnRecipientsCc = new System.Windows.Forms.Button();
             this.btnRecipientsTo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.txtRecipientsCc.Name = "txtRecipientsCc";
             this.txtRecipientsCc.ReadOnly = true;
             this.txtRecipientsCc.Size = new System.Drawing.Size(443, 50);
-            this.txtRecipientsCc.TabIndex = 9;
+            this.txtRecipientsCc.TabIndex = 5;
             // 
             // txtRecipientsBcc
             // 
@@ -59,7 +60,7 @@
             this.txtRecipientsBcc.Name = "txtRecipientsBcc";
             this.txtRecipientsBcc.ReadOnly = true;
             this.txtRecipientsBcc.Size = new System.Drawing.Size(443, 50);
-            this.txtRecipientsBcc.TabIndex = 10;
+            this.txtRecipientsBcc.TabIndex = 6;
             // 
             // txtRecipientsTo
             // 
@@ -70,7 +71,7 @@
             this.txtRecipientsTo.Name = "txtRecipientsTo";
             this.txtRecipientsTo.ReadOnly = true;
             this.txtRecipientsTo.Size = new System.Drawing.Size(443, 50);
-            this.txtRecipientsTo.TabIndex = 19;
+            this.txtRecipientsTo.TabIndex = 4;
             // 
             // btnRecipientsBcc
             // 
@@ -79,7 +80,7 @@
             this.btnRecipientsBcc.Location = new System.Drawing.Point(75, 165);
             this.btnRecipientsBcc.Name = "btnRecipientsBcc";
             this.btnRecipientsBcc.Size = new System.Drawing.Size(54, 50);
-            this.btnRecipientsBcc.TabIndex = 26;
+            this.btnRecipientsBcc.TabIndex = 3;
             this.btnRecipientsBcc.Text = "Bcc...";
             this.btnRecipientsBcc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRecipientsBcc.UseVisualStyleBackColor = true;
@@ -92,7 +93,7 @@
             this.btnRecipientsCc.Location = new System.Drawing.Point(75, 99);
             this.btnRecipientsCc.Name = "btnRecipientsCc";
             this.btnRecipientsCc.Size = new System.Drawing.Size(54, 50);
-            this.btnRecipientsCc.TabIndex = 25;
+            this.btnRecipientsCc.TabIndex = 2;
             this.btnRecipientsCc.Text = "Cc...";
             this.btnRecipientsCc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRecipientsCc.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@
             this.btnRecipientsTo.Location = new System.Drawing.Point(75, 33);
             this.btnRecipientsTo.Name = "btnRecipientsTo";
             this.btnRecipientsTo.Size = new System.Drawing.Size(53, 50);
-            this.btnRecipientsTo.TabIndex = 24;
+            this.btnRecipientsTo.TabIndex = 1;
             this.btnRecipientsTo.Text = "To...";
             this.btnRecipientsTo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRecipientsTo.UseVisualStyleBackColor = true;
@@ -121,11 +122,26 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnSave.Image = global::Protocol.Properties.Resources.Save_32x;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(235, 240);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(135, 40);
+            this.btnSave.TabIndex = 21;
+            this.btnSave.Text = "Αποθήκευση";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // ContactsToEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 262);
+            this.ClientSize = new System.Drawing.Size(604, 302);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnRecipientsBcc);
             this.Controls.Add(this.btnRecipientsCc);
             this.Controls.Add(this.btnRecipientsTo);
@@ -134,8 +150,8 @@
             this.Controls.Add(this.txtRecipientsBcc);
             this.Controls.Add(this.txtRecipientsCc);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(620, 300);
-            this.MinimumSize = new System.Drawing.Size(620, 300);
+            this.MaximumSize = new System.Drawing.Size(620, 340);
+            this.MinimumSize = new System.Drawing.Size(620, 340);
             this.Name = "ContactsToEmail";
             this.Text = "Παραλήπτες";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -152,5 +168,6 @@
         private System.Windows.Forms.Button btnRecipientsTo;
         private System.Windows.Forms.Button btnRecipientsCc;
         private System.Windows.Forms.Button btnRecipientsBcc;
+        public System.Windows.Forms.Button btnSave;
     }
 }

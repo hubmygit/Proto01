@@ -143,6 +143,26 @@ namespace Protocol.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EditFilter_32x {
+            get {
+                object obj = ResourceManager.GetObject("EditFilter_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Filter_32x {
+            get {
+                object obj = ResourceManager.GetObject("Filter_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FindResults_16x {
             get {
                 object obj = ResourceManager.GetObject("FindResults_16x", resourceCulture);
