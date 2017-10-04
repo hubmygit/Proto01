@@ -59,7 +59,18 @@ namespace Protocol
                 {
                     foreach (string str in thisFilter.FieldMultipleValues)
                     {
+                        int error = chlbProced.Items.IndexOf(str);
+                        ComboboxItem cbi = new ComboboxItem();
+                        cbi.Text = str;
+                        Proced proced = new Proced();
+                        proced.Id = 0; //??????????????????????????????????
+                        proced.Name = str;
+                        cbi.Value = proced;
+                        chlbProced.SetItemChecked(chlbProced.Items.IndexOf(cbi), true);
+
                         //chlbProced.SetItemChecked(chlbProced.Items.IndexOf(str), true);
+
+                        //or .... foreach(Proced pro in (Comboboxitem)chlbProced.Items)
                     }
                 }
                 if (thisFilter.FieldName == "chlbCompany")
