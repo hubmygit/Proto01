@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Common;
+using System.Data.SqlClient;
 
 namespace Protocol
 {
@@ -44,6 +45,25 @@ namespace Protocol
                 CreateEdit(this, xy.DataPropertyName.ToString(), 10, 100, xy.Name.ToString(), xy.Name.ToString(),xy);
             }
             }
+
+        public void PopulateForm(SqlDataReader SqlDr, DataTable dt)
+        {
+            foreach (DataRow myField in dt.Rows)
+            {
+                String aaa = myField["ColumnName"].ToString();
+                if (myField["ColumnName"].ToString().EndsWith("Id") && (myField["ColumnName"].ToString().Trim().Length > 2))
+                {
+                    CreateLCB0(myField);
+                }
+                else
+                {
+                    CreateEdit(myField);
+                }
+            }
+        }
+
+
+
 
         public void PopulateForm(BindingSource Dg)
         {
@@ -267,8 +287,6 @@ namespace Protocol
             //  FillCheckListBoxName(LChlb, LEditListSource.DataSet, LEditListField, LEditKeyField);
 
             //    LChlb.Sorted = true;
-
-
         }
 
         public void CreateDateEdit(object Owner, String Name, int LName, int Width, String LField, String NNField,DataGridViewColumn xy)
@@ -401,7 +419,142 @@ namespace Protocol
         }
 
 
+        public void CreateEdit(DataRow sdc)
+        {
+            //foreach (DataColumn myProperty in dt.Columns)
+            //{
+                //MessageBox.Show(myProperty.ColumnName + " = " + myField[myProperty].ToString());
+            //}
+
+
+            TextBox LEdit, LEdit1;
+            Label LLabel;
+            Button LBut;
+
+            CurTop = CurTop + 20;
+
+            LEdit = new TextBox();
+            LEdit.Name = "EdtF" + sdc["ColumnName"].ToString();
+            //MessageBox.Show(sdc["BaseColumnName"].ToString());
+            //MessageBox.Show(sdc["BaseTableName"].ToString());
+            LEdit.Top = CurTop;
+            LEdit.Left = 150;
+            LEdit.Tag = 1;
+            Width = (int)sdc["ColumnSize"];
+            if (Width > 200)
+                LEdit.Width = 190;
+            else
+                LEdit.Width = Width;
+
+            LEdit.Visible = true;
+            LEdit.Text = "";
+            this.toolTip1.SetToolTip(LEdit, sdc["ColumnName"].ToString());
+            this.tabPage1.Controls.Add(LEdit);
+
+            LEdit1 = new TextBox();
+            LEdit1.Name = "EdtT" + sdc["ColumnName"].ToString();
+            this.toolTip1.SetToolTip(LEdit1, sdc["ColumnName"].ToString());
+            LEdit1.Top = CurTop;
+            LEdit1.Left = 370;
+            LEdit1.Tag = 2;
+            Width = (int)sdc["ColumnSize"];
+            if (Width > 200)
+                LEdit1.Width = 190;
+            else
+                LEdit1.Width = Width;
+            LEdit1.Visible = true;
+            LEdit1.Text = " ";
+            this.tabPage1.Controls.Add(LEdit1);
+
+            LLabel = new Label();
+            LLabel.Name = 'L' + sdc["ColumnName"].ToString();
+            LLabel.Text = sdc["ColumnName"].ToString();
+            LLabel.Top = CurTop;
+            LLabel.Left = 10;
+            LLabel.Width = 130;
+            LLabel.Height = CurTop + 120;
+            LLabel.AutoSize = true;
+            this.tabPage1.Controls.Add(LLabel);
+
+            LBut = new Button();
+            LBut.Name = 'B' + sdc["ColumnName"].ToString();
+//            LBut.AccessibleDescription = NNField;
+            LBut.Top = CurTop;
+            LBut.Left = 350;
+            LBut.Width = 20;
+            LBut.Text = "->";
+            LBut.Tag = 10;
+            this.tabPage1.Controls.Add(LBut);
+        }
+
+    public void CreateLCB0(DataRow sdc)
+    {
+        CheckedListBox LChlb;
+        TabPage LTab;
+        String LeoName, FldName;
+        int x;
+        String LEditListField, LEditKeyField, LEditName, LEdit1Name;
+
+
+            
+        int Len = sdc["ColumnName"].ToString().Length;
+            String TableNamme = sdc["ColumnName"].ToString().Left(Len - 2);
+            if (TableNamme == "Procedure")
+                TableNamme = "Proced";
+            if (TableNamme == "Folder")
+                TableNamme = "Folders";
+
+
+            String connectionString = "Persist Security Info=False; User ID=" + "GramV3" + "; Password=" + "8093570" + "; Initial Catalog=" + "GramV3-Dev" + "; Server=" + "AVINDOMC\\SQLSERVERR2";
+
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            string SelectSt = "SELECT id, name FROM  " + TableNamme;
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+//                reader.Close();
+
+
+//        LEditListField = Field.DisplayMember;
+//        LEditKeyField = Field.ValueMember;
+
+        LTab = new TabPage();
+        LTab.Name = "Tab" + sdc["ColumnName"].ToString();
+        LTab.Text = sdc["ColumnName"].ToString();
+        LTab.Visible = true;
+        LTab.AutoScroll = true;
+
+        LChlb = new CheckedListBox();
+        LChlb.Name = "Chib" + sdc["ColumnName"].ToString();
+        LChlb.Left = 1;
+        LChlb.Width = 1;
+        LChlb.Dock = System.Windows.Forms.DockStyle.Fill;
+
+            LChlb.DisplayMember = "Text";
+            LChlb.ValueMember = "Value";
+            //LChlb.Items.Insert(0, new { Text = "text", Value = "value" })
+
+
+            while (reader.Read())
+            {
+                //CheckedListBox obj = new CheckedListBox(Convert.ToString(reader[1]), Convert.ToString(reader[0]));
+                //in object of ListViewItem give display member at first and give value member at second position 
+                //LChlb.Items.Add(new object(Convert.ToString(reader[1]), (int)reader[0]));
+                LChlb.Items.Insert(0, new { Text = Convert.ToString(reader[1]), Value = (int)reader[0] });
+            }
+
+            //((ListBox)LChlb).DataBindings = reader;
+            //((ListBox)LChlb).DisplayMember = "Name";
+            //((ListBox)LChlb).ValueMember =   "id" ;
+
+            reader.Close();
+            LTab.Controls.Add(LChlb);
+        this.tabControl1.Controls.Add(LTab);
     }
+
+
+    }
+
 }
 
 

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InsertTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +63,7 @@
             this.lblMonthlyChart = new System.Windows.Forms.Label();
             this.lblchartYearly = new System.Windows.Forms.Label();
             this.lblchartMonthly = new System.Windows.Forms.Label();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -75,7 +76,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileTSMenuItem,
             this.ParamsTSMenuItem,
-            this.HelpTSMenuItem});
+            this.HelpTSMenuItem,
+            this.testToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(584, 24);
@@ -212,7 +214,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsStatusLblUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 340);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(584, 22);
             this.statusStrip1.TabIndex = 1;
@@ -280,32 +282,32 @@
             // 
             // chartYearly
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartYearly.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartYearly.ChartAreas.Add(chartArea1);
             this.chartYearly.Location = new System.Drawing.Point(12, 83);
             this.chartYearly.Name = "chartYearly";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.IsValueShownAsLabel = true;
-            series3.Name = "Series1";
-            series3.ToolTip = "#VALX (#VAL)";
-            this.chartYearly.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.IsValueShownAsLabel = true;
+            series1.Name = "Series1";
+            series1.ToolTip = "#VALX (#VAL)";
+            this.chartYearly.Series.Add(series1);
             this.chartYearly.Size = new System.Drawing.Size(260, 240);
             this.chartYearly.TabIndex = 3;
             this.chartYearly.Text = "chart1";
             // 
             // chartMonthly
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartMonthly.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chartMonthly.ChartAreas.Add(chartArea2);
             this.chartMonthly.Location = new System.Drawing.Point(312, 83);
             this.chartMonthly.Name = "chartMonthly";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series4.IsValueShownAsLabel = true;
-            series4.Name = "Series1";
-            series4.ToolTip = "#VALX (#VAL)";
-            this.chartMonthly.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.IsValueShownAsLabel = true;
+            series2.Name = "Series1";
+            series2.ToolTip = "#VALX (#VAL)";
+            this.chartMonthly.Series.Add(series2);
             this.chartMonthly.Size = new System.Drawing.Size(260, 240);
             this.chartMonthly.TabIndex = 4;
             this.chartMonthly.Text = "chart1";
@@ -354,11 +356,18 @@
             this.lblchartMonthly.Text = "(Δε βρέθηκαν εγγραφές)";
             this.lblchartMonthly.Visible = false;
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 362);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.lblchartMonthly);
             this.Controls.Add(this.lblchartYearly);
             this.Controls.Add(this.lblMonthlyChart);
@@ -420,6 +429,7 @@
         private System.Windows.Forms.Label lblMonthlyChart;
         private System.Windows.Forms.Label lblchartYearly;
         private System.Windows.Forms.Label lblchartMonthly;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 
