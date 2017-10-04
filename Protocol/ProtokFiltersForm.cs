@@ -43,6 +43,15 @@ namespace Protocol
                 if (thisFilter.FieldName == "chbDeleted")
                 {
                     chbDeleted.Checked = Convert.ToBoolean(thisFilter.FieldValue);
+                    
+                }
+                if (thisFilter.FieldName == "dtpGetSetDate_From")
+                {
+                    dtpGetSetDate_From.Value = Convert.ToDateTime(thisFilter.FieldValue);
+                }
+                if (thisFilter.FieldName == "dtpGetSetDate_To")
+                {
+                    dtpGetSetDate_To.Value = Convert.ToDateTime(thisFilter.FieldValue);
                 }
             }
         }
@@ -51,16 +60,17 @@ namespace Protocol
         {
             saveFilters = true;
 
-            //savedFilters.Clear();//not needed right now
-            //
+            savedFilters.Clear();//not needed right now
+            
             //foreach( in Controls)
             //
             savedFilters.Add(new Filter("chbDeleted", chbDeleted.Checked.ToString()));
-            savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("yyyyMMdd")));
-            savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("yyyyMMdd")));
+            savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("dd-MM-yyyy")));
+            savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("dd-MM-yyyy")));
 
-            //where
-            whereStr = "set new WHERE here...";
+            //where TODO!!!!!!!!!!!
+            whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
 
             Close();
         }
