@@ -79,6 +79,12 @@
     <Compile Include="Contacts.Designer.cs">
       <DependentUpon>Contacts.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProtokFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtokFiltersForm.Designer.cs">
+      <DependentUpon>ProtokFiltersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LK_Criteria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     <EmbeddedResource Include="Contacts.resx">
       <DependentUpon>Contacts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProtokFiltersForm.resx">
+      <DependentUpon>ProtokFiltersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LK_Criteria.resx">
       <DependentUpon>LK_Criteria.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +307,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImgProtocol.ico" />
+    <None Include="Resources\Filter_32x.png" />
+    <None Include="Resources\EditFilter_32x.png" />
     <None Include="Resources\LookupUser_32x.png" />
     <None Include="Resources\LookupUser_16x.png" />
     <None Include="Resources\AccountAttribute_32x.png" />
