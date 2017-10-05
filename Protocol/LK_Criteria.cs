@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web;
 using System.Data.Common;
 using System.Data.SqlClient;
 
@@ -431,11 +432,9 @@ namespace Protocol
                         KSleo = KSleo + toolTip1.GetToolTip(x);
                     String aqwq = "";
                     //                        foreach (CheckedItems ax in ((CheckedListBox)x).CheckedItems)
-                    foreach (var ax in ((CheckedListBox)x).CheckedItems)
+                    foreach (ListBoxItem ax in ((CheckedListBox)x).CheckedItems)
                     {
-                        //  System.Type type = ax.GetType();
-                        int clientid = (int)ax.GetType().GetProperty("id").GetValue(ax, null);
-                        aqwq = aqwq + clientid.ToString();
+                       aqwq = aqwq + ax;
                     }
 
                     //List<string> selectedFields = ((CheckedListBox)x).CheckedItems.OfType<string>().ToList();
