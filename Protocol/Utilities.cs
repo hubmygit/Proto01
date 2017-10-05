@@ -189,8 +189,12 @@ namespace Protocol
             try
             {
                 WindowsUser = Environment.UserName;
-                EmailAddress = UserPrincipal.Current.EmailAddress;
-                FullName = UserPrincipal.Current.DisplayName;
+
+                if (UserPrincipal.Current != null)
+                {
+                    EmailAddress = UserPrincipal.Current.EmailAddress;
+                    FullName = UserPrincipal.Current.DisplayName;
+                }
 
                 DB_AppUser_Id = Get_DB_AppUser_Id(Environment.UserName);
 

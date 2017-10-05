@@ -25,6 +25,10 @@ namespace Protocol
         public int Id { get; set; }
 
         public string Name { get; set; }
+        
+        public Company Com { get; set; }
+
+        public Proced Proc { get; set; }
 
         //public string Description { get; set; }
     }

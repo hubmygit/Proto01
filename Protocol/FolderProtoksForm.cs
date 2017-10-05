@@ -72,14 +72,16 @@ namespace Protocol
 
         }
 
+
+
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
             //...
         }
 
-        private void btnFilters_Click(object sender, EventArgs e)
-        {
-            //Do something with Filters
-        }
+        //private void btnFilters_Click(object sender, EventArgs e)
+        //{
+        //    //not needed here...
+        //}
     }
 }

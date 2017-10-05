@@ -186,7 +186,10 @@ namespace Protocol
             List<ComboboxItem> cbFolders = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] ";
+            //string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] ";
+            string SelectSt = "SELECT F.Id, F.Name, F.CompanyId, C.Name as ComName, F.ProcedId, P.Name as ProcName " +
+                              "FROM[dbo].[Folders] F left outer join[dbo].[Company] C on F.CompanyId = C.id left outer join[dbo].[Proced] P on F.ProcedId = P.ProcedId "+
+                              "ORDER BY C.Name, P.Name, F.Name";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -194,7 +197,11 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Folders.Add(new Folders() { Id = Convert.ToInt32(reader["Id"].ToString()), Name = reader["Name"].ToString() });
+                    Folders.Add(new Folders() { Id = Convert.ToInt32(reader["Id"].ToString()),
+                                                Name = reader["Name"].ToString(),
+                                                Com = new Company() { Id = Convert.ToInt32(reader["CompanyId"].ToString()), Name = reader["ComName"].ToString() },
+                                                Proc = new Proced() { Id = Convert.ToInt32(reader["ProcedId"].ToString()), Name = reader["ProcName"].ToString() }
+                    });
                 }
                 reader.Close();
             }
@@ -203,9 +210,10 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
 
-            foreach (Folders com in Folders)
+            foreach (Folders fld in Folders)
             {
-                cbFolders.Add(new ComboboxItem() { Value = com, Text = com.Name });
+                //cbFolders.Add(new ComboboxItem() { Value = com, Text = com.Name });
+                cbFolders.Add(new ComboboxItem() { Value = fld, Text = "[" + fld.Com.Name + "/" + fld.Proc.Name + "]  " + fld.Name});
             }
 
             return cbFolders.ToArray<ComboboxItem>();

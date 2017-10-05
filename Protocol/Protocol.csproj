@@ -79,6 +79,12 @@
     <Compile Include="Contacts.Designer.cs">
       <DependentUpon>Contacts.cs</DependentUpon>
     </Compile>
+    <Compile Include="FoldersFiltersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FoldersFiltersForm.Designer.cs">
+      <DependentUpon>FoldersFiltersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProtokFiltersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </Compile>
     <EmbeddedResource Include="Contacts.resx">
       <DependentUpon>Contacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FoldersFiltersForm.resx">
+      <DependentUpon>FoldersFiltersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokFiltersForm.resx">
       <DependentUpon>ProtokFiltersForm.cs</DependentUpon>
