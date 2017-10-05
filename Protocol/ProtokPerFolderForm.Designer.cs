@@ -67,7 +67,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Αρ.Φακέλου Αρχείου";
-            this.columnHeader1.Width = 180;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -82,7 +82,7 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Περιγραφή";
-            this.columnHeader4.Width = 300;
+            this.columnHeader4.Width = 320;
             // 
             // columnHeader5
             // 
@@ -92,7 +92,7 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Id";
-            this.columnHeader6.Width = 50;
+            this.columnHeader6.Width = 0;
             // 
             // btnFilters
             // 
