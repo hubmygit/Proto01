@@ -154,7 +154,7 @@ namespace Protocol
             {
                 CheckedItems.Add(thisItem);
                 //whereItems += ("'" + thisItem.Text + "',");
-                whereItems += ((Proced)thisItem.Value).Id;
+                whereItems += ((Proced)thisItem.Value).Id + ",";
             }
             if (whereItems.Length > 0)
             {
@@ -171,7 +171,7 @@ namespace Protocol
             {
                 CheckedItems.Add(thisItem);
                 //whereItems += ("'" + thisItem.Text + "',");
-                whereItems += ((Company)thisItem.Value).Id;
+                whereItems += ((Company)thisItem.Value).Id + ",";
             }
             if (whereItems.Length > 0)
             {
@@ -214,7 +214,7 @@ namespace Protocol
             {
                 CheckedItems.Add(thisItem);
                 //whereItems += ("'" + thisItem.Text + "',");
-                whereItems += ((Folders)thisItem.Value).Id;
+                whereItems += ((Folders)thisItem.Value).Id + ",";
             }
             if (whereItems.Length > 0)
             {
