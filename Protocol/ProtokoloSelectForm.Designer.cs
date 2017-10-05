@@ -171,6 +171,7 @@
             this.Controls.Add(this.btnFilters);
             this.Controls.Add(this.lvRep);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1288, 572);
             this.MinimumSize = new System.Drawing.Size(1288, 572);
             this.Name = "ProtokoloSelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

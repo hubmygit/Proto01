@@ -106,6 +106,7 @@
             this.btnFilters.Text = "Φίλτρα";
             this.btnFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilters.UseVisualStyleBackColor = true;
+            this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);
             // 
             // FoldersSelectForm
             // 
