@@ -116,6 +116,7 @@
             // 
             // chlbProced
             // 
+            this.chlbProced.CheckOnClick = true;
             this.chlbProced.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbProced.FormattingEnabled = true;
             this.chlbProced.Location = new System.Drawing.Point(471, 94);
@@ -147,6 +148,7 @@
             // 
             // chlbCompany
             // 
+            this.chlbCompany.CheckOnClick = true;
             this.chlbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbCompany.FormattingEnabled = true;
             this.chlbCompany.Location = new System.Drawing.Point(185, 94);
@@ -261,6 +263,7 @@
             // 
             // chlbFolder
             // 
+            this.chlbFolder.CheckOnClick = true;
             this.chlbFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbFolder.FormattingEnabled = true;
             this.chlbFolder.Location = new System.Drawing.Point(185, 271);

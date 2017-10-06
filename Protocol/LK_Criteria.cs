@@ -432,10 +432,10 @@ namespace Protocol
                         KSleo = KSleo + toolTip1.GetToolTip(x);
                     String aqwq = "";
                     //                        foreach (CheckedItems ax in ((CheckedListBox)x).CheckedItems)
-                    foreach (ListBoxItem ax in ((CheckedListBox)x).CheckedItems)
-                    {
-                       aqwq = aqwq + ax;
-                    }
+                    //foreach (ListBoxItem ax in ((CheckedListBox)x).CheckedItems)
+                    //{
+                    //   aqwq = aqwq + ax;
+                    //}
 
                     //List<string> selectedFields = ((CheckedListBox)x).CheckedItems.OfType<string>().ToList();
 
