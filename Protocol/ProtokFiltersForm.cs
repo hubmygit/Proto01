@@ -228,7 +228,7 @@ namespace Protocol
             if (txtSn.Text.Trim() != "")
             {
                 savedFilters.Add(new Filter("txtSn", txtSn.Text));
-                whereStr += " AND P.Sn = " + txtSn.Text;
+                whereStr += " AND P.Sn = " + txtSn.Text + " ";
             }
 
             if (chbHasAtt.Checked)
@@ -286,6 +286,12 @@ namespace Protocol
             FieldMultipleComboBoxItems = fieldMultipleComboBoxItems;
         }
 
+        public Filter(string fieldName, int[] fieldCheckedIndexes)
+        {
+            FieldName = fieldName;
+            FieldCheckedIndexes = fieldCheckedIndexes;
+        }
+
         public Filter(string fieldName, string fieldValue, Control fieldControl)
         {
             FieldName = fieldName;
@@ -296,7 +302,8 @@ namespace Protocol
         public Control FieldControl { get; set; }
         public string FieldName { get; set; }
         public string FieldValue { get; set; }
-        public string [] FieldMultipleValues { get; set; }
+        public string[] FieldMultipleValues { get; set; }
         public ComboboxItem[] FieldMultipleComboBoxItems { get; set; }
+        public int[] FieldCheckedIndexes { get; set; }
     }
 }

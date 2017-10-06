@@ -103,6 +103,64 @@ namespace Protocol
         {
             return Text;
         }
+
+        /*
+        public static bool operator ==(ComboboxItem cbItem1, ComboboxItem cbItem2)
+        {
+            if (object.ReferenceEquals(cbItem1, cbItem2))
+            {
+                return true;
+            }
+            if (object.ReferenceEquals(cbItem1, null))
+            {
+                return false;
+            }
+            if (object.ReferenceEquals(cbItem2, null))
+            {
+                return false;
+            }
+
+            return (cbItem1.Text == cbItem2.Text && cbItem1.Value == cbItem2.Value);
+        }
+
+        public static bool operator !=(ComboboxItem cbItem1, ComboboxItem cbItem2)
+        {
+            return !(cbItem1 == cbItem2);
+        }
+
+        
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            //return (Text == ((ComboboxItem)obj).Text && Value == ((ComboboxItem)obj).Value);
+            
+            ComboboxItem p = obj as ComboboxItem;
+            if ((System.Object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (Text == p.Text) && (Value == p.Value);
+                        
+        }
+
+        public bool Equals(ComboboxItem p)
+        {
+            // If parameter is null return false:
+            if ((object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (Text == p.Text) && (Value == p.Value);
+        }
+        */
     }
 
     public class UpdatedId
