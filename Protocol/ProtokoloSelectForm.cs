@@ -292,8 +292,8 @@ namespace Protocol
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
 
                 //set where... 
-                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between " + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
-                                      " and " + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + " and isnull(P.deleted, 0) = 0 ";
+                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
 
                 //FiltersFrm.JoinFiltersWithControls();
             }
@@ -321,11 +321,30 @@ namespace Protocol
 
             if (FiltersFrm.saveFilters == true)
             {
+                btnFilters.Font = new Font(btnFilters.Font, FontStyle.Underline);
+
                 FiltersFrm.saveFilters = false;
                 //FiltersFrm.JoinFiltersWithControls(); //now is closed - draw controls only before showDialog
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr);
             }
+        }
+
+        private void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            FiltersFrm.savedFilters.Clear();//not needed right now
+            FiltersFrm.savedFilters.Add(new Filter("chbDeleted", "false"));
+
+            FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_From", new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MM-yyyy")));
+            FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
+
+            //set where... 
+            FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                  "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+
+            btnFilters.Font = new Font(btnFilters.Font, FontStyle.Regular);
+
+            ShowDataToListView(lvRep, FiltersFrm.whereStr);
         }
 
         //private void lvRep_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)

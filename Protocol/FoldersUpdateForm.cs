@@ -166,5 +166,18 @@ namespace Protocol
                 ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
             }
         }
+
+        private void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            FiltersFrm.savedFilters.Clear();//not needed right now
+
+            //set where... 
+            FiltersFrm.whereStr = "";
+            FiltersFrm.havingStr = "";
+
+            btnFilters.Font = new Font(btnFilters.Font, FontStyle.Regular);
+
+            ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
+        }
     }
 }

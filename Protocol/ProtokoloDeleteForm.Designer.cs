@@ -45,6 +45,7 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnFilters = new System.Windows.Forms.Button();
+            this.btnClearFilters = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvRep
@@ -163,11 +164,24 @@
             this.btnFilters.UseVisualStyleBackColor = true;
             this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);
             // 
+            // btnClearFilters
+            // 
+            this.btnClearFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnClearFilters.Image = global::Protocol.Properties.Resources.StopFilter_16x;
+            this.btnClearFilters.Location = new System.Drawing.Point(153, 15);
+            this.btnClearFilters.Name = "btnClearFilters";
+            this.btnClearFilters.Size = new System.Drawing.Size(40, 40);
+            this.btnClearFilters.TabIndex = 10;
+            this.btnClearFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearFilters.UseVisualStyleBackColor = true;
+            this.btnClearFilters.Click += new System.EventHandler(this.btnClearFilters_Click);
+            // 
             // ProtokoloDeleteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 534);
+            this.Controls.Add(this.btnClearFilters);
             this.Controls.Add(this.btnFilters);
             this.Controls.Add(this.lvRep);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -196,5 +210,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         public System.Windows.Forms.Button btnFilters;
+        public System.Windows.Forms.Button btnClearFilters;
     }
 }

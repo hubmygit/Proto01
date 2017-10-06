@@ -124,9 +124,6 @@
   <data name="AddAttachment_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddAttachment_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="User_7x_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\User_7x_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LookupUser_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LookupUser_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,9 +132,6 @@
   </data>
   <data name="LookupUser_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LookupUser_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AccountGroup_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountGroup_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cancel_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,14 +145,20 @@
   <data name="User_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\User_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FindResults_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FindResults_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AccountGroup_256x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AccountGroup_256x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Outlook2013Logo_32xMD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Outlook2013Logo_32xMD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AccountGroup_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AccountGroup_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AccountGroup_256x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountGroup_256x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="User_7x_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\User_7x_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,13 +172,16 @@
   <data name="OpenAttachment_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OpenAttachment_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FindResults_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FindResults_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AccountGroup_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AccountGroup_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Filter_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Filter_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EditFilter_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditFilter_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Filter_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Filter_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StopFilter_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StopFilter_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
