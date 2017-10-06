@@ -30,6 +30,7 @@ namespace Protocol
         {
             foreach (Filter thisFilter in savedFilters)
             {
+                /*
                 if (thisFilter.FieldName == "chlbProced")
                 {
                     foreach (ComboboxItem cbiStr in thisFilter.FieldMultipleComboBoxItems)
@@ -38,6 +39,14 @@ namespace Protocol
                     }
                     continue;
                 }
+                */
+                if (thisFilter.FieldName == "chlbProced")
+                {
+                    ProtokFiltersForm.Set_CheckedListBox_Checked_Indexes(chlbProced, thisFilter.FieldCheckedIndexes);
+                    continue;
+                }
+
+                /*
                 if (thisFilter.FieldName == "chlbCompany")
                 {
                     foreach (ComboboxItem cbiStr in thisFilter.FieldMultipleComboBoxItems)
@@ -46,6 +55,13 @@ namespace Protocol
                     }
                     continue;
                 }
+                */
+                if (thisFilter.FieldName == "chlbCompany")
+                {
+                    ProtokFiltersForm.Set_CheckedListBox_Checked_Indexes(chlbCompany, thisFilter.FieldCheckedIndexes);
+                    continue;
+                }
+
                 if (thisFilter.FieldName == "txtDescr")
                 {
                     txtDescr.Text = thisFilter.FieldValue;

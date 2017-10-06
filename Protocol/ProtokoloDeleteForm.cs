@@ -193,25 +193,26 @@ namespace Protocol
                 //set where... 
                 FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between " + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
                                       " and " + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + " and isnull(P.deleted, 0) = 0 ";
-
-                FiltersFrm.JoinFiltersWithControls();
             }
             else //change filters
             {
                 FiltersFrm.saveFilters = false;
-                //set initial values
-                //FiltersFrm.savedFilters.Clear();
-                //FiltersFrm.savedFilters.Add(new Filter("chbDeleted", "true"));
 
-                FiltersFrm.JoinFiltersWithControls();
+                List<Filter> SavedControls = FiltersFrm.savedFilters;
+                string SavedWhereStr = FiltersFrm.whereStr;
+
+                FiltersFrm = new ProtokFiltersForm();
+                FiltersFrm.savedFilters = SavedControls;
+                FiltersFrm.whereStr = SavedWhereStr;
             }
+
+            FiltersFrm.JoinFiltersWithControls();
 
             FiltersFrm.ShowDialog();
 
             if (FiltersFrm.saveFilters == true)
             {
                 FiltersFrm.saveFilters = false;
-                FiltersFrm.JoinFiltersWithControls();
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr);
             }

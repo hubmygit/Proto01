@@ -59,6 +59,7 @@ namespace Protocol
                     dtpGetSetDate_To.Value = Convert.ToDateTime(thisFilter.FieldValue);
                     continue;
                 }
+                /*
                 if (thisFilter.FieldName == "chlbProced")
                 {
                     foreach (ComboboxItem cbiStr in thisFilter.FieldMultipleComboBoxItems)
@@ -67,6 +68,14 @@ namespace Protocol
                     }
                     continue;
                 }
+                */
+                if (thisFilter.FieldName == "chlbProced")
+                {
+                    Set_CheckedListBox_Checked_Indexes(chlbProced, thisFilter.FieldCheckedIndexes);
+                    continue;
+                }
+
+                /*
                 if (thisFilter.FieldName == "chlbCompany")
                 {
                     foreach (ComboboxItem cbiStr in thisFilter.FieldMultipleComboBoxItems)
@@ -75,6 +84,13 @@ namespace Protocol
                     }
                     continue;
                 }
+                */
+                if (thisFilter.FieldName == "chlbCompany")
+                {
+                    Set_CheckedListBox_Checked_Indexes(chlbCompany, thisFilter.FieldCheckedIndexes);
+                    continue;
+                }
+
                 if (thisFilter.FieldName == "dtp_DocDate_From")
                 {
                     dtp_DocDate_From.Value = Convert.ToDateTime(thisFilter.FieldValue);
@@ -105,6 +121,7 @@ namespace Protocol
                     txtToText.Text = thisFilter.FieldValue;
                     continue;
                 }
+                /*
                 if (thisFilter.FieldName == "chlbFolder")
                 {
                     foreach (ComboboxItem cbiStr in thisFilter.FieldMultipleComboBoxItems)
@@ -113,6 +130,13 @@ namespace Protocol
                     }
                     continue;
                 }
+                */
+                if (thisFilter.FieldName == "chlbFolder")
+                {
+                    Set_CheckedListBox_Checked_Indexes(chlbFolder, thisFilter.FieldCheckedIndexes);
+                    continue;
+                }
+
                 if (thisFilter.FieldName == "txtSn")
                 {
                     txtSn.Text = thisFilter.FieldValue;
@@ -133,6 +157,32 @@ namespace Protocol
             }
         }
 
+        public static List<int> Get_CheckedListBox_Checked_Indexes(CheckedListBox clb)
+        {
+            List<int> IndexesList = new List<int>();
+
+            int clbItemsCounter = clb.Items.Count;
+
+            for (int i = 0; i < clbItemsCounter; i++)
+            {
+                if (clb.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    IndexesList.Add(i);
+                }
+            }
+
+            return IndexesList;
+        }
+
+        public static void Set_CheckedListBox_Checked_Indexes(CheckedListBox clb, int[] Indexes)
+        {
+            //SetItemCheckState
+            for (int i = 0; i<Indexes.Length; i++)
+            {
+                clb.SetItemChecked(Indexes[i], true);
+            }
+        }
+
         private void btnSaveFilters_Click(object sender, EventArgs e)
         {
             saveFilters = true;
@@ -148,6 +198,7 @@ namespace Protocol
             whereStr += " AND P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 
+            /*
             List<ComboboxItem> CheckedItems = new List<ComboboxItem>();
             string whereItems = "";
             foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
@@ -164,7 +215,22 @@ namespace Protocol
                 //whereStr += " AND PR.Name in (" + whereItems + ") ";
                 whereStr += " AND P.ProcedureId in (" + whereItems + ") ";
             }
+            */
+            List<int> CheckedIndexes = new List<int>();
+            CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbProced);
+            string whereItems = "";
+            foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
+            {
+                whereItems += ((Proced)thisItem.Value).Id + ",";
+            }
+            if (whereItems.Length > 0)
+            {
+                whereItems = whereItems.Substring(0, whereItems.Length - 1);
+                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>()));
+                whereStr += " AND P.ProcedureId in (" + whereItems + ") ";
+            }
 
+            /*
             CheckedItems = new List<ComboboxItem>();
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
@@ -181,7 +247,20 @@ namespace Protocol
                 //whereStr += " AND C.Name in (" + whereItems + ") ";
                 whereStr += " AND P.CompanyId in (" + whereItems + ") ";
             }
-
+            */
+            CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbCompany);
+            whereItems = "";
+            foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
+            {
+                whereItems += ((Company)thisItem.Value).Id + ",";
+            }
+            if (whereItems.Length > 0)
+            {
+                whereItems = whereItems.Substring(0, whereItems.Length - 1);
+                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>()));
+                whereStr += " AND P.CompanyId in (" + whereItems + ") ";
+            }
+            
             savedFilters.Add(new Filter("dtp_DocDate_From", dtp_DocDate_From.Value.ToString("dd-MM-yyyy")));
             savedFilters.Add(new Filter("dtp_DocDate_To", dtp_DocDate_To.Value.ToString("dd-MM-yyyy")));
             whereStr += " AND P.DocumentDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
@@ -208,6 +287,7 @@ namespace Protocol
                 whereStr += " AND P.ToText like '%" + txtToText.Text + "%' ";
             }
 
+            /*
             CheckedItems = new List<ComboboxItem>();
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbFolder.CheckedItems)
@@ -224,11 +304,24 @@ namespace Protocol
                 //whereStr += " AND F.Name in (" + whereItems + ") ";
                 whereStr += " AND P.FolderId in (" + whereItems + ") ";
             }
+            */
+            CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbFolder);
+            whereItems = "";
+            foreach (ComboboxItem thisItem in chlbFolder.CheckedItems)
+            {
+                whereItems += ((Folders)thisItem.Value).Id + ",";
+            }
+            if (whereItems.Length > 0)
+            {
+                whereItems = whereItems.Substring(0, whereItems.Length - 1);
+                savedFilters.Add(new Filter("chlbFolder", CheckedIndexes.ToArray<int>()));
+                whereStr += " AND P.FolderId in (" + whereItems + ") ";
+            }
 
             if (txtSn.Text.Trim() != "")
             {
                 savedFilters.Add(new Filter("txtSn", txtSn.Text));
-                whereStr += " AND P.Sn = " + txtSn.Text;
+                whereStr += " AND P.Sn = " + txtSn.Text + " ";
             }
 
             if (chbHasAtt.Checked)
@@ -286,6 +379,12 @@ namespace Protocol
             FieldMultipleComboBoxItems = fieldMultipleComboBoxItems;
         }
 
+        public Filter(string fieldName, int[] fieldCheckedIndexes)
+        {
+            FieldName = fieldName;
+            FieldCheckedIndexes = fieldCheckedIndexes;
+        }
+
         public Filter(string fieldName, string fieldValue, Control fieldControl)
         {
             FieldName = fieldName;
@@ -296,7 +395,8 @@ namespace Protocol
         public Control FieldControl { get; set; }
         public string FieldName { get; set; }
         public string FieldValue { get; set; }
-        public string [] FieldMultipleValues { get; set; }
+        public string[] FieldMultipleValues { get; set; }
         public ComboboxItem[] FieldMultipleComboBoxItems { get; set; }
+        public int[] FieldCheckedIndexes { get; set; }
     }
 }

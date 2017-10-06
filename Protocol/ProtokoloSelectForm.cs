@@ -284,6 +284,7 @@ namespace Protocol
             {
                 FiltersFrm = new ProtokFiltersForm(); // ("WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ");
                 //set initial values
+                //FiltersFrm.saveFilters = false; //no need to initialize
                 FiltersFrm.savedFilters.Clear();//not needed right now
                 FiltersFrm.savedFilters.Add(new Filter("chbDeleted", "false"));
                 
@@ -294,24 +295,34 @@ namespace Protocol
                 FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between " + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
                                       " and " + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + " and isnull(P.deleted, 0) = 0 ";
 
-                FiltersFrm.JoinFiltersWithControls();
+                //FiltersFrm.JoinFiltersWithControls();
             }
             else //change filters
             {
                 FiltersFrm.saveFilters = false;
+
+                List<Filter> SavedControls = FiltersFrm.savedFilters;
+                string SavedWhereStr = FiltersFrm.whereStr;
+
+                FiltersFrm = new ProtokFiltersForm();
+                FiltersFrm.savedFilters = SavedControls;
+                FiltersFrm.whereStr = SavedWhereStr;
+
                 //set initial values
                 //FiltersFrm.savedFilters.Clear();
                 //FiltersFrm.savedFilters.Add(new Filter("chbDeleted", "true"));
 
-                FiltersFrm.JoinFiltersWithControls();
+                //FiltersFrm.JoinFiltersWithControls();
             }
+
+            FiltersFrm.JoinFiltersWithControls();
 
             FiltersFrm.ShowDialog();
 
             if (FiltersFrm.saveFilters == true)
             {
                 FiltersFrm.saveFilters = false;
-                FiltersFrm.JoinFiltersWithControls();
+                //FiltersFrm.JoinFiltersWithControls(); //now is closed - draw controls only before showDialog
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr);
             }

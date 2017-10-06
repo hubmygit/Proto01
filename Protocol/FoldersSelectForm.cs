@@ -147,22 +147,28 @@ namespace Protocol
                 FiltersFrm = new FoldersFiltersForm(); // ("WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ");
                 //set initial values
                 FiltersFrm.savedFilters.Clear();//not needed right now
-                
-                FiltersFrm.JoinFiltersWithControls();
             }
             else //change filters
             {
                 FiltersFrm.saveFilters = false;
-                
-                FiltersFrm.JoinFiltersWithControls();
+
+                List<Filter> SavedControls = FiltersFrm.savedFilters;
+                string SavedWhereStr = FiltersFrm.whereStr;
+                string SavedHavingStr = FiltersFrm.havingStr;
+
+                FiltersFrm = new FoldersFiltersForm();
+                FiltersFrm.savedFilters = SavedControls;
+                FiltersFrm.whereStr = SavedWhereStr;
+                FiltersFrm.havingStr = SavedHavingStr;
             }
+
+            FiltersFrm.JoinFiltersWithControls();
 
             FiltersFrm.ShowDialog();
 
             if (FiltersFrm.saveFilters == true)
             {
                 FiltersFrm.saveFilters = false;
-                FiltersFrm.JoinFiltersWithControls();
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
             }
