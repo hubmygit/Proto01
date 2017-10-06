@@ -424,29 +424,21 @@ namespace Protocol
                         ii++;
                     }
                 if (x is CheckedListBox)
-//                    if (!(((CheckedListBox)x).CheckedItems.Count == 0) ||
-//                            (((CheckedListBox)x).CheckedItems.Count == ((CheckedListBox)x).Items.Count ) )
+                    if (!(((CheckedListBox)x).CheckedItems.Count == 0) ||
+                         (((CheckedListBox)x).CheckedItems.Count == ((CheckedListBox)x).Items.Count ) )
                     {
                         if (ii > 0)
                             KSleo = KSleo + " AND ";
                         KSleo = KSleo + toolTip1.GetToolTip(x);
                     String aqwq = "";
-                    //                        foreach (CheckedItems ax in ((CheckedListBox)x).CheckedItems)
-                    foreach (ListBoxItem ax in ((CheckedListBox)x).CheckedItems)
+                    foreach (ComboboxItem ax in ((CheckedListBox)x).CheckedItems)
                     {
-                       aqwq = aqwq + ax;
+                       aqwq = aqwq + ax.Value+ ",";
                     }
-
-                    //List<string> selectedFields = ((CheckedListBox)x).CheckedItems.OfType<string>().ToList();
-
-                        KSleo = KSleo + " in (";
+                        aqwq = aqwq.Left(aqwq.Length - 1);
+                        KSleo = KSleo + " in ("  + aqwq + ")";
                         ii++;
                     }
-
-                
-
-
-
             }
             MessageBox.Show(KSleo);
             this.Close();
@@ -596,21 +588,26 @@ namespace Protocol
         LChlb.DisplayMember = "Text";
         LChlb.ValueMember = "Value";
 
-        BindingSource bs = new BindingSource();
-        bs.DataSource = reader;
-        LChlb.DataSource = bs;
-        LChlb.DisplayMember = "Name";
-        LChlb.ValueMember = "id";
+//        BindingSource bs = new BindingSource();
+//        bs.DataSource = reader;
+//        LChlb.DataSource = bs;
+        LChlb.DisplayMember = "Text";
+        LChlb.ValueMember = "Value";
+            LChlb.CheckOnClick = true;
 
-
-
-//            while (reader.Read())
-//          {
-//            LChlb.Items.Insert(LChlb.Items.Count, new { Text = Convert.ToString(reader[1]), Value = (int)reader[0] });
-//          }
-        reader.Close();
+            while (reader.Read())
+          {
+                ComboboxItem tm = new ComboboxItem();
+                tm.Text = Convert.ToString(reader[1]);
+                tm.Value = (int)reader[0];
+            LChlb.Items.Insert(LChlb.Items.Count, tm);
+            LChlb.SetItemChecked(LChlb.Items.Count-1,true);
+          }
+            reader.Close();
         LTab.Controls.Add(LChlb);
-        this.tabControl1.Controls.Add(LTab);
+        this.toolTip1.SetToolTip(LChlb, sdc["ColumnName"].ToString());
+            this.toolTip2.SetToolTip(LChlb, sdc["ColumnName"].ToString());
+            this.tabControl1.Controls.Add(LTab);
     }
 
 
