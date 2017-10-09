@@ -87,7 +87,9 @@ namespace Protocol
 
             savedFilters.Clear();//not needed right now
             whereStr = "WHERE 1=1 ";
+            havingStr = "";
 
+            /*
             List<ComboboxItem> CheckedItems = new List<ComboboxItem>();
             string whereItems = "";
             foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
@@ -102,7 +104,22 @@ namespace Protocol
                 savedFilters.Add(new Filter("chlbProced", CheckedItems.ToArray<ComboboxItem>()));
                 whereStr += " AND F.ProcedId in (" + whereItems + ") ";
             }
+            */
+            List<int> CheckedIndexes = new List<int>();
+            CheckedIndexes = ProtokFiltersForm.Get_CheckedListBox_Checked_Indexes(chlbProced);
+            string whereItems = "";
+            foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
+            {
+                whereItems += ((Proced)thisItem.Value).Id + ",";
+            }
+            if (whereItems.Length > 0)
+            {
+                whereItems = whereItems.Substring(0, whereItems.Length - 1);
+                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>()));
+                whereStr += " AND F.ProcedId in (" + whereItems + ") ";
+            }
 
+            /*
             CheckedItems = new List<ComboboxItem>();
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
@@ -115,6 +132,19 @@ namespace Protocol
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
 
                 savedFilters.Add(new Filter("chlbCompany", CheckedItems.ToArray<ComboboxItem>()));
+                whereStr += " AND F.CompanyId in (" + whereItems + ") ";
+            }
+            */
+            CheckedIndexes = ProtokFiltersForm.Get_CheckedListBox_Checked_Indexes(chlbCompany);
+            whereItems = "";
+            foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
+            {
+                whereItems += ((Company)thisItem.Value).Id + ",";
+            }
+            if (whereItems.Length > 0)
+            {
+                whereItems = whereItems.Substring(0, whereItems.Length - 1);
+                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>()));
                 whereStr += " AND F.CompanyId in (" + whereItems + ") ";
             }
 

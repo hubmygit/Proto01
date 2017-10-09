@@ -183,6 +183,24 @@ namespace Protocol
             }
         }
 
+        public bool isCheckedListBoxItemChecked(CheckedListBox clb, string strToSearch)
+        {
+            bool ret = false;
+            
+            int clbItemsCounter = clb.Items.Count;
+
+            for (int i = 0; i < clbItemsCounter; i++)
+            {
+                if (((ComboboxItem)clb.Items[i]).Text == strToSearch && clb.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ret = true;
+                    break;
+                }
+            }
+
+            return ret;
+        }
+
         private void btnSaveFilters_Click(object sender, EventArgs e)
         {
             saveFilters = true;
@@ -260,11 +278,14 @@ namespace Protocol
                 savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>()));
                 whereStr += " AND P.CompanyId in (" + whereItems + ") ";
             }
-            
-            savedFilters.Add(new Filter("dtp_DocDate_From", dtp_DocDate_From.Value.ToString("dd-MM-yyyy")));
-            savedFilters.Add(new Filter("dtp_DocDate_To", dtp_DocDate_To.Value.ToString("dd-MM-yyyy")));
-            whereStr += " AND P.DocumentDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                     "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
+
+            if (isCheckedListBoxItemChecked(chlbProced, "Εισερχόμενα"))
+            {
+                savedFilters.Add(new Filter("dtp_DocDate_From", dtp_DocDate_From.Value.ToString("dd-MM-yyyy")));
+                savedFilters.Add(new Filter("dtp_DocDate_To", dtp_DocDate_To.Value.ToString("dd-MM-yyyy")));
+                whereStr += " AND P.DocumentDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                         "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
+            }
 
             if (txtProelKateuth.Text.Trim() != "")
             {
