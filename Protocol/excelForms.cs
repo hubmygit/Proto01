@@ -49,17 +49,12 @@ namespace Protocol
                     }
 
                     wsh.Cells[i, j] = prefix + ch.Text;
-
+                    
                     wsh.Cells[i, j].Font.Bold = true;
+                    wsh.Cells[i, j].Interior.Color = System.Drawing.Color.LightGray;
+
                     //wsh.Cells[i, j].Font.Color = System.Drawing.Color.Blue;
-
                     //wsh.Cells[10, 1].EntireRow.Font.Bold = true;
-
-                    //Bold entire row...
-                    //Excel.Range formatRange;
-                    //formatRange = wsh.get_Range("A1");
-                    //formatRange.EntireRow.Font.Bold = true;
-                    //wsh.Cells[1, 5] = "Bold";
 
                     j++;                    
                 }

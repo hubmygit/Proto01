@@ -243,5 +243,12 @@ namespace Protocol
             Printings lvPrintings = new Printings();
             lvPrintings.printProtocols(lvRep);
         }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            excelForms eF = new excelForms();
+            eF.ExportProtocolListViewToExcel(lvRep, true, true);
+            eF.Visible = true;
+        }
     }
 }

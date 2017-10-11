@@ -204,6 +204,7 @@
             this.btnExcelExport.Text = "Εξαγωγή";
             this.btnExcelExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
             // ProtokoloDeleteForm
             // 
