@@ -85,6 +85,7 @@
     <Compile Include="FoldersFiltersForm.Designer.cs">
       <DependentUpon>FoldersFiltersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Printings.cs" />
     <Compile Include="ProtokFiltersForm.cs">
       <SubType>Form</SubType>
     </Compile>
