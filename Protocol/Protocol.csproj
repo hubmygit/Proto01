@@ -317,6 +317,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImgProtocol.ico" />
+    <None Include="Resources\ExportToExcel_32x.png" />
     <None Include="Resources\Print_32x.png" />
     <None Include="Resources\StopFilter_16x.png" />
     <None Include="Resources\Filter_32x.png" />

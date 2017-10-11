@@ -28,20 +28,30 @@ namespace Protocol
             set { excelApplication.Visible = value; }
         }
 
-        public void ExportListViewToExcel(ListView lv, bool showHeaders)
+        public void ExportProtocolListViewToExcel(ListView lv, bool showHeaders, bool formatCellAsText)
         {
             int i = 1;
             int j = 1;
 
+            string prefix = ""; //number as text
+            if (formatCellAsText)
+            {
+                prefix = "'";
+            }
+            
             if (showHeaders)
             {
                 foreach (ColumnHeader ch in lv.Columns)
                 {
-                    wsh.Cells[i, j] = ch.Text;
+                    if (lv.Columns[11] == ch) //don't show id
+                    {
+                        continue;
+                    }
 
-                    //wsh.Cells[i, j].Font.Bold = true;
-                    //wsh.Cells[i, j] = "Bold";
+                    wsh.Cells[i, j] = prefix + ch.Text;
 
+                    wsh.Cells[i, j].Font.Bold = true;
+                    //wsh.Cells[i, j].Font.Color = System.Drawing.Color.Blue;
 
                     //wsh.Cells[10, 1].EntireRow.Font.Bold = true;
 
@@ -51,7 +61,7 @@ namespace Protocol
                     //formatRange.EntireRow.Font.Bold = true;
                     //wsh.Cells[1, 5] = "Bold";
 
-                    j++;
+                    j++;                    
                 }
                 j = 1;
                 i++;
@@ -59,17 +69,44 @@ namespace Protocol
 
             foreach (ListViewItem comp in lv.Items)
             {
-                wsh.Cells[i, j] = comp.Text;
+                wsh.Cells[i, j] = prefix + comp.Text;
 
                 foreach (ListViewItem.ListViewSubItem drv in comp.SubItems)
                 {
-                    wsh.Cells[i, j] = drv.Text;
-                    j++;
+                    if (comp.SubItems[11] == drv) //don't show id
+                    {
+                        continue;
+                    }
+
+                    wsh.Cells[i, j] = prefix + drv.Text;
+                    j++; 
                 }
 
                 j = 1;
                 i++;
-            }            
+            }
+
+
+            //column width
+            //for (i = 1; i <= lv.Columns.Count; i++)
+            //{
+            //    wsh.Columns[i].ColumnWidth = 18;
+            //}
+
+            wsh.Columns[1].ColumnWidth = 16;
+            wsh.Columns[2].ColumnWidth = 8;
+            wsh.Columns[3].ColumnWidth = 18;
+            wsh.Columns[4].ColumnWidth = 18;
+            wsh.Columns[5].ColumnWidth = 16;
+            wsh.Columns[6].ColumnWidth = 18;
+            wsh.Columns[7].ColumnWidth = 21;
+            wsh.Columns[8].ColumnWidth = 24;
+            wsh.Columns[9].ColumnWidth = 30;
+            wsh.Columns[10].ColumnWidth = 30;
+            wsh.Columns[11].ColumnWidth = 22;
+            wsh.Columns[12].ColumnWidth = 12;
+            wsh.Columns[13].ColumnWidth = 6;
+
         }
     }
 }

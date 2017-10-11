@@ -44,6 +44,7 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnExcelExport = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.btnFilters = new System.Windows.Forms.Button();
@@ -151,6 +152,20 @@
             this.columnHeader14.Text = "Emails";
             this.columnHeader14.Width = 54;
             // 
+            // btnExcelExport
+            // 
+            this.btnExcelExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnExcelExport.Image = global::Protocol.Properties.Resources.ExportToExcel_32x;
+            this.btnExcelExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcelExport.Location = new System.Drawing.Point(984, 15);
+            this.btnExcelExport.Name = "btnExcelExport";
+            this.btnExcelExport.Size = new System.Drawing.Size(135, 40);
+            this.btnExcelExport.TabIndex = 10;
+            this.btnExcelExport.Text = "Εξαγωγή";
+            this.btnExcelExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
+            // 
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -196,6 +211,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 534);
+            this.Controls.Add(this.btnExcelExport);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClearFilters);
             this.Controls.Add(this.btnFilters);
@@ -229,5 +245,6 @@
         public System.Windows.Forms.Button btnFilters;
         public System.Windows.Forms.Button btnClearFilters;
         public System.Windows.Forms.Button btnPrint;
+        public System.Windows.Forms.Button btnExcelExport;
     }
 }
