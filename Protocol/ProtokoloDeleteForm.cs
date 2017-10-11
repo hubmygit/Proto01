@@ -237,5 +237,11 @@ namespace Protocol
                 ShowDataToListView(lvRep, FiltersFrm.whereStr);
             }
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Printings lvPrintings = new Printings();
+            lvPrintings.printProtocols(lvRep);
+        }
     }
 }

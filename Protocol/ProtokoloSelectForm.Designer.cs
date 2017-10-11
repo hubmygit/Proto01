@@ -44,6 +44,7 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.btnFilters = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -150,6 +151,20 @@
             this.columnHeader14.Text = "Emails";
             this.columnHeader14.Width = 54;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnPrint.Image = global::Protocol.Properties.Resources.Print_32x;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(1125, 15);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(135, 40);
+            this.btnPrint.TabIndex = 9;
+            this.btnPrint.Text = "Εκτύπωση";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // btnClearFilters
             // 
             this.btnClearFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -181,6 +196,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1272, 534);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClearFilters);
             this.Controls.Add(this.btnFilters);
             this.Controls.Add(this.lvRep);
@@ -212,5 +228,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader14;
         public System.Windows.Forms.Button btnFilters;
         public System.Windows.Forms.Button btnClearFilters;
+        public System.Windows.Forms.Button btnPrint;
     }
 }

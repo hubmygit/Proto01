@@ -104,10 +104,10 @@ namespace Protocol
                 {
                     sf.Width += 2;
                 }
-                if (i == 2) //kat.prwtok
-                {
-                    sf.Width -= 1;
-                }
+                //if (i == 2) //kat.prwtok
+                //{
+                //    sf.Width -= 1;
+                //}
                 if (i == 4) //im.ekd
                 {
                     sf.Width -= 29;
@@ -130,7 +130,7 @@ namespace Protocol
                 }
                 if (i == 8) //perilipsi
                 {
-                    sf.Width += 160;
+                    sf.Width += 158;
                 }
                 if (i == 9) //parat
                 {

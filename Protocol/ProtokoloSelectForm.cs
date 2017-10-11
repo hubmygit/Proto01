@@ -350,6 +350,13 @@ namespace Protocol
             }
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Printings lvPrintings = new Printings();
+            lvPrintings.printProtocols(lvRep);
+
+        }
+
         //private void lvRep_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         //{
         //    e.Graphics.FillRectangle(Brushes.Pink, e.Bounds);
