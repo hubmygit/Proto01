@@ -32,6 +32,10 @@ namespace Protocol
 
             cbCompany.SelectedIndex = cbCompany.FindStringExact(company.Name);
             cbProced.SelectedIndex = cbProced.FindStringExact(proced.Name);
+
+            //cbCompany.SelectedIndex = cbCompany.FindStringExact(company.Name);
+            //cbCompany.SelectedIndex = cbCompany.Items.IndexOf(new ComboboxItem() { Text = company.Name, Value = company });
+
             cbCompany.Enabled = false;
             cbProced.Enabled = false;
             

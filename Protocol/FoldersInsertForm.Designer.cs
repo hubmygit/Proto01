@@ -201,8 +201,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDescr;
         public System.Windows.Forms.TextBox txtId;
@@ -214,5 +212,6 @@
         public System.Windows.Forms.ComboBox cbProced;
         public System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.PictureBox pbFolder;
+        public System.Windows.Forms.Label lblId;
     }
 }
