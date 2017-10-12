@@ -423,17 +423,7 @@ namespace Protocol
 
         private void SearchText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            BindingSource BS = (BindingSource)(dataGridView1).DataSource;
-            String LikeStr = ((TextBox)sender).Tag.ToString();
 
-            if (((TextBox)sender).Text.Trim().Length >= 1)
-            {
-                 BS.Filter = LikeStr + " Like '" + ((TextBox)sender).Text.Trim() + "%'";
-            }
-            else
-            {
-                BS.Filter = " ";
-            }
         }
 
         private void UpdateHeader(DataGridView Dgv)
@@ -666,6 +656,26 @@ namespace Protocol
             dataGridView1.MultiSelect = false;
             textSelectedMails.Visible = false;
             SetMenuState("Browse");
+        }
+
+        private void SearchTextKeyDown(object sender, KeyEventArgs e)
+        {
+            BindingSource BS = (BindingSource)(dataGridView1).DataSource;
+            String LikeStr = ((TextBox)sender).Tag.ToString();
+
+            if (((TextBox)sender).Text.Trim().Length > 0)
+            {
+                BS.Filter = LikeStr + " Like '" + ((TextBox)sender).Text.Trim() + "%'";
+            }
+            else
+            {
+                BS.Filter = "";
+            }
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
