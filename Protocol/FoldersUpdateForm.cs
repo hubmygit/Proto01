@@ -109,8 +109,8 @@ namespace Protocol
             //string lvRowCnt = lvRep.SelectedItems[0].SubItems[4].Text;
             //string lvRowFolder = lvRep.SelectedItems[0].SubItems[2].Text;
             string lvRowId = lvRep.SelectedItems[0].SubItems[5].Text;
-            string lvRowEisEx = lvRep.SelectedItems[0].SubItems[1].Text;
-            string lvRowCompany = lvRep.SelectedItems[0].SubItems[0].Text;
+            string lvRowEisEx = lvRep.SelectedItems[0].SubItems[2].Text;
+            string lvRowCompany = lvRep.SelectedItems[0].SubItems[1].Text;
 
             //ListViewItem.ListViewSubItemCollection lvic = new ListViewItem.ListViewSubItemCollection(lvRep.SelectedItems[0]);
 

@@ -46,7 +46,7 @@
             this.lblProtokoloKind.AutoSize = true;
             this.lblProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblProtokoloKind.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblProtokoloKind.Location = new System.Drawing.Point(65, 28);
+            this.lblProtokoloKind.Location = new System.Drawing.Point(52, 28);
             this.lblProtokoloKind.Name = "lblProtokoloKind";
             this.lblProtokoloKind.Size = new System.Drawing.Size(165, 17);
             this.lblProtokoloKind.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             this.cbProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbProtokoloKind.FormattingEnabled = true;
-            this.cbProtokoloKind.Location = new System.Drawing.Point(236, 25);
+            this.cbProtokoloKind.Location = new System.Drawing.Point(223, 25);
             this.cbProtokoloKind.Name = "cbProtokoloKind";
             this.cbProtokoloKind.Size = new System.Drawing.Size(173, 24);
             this.cbProtokoloKind.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblCompany.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblCompany.Location = new System.Drawing.Point(65, 65);
+            this.lblCompany.Location = new System.Drawing.Point(52, 65);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 17);
             this.lblCompany.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             this.cbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbCompany.FormattingEnabled = true;
-            this.cbCompany.Location = new System.Drawing.Point(236, 62);
+            this.cbCompany.Location = new System.Drawing.Point(223, 62);
             this.cbCompany.Name = "cbCompany";
             this.cbCompany.Size = new System.Drawing.Size(173, 24);
             this.cbCompany.TabIndex = 2;
@@ -88,7 +88,7 @@
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnInsert.Image = global::Protocol.Properties.Resources.Save_32x;
             this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsert.Location = new System.Drawing.Point(430, 12);
+            this.btnInsert.Location = new System.Drawing.Point(517, 12);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(135, 40);
             this.btnInsert.TabIndex = 4;
@@ -100,7 +100,7 @@
             // pbProtocol
             // 
             this.pbProtocol.Image = global::Protocol.Properties.Resources.AccountGroup_32x;
-            this.pbProtocol.Location = new System.Drawing.Point(20, 40);
+            this.pbProtocol.Location = new System.Drawing.Point(10, 40);
             this.pbProtocol.Name = "pbProtocol";
             this.pbProtocol.Size = new System.Drawing.Size(32, 32);
             this.pbProtocol.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -112,7 +112,7 @@
             this.btnShowRecipients.Enabled = false;
             this.btnShowRecipients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnShowRecipients.Image = global::Protocol.Properties.Resources.AccountAttribute_32x;
-            this.btnShowRecipients.Location = new System.Drawing.Point(525, 104);
+            this.btnShowRecipients.Location = new System.Drawing.Point(431, 58);
             this.btnShowRecipients.Name = "btnShowRecipients";
             this.btnShowRecipients.Size = new System.Drawing.Size(40, 40);
             this.btnShowRecipients.TabIndex = 10;
@@ -126,7 +126,7 @@
             this.chbSendMail.ForeColor = System.Drawing.Color.DarkBlue;
             this.chbSendMail.Image = global::Protocol.Properties.Resources.Outlook2013Logo_32xMD;
             this.chbSendMail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.chbSendMail.Location = new System.Drawing.Point(430, 109);
+            this.chbSendMail.Location = new System.Drawing.Point(402, 21);
             this.chbSendMail.Name = "chbSendMail";
             this.chbSendMail.Size = new System.Drawing.Size(93, 32);
             this.chbSendMail.TabIndex = 9;
@@ -140,7 +140,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnCancel.Image = global::Protocol.Properties.Resources.Cancel_32x;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(430, 58);
+            this.btnCancel.Location = new System.Drawing.Point(517, 58);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 40);
             this.btnCancel.TabIndex = 8;
@@ -154,7 +154,7 @@
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 672);
+            this.ClientSize = new System.Drawing.Size(664, 682);
             this.Controls.Add(this.pbProtocol);
             this.Controls.Add(this.btnShowRecipients);
             this.Controls.Add(this.chbSendMail);
@@ -165,8 +165,8 @@
             this.Controls.Add(this.cbProtokoloKind);
             this.Controls.Add(this.lblProtokoloKind);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(600, 710);
-            this.MinimumSize = new System.Drawing.Size(600, 710);
+            this.MaximumSize = new System.Drawing.Size(680, 720);
+            this.MinimumSize = new System.Drawing.Size(680, 720);
             this.Name = "ProtokoloInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Εισαγωγή";
