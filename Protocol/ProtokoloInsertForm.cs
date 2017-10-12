@@ -260,12 +260,12 @@ namespace Protocol
             {
                 //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelInbox;
-                IOBoxPanel.Location = new Point(12, 110);
+                IOBoxPanel.Location = new Point(52, 110);
 
-                IOBoxPanel.Controls["tbInDocNum"].Text = "AA-0000/01";           //to del
-                IOBoxPanel.Controls["tbInProeleusi"].Text = "ABCD";              //to del
-                IOBoxPanel.Controls["tbInSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
-                IOBoxPanel.Controls["tbInToText"].Text = "Mr Abcd";              //to del
+                //IOBoxPanel.Controls["tbInDocNum"].Text = "AA-0000/01";           //to del
+                //IOBoxPanel.Controls["tbInProeleusi"].Text = "ABCD";              //to del
+                //IOBoxPanel.Controls["tbInSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
+                //IOBoxPanel.Controls["tbInToText"].Text = "Mr Abcd";              //to del
 
                 Controls.Add(IOBoxPanel);
                 //fill folders combobox - add 'items.clear' if needed
@@ -278,11 +278,11 @@ namespace Protocol
             {
                 //Controls.Remove(IOBoxPanel);
                 IOBoxPanel = IOPanelsFrm.panelOutbox;
-                IOBoxPanel.Location = new Point(12, 110);
+                IOBoxPanel.Location = new Point(52, 110);
 
-                IOBoxPanel.Controls["tbOutDocNum"].Text = "AA-0000/01";           //to del
-                IOBoxPanel.Controls["tbOutKateuth"].Text = "ABCD";                //to del
-                IOBoxPanel.Controls["tbOutSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
+                //IOBoxPanel.Controls["tbOutDocNum"].Text = "AA-0000/01";           //to del
+                //IOBoxPanel.Controls["tbOutKateuth"].Text = "ABCD";                //to del
+                //IOBoxPanel.Controls["tbOutSummary"].Text = "Δοκιμαστική εγγραφή"; //to del
 
                 Controls.Add(IOBoxPanel);
                 //fill folders combobox - add 'items.clear' if needed
