@@ -77,7 +77,7 @@
             this.lvRep.Location = new System.Drawing.Point(0, 74);
             this.lvRep.MultiSelect = false;
             this.lvRep.Name = "lvRep";
-            this.lvRep.Size = new System.Drawing.Size(1272, 460);
+            this.lvRep.Size = new System.Drawing.Size(1268, 460);
             this.lvRep.TabIndex = 2;
             this.lvRep.UseCompatibleStateImageBehavior = false;
             this.lvRep.View = System.Windows.Forms.View.Details;
@@ -210,14 +210,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1272, 534);
+            this.ClientSize = new System.Drawing.Size(1268, 534);
             this.Controls.Add(this.btnExcelExport);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClearFilters);
             this.Controls.Add(this.btnFilters);
             this.Controls.Add(this.lvRep);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1288, 572);
+            this.MinimumSize = new System.Drawing.Size(1278, 572);
             this.Name = "ProtokoloDeleteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Διαγραφή";

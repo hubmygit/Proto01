@@ -15,12 +15,15 @@ namespace Protocol
     {
         List<SavedDatasources> LstSDS;
         bool InsertState;
+        bool SelectState = true;
+        bool AllowChangeTab;
         public List<String> ReturnEmailList;
         public Contacts()
         {
             InitializeComponent();
             SetMenuState("Browse");
             UpdateHeader(dataGridView1);
+            AllowChangeTab = false;
             tabControl1.ItemSize = new System.Drawing.Size(1, 1);
 
             AutoCompleteStringCollection col = new AutoCompleteStringCollection();
@@ -66,20 +69,25 @@ namespace Protocol
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InsertState = true;
+            AllowChangeTab = true;
             tabControl1.SelectedTab = tabPage2;
+            panel3.Visible = false;
+
             SetMenuState("Update");
             ClearBinding();
         }
         private void updToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AllowChangeTab = true;
             tabControl1.SelectedTab = tabPage2;
+            panel3.Visible = false;
             SetMenuState("Update");
             RestoreBinding();
         }
 
         private void postToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label10.Focus();
+            label13.Focus();
             if (textFirstName.Text.ToString().Trim().Length == 0)
             {
                 MessageBox.Show("Δεν έχει γίνει καταχώρηση στο πεδίο");
@@ -168,14 +176,18 @@ namespace Protocol
 
             }
 
+            AllowChangeTab = true;
             tabControl1.SelectedTab = tabPage1;
+            panel3.Visible = true;
             SetMenuState("Browse");
             InsertState = false;
         }
 
         private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AllowChangeTab = true;
             tabControl1.SelectedTab = tabPage1;
+            panel3.Visible = true;
             SetMenuState("Browse");
             RestoreBinding();
             InsertState = false;
@@ -560,15 +572,20 @@ namespace Protocol
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BindingSource bs = (BindingSource)dataGridView1.DataSource;
-            DataSet dsTempDataTable = (DataSet)bs.DataSource;
-            DataTable dt = dsTempDataTable.Tables[0];
-            DataRow   datar;
-            foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+
+            DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή", "Διαγραφή", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                datar = dt.Rows[dr.Index];
-                contactsTableAdapter.Delete((int)datar["id"]);
-                dt.Rows.Remove(datar);
+                BindingSource bs = (BindingSource)dataGridView1.DataSource;
+                DataSet dsTempDataTable = (DataSet)bs.DataSource;
+                DataTable dt = dsTempDataTable.Tables[0];
+                DataRow datar;
+                foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+                {
+                    datar = dt.Rows[dr.Index];
+                    contactsTableAdapter.Delete((int)datar["id"]);
+                    dt.Rows.Remove(datar);
+                }
             }
         }
 
@@ -585,26 +602,29 @@ namespace Protocol
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!(ReturnEmailList is null))
+            if (SelectState)
             {
-                foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
+                if (!(ReturnEmailList is null))
                 {
-                    String ro = dr.Cells["email"].Value.ToString();
-                    if (ro.Trim().Length < 1)
+                    foreach (DataGridViewRow dr in dataGridView1.SelectedRows)
                     {
-                        MessageBox.Show("Η επαφή " + dr.Cells["LastName"].Value.ToString() + " " + dr.Cells["FirstName"].Value.ToString() + " δεν έχει διεύθυνση email.");
+                        String ro = dr.Cells["email"].Value.ToString();
+                        if (ro.Trim().Length < 1)
+                        {
+                            MessageBox.Show("Η επαφή " + dr.Cells["LastName"].Value.ToString() + " " + dr.Cells["FirstName"].Value.ToString() + " δεν έχει διεύθυνση email.");
+                        }
+                        else
+                        {
+                            ReturnEmailList.Add(ro.ToString());
+                            //MessageBox.Show(dr.Cells["LastName"].Value.ToString()+" "+ dr.Cells["FirstName"].Value.ToString());
+                        }
                     }
-                    else
-                    {
-                        ReturnEmailList.Add(ro.ToString());
-                        //MessageBox.Show(dr.Cells["LastName"].Value.ToString()+" "+ dr.Cells["FirstName"].Value.ToString());
-                    }
-                }
                     textSelectedMails.Text = string.Join(",", ReturnEmailList);
-                this.Text = "Διευθυνσιογράφος (" + ReturnEmailList.Count.ToString()+")" ;
+                    this.Text = "Διευθυνσιογράφος (" + ReturnEmailList.Count.ToString() + ")";
                 }
-            
-
+            }
+            else
+            { }
         }
 
         private void επιλεγμέναToolStripMenuItem_Click(object sender, EventArgs e)
@@ -621,7 +641,11 @@ namespace Protocol
 
             foreach (Control ctrlt in searchWithin.Controls)
             {
-                if (ctrlt.HasChildren)
+                if (ctrlt.GetType().Name.ToUpper() == "MENUSTRIP")
+                { 
+                    returnList.Add(ctrlt);
+                }
+                    if (ctrlt.HasChildren)
                     foreach (Control ctrl in ctrlt.Controls)
                         if (ctrl.HasChildren)
                             GetAllControls(ctrl, returnList);
@@ -641,14 +665,23 @@ namespace Protocol
 
             FormControls = GetAllControls(this, FormControls);
             foreach (Control c in FormControls)
+            {
+                if (c.GetType().Name.ToUpper() == "MENUSTRIP")
                 {
-                    if (c.GetType().Name.ToUpper() == "MENUSTRIP")
-                      foreach (System.Windows.Forms.ToolStripItem item in ((System.Windows.Forms.ToolStrip)c).Items)
-                    if (item.Tag.ToString().ToUpper() == TagState.ToUpper())
-                            item.Visible = true;
-                    else
-                            item.Visible = false;
+                    foreach (System.Windows.Forms.ToolStripItem item in ((System.Windows.Forms.MenuStrip)c).Items)
+                    {
+                        try
+                        {
+                            if (item.Tag.ToString().ToUpper() == TagState.ToUpper())
+                                item.Visible = true;
+                            else
+                                item.Visible = false;
+                        }
+                        catch (Exception ex)
+                        { }
+                    }
                 }
+            }
         }
 
         private void έξοδοςToolStripMenuItem_Click(object sender, EventArgs e)
@@ -665,7 +698,7 @@ namespace Protocol
 
             if (((TextBox)sender).Text.Trim().Length > 0)
             {
-                BS.Filter = LikeStr + " Like '" + ((TextBox)sender).Text.Trim() + "%'";
+                BS.Filter = LikeStr + " Like '%" + ((TextBox)sender).Text.Trim() + "%'";
             }
             else
             {
@@ -676,6 +709,59 @@ namespace Protocol
         private void tabControl1_TabIndexChanged(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (AllowChangeTab)
+            {
+                AllowChangeTab = false;
+            }
+            else
+            {
+                e.Cancel = true;
+                AllowChangeTab = false;
+            }
+        }
+
+        private void SearchTextKeyUp(object sender, KeyEventArgs e)
+        {
+            BindingSource BS = (BindingSource)(dataGridView1).DataSource;
+            String LikeStr = ((TextBox)sender).Tag.ToString();
+
+            if (((TextBox)sender).Text.Trim().Length > 0)
+            {
+                BS.Filter = LikeStr + " Like '%" + ((TextBox)sender).Text.Trim() + "%'";
+            }
+            else
+            {
+                BS.Filter = "";
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+                    }
+
+        private void προβολήToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllowChangeTab = true;
+            if (tabControl1.SelectedTab == tabPage1)
+                tabControl1.SelectedTab = tabPage2;
+            else
+                tabControl1.SelectedTab = tabPage1;
         }
     }
 }
