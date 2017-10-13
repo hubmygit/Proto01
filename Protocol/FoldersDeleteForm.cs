@@ -23,9 +23,11 @@ namespace Protocol
 
         public void ShowDataToListView(ListView lvReport)
         {
+            lvReport.Items.Clear();
+
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT F.Name as Folder, C.Name as Company, PR.Name as Proced, F.Descr, count(P.FolderId) as Cnt, F.Id " +
-                              "FROM[dbo].[Folders] F left outer join[dbo].[Company] C on C.Id = F.CompanyId " +
+                              "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on C.Id = F.CompanyId " +
                                   "left outer join Proced PR on PR.Id = F.ProcedId " + 
                                   "left outer join [dbo].[Protok] P on P.FolderId = F.Id and isnull(P.deleted, 0) = 0 " +
                               "GROUP BY C.Name, PR.Name, F.Name, F.Descr, F.Id " +
@@ -107,10 +109,10 @@ namespace Protocol
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
             string lvRowCnt = lvRep.SelectedItems[0].SubItems[4].Text;
-            string lvRowFolder = lvRep.SelectedItems[0].SubItems[2].Text;
+            string lvRowFolder = lvRep.SelectedItems[0].SubItems[0].Text;
             string lvRowId = lvRep.SelectedItems[0].SubItems[5].Text;
-            string lvRowEisEx = lvRep.SelectedItems[0].SubItems[1].Text;
-            string lvRowCompany = lvRep.SelectedItems[0].SubItems[0].Text;
+            string lvRowEisEx = lvRep.SelectedItems[0].SubItems[2].Text;
+            string lvRowCompany = lvRep.SelectedItems[0].SubItems[1].Text;
 
             if (lvRowId.Trim() != "")
             {
@@ -121,7 +123,7 @@ namespace Protocol
                 }
 
                 DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να διαγράψετε την εγγραφή με Αριθμό Φακέλου Αρχείου '" + lvRowFolder +
-                    "' (" + lvRowEisEx + ") της Εταιρίας" + lvRowCompany + ";", "Διαγραφή", MessageBoxButtons.YesNo);
+                    "' (" + lvRowEisEx + ") της Εταιρίας " + lvRowCompany + ";", "Διαγραφή", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {                    
                     SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
@@ -137,15 +139,24 @@ namespace Protocol
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
-                        Close();
+                        if (FiltersFrm == null)
+                        {
+                            //no filters
+                            ShowDataToListView(lvRep);
+                            //lvRep.Refresh();
+                        }
+                        else
+                        {
+                            //get filters
+                            ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
+                        }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("The following error occurred: " + ex.Message);
                     }
 
-                    Close();
+                    MessageBox.Show("Η εγγραφή διαγράφηκε επιτυχώς!");
                 }
             }
         }
