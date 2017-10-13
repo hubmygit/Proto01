@@ -214,6 +214,7 @@
             // 
             // cbInFolders
             // 
+            this.cbInFolders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbInFolders.FormattingEnabled = true;
             this.cbInFolders.Location = new System.Drawing.Point(272, 186);
@@ -452,6 +453,7 @@
             // 
             // cbOutFolders
             // 
+            this.cbOutFolders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOutFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbOutFolders.FormattingEnabled = true;
             this.cbOutFolders.Location = new System.Drawing.Point(272, 148);
