@@ -191,8 +191,8 @@ namespace Protocol
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
 
                 //set where... 
-                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between " + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                      " and " + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + " and isnull(P.deleted, 0) = 0 ";
+                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
             }
             else //change filters
             {
@@ -212,6 +212,8 @@ namespace Protocol
 
             if (FiltersFrm.saveFilters == true)
             {
+                btnFilters.Font = new Font(btnFilters.Font, FontStyle.Underline);
+
                 FiltersFrm.saveFilters = false;
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr);

@@ -190,6 +190,8 @@ namespace Protocol
 
             if (FiltersFrm.saveFilters == true)
             {
+                btnFilters.Font = new Font(btnFilters.Font, FontStyle.Underline);
+
                 FiltersFrm.saveFilters = false;
 
                 ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
