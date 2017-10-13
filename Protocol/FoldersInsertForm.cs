@@ -21,6 +21,8 @@ namespace Protocol
             cbProced.Items.AddRange(ProtokoloInsertForm.GetObjProtocolKind());
 
             NewRecord = false;
+
+            cbCompany.Select();
         }
 
         public FoldersInsertForm(Company company, Proced proced)

@@ -129,6 +129,7 @@
             // 
             // cbCompany
             // 
+            this.cbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbCompany.FormattingEnabled = true;
             this.cbCompany.Location = new System.Drawing.Point(219, 48);
@@ -139,6 +140,7 @@
             // 
             // cbProced
             // 
+            this.cbProced.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbProced.FormattingEnabled = true;
             this.cbProced.Location = new System.Drawing.Point(219, 82);

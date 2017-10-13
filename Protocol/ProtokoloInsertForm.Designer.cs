@@ -54,6 +54,7 @@
             // 
             // cbProtokoloKind
             // 
+            this.cbProtokoloKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProtokoloKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbProtokoloKind.FormattingEnabled = true;
             this.cbProtokoloKind.Location = new System.Drawing.Point(223, 25);
@@ -75,6 +76,7 @@
             // 
             // cbCompany
             // 
+            this.cbCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbCompany.FormattingEnabled = true;
             this.cbCompany.Location = new System.Drawing.Point(223, 62);
