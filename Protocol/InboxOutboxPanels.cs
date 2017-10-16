@@ -351,6 +351,11 @@ namespace Protocol
             lv.Items.Clear();
         }
 
+        private void btnShowInsUser_Click(object sender, EventArgs e)
+        {
+            //int UserId = 0;
+            //AboutUserInfoForm UserFrm = new AboutUserInfoForm(UserId);
+        }
 
         /*
         private void lvAttachedFileCms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -198,6 +198,9 @@ namespace Protocol
                     forCounter = k;
 
                     //*************Footer*************
+
+                    gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+
                     gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
                     currentPage++;
                     return;
@@ -220,6 +223,9 @@ namespace Protocol
             }
 
             //*************Footer*************
+
+            gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+
             gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
 
             //*************Finish*************
