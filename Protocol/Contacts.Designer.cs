@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contacts));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.SearchText3 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SearchText2 = new System.Windows.Forms.TextBox();
@@ -55,27 +56,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textSelectedMails = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BusinessPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MobilePhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterExactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.export2ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._GramV3_DevDataSet_Contact = new Protocol._GramV3_DevDataSet_Contact();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -103,121 +88,148 @@
             this.textemail = new System.Windows.Forms.TextBox();
             this.textLastName = new System.Windows.Forms.TextBox();
             this.textFirstName = new System.Windows.Forms.TextBox();
+            this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._GramV3_DevDataSet_Contact = new Protocol._GramV3_DevDataSet_Contact();
             this.contactsTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ContactsTableAdapter();
             this.updateKeyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter();
             this.tableAdapterManager = new Protocol._GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager();
             this.viewDistCompanyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter();
+            this.προβολήToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BusinessPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MobilePhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._GramV3_DevDataSet_Contact)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.SearchText3);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.SearchText2);
-            this.panel1.Controls.Add(this.SearchText1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.SearchText0);
-            this.panel1.Controls.Add(this.menuStrip);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(769, 70);
+            this.panel1.Size = new System.Drawing.Size(769, 41);
             this.panel1.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.SearchText3);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.SearchText2);
+            this.panel3.Controls.Add(this.SearchText1);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.SearchText0);
+            this.panel3.Location = new System.Drawing.Point(3, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(766, 40);
+            this.panel3.TabIndex = 3;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // SearchText3
             // 
-            this.SearchText3.Location = new System.Drawing.Point(585, 30);
+            this.SearchText3.Location = new System.Drawing.Point(608, 8);
             this.SearchText3.Name = "SearchText3";
             this.SearchText3.Size = new System.Drawing.Size(105, 20);
-            this.SearchText3.TabIndex = 10;
+            this.SearchText3.TabIndex = 26;
             this.SearchText3.Tag = "email";
             this.SearchText3.Enter += new System.EventHandler(this.SearchText_Enter);
-            this.SearchText3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyDown);
+            this.SearchText3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyUp);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(534, 33);
+            this.label10.Location = new System.Drawing.Point(560, 11);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 13);
-            this.label10.TabIndex = 9;
+            this.label10.TabIndex = 25;
             this.label10.Text = "email";
             // 
             // SearchText2
             // 
             this.SearchText2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.SearchText2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.SearchText2.Location = new System.Drawing.Point(409, 30);
+            this.SearchText2.Location = new System.Drawing.Point(435, 8);
             this.SearchText2.Name = "SearchText2";
             this.SearchText2.Size = new System.Drawing.Size(105, 20);
-            this.SearchText2.TabIndex = 8;
+            this.SearchText2.TabIndex = 24;
             this.SearchText2.Tag = "Company";
             this.SearchText2.Enter += new System.EventHandler(this.SearchText_Enter);
-            this.SearchText2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyDown);
+            this.SearchText2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyUp);
             // 
             // SearchText1
             // 
-            this.SearchText1.Location = new System.Drawing.Point(240, 30);
+            this.SearchText1.Location = new System.Drawing.Point(266, 8);
             this.SearchText1.Name = "SearchText1";
             this.SearchText1.Size = new System.Drawing.Size(107, 20);
-            this.SearchText1.TabIndex = 7;
+            this.SearchText1.TabIndex = 23;
             this.SearchText1.Tag = "FirstName";
             this.SearchText1.Enter += new System.EventHandler(this.SearchText_Enter);
-            this.SearchText1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyDown);
+            this.SearchText1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyUp);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(358, 33);
+            this.label3.Location = new System.Drawing.Point(384, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 6;
+            this.label3.TabIndex = 22;
             this.label3.Text = "Εταιρία";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 33);
+            this.label2.Location = new System.Drawing.Point(205, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 21;
             this.label2.Text = "Όνομα";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 33);
+            this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 20;
             this.label1.Text = "Επώνυμο";
             // 
             // SearchText0
             // 
-            this.SearchText0.Location = new System.Drawing.Point(78, 30);
+            this.SearchText0.Location = new System.Drawing.Point(87, 8);
             this.SearchText0.Name = "SearchText0";
             this.SearchText0.Size = new System.Drawing.Size(103, 20);
-            this.SearchText0.TabIndex = 3;
+            this.SearchText0.TabIndex = 19;
             this.SearchText0.Tag = "LastName";
             this.SearchText0.Enter += new System.EventHandler(this.SearchText_Enter);
-            this.SearchText0.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyDown);
+            this.SearchText0.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SearchTextKeyUp);
             // 
             // menuStrip
             // 
+            this.menuStrip.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
+            this.προβολήToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem,
             this.postToolStripMenuItem,
@@ -226,14 +238,14 @@
             this.έξοδοςToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(769, 24);
+            this.menuStrip.Size = new System.Drawing.Size(769, 29);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(95, 25);
             this.addToolStripMenuItem.Tag = "Browse";
             this.addToolStripMenuItem.Text = "Προσθήκη";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
@@ -241,7 +253,7 @@
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(96, 25);
             this.updateToolStripMenuItem.Tag = "Browse";
             this.updateToolStripMenuItem.Text = "Μεταβολή";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updToolStripMenuItem_Click);
@@ -249,31 +261,33 @@
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(93, 25);
             this.deleteToolStripMenuItem.Tag = "Browse";
             this.deleteToolStripMenuItem.Text = "Διαγραφή";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // postToolStripMenuItem
             // 
+            this.postToolStripMenuItem.Image = global::Protocol.Properties.Resources.Save_32x;
             this.postToolStripMenuItem.Name = "postToolStripMenuItem";
-            this.postToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.postToolStripMenuItem.Size = new System.Drawing.Size(119, 25);
             this.postToolStripMenuItem.Tag = "Update";
-            this.postToolStripMenuItem.Text = "Post";
+            this.postToolStripMenuItem.Text = "Ενημέρωση";
             this.postToolStripMenuItem.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
             // 
             // cancelToolStripMenuItem
             // 
+            this.cancelToolStripMenuItem.Image = global::Protocol.Properties.Resources.Cancel_32x;
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
             this.cancelToolStripMenuItem.Tag = "Update";
-            this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Text = "Ακύρωση";
             this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // επιλογήToolStripMenuItem
             // 
             this.επιλογήToolStripMenuItem.Name = "επιλογήToolStripMenuItem";
-            this.επιλογήToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.επιλογήToolStripMenuItem.Size = new System.Drawing.Size(78, 25);
             this.επιλογήToolStripMenuItem.Tag = "Browse";
             this.επιλογήToolStripMenuItem.Text = "Επιλογή";
             this.επιλογήToolStripMenuItem.Click += new System.EventHandler(this.επιλογήToolStripMenuItem_Click);
@@ -281,7 +295,7 @@
             // έξοδοςToolStripMenuItem
             // 
             this.έξοδοςToolStripMenuItem.Name = "έξοδοςToolStripMenuItem";
-            this.έξοδοςToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.έξοδοςToolStripMenuItem.Size = new System.Drawing.Size(72, 25);
             this.έξοδοςToolStripMenuItem.Tag = "Selection";
             this.έξοδοςToolStripMenuItem.Text = "Έξοδος";
             this.έξοδοςToolStripMenuItem.Click += new System.EventHandler(this.έξοδοςToolStripMenuItem_Click);
@@ -307,6 +321,7 @@
             this.tabControl1.Size = new System.Drawing.Size(769, 587);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabStop = false;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             // 
             // tabPage1
@@ -336,6 +351,7 @@
             // 
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeColumns = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
@@ -350,7 +366,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Company,
-            this.Id,
             this.LastName,
             this.FirstName,
             this.Email,
@@ -362,7 +377,7 @@
             this.Country,
             this.Notes,
             this.Category,
-            this.idDataGridViewTextBoxColumn});
+            this.Id});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.contactsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -382,96 +397,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(755, 555);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // Company
-            // 
-            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.Company.DataPropertyName = "Company";
-            this.Company.HeaderText = "Company";
-            this.Company.Name = "Company";
-            this.Company.Width = 21;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // LastName
-            // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "LastName";
-            this.LastName.Name = "LastName";
-            this.LastName.Width = 21;
-            // 
-            // FirstName
-            // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.Width = 21;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // BusinessPhone
-            // 
-            this.BusinessPhone.DataPropertyName = "BusinessPhone";
-            this.BusinessPhone.HeaderText = "BusinessPhone";
-            this.BusinessPhone.Name = "BusinessPhone";
-            // 
-            // MobilePhone
-            // 
-            this.MobilePhone.DataPropertyName = "MobilePhone";
-            this.MobilePhone.HeaderText = "MobilePhone";
-            this.MobilePhone.Name = "MobilePhone";
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            // 
-            // City
-            // 
-            this.City.DataPropertyName = "City";
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            // 
-            // ZIP
-            // 
-            this.ZIP.DataPropertyName = "ZIP";
-            this.ZIP.HeaderText = "ZIP";
-            this.ZIP.Name = "ZIP";
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.Name = "Country";
-            // 
-            // Notes
-            // 
-            this.Notes.DataPropertyName = "Notes";
-            this.Notes.HeaderText = "Notes";
-            this.Notes.Name = "Notes";
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             // 
             // contextMenuStrip1
             // 
@@ -512,16 +437,6 @@
             this.export2ExcelToolStripMenuItem.Text = "Export2Excel";
             this.export2ExcelToolStripMenuItem.Click += new System.EventHandler(this.export2ExcelToolStripMenuItem_Click);
             // 
-            // contactsBindingSource
-            // 
-            this.contactsBindingSource.DataMember = "Contacts";
-            this.contactsBindingSource.DataSource = this._GramV3_DevDataSet_Contact;
-            // 
-            // _GramV3_DevDataSet_Contact
-            // 
-            this._GramV3_DevDataSet_Contact.DataSetName = "_GramV3_DevDataSet_Contact";
-            this._GramV3_DevDataSet_Contact.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label17);
@@ -553,7 +468,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(761, 561);
+            this.tabPage2.Size = new System.Drawing.Size(761, 533);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "_";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -809,6 +724,16 @@
             this.textFirstName.Size = new System.Drawing.Size(161, 22);
             this.textFirstName.TabIndex = 2;
             // 
+            // contactsBindingSource
+            // 
+            this.contactsBindingSource.DataMember = "Contacts";
+            this.contactsBindingSource.DataSource = this._GramV3_DevDataSet_Contact;
+            // 
+            // _GramV3_DevDataSet_Contact
+            // 
+            this._GramV3_DevDataSet_Contact.DataSetName = "_GramV3_DevDataSet_Contact";
+            this._GramV3_DevDataSet_Contact.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // contactsTableAdapter
             // 
             this.contactsTableAdapter.ClearBeforeFill = true;
@@ -828,6 +753,113 @@
             // 
             this.viewDistCompanyTableAdapter.ClearBeforeFill = true;
             // 
+            // προβολήToolStripMenuItem
+            // 
+            this.προβολήToolStripMenuItem.Name = "προβολήToolStripMenuItem";
+            this.προβολήToolStripMenuItem.Size = new System.Drawing.Size(86, 25);
+            this.προβολήToolStripMenuItem.Tag = "Browse";
+            this.προβολήToolStripMenuItem.Text = "Προβολή";
+            this.προβολήToolStripMenuItem.Click += new System.EventHandler(this.προβολήToolStripMenuItem_Click);
+            // 
+            // Company
+            // 
+            this.Company.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Company.DataPropertyName = "Company";
+            this.Company.HeaderText = "Company";
+            this.Company.Name = "Company";
+            this.Company.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Company.Width = 91;
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "LastName";
+            this.LastName.Name = "LastName";
+            this.LastName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Email
+            // 
+            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Email.Width = 67;
+            // 
+            // BusinessPhone
+            // 
+            this.BusinessPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.BusinessPhone.DataPropertyName = "BusinessPhone";
+            this.BusinessPhone.HeaderText = "BusinessPhone";
+            this.BusinessPhone.Name = "BusinessPhone";
+            this.BusinessPhone.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.BusinessPhone.Width = 127;
+            // 
+            // MobilePhone
+            // 
+            this.MobilePhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MobilePhone.DataPropertyName = "MobilePhone";
+            this.MobilePhone.HeaderText = "MobilePhone";
+            this.MobilePhone.Name = "MobilePhone";
+            this.MobilePhone.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MobilePhone.Width = 113;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.Visible = false;
+            // 
+            // City
+            // 
+            this.City.DataPropertyName = "City";
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
+            this.City.Visible = false;
+            // 
+            // ZIP
+            // 
+            this.ZIP.DataPropertyName = "ZIP";
+            this.ZIP.HeaderText = "ZIP";
+            this.ZIP.Name = "ZIP";
+            this.ZIP.Visible = false;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            this.Country.Visible = false;
+            // 
+            // Notes
+            // 
+            this.Notes.DataPropertyName = "Notes";
+            this.Notes.HeaderText = "Notes";
+            this.Notes.Name = "Notes";
+            this.Notes.Visible = false;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
             // Contacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -835,13 +867,15 @@
             this.ClientSize = new System.Drawing.Size(769, 657);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Contacts";
             this.Text = "Διευθυνσιογράφος";
             this.Load += new System.EventHandler(this.Contacts_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -850,11 +884,12 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GramV3_DevDataSet_Contact)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._GramV3_DevDataSet_Contact)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -888,13 +923,7 @@
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filterOnlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filterExactToolStripMenuItem;
-        private System.Windows.Forms.TextBox SearchText0;
         private System.Windows.Forms.ToolStripMenuItem export2ExcelToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox SearchText2;
-        private System.Windows.Forms.TextBox SearchText1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
@@ -918,10 +947,17 @@
         private System.Windows.Forms.ToolStripMenuItem επιλογήToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem έξοδοςToolStripMenuItem;
         private System.Windows.Forms.TextBox textSelectedMails;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox SearchText3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox SearchText2;
+        private System.Windows.Forms.TextBox SearchText1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox SearchText0;
+        private System.Windows.Forms.ToolStripMenuItem προβολήToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Company;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
@@ -933,6 +969,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }
