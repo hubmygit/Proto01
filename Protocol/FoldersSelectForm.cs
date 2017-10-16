@@ -135,9 +135,9 @@ namespace Protocol
 
             updScreen.ShowDialog();
 
-            //refresh listView - ToDo: Not always. Only after real insert
-            lvRep.Items.Clear();
-            ShowDataToListView(lvRep);
+            //select mode(!) - don't refresh listview
+            //lvRep.Items.Clear();
+            //ShowDataToListView(lvRep);
         }
 
         FoldersFiltersForm FiltersFrm;
