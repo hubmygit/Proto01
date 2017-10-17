@@ -40,20 +40,20 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string[] row = { reader[0].ToString(),
-                                     reader[1].ToString(),
-                                     reader[2].ToString(),
-                                     reader[3].ToString(),
-                                     reader[4].ToString(),
-                                     reader[5].ToString(),
-                                     reader[6].ToString(),
-                                     reader[7].ToString(),
-                                     reader[8].ToString(),
-                                     reader[9].ToString(),
-                                     reader[10].ToString(),
-                                     reader[11].ToString(),
-                                     reader[12].ToString(),
-                                     reader[13].ToString()};
+                    string[] row = { reader[11].ToString(), //id
+                                     reader[3].ToString(), //com
+                                     reader[1].ToString(), //year
+                                     reader[2].ToString(), //kat. prwt - proced
+                                     reader[0].ToString(), //Sn
+                                     reader[5].ToString(), //hm. lipsis - DocGetSetDate
+                                     reader[4].ToString(), //hm. ekdosis - docdate
+                                     reader[6].ToString(), //docNum
+                                     reader[7].ToString(), //proeleusi
+                                     reader[8].ToString(), //perilipsi
+                                     reader[9].ToString(), //paratiriseis
+                                     reader[10].ToString(), //folder
+                                     reader[12].ToString(), //att
+                                     reader[13].ToString()}; //mails
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
@@ -93,20 +93,20 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string[] row = { reader[0].ToString(),
-                                     reader[1].ToString(),
-                                     reader[2].ToString(),
-                                     reader[3].ToString(),
-                                     reader[4].ToString(),
-                                     reader[5].ToString(),
-                                     reader[6].ToString(),
-                                     reader[7].ToString(),
-                                     reader[8].ToString(),
-                                     reader[9].ToString(),
-                                     reader[10].ToString(),
-                                     reader[11].ToString(),
-                                     reader[12].ToString(),
-                                     reader[13].ToString()};
+                    string[] row = { reader[11].ToString(), //id
+                                     reader[3].ToString(), //com
+                                     reader[1].ToString(), //year
+                                     reader[2].ToString(), //kat. prwt - proced
+                                     reader[0].ToString(), //Sn
+                                     reader[5].ToString(), //hm. lipsis - DocGetSetDate
+                                     reader[4].ToString(), //hm. ekdosis - docdate
+                                     reader[6].ToString(), //docNum
+                                     reader[7].ToString(), //proeleusi
+                                     reader[8].ToString(), //perilipsi
+                                     reader[9].ToString(), //paratiriseis
+                                     reader[10].ToString(), //folder
+                                     reader[12].ToString(), //att
+                                     reader[13].ToString()}; //mails
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
@@ -161,8 +161,9 @@ namespace Protocol
             //updScreen.cbProtokoloKind.Text = "Εισερχόμενα";
 
             ListViewItem.ListViewSubItemCollection lvic = new ListViewItem.ListViewSubItemCollection(lvRep.SelectedItems[0]);
-            string proced = lvic[2].Text;
-            string company = lvic[3].Text;
+
+            string proced = lvic[3].Text;
+            string company = lvic[1].Text;
 
             selScreen.Text = "Εμφάνιση";
             //selScreen.formCRUDMode = CRUD_Mode.SELECT;
@@ -173,7 +174,7 @@ namespace Protocol
             selScreen.cbProtokoloKind.SelectedIndex = selScreen.cbProtokoloKind.FindStringExact(proced);
             selScreen.cbCompany.SelectedIndex = selScreen.cbCompany.FindStringExact(company);
 
-            selScreen.Protok_Id_For_Updates = Convert.ToInt32(lvic[11].Text);
+            selScreen.Protok_Id_For_Updates = Convert.ToInt32(lvic[0].Text);
                       
             if (Convert.ToInt32(lvic[13].Text) > 0)
             {
@@ -186,24 +187,24 @@ namespace Protocol
             if (proced == "Εισερχόμενα")
             {
                 ((DateTimePicker)selScreen.Controls["panelInbox"].Controls["dtpInGetDate"]).Value = DateTime.Parse(lvic[5].Text);
-                selScreen.Controls["panelInbox"].Controls["tbInDocNum"].Text = lvic[6].Text;
-                ((DateTimePicker)selScreen.Controls["panelInbox"].Controls["dtpInDocDate"]).Value = DateTime.Parse(lvic[4].Text);
-                ((ComboBox)selScreen.Controls["panelInbox"].Controls["cbInFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelInbox"].Controls["cbInFolders"]).FindStringExact(lvic[10].Text);
-                selScreen.Controls["panelInbox"].Controls["tbInProeleusi"].Text = lvic[7].Text;
-                selScreen.Controls["panelInbox"].Controls["tbInSummary"].Text = lvic[8].Text;
-                selScreen.Controls["panelInbox"].Controls["tbInToText"].Text = lvic[9].Text;
+                selScreen.Controls["panelInbox"].Controls["tbInDocNum"].Text = lvic[7].Text;
+                ((DateTimePicker)selScreen.Controls["panelInbox"].Controls["dtpInDocDate"]).Value = DateTime.Parse(lvic[6].Text);
+                ((ComboBox)selScreen.Controls["panelInbox"].Controls["cbInFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelInbox"].Controls["cbInFolders"]).FindStringExact(lvic[11].Text);
+                selScreen.Controls["panelInbox"].Controls["tbInProeleusi"].Text = lvic[8].Text;
+                selScreen.Controls["panelInbox"].Controls["tbInSummary"].Text = lvic[9].Text;
+                selScreen.Controls["panelInbox"].Controls["tbInToText"].Text = lvic[10].Text;
 
                 selScreen.Controls["panelInbox"].Controls["lblInProtokolo"].Visible = true;
                 selScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Visible = true;
-                selScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[0].Text;
+                selScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[4].Text;
                 selScreen.Controls["panelInbox"].Controls["tbInYear"].Visible = true;
-                selScreen.Controls["panelInbox"].Controls["tbInYear"].Text = lvic[1].Text;
+                selScreen.Controls["panelInbox"].Controls["tbInYear"].Text = lvic[2].Text;
 
                 selScreen.Controls["panelInbox"].Controls["btnInAddFiles"].Enabled = false;
                 selScreen.Controls["panelInbox"].Controls["btnInRemoveFile"].Enabled = false;
                 selScreen.Controls["panelInbox"].Controls["btnInRemoveAll"].Enabled = false;
                 //get results as string array
-                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[11].Text));
+                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[0].Text));
                 //fill listview
                 foreach (string thisFileName in fileNames)
                 {
@@ -231,23 +232,23 @@ namespace Protocol
             else if (proced == "Εξερχόμενα")
             {
                 ((DateTimePicker)selScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"]).Value = DateTime.Parse(lvic[5].Text);
-                selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
-                ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[10].Text);
-                selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
-                selScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
-                selScreen.Controls["panelOutbox"].Controls["tbOutToText"].Text = lvic[9].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[7].Text;
+                ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[11].Text);
+                selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[8].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[7].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutToText"].Text = lvic[10].Text;
 
                 selScreen.Controls["panelOutbox"].Controls["lblOutProtokolo"].Visible = true;
                 selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Visible = true;
-                selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Text = lvic[0].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Text = lvic[4].Text;
                 selScreen.Controls["panelOutbox"].Controls["tbOutYear"].Visible = true;
-                selScreen.Controls["panelOutbox"].Controls["tbOutYear"].Text = lvic[1].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutYear"].Text = lvic[2].Text;
 
                 selScreen.Controls["panelOutbox"].Controls["btnOutAddFiles"].Enabled = false;
                 selScreen.Controls["panelOutbox"].Controls["btnOutRemoveFile"].Enabled = false;
                 selScreen.Controls["panelOutbox"].Controls["btnOutRemoveAll"].Enabled = false;
                 //get results as string array
-                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[11].Text));
+                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[0].Text));
                 //fill listview
                 foreach (string thisFileName in fileNames)
                 {
@@ -272,11 +273,10 @@ namespace Protocol
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutYear"]).BackColor = Color.White;
             }
 
-            InsUser InsUsr = getInsUserInfos(Convert.ToInt32(lvic[11].Text));
+            InsUser InsUsr = getInsUserInfos(Convert.ToInt32(lvic[0].Text));
             selScreen.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: " + InsUsr.WindowsUser + " - " + InsUsr.FullName;
 
             selScreen.ShowDialog();
-
             //select mode(!) - don't refresh listview
             //lvRep.Items.Clear();
             //ShowDataToListView(lvRep);

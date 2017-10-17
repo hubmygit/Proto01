@@ -59,7 +59,7 @@
             this.lvRep.Location = new System.Drawing.Point(0, 74);
             this.lvRep.MultiSelect = false;
             this.lvRep.Name = "lvRep";
-            this.lvRep.Size = new System.Drawing.Size(1000, 459);
+            this.lvRep.Size = new System.Drawing.Size(1000, 400);
             this.lvRep.TabIndex = 2;
             this.lvRep.UseCompatibleStateImageBehavior = false;
             this.lvRep.View = System.Windows.Forms.View.Details;

@@ -173,7 +173,7 @@ namespace Protocol
                 //}
                 
                 //only pdf allowed!
-                if (newFile.Extension != ".pdf")
+                if (newFile.Extension.ToUpper() != ".PDF")
                 {
                     MessageBox.Show("Παρακαλώ επιλέξτε μόνο αρχεία τύπου '.pdf'!");//Please drop only archives not directories!");
                     continue;

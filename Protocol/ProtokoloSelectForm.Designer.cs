@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtokoloSelectForm));
             this.lvRep = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Company = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Proced = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +41,7 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnExcelExport = new System.Windows.Forms.Button();
@@ -57,11 +57,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRep.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
+            this.Id,
+            this.Company,
+            this.Year,
+            this.Proced,
+            this.Sn,
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8,
@@ -83,29 +83,24 @@
             this.lvRep.View = System.Windows.Forms.View.Details;
             this.lvRep.DoubleClick += new System.EventHandler(this.lvRep_DoubleClick);
             // 
-            // columnHeader1
+            // Company
             // 
-            this.columnHeader1.Text = "ΑΑ Πρωτοκόλλου";
-            this.columnHeader1.Width = 80;
+            this.Company.Text = "Εταιρία";
             // 
-            // columnHeader2
+            // Year
             // 
-            this.columnHeader2.Text = "Έτος";
-            this.columnHeader2.Width = 50;
+            this.Year.Text = "Έτος";
+            this.Year.Width = 50;
             // 
-            // columnHeader3
+            // Proced
             // 
-            this.columnHeader3.Text = "Κατ.Πρωτοκόλλου";
-            this.columnHeader3.Width = 98;
+            this.Proced.Text = "Κατ.Πρωτοκόλλου";
+            this.Proced.Width = 98;
             // 
-            // columnHeader4
+            // Sn
             // 
-            this.columnHeader4.Text = "Εταιρία";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Ημ/νία Έκδοσης";
-            this.columnHeader5.Width = 92;
+            this.Sn.Text = "ΑΑ Πρωτοκόλλου";
+            this.Sn.Width = 80;
             // 
             // columnHeader6
             // 
@@ -114,33 +109,38 @@
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "Αρ.Εισερχ/Σχετικοί Αρ.";
-            this.columnHeader7.Width = 117;
+            this.columnHeader7.Text = "Ημ/νία Έκδοσης";
+            this.columnHeader7.Width = 92;
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Προέλευση/Κατεύθυνση";
-            this.columnHeader8.Width = 138;
+            this.columnHeader8.Text = "Αρ.Εισερχ/Σχετικοί Αρ.";
+            this.columnHeader8.Width = 117;
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "Περίληψη";
-            this.columnHeader9.Width = 90;
+            this.columnHeader9.Text = "Προέλευση/Κατεύθυνση";
+            this.columnHeader9.Width = 138;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
-            this.columnHeader10.Width = 181;
+            this.columnHeader10.Text = "Περίληψη";
+            this.columnHeader10.Width = 90;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "Αρ.Φακέλου Αρχείου";
-            this.columnHeader11.Width = 117;
+            this.columnHeader11.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
+            this.columnHeader11.Width = 181;
             // 
             // columnHeader12
             // 
-            this.columnHeader12.Text = "Id";
-            this.columnHeader12.Width = 0;
+            this.columnHeader12.Text = "Αρ.Φακέλου Αρχείου";
+            this.columnHeader12.Width = 117;
+            // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            this.Id.Width = 0;
             // 
             // columnHeader13
             // 
@@ -229,23 +229,23 @@
 
         #endregion
         private System.Windows.Forms.ListView lvRep;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader Sn;
+        private System.Windows.Forms.ColumnHeader Year;
+        private System.Windows.Forms.ColumnHeader Company;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         public System.Windows.Forms.Button btnFilters;
         public System.Windows.Forms.Button btnClearFilters;
         public System.Windows.Forms.Button btnPrint;
         public System.Windows.Forms.Button btnExcelExport;
+        private System.Windows.Forms.ColumnHeader Proced;
     }
 }
