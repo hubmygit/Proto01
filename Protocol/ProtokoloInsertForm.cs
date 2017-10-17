@@ -602,10 +602,10 @@ namespace Protocol
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
-                                  "ProeleusiKateuth, Summary, FolderId, InsDt, InsUsr) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
                                   "VALUES " +
                                   "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
-                                  "@ProeleusiKateuth, @Summary, @FolderId, getdate(), @InsUsr) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr) ";
 
                 try
                 {
@@ -620,6 +620,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
                     cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
+                    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbOutToText"].Text.Left(255));
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbOutFolders"]).SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@InsUsr", UserInfo.DB_AppUser_Id);
 
@@ -953,6 +954,12 @@ namespace Protocol
                 if (IOBoxPanel.Controls["tbOutSummary"].Text.Trim() == "")
                 {
                     MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (IOBoxPanel.Controls["tbOutToText"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παρατηρήσεις'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

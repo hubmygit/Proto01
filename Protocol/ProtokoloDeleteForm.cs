@@ -243,7 +243,14 @@ namespace Protocol
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Printings lvPrintings = new Printings();
-            lvPrintings.printProtocols(lvRep);
+            //if (FiltersFrm != null)
+            //{
+            //    lvPrintings.printProtocols(lvRep, FiltersFrm.savedFilters);
+            //}
+            //else
+            {
+                lvPrintings.printProtocols(lvRep, new List<Filter>());
+            }
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)

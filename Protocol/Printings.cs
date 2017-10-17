@@ -16,14 +16,47 @@ namespace Protocol
         private int pageCount = 0;
         private ListView lvRep = new ListView();
 
+        List<Filter> filterControls = new List<Filter>();
+
         public Printings()
         {
             //
         }
 
-        public void printProtocols(ListView ProtocolsListView)
+        string filtersToString(List<Filter> savedFilterControls)
+        {
+            string ret = "";
+
+            if (savedFilterControls.Count <= 0)
+            {
+                ret = "Ημ.Λήψης/Αποστ.: " + new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
+            }
+
+            foreach (Filter thisFilter in savedFilterControls)
+            {
+                if (thisFilter.FieldName == "dtpGetSetDate_From") //"dtpGetSetDate_To"
+                {
+                    ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x=> x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");                                        
+                    continue;
+                }
+                if (thisFilter.FieldName == "chlbProced")
+                {
+                    ret += "Κατηγ. Πρωτοκόλλου: ";
+                    foreach (int ind in thisFilter.FieldCheckedIndexes)
+                    {
+                        ret += ((CheckedListBox)thisFilter.FieldControl).Items[ind-1].ToString() + ",";
+                        continue;
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        public void printProtocols(ListView ProtocolsListView, List<Filter> savedFilterControls)
         {
             lvRep = ProtocolsListView;
+            filterControls = savedFilterControls;
 
             if (lvRep.Items.Count <= 0)
             {
@@ -84,6 +117,14 @@ namespace Protocol
             Font GeneralHeaderFont = new Font("Arial", 14, FontStyle.Bold);
             gf.DrawString("ΠΡΩΤΟΚΟΛΛΟ ΕΙΣΕΡΧΟΜΕΝΩΝ / ΕΞΕΡΧΟΜΕΝΩΝ ΕΓΓΡΑΦΩΝ", GeneralHeaderFont, Brushes.Brown, new Point(256, 48));
 
+            //*************Filters*************
+            if (currentPage == 1)
+            {
+                string filtersToStr = "Φίλτρα - " + filtersToString(filterControls);
+                sf = gf.MeasureString(filtersToStr, myFont, new SizeF(400, 500));
+
+                gf.DrawString(filtersToStr, myFont, Brushes.Black, new RectangleF(new PointF(StartingPtX, 70), new SizeF(sf.Width, sf.Height)));
+            }
             //*************Column Headers*************
             for (int i = 0; i < 14; i++)
             {
@@ -199,7 +240,7 @@ namespace Protocol
 
                     //*************Footer*************
 
-                    gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+                    gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
 
                     gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
                     currentPage++;
@@ -224,7 +265,7 @@ namespace Protocol
 
             //*************Footer*************
 
-            gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss"), myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+            gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
 
             gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
 

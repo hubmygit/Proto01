@@ -78,6 +78,8 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokolo = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
+            this.tbOutToText = new System.Windows.Forms.TextBox();
+            this.lblOutToText = new System.Windows.Forms.Label();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
@@ -389,6 +391,8 @@
             // 
             // panelOutbox
             // 
+            this.panelOutbox.Controls.Add(this.lblOutToText);
+            this.panelOutbox.Controls.Add(this.tbOutToText);
             this.panelOutbox.Controls.Add(this.btnOutNewFolders);
             this.panelOutbox.Controls.Add(this.button1);
             this.panelOutbox.Controls.Add(this.lblOutFolderId);
@@ -475,7 +479,7 @@
             this.btnOutOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutOpenFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutOpenFile.Image")));
             this.btnOutOpenFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutOpenFile.Location = new System.Drawing.Point(146, 352);
+            this.btnOutOpenFile.Location = new System.Drawing.Point(146, 418);
             this.btnOutOpenFile.Name = "btnOutOpenFile";
             this.btnOutOpenFile.Size = new System.Drawing.Size(120, 28);
             this.btnOutOpenFile.TabIndex = 23;
@@ -489,7 +493,7 @@
             this.btnOutRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutRemoveAll.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveAll.Image")));
             this.btnOutRemoveAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutRemoveAll.Location = new System.Drawing.Point(146, 420);
+            this.btnOutRemoveAll.Location = new System.Drawing.Point(146, 486);
             this.btnOutRemoveAll.Name = "btnOutRemoveAll";
             this.btnOutRemoveAll.Size = new System.Drawing.Size(120, 28);
             this.btnOutRemoveAll.TabIndex = 25;
@@ -503,7 +507,7 @@
             this.btnOutRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutRemoveFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveFile.Image")));
             this.btnOutRemoveFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutRemoveFile.Location = new System.Drawing.Point(146, 386);
+            this.btnOutRemoveFile.Location = new System.Drawing.Point(146, 452);
             this.btnOutRemoveFile.Name = "btnOutRemoveFile";
             this.btnOutRemoveFile.Size = new System.Drawing.Size(120, 28);
             this.btnOutRemoveFile.TabIndex = 24;
@@ -517,7 +521,7 @@
             this.btnOutAddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutAddFiles.Image = global::Protocol.Properties.Resources.AddAttachment_16x;
             this.btnOutAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutAddFiles.Location = new System.Drawing.Point(146, 318);
+            this.btnOutAddFiles.Location = new System.Drawing.Point(146, 384);
             this.btnOutAddFiles.Name = "btnOutAddFiles";
             this.btnOutAddFiles.Size = new System.Drawing.Size(120, 28);
             this.btnOutAddFiles.TabIndex = 22;
@@ -533,7 +537,7 @@
             this.columnHeader2});
             this.lvOutAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvOutAttachedFiles.Location = new System.Drawing.Point(272, 318);
+            this.lvOutAttachedFiles.Location = new System.Drawing.Point(272, 384);
             this.lvOutAttachedFiles.MultiSelect = false;
             this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
             this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 130);
@@ -661,6 +665,27 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
+            // tbOutToText
+            // 
+            this.tbOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutToText.Location = new System.Drawing.Point(272, 318);
+            this.tbOutToText.MaxLength = 255;
+            this.tbOutToText.Multiline = true;
+            this.tbOutToText.Name = "tbOutToText";
+            this.tbOutToText.Size = new System.Drawing.Size(280, 50);
+            this.tbOutToText.TabIndex = 26;
+            // 
+            // lblOutToText
+            // 
+            this.lblOutToText.AutoSize = true;
+            this.lblOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutToText.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblOutToText.Location = new System.Drawing.Point(9, 321);
+            this.lblOutToText.Name = "lblOutToText";
+            this.lblOutToText.Size = new System.Drawing.Size(99, 17);
+            this.lblOutToText.TabIndex = 26;
+            this.lblOutToText.Text = "Παρατηρήσεις";
+            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,5 +755,7 @@
         public System.Windows.Forms.ComboBox cbOutFolders;
         public System.Windows.Forms.Button btnOutNewFolders;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblOutToText;
+        public System.Windows.Forms.TextBox tbOutToText;
     }
 }

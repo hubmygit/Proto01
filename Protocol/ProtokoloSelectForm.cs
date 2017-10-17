@@ -235,6 +235,7 @@ namespace Protocol
                 ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[10].Text);
                 selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
                 selScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutToText"].Text = lvic[9].Text;
 
                 selScreen.Controls["panelOutbox"].Controls["lblOutProtokolo"].Visible = true;
                 selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Visible = true;
@@ -262,6 +263,8 @@ namespace Protocol
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"]).BackColor = Color.White;
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutSummary"]).ReadOnly = true;
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutSummary"]).BackColor = Color.White;
+                ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutToText"]).ReadOnly = true;
+                ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutToText"]).BackColor = Color.White;
                 selScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"].AllowDrop = false;
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"]).ReadOnly = true;
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"]).BackColor = Color.White;
@@ -382,7 +385,15 @@ namespace Protocol
         private void btnPrint_Click(object sender, EventArgs e)
         {
             Printings lvPrintings = new Printings();
-            lvPrintings.printProtocols(lvRep);
+
+            //if (FiltersFrm != null)
+            //{
+            //    lvPrintings.printProtocols(lvRep, FiltersFrm.savedFilters);
+            //}
+            //else
+            {
+                lvPrintings.printProtocols(lvRep, new List<Filter>());
+            }
 
         }
 
