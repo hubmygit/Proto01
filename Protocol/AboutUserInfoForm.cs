@@ -26,17 +26,7 @@ namespace Protocol
 
         }
 
-        public AboutUserInfoForm(int UserId)
-        {
-            InitializeComponent();
-
-            txtUserId.Text = UserInfo.DB_AppUser_Id.ToString();
-            txtWinUser.Text = UserInfo.WindowsUser;
-            txtFullName.Text = UserInfo.FullName;
-            txtEmail.Text = UserInfo.EmailAddress;
-            
-        }
-
+        
         //public AboutUserInfoForm(string [] UserInfos)
     }
 }

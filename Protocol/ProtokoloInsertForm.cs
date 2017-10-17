@@ -20,6 +20,9 @@ namespace Protocol
             InitializeComponent();
             
 
+            tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: " + UserInfo.WindowsUser + " - " + UserInfo.FullName;
+                        
+
             //Values from database
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 

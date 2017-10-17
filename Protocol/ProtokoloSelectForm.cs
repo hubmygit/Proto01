@@ -269,12 +269,41 @@ namespace Protocol
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutYear"]).BackColor = Color.White;
             }
 
+            InsUser InsUsr = getInsUserInfos(Convert.ToInt32(lvic[11].Text));
+            selScreen.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: " + InsUsr.WindowsUser + " - " + InsUsr.FullName;
 
             selScreen.ShowDialog();
 
             //select mode(!) - don't refresh listview
             //lvRep.Items.Clear();
             //ShowDataToListView(lvRep);
+        }
+
+        private InsUser getInsUserInfos(int ProtocolId)
+        {
+            InsUser ret = new InsUser();
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT P.Id, P.InsUsr, U.WinUser, U.FullName " +
+                "FROM[dbo].[Protok] P left outer join[dbo].[AppUsers] U on U.Id = P.InsUsr " +
+                "WHERE P.id = " + ProtocolId.ToString();
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ret = new InsUser { WindowsUser = reader["WinUser"].ToString(), FullName = reader["FullName"].ToString() };
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
         }
 
         ProtokFiltersForm FiltersFrm; 
@@ -369,5 +398,16 @@ namespace Protocol
         //    e.Graphics.FillRectangle(Brushes.Pink, e.Bounds);
         //    e.DrawText();
         //}
+    }
+
+    class InsUser
+    {
+        //public InsUser()
+        //{
+        //    //
+        //}
+        
+        public string WindowsUser { get; set; }
+        public string FullName { get; set; }
     }
 }

@@ -78,15 +78,12 @@
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokolo = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
-            this.btnInShowInsUser = new System.Windows.Forms.Button();
-            this.btnOutShowInsUser = new System.Windows.Forms.Button();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelInbox
             // 
-            this.panelInbox.Controls.Add(this.btnInShowInsUser);
             this.panelInbox.Controls.Add(this.tbInYear);
             this.panelInbox.Controls.Add(this.btnInOpenFile);
             this.panelInbox.Controls.Add(this.btnInRemoveAll);
@@ -392,7 +389,6 @@
             // 
             // panelOutbox
             // 
-            this.panelOutbox.Controls.Add(this.btnOutShowInsUser);
             this.panelOutbox.Controls.Add(this.btnOutNewFolders);
             this.panelOutbox.Controls.Add(this.button1);
             this.panelOutbox.Controls.Add(this.lblOutFolderId);
@@ -665,28 +661,6 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
-            // btnInShowInsUser
-            // 
-            this.btnInShowInsUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnInShowInsUser.Image = global::Protocol.Properties.Resources.User_32x;
-            this.btnInShowInsUser.Location = new System.Drawing.Point(12, 510);
-            this.btnInShowInsUser.Name = "btnInShowInsUser";
-            this.btnInShowInsUser.Size = new System.Drawing.Size(40, 40);
-            this.btnInShowInsUser.TabIndex = 26;
-            this.btnInShowInsUser.UseVisualStyleBackColor = true;
-            this.btnInShowInsUser.Click += new System.EventHandler(this.btnShowInsUser_Click);
-            // 
-            // btnOutShowInsUser
-            // 
-            this.btnOutShowInsUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnOutShowInsUser.Image = global::Protocol.Properties.Resources.User_32x;
-            this.btnOutShowInsUser.Location = new System.Drawing.Point(12, 510);
-            this.btnOutShowInsUser.Name = "btnOutShowInsUser";
-            this.btnOutShowInsUser.Size = new System.Drawing.Size(40, 40);
-            this.btnOutShowInsUser.TabIndex = 27;
-            this.btnOutShowInsUser.UseVisualStyleBackColor = true;
-            this.btnOutShowInsUser.Click += new System.EventHandler(this.btnShowInsUser_Click);
-            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,7 +730,5 @@
         public System.Windows.Forms.ComboBox cbOutFolders;
         public System.Windows.Forms.Button btnOutNewFolders;
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button btnInShowInsUser;
-        public System.Windows.Forms.Button btnOutShowInsUser;
     }
 }

@@ -38,7 +38,10 @@
             this.btnShowRecipients = new System.Windows.Forms.Button();
             this.chbSendMail = new System.Windows.Forms.CheckBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsStatusLblInsUser = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtocol)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblProtokoloKind
@@ -151,12 +154,29 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsStatusLblInsUser});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 670);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(664, 22);
+            this.statusStrip1.TabIndex = 12;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsStatusLblInsUser
+            // 
+            this.tsStatusLblInsUser.Name = "tsStatusLblInsUser";
+            this.tsStatusLblInsUser.Size = new System.Drawing.Size(198, 17);
+            this.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: Άγνωστος";
+            // 
             // ProtokoloInsertForm
             // 
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 682);
+            this.ClientSize = new System.Drawing.Size(664, 692);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pbProtocol);
             this.Controls.Add(this.btnShowRecipients);
             this.Controls.Add(this.chbSendMail);
@@ -167,13 +187,15 @@
             this.Controls.Add(this.cbProtokoloKind);
             this.Controls.Add(this.lblProtokoloKind);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(680, 720);
-            this.MinimumSize = new System.Drawing.Size(680, 720);
+            this.MaximumSize = new System.Drawing.Size(680, 730);
+            this.MinimumSize = new System.Drawing.Size(680, 730);
             this.Name = "ProtokoloInsertForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Εισαγωγή";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProtokoloInsertForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbProtocol)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +212,7 @@
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.Button btnShowRecipients;
         private System.Windows.Forms.PictureBox pbProtocol;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel tsStatusLblInsUser;
     }
 }
