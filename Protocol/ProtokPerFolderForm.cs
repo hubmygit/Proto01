@@ -37,12 +37,12 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string[] row = { reader[0].ToString(),
-                                     reader[1].ToString(),
-                                     reader[2].ToString(),
-                                     reader[3].ToString(),
-                                     reader[4].ToString(),
-                                     reader[5].ToString()};
+                    string[] row = { reader[5].ToString(), //id
+                                     reader[0].ToString(), //
+                                     reader[1].ToString(), //com
+                                     reader[2].ToString(), //proced
+                                     reader[3].ToString(), //
+                                     reader[4].ToString()};
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
@@ -81,12 +81,12 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string[] row = { reader[0].ToString(),
-                                     reader[1].ToString(),
-                                     reader[2].ToString(),
-                                     reader[3].ToString(),
-                                     reader[4].ToString(),
-                                     reader[5].ToString()};
+                    string[] row = { reader[5].ToString(), //id
+                                     reader[0].ToString(), //
+                                     reader[1].ToString(), //com
+                                     reader[2].ToString(), //proced
+                                     reader[3].ToString(), //
+                                     reader[4].ToString()};
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
@@ -107,9 +107,9 @@ namespace Protocol
 
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
-            string lvRowCnt = lvRep.SelectedItems[0].SubItems[4].Text;
+            string lvRowCnt = lvRep.SelectedItems[0].SubItems[5].Text; //4
             //string lvRowFolder = lvRep.SelectedItems[0].SubItems[2].Text;
-            string lvRowId = lvRep.SelectedItems[0].SubItems[5].Text;
+            string lvRowId = lvRep.SelectedItems[0].SubItems[0].Text; //5
             //string lvRowEisEx = lvRep.SelectedItems[0].SubItems[1].Text;
             //string lvRowCompany = lvRep.SelectedItems[0].SubItems[0].Text;
 

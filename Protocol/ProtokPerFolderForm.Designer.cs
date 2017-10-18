@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProtokPerFolderForm));
             this.lvRep = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnFilters = new System.Windows.Forms.Button();
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -65,35 +65,35 @@
             this.lvRep.View = System.Windows.Forms.View.Details;
             this.lvRep.DoubleClick += new System.EventHandler(this.lvRep_DoubleClick);
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Αρ.Φακέλου Αρχείου";
-            this.columnHeader1.Width = 200;
-            // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Εταιρία";
-            this.columnHeader2.Width = 150;
+            this.columnHeader2.Text = "Αρ.Φακέλου Αρχείου";
+            this.columnHeader2.Width = 200;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Κατηγ. Πρωτοκόλλου";
-            this.columnHeader3.Width = 160;
+            this.columnHeader3.Text = "Εταιρία";
+            this.columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Περιγραφή";
-            this.columnHeader4.Width = 320;
+            this.columnHeader4.Text = "Κατηγ. Πρωτοκόλλου";
+            this.columnHeader4.Width = 160;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Αρ. Πρωτοκόλλων";
-            this.columnHeader5.Width = 130;
+            this.columnHeader5.Text = "Περιγραφή";
+            this.columnHeader5.Width = 320;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "Id";
-            this.columnHeader6.Width = 0;
+            this.columnHeader6.Text = "Αρ. Πρωτοκόλλων";
+            this.columnHeader6.Width = 130;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 0;
             // 
             // btnFilters
             // 
@@ -140,12 +140,12 @@
 
         #endregion
         private System.Windows.Forms.ListView lvRep;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
         public System.Windows.Forms.Button btnFilters;
         public System.Windows.Forms.Button btnClearFilters;
     }
