@@ -127,7 +127,7 @@ namespace Protocol
         }
 
 
-        string[] getSavedAttachments(int ProtokId)
+        public string[] getSavedAttachments(int ProtokId)
         {
             List<string> ret = new List<string>();
 
@@ -283,7 +283,7 @@ namespace Protocol
             //ShowDataToListView(lvRep);
         }
 
-        private InsUser getInsUserInfos(int ProtocolId)
+        public InsUser getInsUserInfos(int ProtocolId)
         {
             InsUser ret = new InsUser();
 
@@ -412,7 +412,7 @@ namespace Protocol
         //}
     }
 
-    class InsUser
+    public class InsUser
     {
         //public InsUser()
         //{
