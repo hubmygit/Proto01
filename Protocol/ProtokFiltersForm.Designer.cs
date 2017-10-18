@@ -236,11 +236,11 @@
             this.lblDocNum.AutoSize = true;
             this.lblDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblDocNum.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblDocNum.Location = new System.Drawing.Point(16, 262);
+            this.lblDocNum.Location = new System.Drawing.Point(41, 262);
             this.lblDocNum.Name = "lblDocNum";
-            this.lblDocNum.Size = new System.Drawing.Size(163, 17);
+            this.lblDocNum.Size = new System.Drawing.Size(138, 17);
             this.lblDocNum.TabIndex = 40;
-            this.lblDocNum.Text = "Αρ.Εισερχ./Σχετ.Αριθμός";
+            this.lblDocNum.Text = "Αρ.Εισερχ.Εγγράφου";
             // 
             // txtToText
             // 

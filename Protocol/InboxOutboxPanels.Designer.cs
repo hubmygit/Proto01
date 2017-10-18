@@ -56,6 +56,8 @@
             this.lblInProtokolo = new System.Windows.Forms.Label();
             this.lblInPanelTitle = new System.Windows.Forms.Label();
             this.panelOutbox = new System.Windows.Forms.Panel();
+            this.lblOutToText = new System.Windows.Forms.Label();
+            this.tbOutToText = new System.Windows.Forms.TextBox();
             this.btnOutNewFolders = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblOutFolderId = new System.Windows.Forms.Label();
@@ -70,16 +72,12 @@
             this.dtpOutSetDate = new System.Windows.Forms.DateTimePicker();
             this.tbOutSummary = new System.Windows.Forms.TextBox();
             this.tbOutKateuth = new System.Windows.Forms.TextBox();
-            this.tbOutDocNum = new System.Windows.Forms.TextBox();
             this.tbOutProtokoloNum = new System.Windows.Forms.TextBox();
             this.lblOutSummary = new System.Windows.Forms.Label();
             this.lblOutKateuth = new System.Windows.Forms.Label();
-            this.lblOutDocNum = new System.Windows.Forms.Label();
             this.lblOutSetDate = new System.Windows.Forms.Label();
             this.lblOutProtokolo = new System.Windows.Forms.Label();
             this.lblOutPanelTitle = new System.Windows.Forms.Label();
-            this.tbOutToText = new System.Windows.Forms.TextBox();
-            this.lblOutToText = new System.Windows.Forms.Label();
             this.panelInbox.SuspendLayout();
             this.panelOutbox.SuspendLayout();
             this.SuspendLayout();
@@ -406,11 +404,9 @@
             this.panelOutbox.Controls.Add(this.dtpOutSetDate);
             this.panelOutbox.Controls.Add(this.tbOutSummary);
             this.panelOutbox.Controls.Add(this.tbOutKateuth);
-            this.panelOutbox.Controls.Add(this.tbOutDocNum);
             this.panelOutbox.Controls.Add(this.tbOutProtokoloNum);
             this.panelOutbox.Controls.Add(this.lblOutSummary);
             this.panelOutbox.Controls.Add(this.lblOutKateuth);
-            this.panelOutbox.Controls.Add(this.lblOutDocNum);
             this.panelOutbox.Controls.Add(this.lblOutSetDate);
             this.panelOutbox.Controls.Add(this.lblOutProtokolo);
             this.panelOutbox.Controls.Add(this.lblOutPanelTitle);
@@ -419,12 +415,33 @@
             this.panelOutbox.Size = new System.Drawing.Size(560, 560);
             this.panelOutbox.TabIndex = 6;
             // 
+            // lblOutToText
+            // 
+            this.lblOutToText.AutoSize = true;
+            this.lblOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblOutToText.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblOutToText.Location = new System.Drawing.Point(9, 335);
+            this.lblOutToText.Name = "lblOutToText";
+            this.lblOutToText.Size = new System.Drawing.Size(99, 17);
+            this.lblOutToText.TabIndex = 26;
+            this.lblOutToText.Text = "Παρατηρήσεις";
+            // 
+            // tbOutToText
+            // 
+            this.tbOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.tbOutToText.Location = new System.Drawing.Point(272, 332);
+            this.tbOutToText.MaxLength = 255;
+            this.tbOutToText.Multiline = true;
+            this.tbOutToText.Name = "tbOutToText";
+            this.tbOutToText.Size = new System.Drawing.Size(280, 72);
+            this.tbOutToText.TabIndex = 26;
+            // 
             // btnOutNewFolders
             // 
             this.btnOutNewFolders.BackgroundImage = global::Protocol.Properties.Resources.NewSolutionFolder_32x;
             this.btnOutNewFolders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOutNewFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnOutNewFolders.Location = new System.Drawing.Point(520, 143);
+            this.btnOutNewFolders.Location = new System.Drawing.Point(520, 109);
             this.btnOutNewFolders.Name = "btnOutNewFolders";
             this.btnOutNewFolders.Size = new System.Drawing.Size(32, 32);
             this.btnOutNewFolders.TabIndex = 21;
@@ -449,7 +466,7 @@
             this.lblOutFolderId.AutoSize = true;
             this.lblOutFolderId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblOutFolderId.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblOutFolderId.Location = new System.Drawing.Point(9, 151);
+            this.lblOutFolderId.Location = new System.Drawing.Point(9, 117);
             this.lblOutFolderId.Name = "lblOutFolderId";
             this.lblOutFolderId.Size = new System.Drawing.Size(173, 17);
             this.lblOutFolderId.TabIndex = 19;
@@ -460,7 +477,7 @@
             this.cbOutFolders.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOutFolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.cbOutFolders.FormattingEnabled = true;
-            this.cbOutFolders.Location = new System.Drawing.Point(272, 148);
+            this.cbOutFolders.Location = new System.Drawing.Point(272, 114);
             this.cbOutFolders.Name = "cbOutFolders";
             this.cbOutFolders.Size = new System.Drawing.Size(245, 24);
             this.cbOutFolders.TabIndex = 5;
@@ -479,7 +496,7 @@
             this.btnOutOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutOpenFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutOpenFile.Image")));
             this.btnOutOpenFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutOpenFile.Location = new System.Drawing.Point(146, 418);
+            this.btnOutOpenFile.Location = new System.Drawing.Point(146, 454);
             this.btnOutOpenFile.Name = "btnOutOpenFile";
             this.btnOutOpenFile.Size = new System.Drawing.Size(120, 28);
             this.btnOutOpenFile.TabIndex = 23;
@@ -493,7 +510,7 @@
             this.btnOutRemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutRemoveAll.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveAll.Image")));
             this.btnOutRemoveAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutRemoveAll.Location = new System.Drawing.Point(146, 486);
+            this.btnOutRemoveAll.Location = new System.Drawing.Point(146, 522);
             this.btnOutRemoveAll.Name = "btnOutRemoveAll";
             this.btnOutRemoveAll.Size = new System.Drawing.Size(120, 28);
             this.btnOutRemoveAll.TabIndex = 25;
@@ -507,7 +524,7 @@
             this.btnOutRemoveFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutRemoveFile.Image = ((System.Drawing.Image)(resources.GetObject("btnOutRemoveFile.Image")));
             this.btnOutRemoveFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutRemoveFile.Location = new System.Drawing.Point(146, 452);
+            this.btnOutRemoveFile.Location = new System.Drawing.Point(146, 488);
             this.btnOutRemoveFile.Name = "btnOutRemoveFile";
             this.btnOutRemoveFile.Size = new System.Drawing.Size(120, 28);
             this.btnOutRemoveFile.TabIndex = 24;
@@ -521,7 +538,7 @@
             this.btnOutAddFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnOutAddFiles.Image = global::Protocol.Properties.Resources.AddAttachment_16x;
             this.btnOutAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOutAddFiles.Location = new System.Drawing.Point(146, 384);
+            this.btnOutAddFiles.Location = new System.Drawing.Point(146, 420);
             this.btnOutAddFiles.Name = "btnOutAddFiles";
             this.btnOutAddFiles.Size = new System.Drawing.Size(120, 28);
             this.btnOutAddFiles.TabIndex = 22;
@@ -537,7 +554,7 @@
             this.columnHeader2});
             this.lvOutAttachedFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lvOutAttachedFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvOutAttachedFiles.Location = new System.Drawing.Point(272, 384);
+            this.lvOutAttachedFiles.Location = new System.Drawing.Point(272, 420);
             this.lvOutAttachedFiles.MultiSelect = false;
             this.lvOutAttachedFiles.Name = "lvOutAttachedFiles";
             this.lvOutAttachedFiles.Size = new System.Drawing.Size(280, 130);
@@ -564,30 +581,21 @@
             // tbOutSummary
             // 
             this.tbOutSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbOutSummary.Location = new System.Drawing.Point(272, 252);
+            this.tbOutSummary.Location = new System.Drawing.Point(272, 240);
             this.tbOutSummary.Multiline = true;
             this.tbOutSummary.Name = "tbOutSummary";
-            this.tbOutSummary.Size = new System.Drawing.Size(280, 50);
+            this.tbOutSummary.Size = new System.Drawing.Size(280, 72);
             this.tbOutSummary.TabIndex = 7;
             // 
             // tbOutKateuth
             // 
             this.tbOutKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbOutKateuth.Location = new System.Drawing.Point(272, 186);
+            this.tbOutKateuth.Location = new System.Drawing.Point(272, 152);
             this.tbOutKateuth.MaxLength = 150;
             this.tbOutKateuth.Multiline = true;
             this.tbOutKateuth.Name = "tbOutKateuth";
-            this.tbOutKateuth.Size = new System.Drawing.Size(280, 50);
+            this.tbOutKateuth.Size = new System.Drawing.Size(280, 72);
             this.tbOutKateuth.TabIndex = 6;
-            // 
-            // tbOutDocNum
-            // 
-            this.tbOutDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbOutDocNum.Location = new System.Drawing.Point(272, 114);
-            this.tbOutDocNum.MaxLength = 50;
-            this.tbOutDocNum.Name = "tbOutDocNum";
-            this.tbOutDocNum.Size = new System.Drawing.Size(280, 23);
-            this.tbOutDocNum.TabIndex = 4;
             // 
             // tbOutProtokoloNum
             // 
@@ -603,7 +611,7 @@
             this.lblOutSummary.AutoSize = true;
             this.lblOutSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblOutSummary.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblOutSummary.Location = new System.Drawing.Point(9, 255);
+            this.lblOutSummary.Location = new System.Drawing.Point(9, 243);
             this.lblOutSummary.Name = "lblOutSummary";
             this.lblOutSummary.Size = new System.Drawing.Size(68, 17);
             this.lblOutSummary.TabIndex = 7;
@@ -614,22 +622,11 @@
             this.lblOutKateuth.AutoSize = true;
             this.lblOutKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblOutKateuth.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblOutKateuth.Location = new System.Drawing.Point(9, 189);
+            this.lblOutKateuth.Location = new System.Drawing.Point(9, 155);
             this.lblOutKateuth.Name = "lblOutKateuth";
             this.lblOutKateuth.Size = new System.Drawing.Size(86, 17);
             this.lblOutKateuth.TabIndex = 6;
             this.lblOutKateuth.Text = "Κατεύθυνση";
-            // 
-            // lblOutDocNum
-            // 
-            this.lblOutDocNum.AutoSize = true;
-            this.lblOutDocNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblOutDocNum.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblOutDocNum.Location = new System.Drawing.Point(9, 117);
-            this.lblOutDocNum.Name = "lblOutDocNum";
-            this.lblOutDocNum.Size = new System.Drawing.Size(109, 17);
-            this.lblOutDocNum.TabIndex = 3;
-            this.lblOutDocNum.Text = "Σχετικοί Αριθμοί";
             // 
             // lblOutSetDate
             // 
@@ -665,27 +662,6 @@
             this.lblOutPanelTitle.TabIndex = 0;
             this.lblOutPanelTitle.Text = "Εξερχόμενα";
             // 
-            // tbOutToText
-            // 
-            this.tbOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.tbOutToText.Location = new System.Drawing.Point(272, 318);
-            this.tbOutToText.MaxLength = 255;
-            this.tbOutToText.Multiline = true;
-            this.tbOutToText.Name = "tbOutToText";
-            this.tbOutToText.Size = new System.Drawing.Size(280, 50);
-            this.tbOutToText.TabIndex = 26;
-            // 
-            // lblOutToText
-            // 
-            this.lblOutToText.AutoSize = true;
-            this.lblOutToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblOutToText.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblOutToText.Location = new System.Drawing.Point(9, 321);
-            this.lblOutToText.Name = "lblOutToText";
-            this.lblOutToText.Size = new System.Drawing.Size(99, 17);
-            this.lblOutToText.TabIndex = 26;
-            this.lblOutToText.Text = "Παρατηρήσεις";
-            // 
             // InboxOutboxPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,7 +694,6 @@
         private System.Windows.Forms.Label lblInPanelTitle;
         private System.Windows.Forms.Label lblOutSummary;
         private System.Windows.Forms.Label lblOutKateuth;
-        private System.Windows.Forms.Label lblOutDocNum;
         private System.Windows.Forms.Label lblOutSetDate;
         private System.Windows.Forms.Label lblOutProtokolo;
         private System.Windows.Forms.Label lblOutPanelTitle;
@@ -730,7 +705,6 @@
         public System.Windows.Forms.TextBox tbInProtokoloNum;
         public System.Windows.Forms.TextBox tbOutSummary;
         public System.Windows.Forms.TextBox tbOutKateuth;
-        public System.Windows.Forms.TextBox tbOutDocNum;
         public System.Windows.Forms.TextBox tbOutProtokoloNum;
         public System.Windows.Forms.DateTimePicker dtpInGetDate;
         public System.Windows.Forms.DateTimePicker dtpOutSetDate;

@@ -152,10 +152,10 @@ namespace Protocol
             else if (proced == "Εξερχόμενα")
             {
                 ((DateTimePicker)selScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"]).Value = DateTime.Parse(lvic[5].Text);
-                selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[7].Text;
+                //selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[7].Text;
                 ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)selScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[11].Text);
                 selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[8].Text;
-                selScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[7].Text;
+                selScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[9].Text; // ?
                 selScreen.Controls["panelOutbox"].Controls["tbOutToText"].Text = lvic[10].Text;
 
                 selScreen.Controls["panelOutbox"].Controls["lblOutProtokolo"].Visible = true;
@@ -177,8 +177,8 @@ namespace Protocol
                 }
 
                 selScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"].Enabled = false;
-                ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"]).ReadOnly = true;
-                ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"]).BackColor = Color.White;
+                //((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"]).ReadOnly = true;
+                //((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutDocNum"]).BackColor = Color.White;
                 selScreen.Controls["panelOutbox"].Controls["cbOutFolders"].Enabled = false;
                 selScreen.Controls["panelOutbox"].Controls["btnOutNewFolders"].Enabled = false;
                 ((TextBox)selScreen.Controls["panelOutbox"].Controls["tbOutKateuth"]).ReadOnly = true;

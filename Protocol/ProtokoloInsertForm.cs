@@ -604,7 +604,8 @@ namespace Protocol
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
                                   "VALUES " +
-                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
+                                  //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
+                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
                                   "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr) ";
 
                 try
@@ -617,7 +618,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpOutSetDate"])); //datepicker - no time
-                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
+                    //cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
                     cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
                     cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
                     cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbOutToText"].Text.Left(255));
@@ -937,11 +938,11 @@ namespace Protocol
             {
                 //tbInProtokoloNum ---> max + 1
 
-                if (IOBoxPanel.Controls["tbOutDocNum"].Text.Trim() == "")
-                {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Σχετικοί Αριθμοί'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //if (IOBoxPanel.Controls["tbOutDocNum"].Text.Trim() == "")
+                //{
+                //    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Σχετικοί Αριθμοί'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
                 if (IOBoxPanel.Controls["cbOutFolders"].Text.Trim() == "")
                 {
                     MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Φακέλου Αρχείου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

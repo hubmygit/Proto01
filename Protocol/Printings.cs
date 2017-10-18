@@ -95,7 +95,8 @@ namespace Protocol
             //ListViewItem lviColumnHeader = new ListViewItem(new string[] { "ΑΑ Πρωτ.", "Έτος", "Κατ.Πρωτοκ.", "Εταιρία", "Ημ/νία Έκδοσης", "Ημ.Λήψης/ Αποστολής", "Αρ.Εισερχ/ Σχετ.Αρ.",
             //    "Προέλευση/ Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Id", "Αρχεία", "Emails" });
 
-            ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ/ Σχετ.Αρ.",
+            //ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ/ Σχετ.Αρ.",
+            ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ. Εγγράφου",
                 "Προέλευση/ Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Αρχεία", "Emails" });
 
             Graphics gf = e.Graphics;
@@ -110,19 +111,21 @@ namespace Protocol
             List<float> lvHeight = new List<float>();
 
             float PageSpaceX = 16; //12
-            float PageSpaceY = 80;
+            float PageSpaceY = 82; //80
             float StartingPtX = 16; //12
-            float StartingPtY = 92;
+            float StartingPtY = 92; //92
             float ptX = StartingPtX;
             float ptY = StartingPtY;
             
             //*************Header*************
             Font GeneralHeaderFont = new Font("Arial", 14, FontStyle.Bold);
-            gf.DrawString("ΠΡΩΤΟΚΟΛΛΟ ΕΙΣΕΡΧΟΜΕΝΩΝ / ΕΞΕΡΧΟΜΕΝΩΝ ΕΓΓΡΑΦΩΝ", GeneralHeaderFont, Brushes.Brown, new Point(256, 48));
+            gf.DrawString("ΠΡΩΤΟΚΟΛΛΟ ΕΙΣΕΡΧΟΜΕΝΩΝ / ΕΞΕΡΧΟΜΕΝΩΝ ΕΓΓΡΑΦΩΝ", GeneralHeaderFont, Brushes.Brown, new Point(256, 38));
 
             //*************Filters*************
             if (currentPage == 1)
             {
+                //ptY = 82;
+
                 string filtersToStr = "Φίλτρα - " + filtersToString(filterControls);
                 sf = gf.MeasureString(filtersToStr, myFont, new SizeF(400, 500));
 
@@ -144,6 +147,12 @@ namespace Protocol
                     sf.Width -= 21;
                     sf.Height = sf.Height * 2;
                 }
+
+                if (i == 1) //com
+                {
+                    sf.Width += 4;
+                }
+
                 if (i == 2) //etos //1
                 {
                     sf.Width += 2;
@@ -164,7 +173,7 @@ namespace Protocol
                 }
                 if (i == 7) //ar.eis //6
                 {
-                    sf.Width -= 26;
+                    sf.Width -= 52; //26
                     sf.Height = sf.Height * 2;
                 }
                 if (i == 8) //proel //7
@@ -234,8 +243,9 @@ namespace Protocol
                     }
                 }
                 lvHeight.Add(maxHeight);
-                
-                if (ptY + lvHeight[lvIndex] > e.PageBounds.Height - PageSpaceY)
+
+                //if (ptY + lvHeight[lvIndex] > e.PageBounds.Height - PageSpaceY)
+                if (ptY + lvHeight[lvIndex+1] > e.PageBounds.Height - PageSpaceY)
                 {
                     //go to next page
                     e.HasMorePages = true;
@@ -243,9 +253,10 @@ namespace Protocol
 
                     //*************Footer*************
 
-                    gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+                    gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, 
+                        myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 746)); //font size: 16
 
-                    gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
+                    gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 746));
                     currentPage++;
                     return;
                 }
@@ -268,9 +279,10 @@ namespace Protocol
 
             //*************Footer*************
 
-            gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 740));
+            gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser, 
+                myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 746)); //font size: 16
 
-            gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 740));
+            gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 746));
 
             //*************Finish*************
             //Init global vars

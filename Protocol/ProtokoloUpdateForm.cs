@@ -153,7 +153,7 @@ namespace Protocol
             else if (proced == "Εξερχόμενα")
             {
                 ((DateTimePicker)updScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"]).Value = DateTime.Parse(lvic[5].Text);
-                updScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
+                //updScreen.Controls["panelOutbox"].Controls["tbOutDocNum"].Text = lvic[6].Text;
                 ((ComboBox)updScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).SelectedIndex = ((ComboBox)updScreen.Controls["panelOutbox"].Controls["cbOutFolders"]).FindStringExact(lvic[10].Text);
                 updScreen.Controls["panelOutbox"].Controls["tbOutKateuth"].Text = lvic[7].Text;
                 updScreen.Controls["panelOutbox"].Controls["tbOutSummary"].Text = lvic[8].Text;

@@ -122,7 +122,7 @@
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "Αρ.Εισερχ/Σχετικοί Αρ.";
+            this.columnHeader7.Text = "Αρ.Εισερχ.Εγγράφου";
             this.columnHeader7.Width = 117;
             // 
             // columnHeader8
