@@ -601,7 +601,8 @@ namespace Protocol
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
-                                  "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
+                                  //"(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
+                                  "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, " +
                                   "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
                                   "VALUES " +
                                   //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
