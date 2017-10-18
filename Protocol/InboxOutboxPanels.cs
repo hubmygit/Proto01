@@ -161,6 +161,13 @@ namespace Protocol
         void addFilesIntoListView(ListView myListView, string[] fileNames)
         {
             bool exists = false;
+
+            if (fileNames is null)
+            {
+                MessageBox.Show("Δε βρέθηκε η τοποθεσία του αρχείου. \r\nΠαρακαλώ επιλέξτε αρχεία που είναι αποθηκευμένα τοπικά στο δίσκο σας!");
+                return;
+            }
+
             foreach (string thisFile in fileNames)
             {
                 exists = false;

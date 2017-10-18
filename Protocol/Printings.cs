@@ -92,8 +92,11 @@ namespace Protocol
             e.HasMorePages = false;
 
             //*************Column Header Titles*************
-            ListViewItem lviColumnHeader = new ListViewItem(new string[] { "ΑΑ Πρωτ.", "Έτος", "Κατ.Πρωτοκ.", "Εταιρία", "Ημ/νία Έκδοσης", "Ημ.Λήψης/ Αποστολής", "Αρ.Εισερχ/ Σχετ.Αρ.",
-                "Προέλευση/ Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Id", "Αρχεία", "Emails" });
+            //ListViewItem lviColumnHeader = new ListViewItem(new string[] { "ΑΑ Πρωτ.", "Έτος", "Κατ.Πρωτοκ.", "Εταιρία", "Ημ/νία Έκδοσης", "Ημ.Λήψης/ Αποστολής", "Αρ.Εισερχ/ Σχετ.Αρ.",
+            //    "Προέλευση/ Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Id", "Αρχεία", "Emails" });
+
+            ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ/ Σχετ.Αρ.",
+                "Προέλευση/ Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Αρχεία", "Emails" });
 
             Graphics gf = e.Graphics;
             SizeF sf;
@@ -128,7 +131,7 @@ namespace Protocol
             //*************Column Headers*************
             for (int i = 0; i < 14; i++)
             {
-                if (i == 11)//Id: hidden column!!!
+                if (i == 0)//Id: hidden column!!! //11
                 {
                     lvWidth.Add(0);
                     continue;
@@ -136,49 +139,49 @@ namespace Protocol
 
                 sf = gf.MeasureString(lviColumnHeader.SubItems[i].Text, HeaderFont, new SizeF(500, 500));//delete sizeF ??for varchar(max)
 
-                if (i == 0) //aa
+                if (i == 4) //aa //0
                 {
                     sf.Width -= 21;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 1) //etos
+                if (i == 2) //etos //1
                 {
                     sf.Width += 2;
                 }
-                //if (i == 2) //kat.prwtok
+                //if (i == 3) //kat.prwtok //2
                 //{
                 //    sf.Width -= 1;
                 //}
-                if (i == 4) //im.ekd
+                if (i == 6) //im.ekd //4
                 {
                     sf.Width -= 29;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 5) //im.lipsis/apost
+                if (i == 5) //im.lipsis/apost //5
                 {
                     sf.Width -= 66;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 6) //ar.eis
+                if (i == 7) //ar.eis //6
                 {
                     sf.Width -= 26;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 7) //proel
+                if (i == 8) //proel //7
                 {
                     sf.Width -= 50;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 8) //perilipsi
+                if (i == 9) //perilipsi //8
                 {
                     sf.Width += 158;
                 }
-                if (i == 9) //parat
+                if (i == 10) //parat //9
                 {
                     sf.Width -= 74;
                     sf.Height = sf.Height * 2;
                 }
-                if (i == 10) //ar.fakelou
+                if (i == 11) //ar.fakelou //10
                 {
                     sf.Width -= 30;
                     sf.Height = sf.Height * 2;
@@ -194,7 +197,7 @@ namespace Protocol
             
             for (int i = 0; i < 14; i++)
             {
-                if (i == 11)//Id: hidden column!!!
+                if (i == 0)//Id: hidden column!!! //11
                 {
                     ptX += lvWidth[i];
                     continue;
@@ -218,7 +221,7 @@ namespace Protocol
 
                 for (int i = 0; i < 14; i++)
                 {
-                    if (i == 11)//hidden column!!!
+                    if (i == 0)//hidden column!!! //11
                     {
                         continue;
                     }
@@ -250,7 +253,7 @@ namespace Protocol
                 //lvIndex++;
                 for (int i = 0; i < 14; i++)
                 {
-                    if (i == 11)//Id: hidden column!!!
+                    if (i == 0)//Id: hidden column!!! //11
                     {
                         ptX += lvWidth[i];
                         continue;

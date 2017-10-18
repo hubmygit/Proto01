@@ -81,27 +81,27 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "ΑΑ Πρωτοκόλλου";
-            this.columnHeader1.Width = 80;
+            this.columnHeader1.Text = "Id";
+            this.columnHeader1.Width = 0;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Έτος";
-            this.columnHeader2.Width = 50;
+            this.columnHeader2.Text = "Εταιρία";
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Κατ.Πρωτοκόλλου";
-            this.columnHeader3.Width = 98;
+            this.columnHeader3.Text = "Έτος";
+            this.columnHeader3.Width = 50;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Εταιρία";
+            this.columnHeader4.Text = "Κατ.Πρωτοκόλλου";
+            this.columnHeader4.Width = 98;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Ημ/νία Έκδοσης";
-            this.columnHeader5.Width = 92;
+            this.columnHeader5.Text = "ΑΑ Πρωτοκόλλου";
+            this.columnHeader5.Width = 80;
             // 
             // columnHeader6
             // 
@@ -110,33 +110,33 @@
             // 
             // columnHeader7
             // 
-            this.columnHeader7.Text = "Αρ.Εισερχ/Σχετικοί Αρ.";
-            this.columnHeader7.Width = 117;
+            this.columnHeader7.Text = "Ημ/νία Έκδοσης";
+            this.columnHeader7.Width = 92;
             // 
             // columnHeader8
             // 
-            this.columnHeader8.Text = "Προέλευση/Κατεύθυνση";
-            this.columnHeader8.Width = 138;
+            this.columnHeader8.Text = "Αρ.Εισερχ/Σχετικοί Αρ.";
+            this.columnHeader8.Width = 117;
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "Περίληψη";
-            this.columnHeader9.Width = 90;
+            this.columnHeader9.Text = "Προέλευση/Κατεύθυνση";
+            this.columnHeader9.Width = 138;
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
-            this.columnHeader10.Width = 181;
+            this.columnHeader10.Text = "Περίληψη";
+            this.columnHeader10.Width = 90;
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "Αρ.Φακέλου Αρχείου";
-            this.columnHeader11.Width = 117;
+            this.columnHeader11.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
+            this.columnHeader11.Width = 181;
             // 
             // columnHeader12
             // 
-            this.columnHeader12.Text = "Id";
-            this.columnHeader12.Width = 0;
+            this.columnHeader12.Text = "Αρ.Φακέλου Αρχείου";
+            this.columnHeader12.Width = 117;
             // 
             // columnHeader13
             // 
@@ -164,6 +164,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.ListView lvRep;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

@@ -40,20 +40,20 @@ namespace Protocol
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string[] row = { reader[0].ToString(),
-                                     reader[1].ToString(),
-                                     reader[2].ToString(),
-                                     reader[3].ToString(),
-                                     reader[4].ToString(),
-                                     reader[5].ToString(),
-                                     reader[6].ToString(),
-                                     reader[7].ToString(),
-                                     reader[8].ToString(),
-                                     reader[9].ToString(),
-                                     reader[10].ToString(),
-                                     reader[11].ToString(),
-                                     reader[12].ToString(),
-                                     reader[13].ToString()};
+                    string[] row = { reader[11].ToString(), //id
+                                     reader[3].ToString(), //com
+                                     reader[1].ToString(), //year
+                                     reader[2].ToString(), //kat. prwt - proced
+                                     reader[0].ToString(), //Sn
+                                     reader[5].ToString(), //hm. lipsis - DocGetSetDate
+                                     reader[4].ToString(), //hm. ekdosis - docdate
+                                     reader[6].ToString(), //docNum
+                                     reader[7].ToString(), //proeleusi
+                                     reader[8].ToString(), //perilipsi
+                                     reader[9].ToString(), //paratiriseis
+                                     reader[10].ToString(), //folder
+                                     reader[12].ToString(), //att
+                                     reader[13].ToString()}; //mails
 
                     ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
@@ -76,7 +76,7 @@ namespace Protocol
 
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
-            //...
+            //
         }
 
         //private void btnFilters_Click(object sender, EventArgs e)

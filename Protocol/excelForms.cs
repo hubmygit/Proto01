@@ -43,7 +43,7 @@ namespace Protocol
             {
                 foreach (ColumnHeader ch in lv.Columns)
                 {
-                    if (lv.Columns[11] == ch) //don't show id
+                    if (lv.Columns[0] == ch) //don't show id
                     {
                         continue;
                     }
@@ -68,7 +68,7 @@ namespace Protocol
 
                 foreach (ListViewItem.ListViewSubItem drv in comp.SubItems)
                 {
-                    if (comp.SubItems[11] == drv) //don't show id
+                    if (comp.SubItems[0] == drv) //don't show id
                     {
                         continue;
                     }
@@ -88,12 +88,26 @@ namespace Protocol
             //    wsh.Columns[i].ColumnWidth = 18;
             //}
 
-            wsh.Columns[1].ColumnWidth = 16;
+            //wsh.Columns[1].ColumnWidth = 16;
+            //wsh.Columns[2].ColumnWidth = 8;
+            //wsh.Columns[3].ColumnWidth = 18;
+            //wsh.Columns[4].ColumnWidth = 18;
+            //wsh.Columns[5].ColumnWidth = 16;
+            //wsh.Columns[6].ColumnWidth = 18;
+            //wsh.Columns[7].ColumnWidth = 21;
+            //wsh.Columns[8].ColumnWidth = 24;
+            //wsh.Columns[9].ColumnWidth = 30;
+            //wsh.Columns[10].ColumnWidth = 30;
+            //wsh.Columns[11].ColumnWidth = 22;
+            //wsh.Columns[12].ColumnWidth = 12;
+            //wsh.Columns[13].ColumnWidth = 6;
+
+            wsh.Columns[4].ColumnWidth = 16;
             wsh.Columns[2].ColumnWidth = 8;
             wsh.Columns[3].ColumnWidth = 18;
-            wsh.Columns[4].ColumnWidth = 18;
-            wsh.Columns[5].ColumnWidth = 16;
-            wsh.Columns[6].ColumnWidth = 18;
+            wsh.Columns[1].ColumnWidth = 18;
+            wsh.Columns[6].ColumnWidth = 16;
+            wsh.Columns[5].ColumnWidth = 18;
             wsh.Columns[7].ColumnWidth = 21;
             wsh.Columns[8].ColumnWidth = 24;
             wsh.Columns[9].ColumnWidth = 30;
