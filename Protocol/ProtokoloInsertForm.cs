@@ -131,7 +131,7 @@ namespace Protocol
             List<string> Companies = new List<string>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ORDER BY Name ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -158,7 +158,7 @@ namespace Protocol
             List<ComboboxItem> cbCompanies = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ORDER BY Name ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -775,11 +775,12 @@ namespace Protocol
             {
                 //tbInProtokoloNum ---> max + 1
 
-                if (IOBoxPanel.Controls["tbInDocNum"].Text.Trim() == "")
-                {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Εισερχομένου Εγγράφου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //non mandatory field
+                //if (IOBoxPanel.Controls["tbInDocNum"].Text.Trim() == "")
+                //{
+                //    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Εισερχομένου Εγγράφου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
                 //if (IOBoxPanel.Controls["tbInFolderId"].Text.Trim() == "")
                 if (IOBoxPanel.Controls["cbInFolders"].Text.Trim() == "")
@@ -800,11 +801,12 @@ namespace Protocol
                     return;
                 }
 
-                if (IOBoxPanel.Controls["tbInToText"].Text.Trim() == "")
-                {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παράδοση για ενέργεια / Παρατηρήσεις'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //non mandatory field
+                //if (IOBoxPanel.Controls["tbInToText"].Text.Trim() == "")
+                //{
+                //    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παράδοση για ενέργεια / Παρατηρήσεις'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
                 //ToDo: new class - object
 
@@ -957,11 +959,12 @@ namespace Protocol
                     return;
                 }
 
-                if (IOBoxPanel.Controls["tbOutToText"].Text.Trim() == "")
-                {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παρατηρήσεις'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //non mandatory field
+                //if (IOBoxPanel.Controls["tbOutToText"].Text.Trim() == "")
+                //{
+                //    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παρατηρήσεις'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
                 //ToDo: new class - object
 

@@ -60,9 +60,9 @@
             this.chlbProced.CheckOnClick = true;
             this.chlbProced.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbProced.FormattingEnabled = true;
-            this.chlbProced.Location = new System.Drawing.Point(185, 183);
+            this.chlbProced.Location = new System.Drawing.Point(199, 203);
             this.chlbProced.Name = "chlbProced";
-            this.chlbProced.Size = new System.Drawing.Size(131, 55);
+            this.chlbProced.Size = new System.Drawing.Size(131, 89);
             this.chlbProced.TabIndex = 28;
             // 
             // lblProced
@@ -70,7 +70,7 @@
             this.lblProced.AutoSize = true;
             this.lblProced.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblProced.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblProced.Location = new System.Drawing.Point(37, 183);
+            this.lblProced.Location = new System.Drawing.Point(51, 201);
             this.lblProced.Name = "lblProced";
             this.lblProced.Size = new System.Drawing.Size(142, 17);
             this.lblProced.TabIndex = 29;
@@ -81,7 +81,7 @@
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblCompany.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblCompany.Location = new System.Drawing.Point(118, 94);
+            this.lblCompany.Location = new System.Drawing.Point(132, 87);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(61, 17);
             this.lblCompany.TabIndex = 30;
@@ -92,15 +92,15 @@
             this.chlbCompany.CheckOnClick = true;
             this.chlbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbCompany.FormattingEnabled = true;
-            this.chlbCompany.Location = new System.Drawing.Point(185, 94);
+            this.chlbCompany.Location = new System.Drawing.Point(199, 87);
             this.chlbCompany.Name = "chlbCompany";
-            this.chlbCompany.Size = new System.Drawing.Size(131, 55);
+            this.chlbCompany.Size = new System.Drawing.Size(280, 89);
             this.chlbCompany.TabIndex = 31;
             // 
             // txtDescr
             // 
             this.txtDescr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtDescr.Location = new System.Drawing.Point(185, 276);
+            this.txtDescr.Location = new System.Drawing.Point(199, 319);
             this.txtDescr.Name = "txtDescr";
             this.txtDescr.Size = new System.Drawing.Size(280, 23);
             this.txtDescr.TabIndex = 37;
@@ -110,7 +110,7 @@
             this.lblDescr.AutoSize = true;
             this.lblDescr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblDescr.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblDescr.Location = new System.Drawing.Point(103, 279);
+            this.lblDescr.Location = new System.Drawing.Point(117, 322);
             this.lblDescr.Name = "lblDescr";
             this.lblDescr.Size = new System.Drawing.Size(76, 17);
             this.lblDescr.TabIndex = 38;
@@ -119,7 +119,7 @@
             // txtFolderName
             // 
             this.txtFolderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.txtFolderName.Location = new System.Drawing.Point(185, 45);
+            this.txtFolderName.Location = new System.Drawing.Point(199, 37);
             this.txtFolderName.Name = "txtFolderName";
             this.txtFolderName.Size = new System.Drawing.Size(280, 23);
             this.txtFolderName.TabIndex = 45;
@@ -129,7 +129,7 @@
             this.lblFolderName.AutoSize = true;
             this.lblFolderName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblFolderName.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblFolderName.Location = new System.Drawing.Point(37, 48);
+            this.lblFolderName.Location = new System.Drawing.Point(51, 40);
             this.lblFolderName.Name = "lblFolderName";
             this.lblFolderName.Size = new System.Drawing.Size(142, 17);
             this.lblFolderName.TabIndex = 46;
@@ -140,7 +140,7 @@
             this.chbHasProtocols.AutoSize = true;
             this.chbHasProtocols.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chbHasProtocols.ForeColor = System.Drawing.Color.DarkBlue;
-            this.chbHasProtocols.Location = new System.Drawing.Point(39, 333);
+            this.chbHasProtocols.Location = new System.Drawing.Point(53, 369);
             this.chbHasProtocols.Name = "chbHasProtocols";
             this.chbHasProtocols.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chbHasProtocols.Size = new System.Drawing.Size(160, 20);

@@ -32,7 +32,8 @@ namespace Protocol
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId " +
                               "left outer join [dbo].[Folders] F on F.id = P.FolderId " + //and F.CompanyId = P.CompanyId and F.ProcedId = P.ProcedureId " +
                               //"WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ";
-                              "WHERE year(P.DocumentGetSetDate) = year(getdate()) and isnull(P.deleted, 0) = 0 ";
+                              "WHERE year(P.DocumentGetSetDate) = year(getdate()) and isnull(P.deleted, 0) = 0 " +
+                              "ORDER BY C.Name, P.Year, PR.Name, P.Sn ";
 
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
