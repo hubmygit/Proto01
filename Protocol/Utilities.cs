@@ -75,10 +75,10 @@ namespace Protocol
         static DBInfo()
         {
             //default values
-            string server = "AVINDOMC\\SQLSERVERR2";
-            string database = "GramV3-Dev";
-            string username = "GramV3";
-            string password = "8093570";
+            string server = "protokolSrv";//"AVINDOMC\\SQLSERVERR2";
+            string database = "GramDB"; //"GramV3-Dev";
+            string username = "GramUser"; //"GramV3";
+            string password = "111111"; //"8093570";
             connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
             
             try
