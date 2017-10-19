@@ -27,10 +27,10 @@ namespace Protocol
             tabControl1.ItemSize = new System.Drawing.Size(1, 1);
 
             AutoCompleteStringCollection col = new AutoCompleteStringCollection();
-            viewDistCompanyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.ViewDistCompany);
-            foreach (DataRow Nam in this._GramV3_DevDataSet_Contact.ViewDistCompany.Rows)
+            //viewDistCompanyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.ViewDistCompany);
+            //foreach (DataRow Nam in this._GramV3_DevDataSet_Contact.ViewDistCompany.Rows)
             {
-                col.Add((String)Nam[0]);
+            //    col.Add((String)Nam[0]);
             }
 
             SearchText2.AutoCompleteCustomSource = col;
@@ -56,7 +56,7 @@ namespace Protocol
         private void Contacts_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the '_GramV3_DevDataSet_Contact.Contacts' table. You can move, or remove it, as needed.
-            this.contactsTableAdapter.Fill(this._GramV3_DevDataSet_Contact.Contacts);
+            //this.contactsTableAdapter.Fill(this._GramV3_DevDataSet_Contact.Contacts);
 
         }
         
@@ -563,8 +563,8 @@ namespace Protocol
                 }
             */
 
-           updateKeyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.UpdateKey, "Contacts");
-           NewId = (int)this._GramV3_DevDataSet_Contact.UpdateKey.Rows[0][2];
+           //updateKeyTableAdapter.Fill(this._GramV3_DevDataSet_Contact.UpdateKey, "Contacts");
+           //NewId = (int)this._GramV3_DevDataSet_Contact.UpdateKey.Rows[0][2];
 
             return NewId;
            
