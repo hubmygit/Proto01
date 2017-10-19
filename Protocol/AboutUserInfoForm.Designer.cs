@@ -44,6 +44,8 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.lblUserId = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lvRep = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.lblEmail.Location = new System.Drawing.Point(115, 129);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(56, 20);
-            this.lblEmail.TabIndex = 8;
+            this.lblEmail.TabIndex = 23;
             this.lblEmail.Text = "Email: ";
             // 
             // lblFullName
@@ -66,7 +68,7 @@
             this.lblFullName.Location = new System.Drawing.Point(83, 97);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(88, 20);
-            this.lblFullName.TabIndex = 7;
+            this.lblFullName.TabIndex = 22;
             this.lblFullName.Text = "Full Name: ";
             // 
             // lblWinUser
@@ -77,7 +79,7 @@
             this.lblWinUser.Location = new System.Drawing.Point(89, 65);
             this.lblWinUser.Name = "lblWinUser";
             this.lblWinUser.Size = new System.Drawing.Size(82, 20);
-            this.lblWinUser.TabIndex = 6;
+            this.lblWinUser.TabIndex = 21;
             this.lblWinUser.Text = "Win User: ";
             // 
             // txtWinUser
@@ -88,7 +90,7 @@
             this.txtWinUser.Name = "txtWinUser";
             this.txtWinUser.ReadOnly = true;
             this.txtWinUser.Size = new System.Drawing.Size(403, 26);
-            this.txtWinUser.TabIndex = 9;
+            this.txtWinUser.TabIndex = 2;
             // 
             // txtFullName
             // 
@@ -98,7 +100,7 @@
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.ReadOnly = true;
             this.txtFullName.Size = new System.Drawing.Size(403, 26);
-            this.txtFullName.TabIndex = 10;
+            this.txtFullName.TabIndex = 3;
             // 
             // txtEmail
             // 
@@ -108,7 +110,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(403, 26);
-            this.txtEmail.TabIndex = 11;
+            this.txtEmail.TabIndex = 4;
             // 
             // txtMachine
             // 
@@ -118,7 +120,7 @@
             this.txtMachine.Name = "txtMachine";
             this.txtMachine.ReadOnly = true;
             this.txtMachine.Size = new System.Drawing.Size(403, 26);
-            this.txtMachine.TabIndex = 13;
+            this.txtMachine.TabIndex = 5;
             // 
             // lblMachine
             // 
@@ -128,7 +130,7 @@
             this.lblMachine.Location = new System.Drawing.Point(48, 161);
             this.lblMachine.Name = "lblMachine";
             this.lblMachine.Size = new System.Drawing.Size(123, 20);
-            this.lblMachine.TabIndex = 12;
+            this.lblMachine.TabIndex = 24;
             this.lblMachine.Text = "Machine Name: ";
             // 
             // txtDomain
@@ -139,7 +141,7 @@
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.ReadOnly = true;
             this.txtDomain.Size = new System.Drawing.Size(403, 26);
-            this.txtDomain.TabIndex = 15;
+            this.txtDomain.TabIndex = 6;
             // 
             // lblDomain
             // 
@@ -149,7 +151,7 @@
             this.lblDomain.Location = new System.Drawing.Point(53, 193);
             this.lblDomain.Name = "lblDomain";
             this.lblDomain.Size = new System.Drawing.Size(118, 20);
-            this.lblDomain.TabIndex = 14;
+            this.lblDomain.TabIndex = 25;
             this.lblDomain.Text = "Domain Name: ";
             // 
             // txtOs
@@ -160,7 +162,7 @@
             this.txtOs.Name = "txtOs";
             this.txtOs.ReadOnly = true;
             this.txtOs.Size = new System.Drawing.Size(403, 26);
-            this.txtOs.TabIndex = 17;
+            this.txtOs.TabIndex = 7;
             // 
             // lblOs
             // 
@@ -170,7 +172,7 @@
             this.lblOs.Location = new System.Drawing.Point(73, 225);
             this.lblOs.Name = "lblOs";
             this.lblOs.Size = new System.Drawing.Size(98, 20);
-            this.lblOs.TabIndex = 16;
+            this.lblOs.TabIndex = 26;
             this.lblOs.Text = "OS Version: ";
             // 
             // txtUserId
@@ -181,7 +183,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.ReadOnly = true;
             this.txtUserId.Size = new System.Drawing.Size(403, 26);
-            this.txtUserId.TabIndex = 19;
+            this.txtUserId.TabIndex = 1;
             // 
             // lblUserId
             // 
@@ -191,7 +193,7 @@
             this.lblUserId.Location = new System.Drawing.Point(99, 33);
             this.lblUserId.Name = "lblUserId";
             this.lblUserId.Size = new System.Drawing.Size(72, 20);
-            this.lblUserId.TabIndex = 18;
+            this.lblUserId.TabIndex = 20;
             this.lblUserId.Text = "User ID: ";
             // 
             // pictureBox1
@@ -204,11 +206,36 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // lvRep
+            // 
+            this.lvRep.AllowColumnReorder = true;
+            this.lvRep.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvRep.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lvRep.FullRowSelect = true;
+            this.lvRep.GridLines = true;
+            this.lvRep.Location = new System.Drawing.Point(213, 255);
+            this.lvRep.MultiSelect = false;
+            this.lvRep.Name = "lvRep";
+            this.lvRep.Size = new System.Drawing.Size(403, 180);
+            this.lvRep.TabIndex = 8;
+            this.lvRep.UseCompatibleStateImageBehavior = false;
+            this.lvRep.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Πρόσβαση σε Εταιρίες";
+            this.columnHeader1.Width = 375;
+            // 
             // AboutUserInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 292);
+            this.ClientSize = new System.Drawing.Size(664, 462);
+            this.Controls.Add(this.lvRep);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.lblUserId);
@@ -225,8 +252,8 @@
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.lblWinUser);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(680, 330);
-            this.MinimumSize = new System.Drawing.Size(680, 330);
+            this.MaximumSize = new System.Drawing.Size(680, 500);
+            this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "AboutUserInfoForm";
             this.Text = "Στοιχεία Χρήστη";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -252,5 +279,7 @@
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label lblUserId;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView lvRep;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

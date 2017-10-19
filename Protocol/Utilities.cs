@@ -244,6 +244,9 @@ namespace Protocol
 
             DB_AppUser_Id = 0;
 
+            AssignedCompanies = new List<int>();
+            CompaniesAsCsvString = "";
+
             try
             {
                 WindowsUser = Environment.UserName;
@@ -265,6 +268,10 @@ namespace Protocol
                 //MachineName = Environment.MachineName;
                 //OsVersion = Environment.OSVersion.VersionString;
                 //DomainName = Environment.UserDomainName;
+
+                //AssignedCompanies.AddRange(Get_User_Assigned_Companies(DB_AppUser_Id));
+                AssignedCompanies = Get_User_Assigned_Companies(DB_AppUser_Id);
+                CompaniesAsCsvString = Get_CompaniesAsCsvString();
             }
             catch (Exception ex)
             {
@@ -278,13 +285,16 @@ namespace Protocol
         public static string MachineName { get { return Environment.MachineName; } set { } }
         public static string OsVersion { get { return Environment.OSVersion.VersionString; } set { } }
         public static string DomainName { get { return Environment.UserDomainName; } set { } }
-
+        
         public static int DB_AppUser_Id { get; set; }
         //public static int DB_AppUser_Id
         //{
         //    get { return Get_DB_AppUser_Id(Environment.UserName); }
         //    set { }
         //}
+
+        public static List<int> AssignedCompanies { get; set; }
+        public static string CompaniesAsCsvString { get; set; }
 
         public static void UserLogIn()
         {
@@ -370,6 +380,84 @@ namespace Protocol
 
             return ret;
         }
+
+        private static List<int> Get_User_Assigned_Companies(int UserId)
+        {
+            List<int> ret = new List<int>();
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT CompanyId FROM [dbo].[AppAuth] WHERE UserId = " + UserId.ToString();
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int comId = Convert.ToInt32(reader["CompanyId"].ToString());
+                    
+                    if (comId == 999) //Show all companies
+                    {
+                        return GetAllCompanies();
+                    }
+
+                    ret.Add(comId);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+
+        public static string Get_CompaniesAsCsvString()
+        {
+            string ret = "";
+
+            foreach (int thisCom in AssignedCompanies)
+            {
+                ret += thisCom.ToString() + ",";
+            }
+
+            if (ret.Length > 0)
+            {
+                ret = ret.Substring(0, ret.Length - 1);
+            }
+            
+            return ret;
+        }
+
+
+        public static List<int> GetAllCompanies() 
+        {
+            List<int> ret = new List<int>();
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ORDER BY Id ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ret.Add(Convert.ToInt32(reader["Id"].ToString()));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+
+
     }
 
 
