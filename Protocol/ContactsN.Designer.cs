@@ -1,6 +1,6 @@
 ﻿namespace Protocol
 {
-    partial class Contacts
+    partial class ContactsN
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contacts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactsN));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.SearchText3 = new System.Windows.Forms.TextBox();
@@ -70,27 +70,12 @@
             this.Notes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jobTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.businessPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobilePhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterExactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.export2ExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._GramV3_DevDataSet_Contact = new Protocol._GramV3_DevDataSet_Contact();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -122,7 +107,6 @@
             this.updateKeyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.UpdateKeyTableAdapter();
             this.tableAdapterManager = new Protocol._GramV3_DevDataSet_ContactTableAdapters.TableAdapterManager();
             this.viewDistCompanyTableAdapter = new Protocol._GramV3_DevDataSet_ContactTableAdapters.ViewDistCompanyTableAdapter();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -132,7 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GramV3_DevDataSet_Contact)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -400,21 +383,7 @@
             this.Country,
             this.Notes,
             this.Category,
-            this.Id,
-            this.idDataGridViewTextBoxColumn,
-            this.companyDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.jobTitleDataGridViewTextBoxColumn,
-            this.businessPhoneDataGridViewTextBoxColumn,
-            this.mobilePhoneDataGridViewTextBoxColumn,
-            this.addressDataGridViewTextBoxColumn,
-            this.cityDataGridViewTextBoxColumn,
-            this.zIPDataGridViewTextBoxColumn,
-            this.countryDataGridViewTextBoxColumn,
-            this.notesDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn});
+            this.Id});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.DataSource = this.contactsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -535,90 +504,6 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // companyDataGridViewTextBoxColumn
-            // 
-            this.companyDataGridViewTextBoxColumn.DataPropertyName = "Company";
-            this.companyDataGridViewTextBoxColumn.HeaderText = "Company";
-            this.companyDataGridViewTextBoxColumn.Name = "companyDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // jobTitleDataGridViewTextBoxColumn
-            // 
-            this.jobTitleDataGridViewTextBoxColumn.DataPropertyName = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.HeaderText = "JobTitle";
-            this.jobTitleDataGridViewTextBoxColumn.Name = "jobTitleDataGridViewTextBoxColumn";
-            // 
-            // businessPhoneDataGridViewTextBoxColumn
-            // 
-            this.businessPhoneDataGridViewTextBoxColumn.DataPropertyName = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.HeaderText = "BusinessPhone";
-            this.businessPhoneDataGridViewTextBoxColumn.Name = "businessPhoneDataGridViewTextBoxColumn";
-            // 
-            // mobilePhoneDataGridViewTextBoxColumn
-            // 
-            this.mobilePhoneDataGridViewTextBoxColumn.DataPropertyName = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.HeaderText = "MobilePhone";
-            this.mobilePhoneDataGridViewTextBoxColumn.Name = "mobilePhoneDataGridViewTextBoxColumn";
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            // 
-            // zIPDataGridViewTextBoxColumn
-            // 
-            this.zIPDataGridViewTextBoxColumn.DataPropertyName = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.HeaderText = "ZIP";
-            this.zIPDataGridViewTextBoxColumn.Name = "zIPDataGridViewTextBoxColumn";
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            // 
-            // notesDataGridViewTextBoxColumn
-            // 
-            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
-            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
-            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -658,19 +543,8 @@
             this.export2ExcelToolStripMenuItem.Text = "Export2Excel";
             this.export2ExcelToolStripMenuItem.Click += new System.EventHandler(this.export2ExcelToolStripMenuItem_Click);
             // 
-            // contactsBindingSource
-            // 
-            this.contactsBindingSource.DataMember = "Contacts";
-            this.contactsBindingSource.DataSource = this._GramV3_DevDataSet_Contact;
-            // 
-            // _GramV3_DevDataSet_Contact
-            // 
-            this._GramV3_DevDataSet_Contact.DataSetName = "_GramV3_DevDataSet_Contact";
-            this._GramV3_DevDataSet_Contact.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnInsert);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label15);
@@ -975,21 +849,7 @@
             // 
             this.viewDistCompanyTableAdapter.ClearBeforeFill = true;
             // 
-            // btnInsert
-            // 
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.btnInsert.Image = global::Protocol.Properties.Resources.Save_32x;
-            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsert.Location = new System.Drawing.Point(591, 22);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(135, 40);
-            this.btnInsert.TabIndex = 32;
-            this.btnInsert.Text = "Καταχώρηση";
-            this.btnInsert.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.postToolStripMenuItem_Click);
-            // 
-            // Contacts
+            // ContactsN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -999,7 +859,7 @@
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "Contacts";
+            this.Name = "ContactsN";
             this.Text = "Διευθυνσιογράφος";
             this.Load += new System.EventHandler(this.Contacts_Load);
             this.panel1.ResumeLayout(false);
@@ -1014,7 +874,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.contactsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._GramV3_DevDataSet_Contact)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -1038,7 +897,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.TextBox textLastName;
         private System.Windows.Forms.TextBox textFirstName;
-        private _GramV3_DevDataSet_Contact _GramV3_DevDataSet_Contact;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox10;
@@ -1099,20 +957,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Notes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jobTitleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn businessPhoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mobilePhoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn zIPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        public System.Windows.Forms.Button btnInsert;
     }
 }
