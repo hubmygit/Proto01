@@ -79,6 +79,12 @@
     <Compile Include="Contacts.Designer.cs">
       <DependentUpon>Contacts.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContactsN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactsN.designer.cs">
+      <DependentUpon>ContactsN.cs</DependentUpon>
+    </Compile>
     <Compile Include="FoldersFiltersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,9 @@
     </Compile>
     <EmbeddedResource Include="Contacts.resx">
       <DependentUpon>Contacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContactsN.resx">
+      <DependentUpon>ContactsN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FoldersFiltersForm.resx">
       <DependentUpon>FoldersFiltersForm.cs</DependentUpon>
