@@ -153,6 +153,7 @@
             this.MaximumSize = new System.Drawing.Size(620, 340);
             this.MinimumSize = new System.Drawing.Size(620, 340);
             this.Name = "ContactsToEmail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Παραλήπτες";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

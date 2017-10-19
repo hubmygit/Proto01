@@ -131,6 +131,7 @@
             this.MaximumSize = new System.Drawing.Size(620, 300);
             this.MinimumSize = new System.Drawing.Size(620, 300);
             this.Name = "MailRecipients";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Παραλήπτες";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

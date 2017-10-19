@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;
-using System.Windows.Forms.DataVisualization.Charting;
+//using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Protocol
 {
@@ -27,10 +27,12 @@ namespace Protocol
             //arrangeChart(chartYearly, new string[] { }, new int[] { });
             //arrangeChart(chartMonthly, new string[] { }, new int[] { });
 
+            /*
             ChartData chYData = getChartYearlyData();
             ChartData chMData = getChartMonthlyData();
             arrangeChart(chartYearly, chYData.company, chYData.value);
             arrangeChart(chartMonthly, chMData.company, chMData.value);
+            */
         }
 
 
@@ -224,6 +226,7 @@ namespace Protocol
         //    return chart;
         //}
 
+        /*
         void arrangeChart(Chart myChart, string[] names, int[] counters)
         {
             // myChart.Series["Series1"].ChartType = SeriesChartType.Doughnut;
@@ -349,7 +352,7 @@ namespace Protocol
 
             return yearlyData;
         }
-
+        */
 
         //test and delete!!!
         void TestReader()
@@ -392,12 +395,20 @@ namespace Protocol
         {
             TestReader();
         }
+
+        private void YMStatsTSMenuItem_Click(object sender, EventArgs e)
+        {
+            Statistics frmStatistics = new Statistics();
+            frmStatistics.ShowDialog();
+        }
     }
 
+    /*
     public class ChartData
     {
         public string [] company { get; set; }
         public int [] value { get; set; }        
     }
+    */
 
 }

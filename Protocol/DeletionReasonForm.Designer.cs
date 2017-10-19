@@ -94,6 +94,7 @@
             this.MaximumSize = new System.Drawing.Size(750, 300);
             this.MinimumSize = new System.Drawing.Size(750, 300);
             this.Name = "DeletionReasonForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Διαγραφή Πρωτοκόλλου";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

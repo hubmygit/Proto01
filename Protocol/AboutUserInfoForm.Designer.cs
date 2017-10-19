@@ -255,6 +255,7 @@
             this.MaximumSize = new System.Drawing.Size(680, 500);
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "AboutUserInfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Στοιχεία Χρήστη";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
