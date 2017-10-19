@@ -131,7 +131,9 @@ namespace Protocol
             List<string> Companies = new List<string>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ORDER BY Name ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] " +
+                              " WHERE 1=1 and Id in (" + UserInfo.CompaniesAsCsvString + ") " +
+                              "ORDER BY Name ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -158,7 +160,9 @@ namespace Protocol
             List<ComboboxItem> cbCompanies = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] ORDER BY Name ";
+            string SelectSt = "SELECT Id, Name FROM [dbo].[Company] " +
+                              " WHERE 1=1 and Id in (" + UserInfo.CompaniesAsCsvString + ") " +
+                              "ORDER BY Name ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -191,7 +195,8 @@ namespace Protocol
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             //string SelectSt = "SELECT Id, Name FROM [dbo].[Folders] ";
             string SelectSt = "SELECT F.Id, F.Name, F.CompanyId, C.Name as ComName, F.ProcedId, P.Name as ProcName " +
-                              "FROM[dbo].[Folders] F left outer join[dbo].[Company] C on F.CompanyId = C.id left outer join[dbo].[Proced] P on F.ProcedId = P.ProcedId "+
+                              "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on F.CompanyId = C.id left outer join[dbo].[Proced] P on F.ProcedId = P.ProcedId " +
+                              " WHERE 1=1 and C.Id in (" + UserInfo.CompaniesAsCsvString + ") " +
                               "ORDER BY C.Name, P.Name, F.Name";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try

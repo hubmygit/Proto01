@@ -28,6 +28,17 @@ namespace Protocol.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AVINDOMC\\SQLSERVERR2;Initial Catalog=GramV3-Dev;Persist Security Info" +
             "=False;User ID=GramV3;Password=8093570")]
+        public string connStringOld {
+            get {
+                return ((string)(this["connStringOld"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=protokolsrv;Initial Catalog=GramDB;Persist Security Info=False;User I" +
+            "D=GramUser;Password=111111")]
         public string connString {
             get {
                 return ((string)(this["connString"]));
