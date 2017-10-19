@@ -282,7 +282,10 @@ namespace Protocol
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT year(P.InsDT) as curYear, C.Name, count(*) as Cnt " + 
                 "FROM[dbo].[Protok] P left outer join[dbo].[Company] C on C.id = P.CompanyId " +
-                "WHERE isnull(P.deleted, 0) = 0 and year(P.InsDT) = year(getdate()) " + 
+                "WHERE isnull(P.deleted, 0) = 0 and year(P.InsDT) = year(getdate()) " +
+
+                " and C.id in (" + UserInfo.CompaniesAsCsvString + ") " +
+
                 "GROUP BY year(P.InsDT), C.Name " +
                 "ORDER BY C.Name";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
@@ -319,6 +322,9 @@ namespace Protocol
             string SelectSt = "SELECT year(P.InsDT) as curYear, month(P.InsDT) as curMonth, C.Name, count(*) as Cnt " +
                               "FROM[dbo].[Protok] P left outer join[dbo].[Company] C on C.id = P.CompanyId " +
                               "WHERE isnull(P.deleted, 0) = 0 and year(P.InsDT) = year(getdate()) and month(P.InsDT) = month(getdate()) " +
+
+                              " and C.id in (" + UserInfo.CompaniesAsCsvString + ") " +
+
                               "GROUP BY year(P.InsDT), month(P.InsDT), C.Name " +
                               "ORDER BY C.Name";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);

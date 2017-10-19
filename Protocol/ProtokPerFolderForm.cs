@@ -25,7 +25,7 @@ namespace Protocol
         {
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT F.Name as Folder, C.Name as Company, PR.Name as Proced, F.Descr, count(P.FolderId) as Cnt, F.Id " +
-                              "FROM[dbo].[Folders] F left outer join[dbo].[Company] C on C.Id = F.CompanyId " +
+                              "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on C.Id = F.CompanyId " +
                                   "left outer join Proced PR on PR.Id = F.ProcedId " + 
                                   "left outer join [dbo].[Protok] P on P.FolderId = F.Id and isnull(P.deleted, 0) = 0 " +
                               " WHERE 1=1 and C.Id in (" + UserInfo.CompaniesAsCsvString + ") " +
@@ -68,7 +68,7 @@ namespace Protocol
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT F.Name as Folder, C.Name as Company, PR.Name as Proced, F.Descr, count(P.FolderId) as Cnt, F.Id " +
-                              "FROM[dbo].[Folders] F left outer join[dbo].[Company] C on C.Id = F.CompanyId " +
+                              "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on C.Id = F.CompanyId " +
                                   "left outer join Proced PR on PR.Id = F.ProcedId " +
                                   "left outer join [dbo].[Protok] P on P.FolderId = F.Id and isnull(P.deleted, 0) = 0 " +
                                   selectStatement_where_part +
@@ -172,7 +172,7 @@ namespace Protocol
                 FiltersFrm.savedFilters.Clear();//not needed right now
 
                 //set where... 
-                FiltersFrm.whereStr = "";
+                FiltersFrm.whereStr = " WHERE 1=1 ";
                 FiltersFrm.havingStr = "";
 
                 btnFilters.Font = new Font(btnFilters.Font, FontStyle.Regular);

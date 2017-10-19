@@ -30,6 +30,7 @@ namespace Protocol
                               "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on C.Id = F.CompanyId " +
                                   "left outer join Proced PR on PR.Id = F.ProcedId " + 
                                   "left outer join [dbo].[Protok] P on P.FolderId = F.Id and isnull(P.deleted, 0) = 0 " +
+                              " WHERE 1=1 and C.Id in (" + UserInfo.CompaniesAsCsvString + ") " +
                               "GROUP BY C.Name, PR.Name, F.Name, F.Descr, F.Id " +
                               "ORDER BY F.Name ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
@@ -73,6 +74,9 @@ namespace Protocol
                                   "left outer join Proced PR on PR.Id = F.ProcedId " +
                                   "left outer join [dbo].[Protok] P on P.FolderId = F.Id and isnull(P.deleted, 0) = 0 " +
                                   selectStatement_where_part +
+
+                                  " and C.id in (" + UserInfo.CompaniesAsCsvString + ") " +
+
                               "GROUP BY C.Name, PR.Name, F.Name, F.Descr, F.Id " +
                               selectStatement_having_part +
                               "ORDER BY F.Name ";
@@ -205,7 +209,7 @@ namespace Protocol
                 FiltersFrm.savedFilters.Clear();//not needed right now
 
                 //set where... 
-                FiltersFrm.whereStr = "";
+                FiltersFrm.whereStr = " WHERE 1=1 ";
                 FiltersFrm.havingStr = "";
 
                 btnFilters.Font = new Font(btnFilters.Font, FontStyle.Regular);
