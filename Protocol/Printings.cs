@@ -27,29 +27,130 @@ namespace Protocol
         {
             string ret = "";
 
-            if (savedFilterControls.Count <= 0)
+            if (savedFilterControls.Count <= 0) //no filters - get default filters
             {
                 ret = "Ημ.Λήψης/Αποστ.: " + new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
             }
-
-            foreach (Filter thisFilter in savedFilterControls)
+            else
             {
-                if (thisFilter.FieldName == "dtpGetSetDate_From") //"dtpGetSetDate_To"
+                foreach (Filter thisFilter in savedFilterControls)
                 {
-                    ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x=> x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");                                        
-                    continue;
-                }
-                if (thisFilter.FieldName == "chlbProced")
-                {
-                    ret += "Κατηγ. Πρωτοκόλλου: ";
-                    foreach (int ind in thisFilter.FieldCheckedIndexes)
+                    if (thisFilter.FieldName == "chlbCompany")
                     {
-                        ret += ((CheckedListBox)thisFilter.FieldControl).Items[ind-1].ToString() + ",";
+                        string FCom = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FCom += thisVal + ",";
+                        }
+                        if (FCom.Length > 0)
+                        {
+                            FCom = FCom.Substring(0, FCom.Length - 1);
+                        }
+
+                        ret += "Εταιρία: " + FCom;
+                        ret += "\r\n";
+                        continue; // na valw else...anti continue...??
+                    }
+                    
+                    if (thisFilter.FieldName == "chlbProced")
+                    {                        
+                        string FProced = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FProced += thisVal + ",";
+                        }
+                        if (FProced.Length > 0)
+                        {
+                            FProced = FProced.Substring(0, FProced.Length - 1);
+                        }
+
+                        ret += "Κατηγ. Πρωτοκόλλου: " + FProced;
+                        ret += "\r\n";
                         continue;
                     }
+
+                    if (thisFilter.FieldName == "txtSn")
+                    {
+                        ret += "Αρ. Πρωτοκόλλου: " + thisFilter.FieldValue;
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "dtpGetSetDate_From") //"dtpGetSetDate_To"
+                    {
+                        ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "dtp_DocDate_From") //"dtp_DocDate_To"
+                    {
+                        ret += "Ημ.Έκδοσης: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy");
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtDocNum")
+                    {
+                        ret += "Αρ.Εισερχ.Εγγράφου: " + thisFilter.FieldValue;
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtProelKateuth")
+                    {
+                        ret += "Προέλευση/Κατεύθυνση: " + thisFilter.FieldValue;
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtSummary")
+                    {
+                        ret += "Περίληψη: " + thisFilter.FieldValue;
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtToText")
+                    {
+                        ret += "Παρ.για ενέργεια/Παρατηρήσεις: " + thisFilter.FieldValue;
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "chlbFolder")
+                    {
+                        string FFolder = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FFolder += thisVal + ",";
+                        }
+                        if (FFolder.Length > 0)
+                        {
+                            FFolder = FFolder.Substring(0, FFolder.Length - 1);
+                        }
+
+                        ret += "Αρ.Φακέλου Αρχείου: " + FFolder;
+                        ret += "\r\n";
+                        continue; // na valw else...anti continue...??
+                    }
+
+                    if (thisFilter.FieldName == "chbHasAtt")
+                    {
+                        ret += "Περιέχει Αρχεία: Ναι";
+                        ret += "\r\n";
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "chbMailSent")
+                    {
+                        ret += "Εστάλη Email: Ναι";
+                        ret += "\r\n";
+                        continue;
+                    }
+
                 }
             }
-
             return ret;
         }
 
@@ -116,6 +217,8 @@ namespace Protocol
             float StartingPtY = 92; //92
             float ptX = StartingPtX;
             float ptY = StartingPtY;
+
+
             
             //*************Header*************
             Font GeneralHeaderFont = new Font("Arial", 14, FontStyle.Bold);
@@ -124,12 +227,15 @@ namespace Protocol
             //*************Filters*************
             if (currentPage == 1)
             {
-                //ptY = 82;
+                if ( ((PrintDocument)sender).PrintController.IsPreview)
+                {
+                    string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ Φίλτρα: \r\n" + 
+                                          filtersToString(filterControls);
+                    MessageBox.Show(filtersToStr);
+                }
 
-                string filtersToStr = "Φίλτρα - " + filtersToString(filterControls);
-                sf = gf.MeasureString(filtersToStr, myFont, new SizeF(400, 500));
-
-                gf.DrawString(filtersToStr, myFont, Brushes.Black, new RectangleF(new PointF(StartingPtX, 70), new SizeF(sf.Width, sf.Height)));
+                //sf = gf.MeasureString(filtersToStr, myFont, new SizeF(400, 500));
+                //gf.DrawString(filtersToStr, myFont, Brushes.Black, new RectangleF(new PointF(StartingPtX, 70), new SizeF(sf.Width, sf.Height)));
             }
             //*************Column Headers*************
             for (int i = 0; i < 14; i++)

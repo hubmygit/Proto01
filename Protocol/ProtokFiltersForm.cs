@@ -174,6 +174,23 @@ namespace Protocol
             return IndexesList;
         }
 
+        public static List<string> Get_CheckedListBox_Checked_Values(CheckedListBox clb)
+        {
+            List<string> ValuesList = new List<string>();
+
+            int clbItemsCounter = clb.Items.Count;
+
+            for (int i = 0; i < clbItemsCounter; i++)
+            {
+                if (clb.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    ValuesList.Add(clb.Items[i].ToString());
+                }
+            }
+
+            return ValuesList;
+        }
+
         public static void Set_CheckedListBox_Checked_Indexes(CheckedListBox clb, int[] Indexes)
         {
             //SetItemCheckState
@@ -236,6 +253,10 @@ namespace Protocol
             */
             List<int> CheckedIndexes = new List<int>();
             CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbProced);
+
+            List<string> CheckedValues = new List<string>();
+            CheckedValues = Get_CheckedListBox_Checked_Values(chlbProced);
+
             string whereItems = "";
             foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
             {
@@ -244,7 +265,7 @@ namespace Protocol
             if (whereItems.Length > 0)
             {
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
-                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>()));
+                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>(), CheckedValues.ToArray<string>()));
                 whereStr += " AND P.ProcedureId in (" + whereItems + ") ";
             }
 
@@ -267,6 +288,7 @@ namespace Protocol
             }
             */
             CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbCompany);
+            CheckedValues = Get_CheckedListBox_Checked_Values(chlbCompany);
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
             {
@@ -275,7 +297,7 @@ namespace Protocol
             if (whereItems.Length > 0)
             {
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
-                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>()));
+                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>(), CheckedValues.ToArray<string>()));
                 whereStr += " AND P.CompanyId in (" + whereItems + ") ";
             }
 
@@ -327,6 +349,7 @@ namespace Protocol
             }
             */
             CheckedIndexes = Get_CheckedListBox_Checked_Indexes(chlbFolder);
+            CheckedValues = Get_CheckedListBox_Checked_Values(chlbFolder);
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbFolder.CheckedItems)
             {
@@ -335,7 +358,7 @@ namespace Protocol
             if (whereItems.Length > 0)
             {
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
-                savedFilters.Add(new Filter("chlbFolder", CheckedIndexes.ToArray<int>()));
+                savedFilters.Add(new Filter("chlbFolder", CheckedIndexes.ToArray<int>(), CheckedValues.ToArray<string>()));
                 whereStr += " AND P.FolderId in (" + whereItems + ") ";
             }
 
@@ -400,10 +423,11 @@ namespace Protocol
             FieldMultipleComboBoxItems = fieldMultipleComboBoxItems;
         }
 
-        public Filter(string fieldName, int[] fieldCheckedIndexes)
+        public Filter(string fieldName, int[] fieldCheckedIndexes, string[] fieldCheckedValues)
         {
             FieldName = fieldName;
             FieldCheckedIndexes = fieldCheckedIndexes;
+            FieldCheckedValues = fieldCheckedValues;
         }
 
         public Filter(string fieldName, string fieldValue, Control fieldControl)
@@ -419,5 +443,7 @@ namespace Protocol
         public string[] FieldMultipleValues { get; set; }
         public ComboboxItem[] FieldMultipleComboBoxItems { get; set; }
         public int[] FieldCheckedIndexes { get; set; }
+
+        public string[] FieldCheckedValues { get; set; }
     }
 }

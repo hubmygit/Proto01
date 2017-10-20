@@ -107,6 +107,10 @@ namespace Protocol
             */
             List<int> CheckedIndexes = new List<int>();
             CheckedIndexes = ProtokFiltersForm.Get_CheckedListBox_Checked_Indexes(chlbProced);
+
+            List<string> CheckedValues = new List<string>();
+            CheckedValues = ProtokFiltersForm.Get_CheckedListBox_Checked_Values(chlbProced);
+
             string whereItems = "";
             foreach (ComboboxItem thisItem in chlbProced.CheckedItems)
             {
@@ -115,7 +119,7 @@ namespace Protocol
             if (whereItems.Length > 0)
             {
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
-                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>()));
+                savedFilters.Add(new Filter("chlbProced", CheckedIndexes.ToArray<int>(), CheckedValues.ToArray<string>()));
                 whereStr += " AND F.ProcedId in (" + whereItems + ") ";
             }
 
@@ -136,6 +140,7 @@ namespace Protocol
             }
             */
             CheckedIndexes = ProtokFiltersForm.Get_CheckedListBox_Checked_Indexes(chlbCompany);
+            CheckedValues = ProtokFiltersForm.Get_CheckedListBox_Checked_Values(chlbCompany);
             whereItems = "";
             foreach (ComboboxItem thisItem in chlbCompany.CheckedItems)
             {
@@ -144,7 +149,7 @@ namespace Protocol
             if (whereItems.Length > 0)
             {
                 whereItems = whereItems.Substring(0, whereItems.Length - 1);
-                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>()));
+                savedFilters.Add(new Filter("chlbCompany", CheckedIndexes.ToArray<int>(), CheckedValues.ToArray<string>()));
                 whereStr += " AND F.CompanyId in (" + whereItems + ") ";
             }
 

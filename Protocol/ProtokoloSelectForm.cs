@@ -401,7 +401,14 @@ namespace Protocol
             //}
             //else
             {
-                lvPrintings.printProtocols(lvRep, new List<Filter>());
+                //lvPrintings.printProtocols(lvRep, new List<Filter>());
+
+                List<Filter> FiltersForm__savedFilters = new List<Filter>();
+                if (FiltersFrm != null)
+                {
+                    FiltersForm__savedFilters.AddRange(FiltersFrm.savedFilters);
+                }
+                lvPrintings.printProtocols(lvRep, FiltersForm__savedFilters);
             }
 
         }
