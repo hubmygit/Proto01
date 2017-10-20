@@ -227,15 +227,20 @@ namespace Protocol
             //*************Filters*************
             if (currentPage == 1)
             {
-                if ( ((PrintDocument)sender).PrintController.IsPreview)
-                {
-                    string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ Φίλτρα: \r\n" + 
-                                          filtersToString(filterControls);
-                    MessageBox.Show(filtersToStr);
-                }
-
-                //sf = gf.MeasureString(filtersToStr, myFont, new SizeF(400, 500));
+                //if ( ((PrintDocument)sender).PrintController.IsPreview)
+                //{
+                string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + 
+                                      filtersToString(filterControls);
+                //    MessageBox.Show(filtersToStr);
+                //}
+                sf = gf.MeasureString(filtersToStr, HeaderFont, new SizeF(500, 500));
                 //gf.DrawString(filtersToStr, myFont, Brushes.Black, new RectangleF(new PointF(StartingPtX, 70), new SizeF(sf.Width, sf.Height)));
+                gf.DrawString(filtersToStr, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
+
+                currentPage++;
+
+                e.HasMorePages = true;
+                return;
             }
             //*************Column Headers*************
             for (int i = 0; i < 14; i++)
