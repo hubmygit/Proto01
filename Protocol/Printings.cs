@@ -18,141 +18,14 @@ namespace Protocol
 
         List<Filter> filterControls = new List<Filter>();
 
+        
+
         public Printings()
         {
             //
         }
 
-        string filtersToString(List<Filter> savedFilterControls)
-        {
-            string ret = "";
-
-            if (savedFilterControls.Count <= 0) //no filters - get default filters
-            {
-                ret = "Ημ.Λήψης/Αποστ.: " + new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
-            }
-            else
-            {
-                foreach (Filter thisFilter in savedFilterControls)
-                {
-                    if (thisFilter.FieldName == "chlbCompany")
-                    {
-                        string FCom = "";
-                        foreach (string thisVal in thisFilter.FieldCheckedValues)
-                        {
-                            FCom += thisVal + ",";
-                        }
-                        if (FCom.Length > 0)
-                        {
-                            FCom = FCom.Substring(0, FCom.Length - 1);
-                        }
-
-                        ret += "Εταιρία: " + FCom;
-                        ret += "\r\n";
-                        continue; // na valw else...anti continue...??
-                    }
-                    
-                    if (thisFilter.FieldName == "chlbProced")
-                    {                        
-                        string FProced = "";
-                        foreach (string thisVal in thisFilter.FieldCheckedValues)
-                        {
-                            FProced += thisVal + ",";
-                        }
-                        if (FProced.Length > 0)
-                        {
-                            FProced = FProced.Substring(0, FProced.Length - 1);
-                        }
-
-                        ret += "Κατηγ. Πρωτοκόλλου: " + FProced;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "txtSn")
-                    {
-                        ret += "Αρ. Πρωτοκόλλου: " + thisFilter.FieldValue;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "dtpGetSetDate_From") //"dtpGetSetDate_To"
-                    {
-                        ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "dtp_DocDate_From") //"dtp_DocDate_To"
-                    {
-                        ret += "Ημ.Έκδοσης: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy");
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "txtDocNum")
-                    {
-                        ret += "Αρ.Εισερχ.Εγγράφου: " + thisFilter.FieldValue;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "txtProelKateuth")
-                    {
-                        ret += "Προέλευση/Κατεύθυνση: " + thisFilter.FieldValue;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "txtSummary")
-                    {
-                        ret += "Περίληψη: " + thisFilter.FieldValue;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "txtToText")
-                    {
-                        ret += "Παρ.για ενέργεια/Παρατηρήσεις: " + thisFilter.FieldValue;
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "chlbFolder")
-                    {
-                        string FFolder = "";
-                        foreach (string thisVal in thisFilter.FieldCheckedValues)
-                        {
-                            FFolder += thisVal + ",";
-                        }
-                        if (FFolder.Length > 0)
-                        {
-                            FFolder = FFolder.Substring(0, FFolder.Length - 1);
-                        }
-
-                        ret += "Αρ.Φακέλου Αρχείου: " + FFolder;
-                        ret += "\r\n";
-                        continue; // na valw else...anti continue...??
-                    }
-
-                    if (thisFilter.FieldName == "chbHasAtt")
-                    {
-                        ret += "Περιέχει Αρχεία: Ναι";
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                    if (thisFilter.FieldName == "chbMailSent")
-                    {
-                        ret += "Εστάλη Email: Ναι";
-                        ret += "\r\n";
-                        continue;
-                    }
-
-                }
-            }
-            return ret;
-        }
+        
 
         public void printProtocols(ListView ProtocolsListView, List<Filter> savedFilterControls)
         {
@@ -229,13 +102,26 @@ namespace Protocol
             {
                 //if ( ((PrintDocument)sender).PrintController.IsPreview)
                 //{
-                string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + 
-                                      filtersToString(filterControls);
+
+                FiltersToPrint PrintFilters = new FiltersToPrint(filterControls);
+
+                string filterNames = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + PrintFilters.filterNames;
+                string filterValues = "\r\n\r\n" + PrintFilters.filterValues;
+
+                //string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + 
+                //                      filtersToString(filterControls);
                 //    MessageBox.Show(filtersToStr);
                 //}
-                sf = gf.MeasureString(filtersToStr, HeaderFont, new SizeF(500, 500));
-                //gf.DrawString(filtersToStr, myFont, Brushes.Black, new RectangleF(new PointF(StartingPtX, 70), new SizeF(sf.Width, sf.Height)));
-                gf.DrawString(filtersToStr, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
+                sf = gf.MeasureString(filterNames, HeaderFont, new SizeF(500, 500));
+                gf.DrawString(filterNames, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
+
+                sf = gf.MeasureString(filterValues, HeaderFont, new SizeF(500, 500));
+                gf.DrawString(filterValues, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX + 300, ptY), new SizeF(sf.Width, sf.Height)));
+
+                //___Footer___
+                gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser,
+                    myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 746)); //font size: 16
+                gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 746));
 
                 currentPage++;
 
@@ -410,5 +296,181 @@ namespace Protocol
             printDocument.Print();
             return count;
         }
+    }
+
+    class FiltersToPrint
+    {
+        //string filtersToString(List<Filter> savedFilterControls)
+        public FiltersToPrint(List<Filter> savedFilterControls)
+        {
+            filterNames = "";
+            filterValues = "";
+
+            if (savedFilterControls.Count <= 0) //no filters - get default filters
+            {
+                //ret = "Ημ.Λήψης/Αποστ.: " + new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
+                filterNames = "Ημ.Λήψης/Αποστ.:";
+                filterValues = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
+            }
+            else
+            {
+                foreach (Filter thisFilter in savedFilterControls)
+                {
+                    if (thisFilter.FieldName == "chlbCompany")
+                    {
+                        string FCom = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FCom += thisVal + ",";
+                        }
+                        if (FCom.Length > 0)
+                        {
+                            FCom = FCom.Substring(0, FCom.Length - 1);
+                        }
+
+                        //ret += "Εταιρία: " + FCom;
+                        //ret += "\r\n";
+                        filterNames += "Εταιρία:\r\n";
+                        filterValues += FCom + "\r\n";
+
+                        continue; // na valw else...anti continue...??
+                    }
+
+                    if (thisFilter.FieldName == "chlbProced")
+                    {
+                        string FProced = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FProced += thisVal + ",";
+                        }
+                        if (FProced.Length > 0)
+                        {
+                            FProced = FProced.Substring(0, FProced.Length - 1);
+                        }
+
+                        //ret += "Κατηγ. Πρωτοκόλλου: " + FProced;
+                        //ret += "\r\n";
+                        filterNames += "Κατηγ. Πρωτοκόλλου:\r\n";
+                        filterValues += FProced + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtSn")
+                    {
+                        //ret += "Αρ. Πρωτοκόλλου: " + thisFilter.FieldValue;
+                        //ret += "\r\n";
+                        filterNames += "Αρ. Πρωτοκόλλου:\r\n";
+                        filterValues += thisFilter.FieldValue + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "dtpGetSetDate_From") //"dtpGetSetDate_To"
+                    {
+                        //ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");
+                        //ret += "\r\n";
+                        filterNames += "Ημ.Λήψης/Αποστ.:\r\n";
+                        filterValues += DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy") + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "dtp_DocDate_From") //"dtp_DocDate_To"
+                    {
+                        //ret += "Ημ.Έκδοσης: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy");
+                        //ret += "\r\n";
+                        filterNames += "Ημ.Έκδοσης:\r\n";
+                        filterValues += DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtDocNum")
+                    {
+                        //ret += "Αρ.Εισερχ.Εγγράφου: " + thisFilter.FieldValue;
+                        //ret += "\r\n";
+                        filterNames += "Αρ.Εισερχ.Εγγράφου:\r\n";
+                        filterValues += thisFilter.FieldValue + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtProelKateuth")
+                    {
+                        //ret += "Προέλευση/Κατεύθυνση: " + thisFilter.FieldValue;
+                        //ret += "\r\n";
+                        filterNames += "Προέλευση/Κατεύθυνση:\r\n";
+                        filterValues += thisFilter.FieldValue + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtSummary")
+                    {
+                        //ret += "Περίληψη: " + thisFilter.FieldValue;
+                        //ret += "\r\n";
+                        filterNames += "Περίληψη:\r\n";
+                        filterValues += thisFilter.FieldValue + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "txtToText")
+                    {
+                        //ret += "Παρ.για ενέργεια/Παρατηρήσεις: " + thisFilter.FieldValue;
+                        //ret += "\r\n";
+                        filterNames += "Παρ.για ενέργεια/Παρατηρήσεις:\r\n";
+                        filterValues += thisFilter.FieldValue + "\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "chlbFolder")
+                    {
+                        string FFolder = "";
+                        foreach (string thisVal in thisFilter.FieldCheckedValues)
+                        {
+                            FFolder += thisVal + ",";
+                        }
+                        if (FFolder.Length > 0)
+                        {
+                            FFolder = FFolder.Substring(0, FFolder.Length - 1);
+                        }
+
+                        //ret += "Αρ.Φακέλου Αρχείου: " + FFolder;
+                        //ret += "\r\n";
+                        filterNames += "Αρ.Φακέλου Αρχείου:\r\n";
+                        filterValues += FFolder + "\r\n";
+
+                        continue; // na valw else...anti continue...??
+                    }
+
+                    if (thisFilter.FieldName == "chbHasAtt")
+                    {
+                        //ret += "Περιέχει Αρχεία: Ναι";
+                        //ret += "\r\n";
+                        filterNames += "Περιέχει Αρχεία:\r\n";
+                        filterValues += "Ναι\r\n";
+
+                        continue;
+                    }
+
+                    if (thisFilter.FieldName == "chbMailSent")
+                    {
+                        //ret += "Εστάλη Email: Ναι";
+                        //ret += "\r\n";
+                        filterNames += "Εστάλη Email:\r\n";
+                        filterValues += "Ναι\r\n";
+
+                        continue;
+                    }
+
+                }
+            }
+        }
+
+        public string filterNames { get; set; }
+        public string filterValues { get; set; }
     }
 }
