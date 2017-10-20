@@ -264,9 +264,17 @@ namespace Protocol
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            excelForms eF = new excelForms();
-            eF.ExportProtocolListViewToExcel(lvRep, true, true);
-            eF.Visible = true;
+            try
+            {
+                excelForms eF = new excelForms();
+                eF.ExportProtocolListViewToExcel(lvRep, true, true);
+                eF.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                string exMess = ex.Message; //do nothing - constructor catches the exception
+                //MessageBox.Show(exMess);
+            }
         }
     }
 }

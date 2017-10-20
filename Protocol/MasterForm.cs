@@ -61,20 +61,28 @@ namespace Protocol
             {
                 if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELINBOX")
                 {
-                    //Show Contacts...
-                    outlookForms oF = new outlookForms();
-                    oF.showContacts();
-
-                    if (oF.RecipientsList.Count > 0)
+                    try
                     {
-                        //Show Mail... 
-                        //oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        //Show Contacts...
+                        outlookForms oF = new outlookForms();
+                        oF.showContacts();
 
-                        //Save Mail... 
-                        //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        if (oF.RecipientsList.Count > 0)
+                        {
+                            //Show Mail... 
+                            //oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
-                        //Send Mail... 
-                        oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Send Mail... 
+                            oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        //MessageBox.Show(exMess);
                     }
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
@@ -83,19 +91,27 @@ namespace Protocol
                     ContactsToEmail cteFrm = new ContactsToEmail();
                     cteFrm.ShowDialog();
 
-                    if (cteFrm.frmSaved)
+                    try
                     {
-                        outlookForms oF = new outlookForms();
-                        oF.fillRecipientList(cteFrm.txtRecipientsTo.Text, cteFrm.txtRecipientsCc.Text, cteFrm.txtRecipientsBcc.Text);
+                        if (cteFrm.frmSaved) //check if recipients.count > 0
+                        {
+                            outlookForms oF = new outlookForms();
+                            oF.fillRecipientList(cteFrm.txtRecipientsTo.Text, cteFrm.txtRecipientsCc.Text, cteFrm.txtRecipientsBcc.Text);
 
-                        //Show Mail... 
-                        oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                            //Show Mail... 
+                            oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
-                        //Save Mail... 
-                        //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
-                        //Send Mail... 
-                        //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                            //Send Mail... 
+                            //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        //MessageBox.Show(exMess);
                     }
                 }
             }

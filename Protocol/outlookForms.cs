@@ -27,13 +27,17 @@ namespace Protocol
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The following error occurred: " + ex.Message);
+                OutlookExceptionMessage = "Παρουσιάστηκε πρόβλημα κατά το άνοιγμα της εφαρμογής 'Outlook'! \r\nΠαρακαλώ ελέγξτε την εγκατάστασή σας...";
+
+                MessageBox.Show(OutlookExceptionMessage + "\r\n\r\n\r\nΠληροφορίες Σφάλματος:\r\n\r\n" + ex.Message);
             }
         }
 
         private Outlook.SelectNamesDialog snd;
         private Microsoft.Office.Interop.Outlook.Application outlookApplication;
         private Outlook._MailItem oMailItem;
+
+        public string OutlookExceptionMessage { get; set; }
 
         public void showContacts()
         {

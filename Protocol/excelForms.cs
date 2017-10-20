@@ -12,15 +12,26 @@ namespace Protocol
     {
         public excelForms()
         {
-            excelApplication = new Excel.Application();
-            //excelApplication.Visible = true; //delay...
-            wbk = excelApplication.Workbooks.Add(Excel.XlSheetType.xlWorksheet);
-            wsh = (Excel.Worksheet)excelApplication.ActiveSheet;
+            try
+            {
+                excelApplication = new Excel.Application();
+                //excelApplication.Visible = true; //delay...
+                wbk = excelApplication.Workbooks.Add(Excel.XlSheetType.xlWorksheet);
+                wsh = (Excel.Worksheet)excelApplication.ActiveSheet;
+            }
+            catch (Exception ex)
+            {
+                ExcelExceptionMessage = "Παρουσιάστηκε πρόβλημα κατά το άνοιγμα της εφαρμογής 'Excel'! \r\nΠαρακαλώ ελέγξτε την εγκατάστασή σας...";
+
+                MessageBox.Show(ExcelExceptionMessage + "\r\n\r\n\r\nΠληροφορίες Σφάλματος:\r\n\r\n" + ex.Message);
+            }
         }
 
         private Excel.Workbook wbk;
         private Excel.Application excelApplication;
         private Excel.Worksheet wsh;
+
+        public string ExcelExceptionMessage { get; set; }
 
         public bool Visible
         {
@@ -118,6 +129,7 @@ namespace Protocol
 
         }
     }
+
 }
 
 //How to use it...
