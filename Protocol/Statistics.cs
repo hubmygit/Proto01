@@ -67,7 +67,7 @@ namespace Protocol
 
                 string lblName = "lbl" + myChart.Name;
                 Controls[lblName].Visible = true;
-                Controls[lblName].Location = new Point(myChart.Location.X + 50, myChart.Location.Y + 60);
+                Controls[lblName].Location = new Point(myChart.Location.X + 85, myChart.Location.Y + 60);
             }
 
 

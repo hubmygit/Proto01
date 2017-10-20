@@ -47,7 +47,7 @@
             // 
             this.lblchartMonthly.AutoSize = true;
             this.lblchartMonthly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblchartMonthly.Location = new System.Drawing.Point(415, 354);
+            this.lblchartMonthly.Location = new System.Drawing.Point(500, 401);
             this.lblchartMonthly.Name = "lblchartMonthly";
             this.lblchartMonthly.Size = new System.Drawing.Size(164, 17);
             this.lblchartMonthly.TabIndex = 14;
@@ -58,7 +58,7 @@
             // 
             this.lblchartYearly.AutoSize = true;
             this.lblchartYearly.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblchartYearly.Location = new System.Drawing.Point(95, 354);
+            this.lblchartYearly.Location = new System.Drawing.Point(120, 401);
             this.lblchartYearly.Name = "lblchartYearly";
             this.lblchartYearly.Size = new System.Drawing.Size(164, 17);
             this.lblchartYearly.TabIndex = 13;
@@ -70,7 +70,7 @@
             this.lblMonthlyChart.AutoSize = true;
             this.lblMonthlyChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblMonthlyChart.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblMonthlyChart.Location = new System.Drawing.Point(403, 91);
+            this.lblMonthlyChart.Location = new System.Drawing.Point(503, 46);
             this.lblMonthlyChart.Name = "lblMonthlyChart";
             this.lblMonthlyChart.Size = new System.Drawing.Size(158, 20);
             this.lblMonthlyChart.TabIndex = 12;
@@ -81,7 +81,7 @@
             this.lblYearlyChart.AutoSize = true;
             this.lblYearlyChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblYearlyChart.ForeColor = System.Drawing.Color.SteelBlue;
-            this.lblYearlyChart.Location = new System.Drawing.Point(98, 91);
+            this.lblYearlyChart.Location = new System.Drawing.Point(118, 46);
             this.lblYearlyChart.Name = "lblYearlyChart";
             this.lblYearlyChart.Size = new System.Drawing.Size(168, 20);
             this.lblYearlyChart.TabIndex = 11;
@@ -91,7 +91,7 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.chartMonthly.ChartAreas.Add(chartArea1);
-            this.chartMonthly.Location = new System.Drawing.Point(352, 114);
+            this.chartMonthly.Location = new System.Drawing.Point(417, 69);
             this.chartMonthly.Name = "chartMonthly";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -99,7 +99,7 @@
             series1.Name = "Series1";
             series1.ToolTip = "#VALX (#VAL)";
             this.chartMonthly.Series.Add(series1);
-            this.chartMonthly.Size = new System.Drawing.Size(260, 240);
+            this.chartMonthly.Size = new System.Drawing.Size(330, 330);
             this.chartMonthly.TabIndex = 10;
             this.chartMonthly.Text = "chart1";
             // 
@@ -107,7 +107,7 @@
             // 
             chartArea2.Name = "ChartArea1";
             this.chartYearly.ChartAreas.Add(chartArea2);
-            this.chartYearly.Location = new System.Drawing.Point(52, 114);
+            this.chartYearly.Location = new System.Drawing.Point(37, 69);
             this.chartYearly.Name = "chartYearly";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -115,7 +115,7 @@
             series2.Name = "Series1";
             series2.ToolTip = "#VALX (#VAL)";
             this.chartYearly.Series.Add(series2);
-            this.chartYearly.Size = new System.Drawing.Size(260, 240);
+            this.chartYearly.Size = new System.Drawing.Size(330, 330);
             this.chartYearly.TabIndex = 9;
             this.chartYearly.Text = "chart1";
             // 
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 462);
+            this.ClientSize = new System.Drawing.Size(784, 462);
             this.Controls.Add(this.lblchartMonthly);
             this.Controls.Add(this.lblchartYearly);
             this.Controls.Add(this.lblMonthlyChart);
@@ -131,8 +131,8 @@
             this.Controls.Add(this.chartMonthly);
             this.Controls.Add(this.chartYearly);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(680, 500);
-            this.MinimumSize = new System.Drawing.Size(680, 500);
+            this.MaximumSize = new System.Drawing.Size(800, 500);
+            this.MinimumSize = new System.Drawing.Size(800, 500);
             this.Name = "Statistics";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Στατιστικά";

@@ -410,6 +410,11 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
 
+            if (ret.Count <= 0) //no data  found
+            {
+                ret.Add(0);
+            }
+
             return ret;
         }
 
