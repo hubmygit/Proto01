@@ -18,7 +18,7 @@ namespace Protocol
 
         List<Filter> filterControls = new List<Filter>();
 
-        
+        private int filterPage = 1;
 
         public Printings()
         {
@@ -98,25 +98,70 @@ namespace Protocol
             gf.DrawString("ΠΡΩΤΟΚΟΛΛΟ ΕΙΣΕΡΧΟΜΕΝΩΝ / ΕΞΕΡΧΟΜΕΝΩΝ ΕΓΓΡΑΦΩΝ", GeneralHeaderFont, Brushes.Brown, new Point(256, 38));
 
             //*************Filters*************
-            if (currentPage == 1)
+            if (currentPage == filterPage)
             {
-                //if ( ((PrintDocument)sender).PrintController.IsPreview)
-                //{
-
                 FiltersToPrint PrintFilters = new FiltersToPrint(filterControls);
 
-                string filterNames = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + PrintFilters.filterNames;
-                string filterValues = "\r\n\r\n" + PrintFilters.filterValues;
+                ptX += 40; //16+40=56
 
-                //string filtersToStr = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + 
-                //                      filtersToString(filterControls);
-                //    MessageBox.Show(filtersToStr);
-                //}
-                sf = gf.MeasureString(filterNames, HeaderFont, new SizeF(500, 500));
-                gf.DrawString(filterNames, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
+                sf = gf.MeasureString("ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ", HeaderFont, new SizeF(500, 500));
+                gf.DrawString("ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ", HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
 
-                sf = gf.MeasureString(filterValues, HeaderFont, new SizeF(500, 500));
-                gf.DrawString(filterValues, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX + 300, ptY), new SizeF(sf.Width, sf.Height)));
+                ptY += sf.Height + 20; //92 + 20 = 112
+                float fnamesW = 0;
+                float fvaluesW = 0;
+                //foreach (PrintFilterObj thisFilter in PrintFilters.filterObjs)
+                for (int k = forCounter; k < PrintFilters.filterObjs.Count; k++)
+                {
+                    maxHeight = 0;
+                    //filterNames
+                    sf = gf.MeasureString(PrintFilters.filterObjs[k].filterNames, HeaderFont, new SizeF(500, 500));
+                    maxHeight = sf.Height;
+                    fnamesW = sf.Width;
+                    //filterValues
+                    sf = gf.MeasureString(PrintFilters.filterObjs[k].filterValues, myFont, new SizeF(700, 500)); //700, 500
+                    if (maxHeight < sf.Height)
+                    {
+                        maxHeight = sf.Height;
+                    }
+                    fvaluesW = sf.Width;
+
+                    //check - continue to next page ??
+                    if (ptY + maxHeight > 746) //footer height:746
+                    {
+                        //go to next page
+                        e.HasMorePages = true;
+
+                        //*************Footer*************
+                        gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser,
+                            myFont, Brushes.Black, new Point(Convert.ToInt32(StartingPtX), 746)); //font size: 16
+
+                        gf.DrawString("Σελίδα " + currentPage.ToString() + " / " + pageCount.ToString(), myFont, Brushes.Black, new Point(550, 746));
+                        currentPage++;
+                        filterPage++;
+                        forCounter = k;
+
+                        return;
+                    }
+
+                    gf.DrawString(PrintFilters.filterObjs[k].filterNames, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(fnamesW, maxHeight)));
+                    gf.DrawString(PrintFilters.filterObjs[k].filterValues, myFont, Brushes.Black, new RectangleF(new PointF(ptX + 220, ptY), new SizeF(fvaluesW, maxHeight)));
+                    //56+220=276 + 700 = 976
+                    //1169max
+                    ptY += maxHeight + 10;
+
+                    
+                }
+                
+
+
+
+                //string filterNames = "ΕΠΙΛΕΓΜΕΝΑ ΦΙΛΤΡΑ: \r\n\r\n" + PrintFilters.filterNames;
+                //string filterValues = "\r\n\r\n" + PrintFilters.filterValues;
+                //sf = gf.MeasureString(filterNames, HeaderFont, new SizeF(500, 500));
+                //gf.DrawString(filterNames, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY), new SizeF(sf.Width, sf.Height)));
+                //sf = gf.MeasureString(filterValues, HeaderFont, new SizeF(500, 500));
+                //gf.DrawString(filterValues, HeaderFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX + 300, ptY), new SizeF(sf.Width, sf.Height)));
 
                 //___Footer___
                 gf.DrawString("Ημερομηνία Εκτύπωσης: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss") + " / Χρήστης: " + UserInfo.WindowsUser,
@@ -126,8 +171,15 @@ namespace Protocol
                 currentPage++;
 
                 e.HasMorePages = true;
+
+                filterPage = 1;
+                forCounter = 0;
+
                 return;
             }
+
+            
+            
             //*************Column Headers*************
             for (int i = 0; i < 14; i++)
             {
@@ -303,14 +355,16 @@ namespace Protocol
         //string filtersToString(List<Filter> savedFilterControls)
         public FiltersToPrint(List<Filter> savedFilterControls)
         {
-            filterNames = "";
-            filterValues = "";
+            //filterNames = new List<string>();
+            //filterValues = new List<string>();
+            filterObjs = new List<PrintFilterObj>();
 
             if (savedFilterControls.Count <= 0) //no filters - get default filters
             {
                 //ret = "Ημ.Λήψης/Αποστ.: " + new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
-                filterNames = "Ημ.Λήψης/Αποστ.:";
-                filterValues = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy");
+                //filterNames.Add("Ημ.Λήψης/Αποστ.:");
+                //filterValues.Add(new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy"));
+                filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Λήψης/Αποστ.:", filterValues = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy") });
             }
             else
             {
@@ -330,8 +384,9 @@ namespace Protocol
 
                         //ret += "Εταιρία: " + FCom;
                         //ret += "\r\n";
-                        filterNames += "Εταιρία:\r\n";
-                        filterValues += FCom + "\r\n";
+                        //filterNames.Add("Εταιρία:");
+                        //filterValues.Add(FCom);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Εταιρία:", filterValues = FCom });
 
                         continue; // na valw else...anti continue...??
                     }
@@ -350,8 +405,9 @@ namespace Protocol
 
                         //ret += "Κατηγ. Πρωτοκόλλου: " + FProced;
                         //ret += "\r\n";
-                        filterNames += "Κατηγ. Πρωτοκόλλου:\r\n";
-                        filterValues += FProced + "\r\n";
+                        //filterNames.Add("Κατηγ. Πρωτοκόλλου:");
+                        //filterValues.Add(FProced);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Κατηγ. Πρωτοκόλλου:", filterValues = FProced });
 
                         continue;
                     }
@@ -360,8 +416,9 @@ namespace Protocol
                     {
                         //ret += "Αρ. Πρωτοκόλλου: " + thisFilter.FieldValue;
                         //ret += "\r\n";
-                        filterNames += "Αρ. Πρωτοκόλλου:\r\n";
-                        filterValues += thisFilter.FieldValue + "\r\n";
+                        //filterNames.Add("Αρ. Πρωτοκόλλου:");
+                        //filterValues.Add(thisFilter.FieldValue);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Αρ. Πρωτοκόλλου:", filterValues = thisFilter.FieldValue });
 
                         continue;
                     }
@@ -370,8 +427,9 @@ namespace Protocol
                     {
                         //ret += "Ημ.Λήψης/Αποστ.: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy");
                         //ret += "\r\n";
-                        filterNames += "Ημ.Λήψης/Αποστ.:\r\n";
-                        filterValues += DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy") + "\r\n";
+                        //filterNames.Add("Ημ.Λήψης/Αποστ.:");
+                        //filterValues.Add(DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy"));
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Λήψης/Αποστ.:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtpGetSetDate_To").FieldValue).ToString("dd.MM.yyyy") });
 
                         continue;
                     }
@@ -380,8 +438,9 @@ namespace Protocol
                     {
                         //ret += "Ημ.Έκδοσης: " + DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy");
                         //ret += "\r\n";
-                        filterNames += "Ημ.Έκδοσης:\r\n";
-                        filterValues += DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") + "\r\n";
+                        //filterNames.Add("Ημ.Έκδοσης:");
+                        //filterValues.Add(DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy"));
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
 
                         continue;
                     }
@@ -390,9 +449,9 @@ namespace Protocol
                     {
                         //ret += "Αρ.Εισερχ.Εγγράφου: " + thisFilter.FieldValue;
                         //ret += "\r\n";
-                        filterNames += "Αρ.Εισερχ.Εγγράφου:\r\n";
-                        filterValues += thisFilter.FieldValue + "\r\n";
-
+                        //filterNames.Add("Αρ.Εισερχ.Εγγράφου:");
+                        //filterValues.Add(thisFilter.FieldValue);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Αρ.Εισερχ.Εγγράφου:", filterValues = thisFilter.FieldValue });
                         continue;
                     }
 
@@ -400,8 +459,9 @@ namespace Protocol
                     {
                         //ret += "Προέλευση/Κατεύθυνση: " + thisFilter.FieldValue;
                         //ret += "\r\n";
-                        filterNames += "Προέλευση/Κατεύθυνση:\r\n";
-                        filterValues += thisFilter.FieldValue + "\r\n";
+                        //filterNames.Add("Προέλευση/Κατεύθυνση:");
+                        //filterValues.Add(thisFilter.FieldValue);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Προέλευση/Κατεύθυνση:", filterValues = thisFilter.FieldValue });
 
                         continue;
                     }
@@ -410,8 +470,9 @@ namespace Protocol
                     {
                         //ret += "Περίληψη: " + thisFilter.FieldValue;
                         //ret += "\r\n";
-                        filterNames += "Περίληψη:\r\n";
-                        filterValues += thisFilter.FieldValue + "\r\n";
+                        //filterNames.Add("Περίληψη:");
+                        //filterValues.Add(thisFilter.FieldValue);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Περίληψη:", filterValues = thisFilter.FieldValue });
 
                         continue;
                     }
@@ -420,8 +481,9 @@ namespace Protocol
                     {
                         //ret += "Παρ.για ενέργεια/Παρατηρήσεις: " + thisFilter.FieldValue;
                         //ret += "\r\n";
-                        filterNames += "Παρ.για ενέργεια/Παρατηρήσεις:\r\n";
-                        filterValues += thisFilter.FieldValue + "\r\n";
+                        //filterNames.Add("Παρ.για ενέργεια/Παρατηρήσεις:");
+                        //filterValues.Add(thisFilter.FieldValue);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Παρ.για ενέργεια/Παρατηρήσεις:", filterValues = thisFilter.FieldValue });
 
                         continue;
                     }
@@ -440,8 +502,9 @@ namespace Protocol
 
                         //ret += "Αρ.Φακέλου Αρχείου: " + FFolder;
                         //ret += "\r\n";
-                        filterNames += "Αρ.Φακέλου Αρχείου:\r\n";
-                        filterValues += FFolder + "\r\n";
+                        //filterNames.Add("Αρ.Φακέλου Αρχείου:");
+                        //filterValues.Add(FFolder);
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Αρ.Φακέλου Αρχείου:", filterValues = FFolder });
 
                         continue; // na valw else...anti continue...??
                     }
@@ -450,8 +513,9 @@ namespace Protocol
                     {
                         //ret += "Περιέχει Αρχεία: Ναι";
                         //ret += "\r\n";
-                        filterNames += "Περιέχει Αρχεία:\r\n";
-                        filterValues += "Ναι\r\n";
+                        //filterNames.Add("Περιέχει Αρχεία:");
+                        //filterValues.Add("Ναι");
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Περιέχει Αρχεία:", filterValues = "Ναι" });
 
                         continue;
                     }
@@ -460,8 +524,9 @@ namespace Protocol
                     {
                         //ret += "Εστάλη Email: Ναι";
                         //ret += "\r\n";
-                        filterNames += "Εστάλη Email:\r\n";
-                        filterValues += "Ναι\r\n";
+                        //filterNames.Add("Εστάλη Email:");
+                        //filterValues.Add("Ναι");
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Εστάλη Email:", filterValues = "Ναι" });
 
                         continue;
                     }
@@ -470,7 +535,16 @@ namespace Protocol
             }
         }
 
+        //public List<string> filterNames { get; set; }
+        //public List<string> filterValues { get; set; }
+
+        public List<PrintFilterObj> filterObjs { get; set; }
+    }
+
+    class PrintFilterObj
+    {
         public string filterNames { get; set; }
         public string filterValues { get; set; }
     }
+
 }
