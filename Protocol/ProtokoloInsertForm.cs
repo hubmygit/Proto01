@@ -531,14 +531,15 @@ namespace Protocol
             if (newProtokId > 0 && fileName.Trim().Length > 0)
             {
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                string InsSt = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
+                //string InsSt = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, PdfCont, FileCont) VALUES (@ProtokId, @PdfText, @PdfCont, @FileCont) ";
+                string InsSt = "INSERT INTO [dbo].[ProtokPdf] (ProtokId, PdfText, FileCont) VALUES (@ProtokId, @PdfText, @FileCont) ";
                 try
                 {
                     sqlConn.Open();
                     SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
                     cmd.Parameters.AddWithValue("@ProtokId", newProtokId);
                     cmd.Parameters.AddWithValue("@PdfText", fileName.Left(100)); //filename
-                    cmd.Parameters.Add("@PdfCont", SqlDbType.VarBinary).Value = fileBytes;
+                    //cmd.Parameters.Add("@PdfCont", SqlDbType.VarBinary).Value = fileBytes;
                     cmd.Parameters.Add("@FileCont", SqlDbType.VarBinary).Value = fileBytes;
                     cmd.CommandType = CommandType.Text;
                     int rowsAffected = cmd.ExecuteNonQuery();

@@ -178,6 +178,7 @@
             this.ContactsTSMenuItem.Name = "ContactsTSMenuItem";
             this.ContactsTSMenuItem.Size = new System.Drawing.Size(176, 22);
             this.ContactsTSMenuItem.Text = "Διευθυνσιογράφος";
+            this.ContactsTSMenuItem.Visible = false;
             this.ContactsTSMenuItem.Click += new System.EventHandler(this.ContactsTSMenuItem_Click);
             // 
             // StatisticsTSMenuItem

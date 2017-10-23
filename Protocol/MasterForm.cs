@@ -87,6 +87,8 @@ namespace Protocol
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
                 {
+                    //temporarily hide 'dieuthinsiografo' and replace with outlook address book
+                    /*
                     //Show ContactsToEmail Form
                     ContactsToEmail cteFrm = new ContactsToEmail();
                     cteFrm.ShowDialog();
@@ -113,6 +115,32 @@ namespace Protocol
                         string exMess = ex.Message; //do nothing - constructor catches the exception
                         //MessageBox.Show(exMess);
                     }
+                    */
+
+                    try
+                    {
+                        //Show Contacts...
+                        outlookForms oF = new outlookForms();
+                        oF.showContacts();
+
+                        if (oF.RecipientsList.Count > 0)
+                        {
+                            //Show Mail... 
+                            oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Send Mail... 
+                            //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        //MessageBox.Show(exMess);
+                    }
+
                 }
             }
             //else if (frmProtoIns.successfulInsertion == false && frmProtoIns.chbSendMail.Checked == true)
