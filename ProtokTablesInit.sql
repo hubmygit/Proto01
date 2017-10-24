@@ -1,0 +1,81 @@
+--ok-- select * from [dbo].[AppAuth]
+--truncate table [GramDB].[dbo].[AppAuth]
+--INSERT INTO [GramDB].[dbo].[AppAuth] ([UserId],[CompanyId]) VALUES (1,999)
+-----------------------------------------------
+--ok-- select * from [dbo].[AppUsers]
+--delete from [GramDB].[dbo].[AppUsers]
+--DBCC CHECKIDENT ('[GramDB].[dbo].[AppUsers]', RESEED, 0)
+--INSERT INTO [GramDB].[dbo].[AppUsers] ([WinUser],[FullName],[EmailAddress],[InsDate]) VALUES ('hkylidis','Kylidis Haralampos','hkylidis@moh.gr','20171001')
+-----------------------------------------------
+--ok-- select * from [dbo].[Company]
+--truncate table [GramDB].[dbo].[Company]
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (1,'MOTOR OIL')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (2,'AVIN')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (3,'LPC')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (4,'BFS')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (5,'ΜΑΚΡΑΙΩΝ')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (6,'MOTOR OIL TRADING')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (7,'ΗΛ. ΠΑΡΑΓ. ΣΟΥΣΑΚΙΟΥ')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (8,'CYTOP')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (9,'ΕΛ.ΤΕ.ΠΕ.')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (10,'ΕΝ.ΔΙ.Α.Λ.Ε')
+--INSERT INTO [GramDB].[dbo].[Company] ([id],[Name]) VALUES (11,'Κ.Ε.ΠΕ.Δ')
+-----------------------------------------------
+--xx-- select * from [dbo].[Contacts]
+--truncate table [GramDB].[dbo].[Contacts]
+-----------------------------------------------
+--ok-- select * from [dbo].[DocsIds]
+--truncate table [GramDB].[dbo].[DocsIds]
+-----------------------------------------------
+--ok-- select * from [dbo].[Folders]
+--truncate table [GramDB].[dbo].[Folders]
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (1,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 1, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (2,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 1, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (3,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 2, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (4,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 2, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (5,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 3, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (6,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 3, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (7,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 4, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (8,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 4, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (9,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 5, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (10,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 5, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (11,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 6, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (12,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 6, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (13,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 7, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (14,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 7, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (15,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 8, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (16,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 8, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (17,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 9, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (18,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 9, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (19,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 10, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (20,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 10, 2)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (21,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 11, 1)
+--INSERT INTO [GramDB].[dbo].[Folders] ([Id],[Name],[Descr],[CompanyId],[ProcedId]) VALUES (22,'Χωρίς Φάκελο Αρχείου', 'Χωρίς Φάκελο Αρχείου', 11, 2)
+-----------------------------------------------
+--ok-- select * from [dbo].[Proced]
+--truncate table [GramDB].[dbo].Proced
+--INSERT INTO [GramDB].[dbo].[Proced] ([id],[Name],[ProcedId],[Counter],[YearInit]) VALUES (1,'Εισερχόμενα',1,'ES',0)
+--INSERT INTO [GramDB].[dbo].[Proced] ([id],[Name],[ProcedId],[Counter],[YearInit]) VALUES (2,'Εξερχόμενα',2,'EJ',0)
+-----------------------------------------------
+--ok-- select * from [dbo].[Protok] 
+--truncate table [GramDB].[dbo].[Protok]
+-----------------------------------------------
+--ok-- select * from [dbo].[ProtokPdf]
+--truncate table [GramDB].[dbo].[ProtokPdf]
+-----------------------------------------------
+--ok-- select * from [dbo].[ReceiverList]
+--truncate table [GramDB].[dbo].[ReceiverList]
+-----------------------------------------------
+--ok-- select * from [dbo].[TableIds]
+--truncate table [GramDB].[dbo].[TableIds]
+--INSERT INTO [GramDB].[dbo].[TableIds] ([TABLENAME],[NUM]) VALUES ('DocsIds', 0)
+--INSERT INTO [GramDB].[dbo].[TableIds] ([TABLENAME],[NUM]) VALUES ('Protok', 0)
+--INSERT INTO [GramDB].[dbo].[TableIds] ([TABLENAME],[NUM]) VALUES ('VersionInfo', 1012)
+--INSERT INTO [GramDB].[dbo].[TableIds] ([TABLENAME],[NUM]) VALUES ('Contacts', 10057) --??
+-----------------------------------------------
+--ok-- select * from [dbo].[ToCcBcc]
+--truncate table [GramDB].[dbo].[ToCcBcc]
+--INSERT INTO [GramDB].[dbo].[ToCcBcc] ([Id],[Name]) VALUES (1, 'To') 
+--INSERT INTO [GramDB].[dbo].[ToCcBcc] ([Id],[Name]) VALUES (2, 'CC') 
+--INSERT INTO [GramDB].[dbo].[ToCcBcc] ([Id],[Name]) VALUES (3, 'BCC') 
+-----------------------------------------------

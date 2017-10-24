@@ -253,12 +253,16 @@ namespace Protocol
                 if (ctrl.Parent.Text == "Μεταβολή" || ctrl.Parent.Text == "Εμφάνιση") //update mode
                 {
                     string ext = "";
-                    string tempFile = Path.Combine(Application.StartupPath + "\\Temp\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\
+                    //string tempFile = Path.Combine(Application.StartupPath + "\\Temp\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
                     try
                     {
-                        if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+                        //if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+                        if (!Directory.Exists(tempPath))
                         {
-                            Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
+                            //Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
+                            MessageBox.Show("Σφάλμα. Παρακαλώ ελέγξτε τα δικαιώματά σας στο " + tempPath);
                         }
                     }
                     catch (Exception ex)
