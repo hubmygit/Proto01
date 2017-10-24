@@ -128,7 +128,7 @@ namespace Protocol
             //updScreen.txtId.Enabled = false;
             updScreen.txtId.Text = lvRowId;
 
-            updScreen.txtName.Text = lvRep.SelectedItems[0].SubItems[3].Text; //2
+            updScreen.txtName.Text = lvRep.SelectedItems[0].SubItems[1].Text; //2??
             updScreen.txtDescr.Text = lvRep.SelectedItems[0].SubItems[4].Text; //3
 
             updScreen.btnInsert.Enabled = false;

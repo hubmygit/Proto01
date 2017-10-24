@@ -161,7 +161,7 @@ namespace Protocol
             if (txtFolderName.Text.Trim() != "")
             {
                 savedFilters.Add(new Filter("txtFolderName", txtFolderName.Text));
-                whereStr += " AND F.Name = '" + txtFolderName.Text + "'";
+                whereStr += " AND F.Name like '%" + txtFolderName.Text + "%'";
             }
             if (chbHasProtocols.Checked)
             {

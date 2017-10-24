@@ -23,6 +23,8 @@ namespace Protocol
 
         public void ShowDataToListView(ListView lvReport)
         {
+            lvReport.Items.Clear();
+
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT F.Name as Folder, C.Name as Company, PR.Name as Proced, F.Descr, count(P.FolderId) as Cnt, F.Id " +
                               "FROM [dbo].[Folders] F left outer join [dbo].[Company] C on C.Id = F.CompanyId " +
@@ -126,14 +128,27 @@ namespace Protocol
             //updScreen.txtId.Enabled = false;
             updScreen.txtId.Text = lvRowId;
 
-            updScreen.txtName.Text = lvRep.SelectedItems[0].SubItems[1].Text; //2
+            updScreen.txtName.Text = lvRep.SelectedItems[0].SubItems[1].Text; //2??
             updScreen.txtDescr.Text = lvRep.SelectedItems[0].SubItems[4].Text; //3
             
             updScreen.ShowDialog();
 
             //refresh listView - ToDo: Not always. Only after real insert
-            lvRep.Items.Clear();
-            ShowDataToListView(lvRep);
+            //lvRep.Items.Clear();
+            //ShowDataToListView(lvRep);
+
+            if (FiltersFrm == null)
+            {
+                //no filters
+                ShowDataToListView(lvRep);
+                //lvRep.Refresh();
+            }
+            else
+            {
+                //get filters
+                ShowDataToListView(lvRep, FiltersFrm.whereStr, FiltersFrm.havingStr);
+            }
+
         }
 
         FoldersFiltersForm FiltersFrm;
