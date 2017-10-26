@@ -230,8 +230,10 @@ namespace Protocol
 
             savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("dd-MM-yyyy")));
             savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("dd-MM-yyyy")));
-            whereStr += " AND P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                     "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
+            //whereStr += " AND P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+            //                         "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
+            whereStr += " AND P.DocumentGetSetDate between '" + dtpGetSetDate_From.Value.ToString("yyyyMMdd") +
+                                     "' and '" + dtpGetSetDate_To.Value.ToString("yyyyMMdd") + "' ";
 
             /*
             List<ComboboxItem> CheckedItems = new List<ComboboxItem>();
@@ -301,12 +303,17 @@ namespace Protocol
                 whereStr += " AND P.CompanyId in (" + whereItems + ") ";
             }
 
-            if (isCheckedListBoxItemChecked(chlbProced, "Εισερχόμενα"))
+            savedFilters.Add(new Filter("dtp_DocDate_From", dtp_DocDate_From.Value.ToString("dd-MM-yyyy")));
+            savedFilters.Add(new Filter("dtp_DocDate_To", dtp_DocDate_To.Value.ToString("dd-MM-yyyy")));
+            if (isCheckedListBoxItemChecked(chlbProced, "Εισερχόμενα") == false && isCheckedListBoxItemChecked(chlbProced, "Εξερχόμενα") == true)
             {
-                savedFilters.Add(new Filter("dtp_DocDate_From", dtp_DocDate_From.Value.ToString("dd-MM-yyyy")));
-                savedFilters.Add(new Filter("dtp_DocDate_To", dtp_DocDate_To.Value.ToString("dd-MM-yyyy")));
-                whereStr += " AND P.DocumentDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                         "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
+                //don't print filters
+            }
+            else
+            {
+                //only inbox can filter this field            
+                whereStr += " AND isnull(P.DocumentDate, '" + dtp_DocDate_From.Value.ToString("yyyyMMdd") + "') between '" + dtp_DocDate_From.Value.ToString("yyyyMMdd") +
+                                             "' and '" + dtp_DocDate_To.Value.ToString("yyyyMMdd") + "' ";
             }
 
             if (txtProelKateuth.Text.Trim() != "")

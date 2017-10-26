@@ -368,6 +368,8 @@ namespace Protocol
             }
             else
             {
+                bool ProcedEis = false;
+                bool ProcedEx = false;
                 foreach (Filter thisFilter in savedFilterControls)
                 {
                     if (thisFilter.FieldName == "chlbCompany")
@@ -397,6 +399,15 @@ namespace Protocol
                         foreach (string thisVal in thisFilter.FieldCheckedValues)
                         {
                             FProced += thisVal + ",";
+
+                            if (thisVal == "Εισερχόμενα")
+                            {
+                                ProcedEis = true;
+                            }
+                            else if (thisVal == "Εξερχόμενα")
+                            {
+                                ProcedEx = true;
+                            }
                         }
                         if (FProced.Length > 0)
                         {
@@ -440,7 +451,17 @@ namespace Protocol
                         //ret += "\r\n";
                         //filterNames.Add("Ημ.Έκδοσης:");
                         //filterValues.Add(DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy"));
-                        filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
+
+                        //filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
+                        if (ProcedEis == false && ProcedEx == true)
+                        {
+                            //don't print filters
+                        }
+                        else
+                        {
+                            filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
+                        }
+                        
 
                         continue;
                     }

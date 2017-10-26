@@ -332,9 +332,16 @@ namespace Protocol
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_From", new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MM-yyyy")));
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
 
+                FiltersFrm.savedFilters.Add(new Filter("dtp_DocDate_From", new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MM-yyyy")));
+                FiltersFrm.savedFilters.Add(new Filter("dtp_DocDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
+
                 //set where... 
-                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
-                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+                //FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
+                //                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+                FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 " +
+                                      " and isnull(P.DocumentDate, '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + "') between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 
                 //FiltersFrm.JoinFiltersWithControls();
             }
@@ -381,9 +388,16 @@ namespace Protocol
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_From", new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MM-yyyy")));
                 FiltersFrm.savedFilters.Add(new Filter("dtpGetSetDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
 
+                FiltersFrm.savedFilters.Add(new Filter("dtp_DocDate_From", new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MM-yyyy")));
+                FiltersFrm.savedFilters.Add(new Filter("dtp_DocDate_To", new DateTime(DateTime.Now.Year, 12, 31).ToString("dd-MM-yyyy")));
+
                 //set where... 
+                //FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                //                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
                 FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 " +
+                                      " and isnull(P.DocumentDate, '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + "') between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 
                 btnFilters.Font = new Font(btnFilters.Font, FontStyle.Regular);
 
