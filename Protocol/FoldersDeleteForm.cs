@@ -122,7 +122,7 @@ namespace Protocol
             {
                 if (Convert.ToInt32(lvRowCnt) > 0)
                 {
-                    MessageBox.Show("Υπάρχουν " + lvRowCnt + " αναφορές Πρωτοκόλλων για αυτό το Φάκελο. \r\nΔε θα πραγματοποιηθεί η διαγραφή του Φακέλου;", "Διαγραφή", MessageBoxButtons.YesNo);
+                    MessageBox.Show("Υπάρχουν " + lvRowCnt + " αναφορές Πρωτοκόλλων για αυτό το Φάκελο. \r\nΔε θα πραγματοποιηθεί η διαγραφή του Φακέλου.", "Διαγραφή");
                     return;
                 }
 
