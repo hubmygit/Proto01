@@ -179,11 +179,11 @@
             this.lblDocDate.AutoSize = true;
             this.lblDocDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblDocDate.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblDocDate.Location = new System.Drawing.Point(91, 69);
+            this.lblDocDate.Location = new System.Drawing.Point(57, 69);
             this.lblDocDate.Name = "lblDocDate";
-            this.lblDocDate.Size = new System.Drawing.Size(88, 17);
+            this.lblDocDate.Size = new System.Drawing.Size(122, 17);
             this.lblDocDate.TabIndex = 32;
-            this.lblDocDate.Text = "Ημ.Έκδοσης";
+            this.lblDocDate.Text = "Ημ.Έκδοσης(Εισ.)";
             // 
             // txtProelKateuth
             // 

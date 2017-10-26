@@ -365,6 +365,8 @@ namespace Protocol
                 //filterNames.Add("Ημ.Λήψης/Αποστ.:");
                 //filterValues.Add(new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy"));
                 filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Λήψης/Αποστ.:", filterValues = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy") });
+
+                filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης(Εισ.):", filterValues = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd.MM.yyyy") + "-" + new DateTime(DateTime.Now.Year, 12, 31).ToString("dd.MM.yyyy") });
             }
             else
             {
@@ -459,7 +461,7 @@ namespace Protocol
                         }
                         else
                         {
-                            filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης:", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
+                            filterObjs.Add(new PrintFilterObj { filterNames = "Ημ.Έκδοσης(Εισ.):", filterValues = DateTime.Parse(thisFilter.FieldValue).ToString("dd.MM.yyyy") + "-" + DateTime.Parse(savedFilterControls.Find(x => x.FieldName == "dtp_DocDate_To").FieldValue).ToString("dd.MM.yyyy") });
                         }
                         
 
