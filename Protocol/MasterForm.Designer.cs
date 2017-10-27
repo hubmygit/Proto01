@@ -57,6 +57,7 @@
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -200,6 +201,7 @@
             // 
             this.HelpTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UserInfoTSMenuItem,
+            this.ManualTSMenuItem,
             this.VersionTSMenuItem});
             this.HelpTSMenuItem.Name = "HelpTSMenuItem";
             this.HelpTSMenuItem.Size = new System.Drawing.Size(62, 20);
@@ -208,14 +210,14 @@
             // UserInfoTSMenuItem
             // 
             this.UserInfoTSMenuItem.Name = "UserInfoTSMenuItem";
-            this.UserInfoTSMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.UserInfoTSMenuItem.Size = new System.Drawing.Size(171, 22);
             this.UserInfoTSMenuItem.Text = "Στοιχεία Χρήστη";
             this.UserInfoTSMenuItem.Click += new System.EventHandler(this.UserInfoTSMenuItem_Click);
             // 
             // VersionTSMenuItem
             // 
             this.VersionTSMenuItem.Name = "VersionTSMenuItem";
-            this.VersionTSMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.VersionTSMenuItem.Size = new System.Drawing.Size(171, 22);
             this.VersionTSMenuItem.Text = "Έκδοση";
             this.VersionTSMenuItem.Click += new System.EventHandler(this.VersionTSMenuItem_Click);
             // 
@@ -306,6 +308,13 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // ManualTSMenuItem
+            // 
+            this.ManualTSMenuItem.Name = "ManualTSMenuItem";
+            this.ManualTSMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.ManualTSMenuItem.Text = "Εγχειρίδιο Χρήσης";
+            this.ManualTSMenuItem.Click += new System.EventHandler(this.ManualTSMenuItem_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +373,7 @@
         private System.Windows.Forms.ToolStripMenuItem StatisticsTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem YMStatsTSMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem ManualTSMenuItem;
     }
 }
 

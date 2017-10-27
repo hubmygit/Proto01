@@ -445,6 +445,81 @@ namespace Protocol
             Statistics frmStatistics = new Statistics();
             frmStatistics.ShowDialog();
         }
+
+        private void ManualTSMenuItem_Click(object sender, EventArgs e)
+        {
+            //insert manual
+            /*
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string InsSt = "INSERT INTO [dbo].[Doc] (DocType, DocName, DocCont) VALUES ('Manual', 'ProtocolManual.pdf', @DocCont) ";
+            try
+            {
+                byte[] fileBytes = System.IO.File.ReadAllBytes("C:\\Tests\\ProtocolManual.pdf");
+                sqlConn.Open();
+                SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
+                cmd.Parameters.Add("@DocCont", SqlDbType.VarBinary).Value = fileBytes;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+            */
+
+
+            ////Open Manual
+            //string lvPath = "";
+            //string ext = "";
+            //string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\                                   
+            //string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+            //try
+            //{
+            //    //if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
+            //    if (!Directory.Exists(tempPath))
+            //    {
+            //        //Directory.CreateDirectory(Application.StartupPath + "\\Temp\\");
+            //        MessageBox.Show("Σφάλμα. Παρακαλώ ελέγξτε τα δικαιώματά σας στο " + tempPath);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("The following error occurred: " + ex.Message);
+            //    return;
+            //}
+
+            //SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            //string SelectSt = "SELECT [FileCont] FROM [dbo].[ProtokPdf] WHERE ProtokId = @ProtokId and PdfText = @PdfText";
+            //SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            //try
+            //{
+            //    sqlConn.Open();
+
+            //    ProtokoloInsertForm pif = (ProtokoloInsertForm)ctrl.FindForm();
+
+            //    cmd.Parameters.AddWithValue("@ProtokId", pif.Protok_Id_For_Updates);
+            //    cmd.Parameters.AddWithValue("@PdfText", lv.SelectedItems[0].SubItems[0].Text);
+
+            //    SqlDataReader reader = cmd.ExecuteReader();
+
+            //    while (reader.Read())
+            //    {
+            //        string fname = lv.SelectedItems[0].SubItems[0].Text;
+            //        ext = fname.Substring(fname.LastIndexOf("."));
+            //        lvPath = tempFile + ext;
+            //        //reader["FileCont"].ToString()
+            //        File.WriteAllBytes(tempFile + ext, (byte[])reader["FileCont"]);
+            //    }
+            //    reader.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("The following error occurred: " + ex.Message);
+            //    return;
+            //}
+
+            //System.Diagnostics.Process.Start(lvPath);
+        }
     }
 
     /*
