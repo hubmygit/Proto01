@@ -112,73 +112,124 @@ namespace Protocol
 
 
             //allow to drag n drop file from outlook
-            /*
+
+            //e.Data.GetDataPresent: 
+            // ~~~  file from Explorer (DataFormats.FileDrop)
+            // ~~~  file from Outlook ("FileGroupDescriptor")
+
             try
-            {
-                if (e.Data.GetDataPresent("FileGroupDescriptor"))
+            {               
+                if (e.Data.GetDataPresent(DataFormats.FileDrop, false)) //file from Explorer
                 {
-                    //
-                    // the first step here is to get the filename
-                    // of the attachment and
-                    // build a full-path name so we can store it
-                    // in the temporary folder
-                    //
+                    addFilesIntoListView((ListView)sender, (string[])e.Data.GetData(DataFormats.FileDrop));
+                }
+                else if (e.Data.GetDataPresent("FileGroupDescriptor")) //file from Outlook
+                {
 
-                    // set up to obtain the FileGroupDescriptor
-                    // and extract the file name
+
                     Stream theStream = (Stream)e.Data.GetData("FileGroupDescriptor");
-                    byte[] fileGroupDescriptor = new byte[512];
-                    theStream.Read(fileGroupDescriptor, 0, 512);
-                    // used to build the filename from the FileGroupDescriptor block
-                    StringBuilder fileName = new StringBuilder("");
-                    // this trick gets the filename of the passed attached file
-                    for (int i = 76; fileGroupDescriptor[i] != 0; i++)
-                    { fileName.Append(Convert.ToChar(fileGroupDescriptor[i])); }
-                    theStream.Close();
-                    string path = Path.GetTempPath();
-                    // put the zip file into the temp directory
-                    string theFile = path + fileName.ToString();
-                    // create the full-path name
+                    byte[] fileGroupDescriptor = new byte[theStream.Length]; //512
+                    theStream.Read(fileGroupDescriptor, 0, Convert.ToInt32(theStream.Length)); //512
+                    string FileNamesStr = Encoding.Default.GetString(fileGroupDescriptor);
 
-                    //
-                    // Second step:  we have the file name.
-                    // Now we need to get the actual raw
-                    // data for the attached file and copy it to disk so we work on it.
-                    //
+                    List<string> filesList = FileNamesStr.Split('\0').ToList<string>();
+                    //filesList.Remove("\u0002");
+                    //filesList.Remove("\u0003");
+                    //filesList.RemoveAll(item => item == "");
+                    //for (int i = 0; i < filesList.Count; i++)
+                    //{
+                    //    //    string dsdd = System.Text.RegularExpressions.Regex.Replace(filesList[i], @"[^\u0000-\u007F]", string.Empty);
+                    //    filesList[i] = System.Text.RegularExpressions.Regex.Replace(filesList[i], @"[^\u0000-\u0020]", string.Empty);
+                    //}
 
-                    // get the actual raw file into memory
-                    MemoryStream ms = (MemoryStream)e.Data.GetData(
-                        "FileContents", true);
-                    // allocate enough bytes to hold the raw data
-                    byte[] fileBytes = new byte[ms.Length];
-                    // set starting position at first byte and read in the raw data
-                    ms.Position = 0;
-                    ms.Read(fileBytes, 0, (int)ms.Length);
-                    // create a file and save the raw zip file to it
-                    FileStream fs = new FileStream(theFile, FileMode.Create);
-                    fs.Write(fileBytes, 0, (int)fileBytes.Length);
+                    filesList = filesList.Where(item => item.Contains(".pdf")).ToList<string>();
 
-                    fs.Close();  // close the file
-
-                    FileInfo tempFile = new FileInfo(theFile);
-
-                    // always good to make sure we actually created the file
-                    if (tempFile.Exists == true)
+                    if (filesList.Count > 1)
                     {
-                        // for now, just delete what we created
-                        tempFile.Delete();
+                        MessageBox.Show("Παρακαλώ μεταφέρετε μόνο ένα αρχείο κάθε φορά!");
+                        //return;
                     }
                     else
-                    { MessageBox.Show("File was not created!"); }
+                    {
+                        string fileName = GetOutlookAttachmentAndSaveIt((Stream)e.Data.GetData("FileGroupDescriptor"), (MemoryStream)e.Data.GetData("FileContents", true));
+                        addFilesIntoListView((ListView)sender, new string[] { fileName });
+                    }
+                }
+                else
+                {
+                    addFilesIntoListView((ListView)sender, (string[])e.Data.GetData(DataFormats.FileDrop)); //????
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error in DragDrop function: " + ex.Message);
+                MessageBox.Show("The following error occurred: " + ex.Message);
             }
-            */
+            
 
-            addFilesIntoListView((ListView)sender, (string[])e.Data.GetData(DataFormats.FileDrop));
+            //addFilesIntoListView((ListView)sender, (string[])e.Data.GetData(DataFormats.FileDrop));
+        }
+
+        string GetOutlookAttachmentAndSaveIt(Stream fileStr, MemoryStream rawFileMemStr)
+        {
+            string ret = "";
+            try
+            {
+                //Get the filename of the attachment and build a full-path name so we can store it in the temporary folder
+
+                //Set up to obtain the FileGroupDescriptor and extract the file name 
+                //Stream theStream = (Stream)e.Data.GetData("FileGroupDescriptor");
+                Stream theStream = fileStr;
+                byte[] fileGroupDescriptor = new byte[theStream.Length]; //512
+                theStream.Read(fileGroupDescriptor, 0, Convert.ToInt32(theStream.Length)); //512
+                // used to build the filename from the FileGroupDescriptor block
+                StringBuilder fileName = new StringBuilder("");
+                // this trick gets the filename of the passed attached file
+                //string mystring = "";
+
+                for (int i = 76; fileGroupDescriptor[i] != 0; i++)
+                {
+                    //mystring += Encoding.Default.GetString(fileGroupDescriptor, i, 1);
+                    //fileName.Append(Convert.ToChar(fileGroupDescriptor[i]));
+
+                    fileName.Append(Encoding.Default.GetString(fileGroupDescriptor, i, 1));
+                }
+                theStream.Close();
+                string path = Path.GetTempPath();
+                string theFile = path + fileName.ToString();
+
+
+                // Second step:  we have the file name. Now we need to get the actual raw data for the attached file and copy it to disk so we work on it.
+
+                // get the actual raw file into memory
+                //MemoryStream ms = (MemoryStream)e.Data.GetData("FileContents", true);
+                MemoryStream ms = rawFileMemStr;
+                byte[] fileBytes = new byte[ms.Length];
+                // set starting position at first byte and read in the raw data
+                ms.Position = 0;
+                ms.Read(fileBytes, 0, (int)ms.Length);
+                // create a file and save the raw (pdf) file to it
+                FileStream fs = new FileStream(theFile, FileMode.Create);
+                fs.Write(fileBytes, 0, (int)fileBytes.Length);
+                fs.Close();  // close the file
+
+                FileInfo tempFile = new FileInfo(theFile);
+                // always good to make sure we actually created the file
+                if (tempFile.Exists == true)
+                {
+                    //tempFile.Delete();
+                    ret = theFile;
+                }
+                else
+                {
+                    MessageBox.Show("File was not created!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
         }
 
         /*
@@ -543,4 +594,6 @@ namespace Protocol
         */
 
     }
+
+
 }
