@@ -322,7 +322,8 @@ namespace Protocol
                     string ext = "";
                     string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\
                     //string tempFile = Path.Combine(Application.StartupPath + "\\Temp\\", Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
-                    string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    //string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
+                    string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(lv.SelectedItems[0].SubItems[0].Text) + "~" + Path.GetFileNameWithoutExtension(Path.GetTempFileName()));
                     try
                     {
                         //if (!Directory.Exists(Application.StartupPath + "\\Temp\\"))
