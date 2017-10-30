@@ -71,8 +71,19 @@ namespace Protocol
                     }
 
                     string exchName = snd.Recipients[i].Name;
-                    string exchUser = snd.Recipients[i].AddressEntry.GetExchangeUser().PrimarySmtpAddress;
-                    string exchCompany = snd.Recipients[i].AddressEntry.GetExchangeUser().CompanyName;
+
+                    string exchUser = "";
+                    string exchCompany = "";
+                    if (snd.Recipients[i].AddressEntry.GetExchangeUser() == null)
+                    {
+                        exchUser = snd.Recipients[i].AddressEntry.Name;
+                        exchCompany = "Unknown";
+                    }
+                    else
+                    {
+                        exchUser = snd.Recipients[i].AddressEntry.GetExchangeUser().PrimarySmtpAddress;
+                        exchCompany = snd.Recipients[i].AddressEntry.GetExchangeUser().CompanyName;
+                    }
 
                     RecipientsList.Add(new Recipient(exchName, exchUser, exchType, exchCompany));
                 }
@@ -219,14 +230,15 @@ namespace Protocol
                 foreach (Recipient thisRec in RecipientsList)
                 {
                     SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                    string InsSt = "INSERT INTO [dbo].[ReceiverList] (ProtokId, ToCcBcc, MailAddress, InsDt) VALUES (@ProtokId, @ToCcBcc, @MailAddress, getdate())";
+                    string InsSt = "INSERT INTO [dbo].[ReceiverList] (ProtokId, ToCcBcc, MailAddress, InsDt, ExchName) VALUES (@ProtokId, @ToCcBcc, @MailAddress, getdate(), @ExchName)";
                     try
                     {
                         sqlConn.Open();
                         SqlCommand cmd = new SqlCommand(InsSt, sqlConn);
                         cmd.Parameters.AddWithValue("@ProtokId", protokId);
                         cmd.Parameters.AddWithValue("@ToCcBcc", thisRec.ExchTypeInt());
-                        cmd.Parameters.AddWithValue("@MailAddress", thisRec.ExchUser); 
+                        cmd.Parameters.AddWithValue("@MailAddress", thisRec.ExchUser);
+                        cmd.Parameters.AddWithValue("@ExchName", thisRec.ExchName);
 
                         cmd.CommandType = CommandType.Text;
                         int rowsAffected = cmd.ExecuteNonQuery();
@@ -277,7 +289,7 @@ namespace Protocol
         }
         public Recipient(string exchName, string exchUser, string exchType, string exchCompany)
         {
-            ExchName = exchCompany;
+            ExchName = exchName;
             ExchUser = exchUser;
             ExchTypeStr = exchType;
             ExchCompany = exchCompany;
