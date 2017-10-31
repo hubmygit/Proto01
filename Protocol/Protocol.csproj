@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MailRecipientsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailRecipientsList.Designer.cs">
+      <DependentUpon>MailRecipientsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Statistics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     <Compile Include="_GramV3_DevDataSet_Contact.Designer.cs">
       <DependentUpon>_GramV3_DevDataSet_Contact.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MailRecipientsList.resx">
+      <DependentUpon>MailRecipientsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Statistics.resx">
       <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>

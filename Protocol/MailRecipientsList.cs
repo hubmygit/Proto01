@@ -11,29 +11,27 @@ using System.Data.SqlClient;
 
 namespace Protocol
 {
-    public partial class MailRecipients : Form
+    public partial class MailRecipientsList : Form
     {
-        public MailRecipients()
+        public MailRecipientsList()
         {
             InitializeComponent();
         }
 
-        public int protokId = 0;
-
-        public MailRecipients(int ProtokolId)
+        public MailRecipientsList(int ProtokolId)
         {
             InitializeComponent();
 
-            protokId = ProtokolId;
-            btnShowRecLv.Visible = true;
+            ShowRecipientsToListView(lvRep, ProtokolId);
 
+            /*
             string RecipientsTo = "";
             string RecipientsCc = "";
             string RecipientsBcc = "";
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress, R.ExchName " +
-                "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc WHERE R.ProtokId = " + ProtokolId;
+                "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc WHERE R.ProtokId = " + Protok_Id_For_Updates;
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -63,15 +61,38 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
 
-            txtRecipientsTo.Text = RecipientsTo;
-            txtRecipientsCc.Text = RecipientsCc;
-            txtRecipientsBcc.Text = RecipientsBcc;
+            mailRec.txtRecipientsTo.Text = RecipientsTo;
+            mailRec.txtRecipientsCc.Text = RecipientsCc;
+            mailRec.txtRecipientsBcc.Text = RecipientsBcc;
+*/
         }
 
-        private void btnShowRecLv_Click(object sender, EventArgs e)
+        public void ShowRecipientsToListView(ListView lvReport, int ProtokolId)
         {
-            MailRecipientsList mailRecList = new MailRecipientsList(protokId);
-            mailRecList.ShowDialog();
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress, R.ExchName " +
+                "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc " + 
+                "WHERE R.ProtokId = " + ProtokolId + 
+                " ORDER BY R.ToCcBcc ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string[] row = { reader["Name"].ToString(), reader["MailAddress"].ToString(), reader["ExchName"].ToString() };
+
+                    ListViewItem listViewItem = new ListViewItem(row);
+                    lvReport.Items.Add(listViewItem);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
         }
     }
 }

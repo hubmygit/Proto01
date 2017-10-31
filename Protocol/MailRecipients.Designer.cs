@@ -36,6 +36,7 @@
             this.txtRecipientsTo = new System.Windows.Forms.TextBox();
             this.lblRecipientsTo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnShowRecLv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,11 +116,24 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // btnShowRecLv
+            // 
+            this.btnShowRecLv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.btnShowRecLv.Image = global::Protocol.Properties.Resources.LookupUser_32x;
+            this.btnShowRecLv.Location = new System.Drawing.Point(282, 230);
+            this.btnShowRecLv.Name = "btnShowRecLv";
+            this.btnShowRecLv.Size = new System.Drawing.Size(40, 40);
+            this.btnShowRecLv.TabIndex = 21;
+            this.btnShowRecLv.UseVisualStyleBackColor = true;
+            this.btnShowRecLv.Visible = false;
+            this.btnShowRecLv.Click += new System.EventHandler(this.btnShowRecLv_Click);
+            // 
             // MailRecipients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 262);
+            this.ClientSize = new System.Drawing.Size(604, 282);
+            this.Controls.Add(this.btnShowRecLv);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtRecipientsTo);
             this.Controls.Add(this.lblRecipientsTo);
@@ -128,8 +142,8 @@
             this.Controls.Add(this.lblRecipientsBcc);
             this.Controls.Add(this.lblRecipientsCc);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(620, 300);
-            this.MinimumSize = new System.Drawing.Size(620, 300);
+            this.MaximumSize = new System.Drawing.Size(620, 320);
+            this.MinimumSize = new System.Drawing.Size(620, 320);
             this.Name = "MailRecipients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Παραλήπτες";
@@ -147,5 +161,6 @@
         public System.Windows.Forms.TextBox txtRecipientsCc;
         public System.Windows.Forms.TextBox txtRecipientsBcc;
         public System.Windows.Forms.TextBox txtRecipientsTo;
+        public System.Windows.Forms.Button btnShowRecLv;
     }
 }

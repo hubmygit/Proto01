@@ -1121,6 +1121,11 @@ namespace Protocol
 
         private void btnShowRecipients_Click(object sender, EventArgs e)
         {
+            MailRecipients mailRec = new MailRecipients(Protok_Id_For_Updates);
+            mailRec.ShowDialog();
+
+            //do these into constructor...
+            /*
             MailRecipients mailRec = new MailRecipients();
             
             //string Recipients = "";
@@ -1129,7 +1134,7 @@ namespace Protocol
             string RecipientsBcc = "";
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress " +
+            string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress, R.ExchName " +
                 "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc WHERE R.ProtokId = " + Protok_Id_For_Updates;
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -1169,6 +1174,7 @@ namespace Protocol
             mailRec.txtRecipientsCc.Text = RecipientsCc;
             mailRec.txtRecipientsBcc.Text = RecipientsBcc;
             mailRec.ShowDialog();
+            */
         }
     }
 
