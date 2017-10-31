@@ -83,7 +83,7 @@ namespace Protocol
                     catch (Exception ex)
                     {
                         string exMess = ex.Message; //do nothing - constructor catches the exception
-                        //MessageBox.Show(exMess);
+                        MessageBox.Show("The following error occurred: " + exMess);
                     }
                 }
                 else if (frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
@@ -139,7 +139,7 @@ namespace Protocol
                     catch (Exception ex)
                     {
                         string exMess = ex.Message; //do nothing - constructor catches the exception
-                        //MessageBox.Show(exMess);
+                        MessageBox.Show("The following error occurred: " + exMess);
                     }
 
                 }
