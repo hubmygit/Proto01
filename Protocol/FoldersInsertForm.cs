@@ -18,8 +18,10 @@ namespace Protocol
             InitializeComponent();
 
             cbCompany.Items.AddRange(ProtokoloInsertForm.GetObjCompanies());
-            cbProced.Items.AddRange(ProtokoloInsertForm.GetObjProtocolKind());
+            ProtokoloInsertForm.IfUniqueSelectIt(cbCompany);
 
+            cbProced.Items.AddRange(ProtokoloInsertForm.GetObjProtocolKind());
+            
             NewRecord = false;
 
             cbCompany.Select();

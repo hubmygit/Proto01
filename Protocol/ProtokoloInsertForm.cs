@@ -27,6 +27,8 @@ namespace Protocol
             //cbCompany.Items.AddRange(GetCompanies());
             //cbProtokoloKind.Items.AddRange(GetProtocolKind()); 
             cbCompany.Items.AddRange(GetObjCompanies());
+            IfUniqueSelectIt(cbCompany);
+
             cbProtokoloKind.Items.AddRange(GetObjProtocolKind());
 
 
@@ -95,13 +97,19 @@ namespace Protocol
             return KindOfProtocol.ToArray();
         }
 
-        public static ComboboxItem[] GetObjProtocolKind()
+        public static ComboboxItem[] GetObjProtocolKind() //(int ProcedId = 999)
         {
             List<Proced> Proceds = new List<Proced>();
             List<ComboboxItem> cbProceds = new List<ComboboxItem>();
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT Id, Name FROM [dbo].[Proced] ";
+
+            //if (ProcedId != 999)
+            //{
+            //    SelectSt += "WHERE ProcedId = " + ProcedId.ToString();
+            //}
+
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
             {
@@ -1175,6 +1183,14 @@ namespace Protocol
             mailRec.txtRecipientsBcc.Text = RecipientsBcc;
             mailRec.ShowDialog();
             */
+        }
+
+        public static void IfUniqueSelectIt(ComboBox cbControl)
+        {
+            if (cbControl.Items.Count == 1)
+            {
+                cbControl.SelectedIndex = 0; //zero-base
+            }
         }
     }
 
