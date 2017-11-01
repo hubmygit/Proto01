@@ -55,6 +55,7 @@
             this.lblSn = new System.Windows.Forms.Label();
             this.chbHasAtt = new System.Windows.Forms.CheckBox();
             this.chbMailSent = new System.Windows.Forms.CheckBox();
+            this.chbUpdated = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblGetSetDate
@@ -87,7 +88,7 @@
             this.chbDeleted.AutoSize = true;
             this.chbDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chbDeleted.ForeColor = System.Drawing.Color.DarkBlue;
-            this.chbDeleted.Location = new System.Drawing.Point(20, 12);
+            this.chbDeleted.Location = new System.Drawing.Point(185, 12);
             this.chbDeleted.Name = "chbDeleted";
             this.chbDeleted.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chbDeleted.Size = new System.Drawing.Size(180, 21);
@@ -328,11 +329,26 @@
             this.chbMailSent.Text = "Έχει αποσταλεί Email";
             this.chbMailSent.UseVisualStyleBackColor = true;
             // 
+            // chbUpdated
+            // 
+            this.chbUpdated.AutoSize = true;
+            this.chbUpdated.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.chbUpdated.ForeColor = System.Drawing.Color.DarkBlue;
+            this.chbUpdated.Location = new System.Drawing.Point(471, 12);
+            this.chbUpdated.Name = "chbUpdated";
+            this.chbUpdated.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chbUpdated.Size = new System.Drawing.Size(192, 21);
+            this.chbUpdated.TabIndex = 49;
+            this.chbUpdated.Text = "Εμφάνιση Μεταβληθέντων";
+            this.chbUpdated.UseVisualStyleBackColor = true;
+            this.chbUpdated.Visible = false;
+            // 
             // ProtokFiltersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 602);
+            this.Controls.Add(this.chbUpdated);
             this.Controls.Add(this.chbMailSent);
             this.Controls.Add(this.chbHasAtt);
             this.Controls.Add(this.lblSn);
@@ -398,5 +414,6 @@
         private System.Windows.Forms.Label lblSn;
         public System.Windows.Forms.CheckBox chbHasAtt;
         public System.Windows.Forms.CheckBox chbMailSent;
+        public System.Windows.Forms.CheckBox chbUpdated;
     }
 }

@@ -228,6 +228,9 @@ namespace Protocol
             savedFilters.Add(new Filter("chbDeleted", chbDeleted.Checked.ToString()));
             whereStr += " isnull(P.deleted, 0) = " + Convert.ToInt32(chbDeleted.Checked);
 
+            savedFilters.Add(new Filter("chbUpdated", chbUpdated.Checked.ToString()));
+            whereStr += " isnull(P.updated, 0) = " + Convert.ToInt32(chbUpdated.Checked);
+
             savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("dd-MM-yyyy")));
             savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("dd-MM-yyyy")));
             //whereStr += " AND P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +

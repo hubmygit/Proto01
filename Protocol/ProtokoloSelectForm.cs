@@ -32,7 +32,7 @@ namespace Protocol
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId " +
                               "left outer join [dbo].[Folders] F on F.id = P.FolderId " + //and F.CompanyId = P.CompanyId and F.ProcedId = P.ProcedureId " +
                               //"WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 ";
-                              "WHERE year(P.DocumentGetSetDate) = year(getdate()) and isnull(P.deleted, 0) = 0 " +
+                              "WHERE year(P.DocumentGetSetDate) = year(getdate()) and isnull(P.deleted, 0) = 0 and isnull(P.updated, 0) = 0 " +
 
                               " and C.id in (" + UserInfo.CompaniesAsCsvString + ") " +
 
@@ -339,7 +339,7 @@ namespace Protocol
                 //FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + 
                 //                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
                 FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 " +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 and isnull(P.updated, 0) = 0 " +
                                       " and isnull(P.DocumentDate, '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + "') between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
                                       "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 
@@ -395,7 +395,7 @@ namespace Protocol
                 //FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
                 //                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 ";
                 FiltersFrm.whereStr = "WHERE P.DocumentGetSetDate between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
-                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 " +
+                                      "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' and isnull(P.deleted, 0) = 0 and isnull(P.updated, 0) = 0 " +
                                       " and isnull(P.DocumentDate, '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") + "') between '" + new DateTime(DateTime.Now.Year, 1, 1).ToString("yyyyMMdd") +
                                       "' and '" + new DateTime(DateTime.Now.Year, 12, 31).ToString("yyyyMMdd") + "' ";
 

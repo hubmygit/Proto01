@@ -575,10 +575,10 @@ namespace Protocol
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
-                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr, RevNo) " +
                                   "VALUES " +
                                   "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
-                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr, 1) ";
 
                 try
                 {
@@ -617,11 +617,11 @@ namespace Protocol
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   //"(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, " +
-                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, InsDt, InsUsr, RevNo) " +
                                   "VALUES " +
                                   //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
                                   "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
-                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @InsUsr, 1) ";
 
                 try
                 {
@@ -657,7 +657,178 @@ namespace Protocol
             return ret;
         }
 
-        //ToDo...
+        private bool Update_Protok_UpdatedFlag(int Sn, int Year, int CompanyId, int ProcedId, int ExcludeThisId) //UPDATE [dbo].[Protok] 
+        {
+            bool ret = false;
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string UpdSt = "UPDATE [dbo].[Protok] SET Updated = 1 WHERE Sn = @Sn AND Year = @Year AND CompanyId = @CompanyId AND ProcedId = @ProcedId AND Id <> @Id";
+            try
+            {
+                sqlConn.Open();
+                SqlCommand cmd = new SqlCommand(UpdSt, sqlConn);
+
+                cmd.Parameters.AddWithValue("@Sn", Sn);
+                cmd.Parameters.AddWithValue("@Year", Year);
+                cmd.Parameters.AddWithValue("@CompanyId", CompanyId);
+                cmd.Parameters.AddWithValue("@ProcedId", ProcedId);
+                cmd.Parameters.AddWithValue("@Id", ExcludeThisId);
+
+                cmd.CommandType = CommandType.Text;
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    ret = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+
+        public int getMaxRevNo(int Sn, int Year, int CompanyId, int ProcedId)
+        {
+            int ret = 0;
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT max(RevNo) as MaxRevNo FROM [dbo].[Protok] WHERE Sn = @Sn AND Year = @Year AND CompanyId = @ComnpanyId AND ProcedId = @ProcedId  ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+
+            cmd.Parameters.AddWithValue("@Sn", Sn);
+            cmd.Parameters.AddWithValue("@Year", Year);
+            cmd.Parameters.AddWithValue("@CompanyId", CompanyId); 
+            cmd.Parameters.AddWithValue("@ProcedureId", ProcedId); 
+
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ret = Convert.ToInt32(reader["MaxRevNo"].ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+
+        private bool InsertIntoTable_Protok_Revision(int Id, int Sn, int Year, int companyId, int procedId, Panel myPanel)
+        {
+            bool ret = false;
+
+            int RevNo = getMaxRevNo(Sn, Year, companyId, procedId);
+            if (RevNo < 1)//at least 1 row
+            {
+                return ret; //or false
+            }
+            else
+            {
+                RevNo++;
+            }
+
+            if (myPanel.Name == "panelInbox")
+            {
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                string InsertSt = "INSERT INTO [dbo].[Protok] " +
+                                  "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
+                                  "VALUES " +
+                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
+
+                try
+                {
+                    sqlConn.Open();
+                    SqlCommand cmd = new SqlCommand(InsertSt, sqlConn);
+
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@Sn", Sn);
+                    cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
+                    cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
+                    cmd.Parameters.AddWithValue("@DocumentDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInDocDate"])); //datepicker - no time
+                    cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInGetDate"])); //datepicker - no time
+                    cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbInDocNum"].Text.Left(50));
+                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbInProeleusi"].Text.Left(150));
+                    cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbInSummary"].Text);
+                    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text.Left(255));
+                    cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbInFolders"]).SelectedItem).Value).Id); //get object from combobox
+                    cmd.Parameters.AddWithValue("@UpdUsr", UserInfo.DB_AppUser_Id);
+                    cmd.Parameters.AddWithValue("@RevNo", RevNo);
+
+                    cmd.CommandType = CommandType.Text;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        //ret = true;
+                        //update all other (old) records
+                        ret = Update_Protok_UpdatedFlag(Sn, Year, companyId, procedId, Id);                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The following error occurred: " + ex.Message);
+                }
+            }
+            else if (myPanel.Name == "panelOutbox")
+            {
+                SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+                string InsertSt = "INSERT INTO [dbo].[Protok] " +
+                                  //"(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
+                                  "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
+                                  "VALUES " +
+                                  //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
+                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
+
+                try
+                {
+                    sqlConn.Open();
+                    SqlCommand cmd = new SqlCommand(InsertSt, sqlConn);
+
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@Sn", Sn);
+                    cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
+                    cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
+                    cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpOutSetDate"])); //datepicker - no time
+                    //cmd.Parameters.AddWithValue("@DocumentNumber", myPanel.Controls["tbOutDocNum"].Text.Left(50));
+                    cmd.Parameters.AddWithValue("@ProeleusiKateuth", myPanel.Controls["tbOutKateuth"].Text.Left(150));
+                    cmd.Parameters.AddWithValue("@Summary", myPanel.Controls["tbOutSummary"].Text);
+                    cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbOutToText"].Text.Left(255));
+                    cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbOutFolders"]).SelectedItem).Value).Id); //get object from combobox
+                    cmd.Parameters.AddWithValue("@UpdUsr", UserInfo.DB_AppUser_Id);
+                    cmd.Parameters.AddWithValue("@RevNo", RevNo);
+
+                    cmd.CommandType = CommandType.Text;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        //ret = true;
+                        //update all other (old) records
+                        ret = Update_Protok_UpdatedFlag(Sn, Year, companyId, procedId, Id);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("The following error occurred: " + ex.Message);
+                }
+            }
+
+            return ret;
+        }
+
+        /*
         private bool UpdateTable_Protok(int ProtokId, Panel myPanel) //UPDATE [dbo].[Protok] 
         {
             bool ret = false;
@@ -734,6 +905,7 @@ namespace Protocol
 
             return ret;
         }
+        */
 
         public string createInMailSubject(string protokType, int protokSn, string getDate, string proeleusi, string summary)
         {
@@ -762,7 +934,7 @@ namespace Protocol
             ret = "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Περίληψη: " + summary;
             return ret;
         }
-        private void btnInsert_Click(object sender, EventArgs e)
+        public void btnInsert_Click(object sender, EventArgs e)
         {
             //No updates in this phase...
             //if (Protok_Id_For_Updates != 0)
@@ -1098,6 +1270,220 @@ namespace Protocol
 
         }
 
+        public void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (cbCompany.Text.Trim() == "")
+            {
+                MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Εταιρία'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbProtokoloKind.Text.Trim() == "")
+            {
+                MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Κατηγορία Πρωτοκόλλου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (IOBoxPanel.Name == "panelInbox")
+            {
+                if (IOBoxPanel.Controls["cbInFolders"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Φακέλου Αρχείου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (IOBoxPanel.Controls["tbInProeleusi"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Προέλευση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (IOBoxPanel.Controls["tbInSummary"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int proced_Id = ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id;
+                int company_Id = ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id;
+
+                //UPDATE [dbo].[TableIds] 
+                int ProtokId = getNextIdAndUpdateTable_TableIds("Protok");
+
+                //UPDATE [dbo].[DocsIds] - id will remain the same!!!!!!!!!
+                //UpdatedId ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+
+                int ProtokSn = Convert.ToInt32(IOBoxPanel.Controls["tbInProtokoloNum"].Text.Trim());
+                int ProtokYear = Convert.ToInt32(IOBoxPanel.Controls["tbInYear"].Text.Trim());
+
+                if (ProtokId > 0 && ProtokSn > 0)
+                {
+                    //INSERT INTO [dbo].[Protok] 
+                    bool wasSuccessful = InsertIntoTable_Protok_Revision(ProtokId, ProtokSn, ProtokYear, company_Id, proced_Id, IOBoxPanel);
+
+                    if (wasSuccessful)
+                    {
+                        //insert attachments into db
+                        ListView lv = ((ListView)IOBoxPanel.Controls["lvInAttachedFiles"]);
+
+                        foreach (ListViewItem lvi in lv.Items)
+                        {
+                            string attFileName = lvi.SubItems[1].Text;
+                            AttFilesList.Add(attFileName);
+                            byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
+
+                            //INSERT [dbo].[ProtokPdf]
+                            wasSuccessful = InertIntoTable_ProtokPdf(ProtokId, lvi.SubItems[0].Text, attFileBytes);
+
+                            if (!wasSuccessful)
+                            {
+                                MessageBox.Show("Αποτυχία αποθήκευσης του αρχείου: " + lvi.SubItems[0].Text);
+                            }
+                        }
+
+                        MessageBox.Show("Η εγγραφή με αριθμό Πρωτοκόλλου: [ " + ProtokSn.ToString() + " ] ενημερώθηκε επιτυχώς!");
+                        successfulInsertion = wasSuccessful;
+
+                        if (chbSendMail.Checked)
+                        {
+                            myEmail = new Email();
+                            myEmail.ProtokId = ProtokId;
+
+                            //myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
+                            myEmail.Subject = createInMailSubject("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ProtokSn,
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
+
+                            //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ProtokSn,
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
+                        }
+
+                        ShowClosingDialog = false;
+                        Close();
+                    }
+                    else
+                    {
+                        //UPDATE [dbo].[DocsIds] - id will remain the same!!!!!!!!!
+                        //bool resetSn = UpdateTable_DocIds(ProtokSn.deleted, company_Id, proced_Id); //number -= 1
+
+                        //if (resetSn)
+                        //{
+                        MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Σφάλμα κατά την καταχώρηση! Δώθηκε ο αριθμός πρωτοκόλλου " + ProtokSn.inserted.ToString() + " χωρίς να ολοκληρωθεί η καταχώρηση!");
+                        //}
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Σφάλμα κατά τη μεταβολή του Πρωτοκόλλου! Παρακαλώ προσπαθήστε ξανά.");
+                }
+                
+            }
+            else if (IOBoxPanel.Name == "panelOutbox")
+            {
+                if (IOBoxPanel.Controls["cbOutFolders"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αριθμός Φακέλου Αρχείου'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (IOBoxPanel.Controls["tbOutKateuth"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Κατεύθυνση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (IOBoxPanel.Controls["tbOutSummary"].Text.Trim() == "")
+                {
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int proced_Id = ((Proced)((ComboboxItem)cbProtokoloKind.SelectedItem).Value).Id;
+                int company_Id = ((Company)((ComboboxItem)cbCompany.SelectedItem).Value).Id;
+
+                //UPDATE [dbo].[TableIds] 
+                int ProtokId = getNextIdAndUpdateTable_TableIds("Protok");
+
+                //UPDATE [dbo].[DocsIds] - id will remain the same!!!!!!!!!
+                //UpdatedId ProtokSn = getNextSnAndUpdateTable_DocsIds(company_Id, proced_Id);
+
+                int ProtokSn = Convert.ToInt32(IOBoxPanel.Controls["tbOutProtokoloNum"].Text.Trim());
+                int ProtokYear = Convert.ToInt32(IOBoxPanel.Controls["tbOutYear"].Text.Trim());
+
+                if (ProtokId > 0 && ProtokSn > 0)
+                {
+                    //INSERT INTO [dbo].[Protok] 
+                    bool wasSuccessful = InsertIntoTable_Protok_Revision(ProtokId, ProtokSn, ProtokYear, company_Id, proced_Id, IOBoxPanel);
+
+                    if (wasSuccessful)
+                    {
+                        //insert attachments into db
+                        ListView lv = ((ListView)IOBoxPanel.Controls["lvOutAttachedFiles"]);
+
+                        foreach (ListViewItem lvi in lv.Items)
+                        {
+                            string attFileName = lvi.SubItems[1].Text;
+                            AttFilesList.Add(attFileName);
+                            byte[] attFileBytes = System.IO.File.ReadAllBytes(attFileName);
+
+                            //INSERT [dbo].[ProtokPdf]
+                            wasSuccessful = InertIntoTable_ProtokPdf(ProtokId, lvi.SubItems[0].Text, attFileBytes);
+
+                            if (!wasSuccessful)
+                            {
+                                MessageBox.Show("Αποτυχία αποθήκευσης του αρχείου: " + lvi.SubItems[0].Text);
+                            }
+                        }
+
+                        MessageBox.Show("Η εγγραφή με αριθμό Πρωτοκόλλου: [ " + ProtokSn.ToString() + " ] ενημερώθηκε επιτυχώς!");
+                        successfulInsertion = wasSuccessful;
+
+                        if (chbSendMail.Checked)
+                        {
+                            myEmail = new Email();
+                            myEmail.ProtokId = ProtokId;
+
+                            myEmail.Subject = createOutMailSubject(ProtokSn, IOBoxPanel.Controls["tbOutSummary"].Text);
+                            myEmail.Body = createOutMailBody(ProtokSn, IOBoxPanel.Controls["tbOutSummary"].Text);
+                        }
+
+                        ShowClosingDialog = false;
+                        Close();
+                    }
+                    else
+                    {
+                        //UPDATE [dbo].[DocsIds] - id will remain the same!!!!!!!!!
+                        //bool resetSn = UpdateTable_DocIds(ProtokSn.deleted, company_Id, proced_Id); //number -= 1
+
+                        //if (resetSn)
+                        //{
+                        MessageBox.Show("Σφάλμα κατά την καταχώρηση! Παρακαλώ προσπαθήστε ξανά.");
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Σφάλμα κατά την καταχώρηση! Δώθηκε ο αριθμός πρωτοκόλλου " + ProtokSn.inserted.ToString() + " χωρίς να ολοκληρωθεί η καταχώρηση!");
+                        //}
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Σφάλμα κατά τη μεταβολή του Πρωτοκόλλου! Παρακαλώ προσπαθήστε ξανά.");
+                }
+                
+
+            }
+            
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
@@ -1109,7 +1495,7 @@ namespace Protocol
 
         private void ProtokoloInsertForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (ShowClosingDialog && this.Text == "Εισαγωγή")
+            if (ShowClosingDialog && (this.Text == "Εισαγωγή" || this.Text == "Μεταβολή"))
             {
                 DialogResult dialogResult = MessageBox.Show("Είστε σίγουροι ότι θέλετε να ακυρώσετε την καταχώρηση;", "Ακύρωση", MessageBoxButtons.YesNo);
 

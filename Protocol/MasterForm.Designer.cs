@@ -47,6 +47,7 @@
             this.YMStatsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -57,7 +58,6 @@
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -92,29 +92,28 @@
             // InsertTSMenuItem
             // 
             this.InsertTSMenuItem.Name = "InsertTSMenuItem";
-            this.InsertTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.InsertTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.InsertTSMenuItem.Text = "Εισαγωγή";
             this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // SelectTSMenuItem
             // 
             this.SelectTSMenuItem.Name = "SelectTSMenuItem";
-            this.SelectTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SelectTSMenuItem.Text = "Εμφάνιση";
             this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
             // 
             // UpdateTSMenuItem
             // 
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
-            this.UpdateTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
-            this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
             // 
             // DeleteTSMenuItem
             // 
             this.DeleteTSMenuItem.Name = "DeleteTSMenuItem";
-            this.DeleteTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.DeleteTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DeleteTSMenuItem.Text = "Διαγραφή";
             this.DeleteTSMenuItem.Click += new System.EventHandler(this.DeleteTSMenuItem_Click);
             // 
@@ -214,6 +213,13 @@
             this.UserInfoTSMenuItem.Text = "Στοιχεία Χρήστη";
             this.UserInfoTSMenuItem.Click += new System.EventHandler(this.UserInfoTSMenuItem_Click);
             // 
+            // ManualTSMenuItem
+            // 
+            this.ManualTSMenuItem.Name = "ManualTSMenuItem";
+            this.ManualTSMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.ManualTSMenuItem.Text = "Εγχειρίδιο Χρήσης";
+            this.ManualTSMenuItem.Click += new System.EventHandler(this.ManualTSMenuItem_Click);
+            // 
             // VersionTSMenuItem
             // 
             this.VersionTSMenuItem.Name = "VersionTSMenuItem";
@@ -307,13 +313,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(760, 470);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // ManualTSMenuItem
-            // 
-            this.ManualTSMenuItem.Name = "ManualTSMenuItem";
-            this.ManualTSMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.ManualTSMenuItem.Text = "Εγχειρίδιο Χρήσης";
-            this.ManualTSMenuItem.Click += new System.EventHandler(this.ManualTSMenuItem_Click);
             // 
             // MasterForm
             // 

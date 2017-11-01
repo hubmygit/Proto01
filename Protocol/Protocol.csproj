@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -78,6 +78,12 @@
     </Compile>
     <Compile Include="MailRecipientsList.Designer.cs">
       <DependentUpon>MailRecipientsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtokoloUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtokoloUpdateForm.Designer.cs">
+      <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Statistics.cs">
       <SubType>Form</SubType>
@@ -217,12 +223,6 @@
     <Compile Include="ProtokoloDeleteForm.Designer.cs">
       <DependentUpon>ProtokoloDeleteForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProtokoloUpdateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProtokoloUpdateForm.Designer.cs">
-      <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LK_SavedDatasources.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="_GramV3_DevDataSet_Contact.cs">
@@ -233,6 +233,9 @@
     </Compile>
     <EmbeddedResource Include="MailRecipientsList.resx">
       <DependentUpon>MailRecipientsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtokoloUpdateForm.resx">
+      <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Statistics.resx">
       <DependentUpon>Statistics.cs</DependentUpon>
@@ -309,9 +312,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokoloDeleteForm.resx">
       <DependentUpon>ProtokoloDeleteForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProtokoloUpdateForm.resx">
-      <DependentUpon>ProtokoloUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
