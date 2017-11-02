@@ -125,8 +125,6 @@ namespace Protocol
                 }
                 else if (e.Data.GetDataPresent("FileGroupDescriptor")) //file from Outlook
                 {
-
-
                     Stream theStream = (Stream)e.Data.GetData("FileGroupDescriptor");
                     byte[] fileGroupDescriptor = new byte[theStream.Length]; //512
                     theStream.Read(fileGroupDescriptor, 0, Convert.ToInt32(theStream.Length)); //512
@@ -368,7 +366,7 @@ namespace Protocol
             {
                 string lvPath = "";
 
-                if (ctrl.Parent.Text == "Μεταβολή" || ctrl.Parent.Text == "Εμφάνιση") //update mode
+                if (ctrl.Parent.Text == "Εμφάνιση") //select mode
                 {
                     string ext = "";
                     string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\
@@ -396,7 +394,7 @@ namespace Protocol
                     try
                     {
                         sqlConn.Open();
-                                                
+
                         ProtokoloInsertForm pif = (ProtokoloInsertForm)ctrl.FindForm();
 
                         cmd.Parameters.AddWithValue("@ProtokId", pif.Protok_Id_For_Updates);
@@ -419,6 +417,10 @@ namespace Protocol
                         MessageBox.Show("The following error occurred: " + ex.Message);
                         return;
                     }
+                }
+                else if (ctrl.Parent.Text == "Μεταβολή") //update mode
+                {
+                    lvPath = lv.SelectedItems[0].SubItems[1].Text;
                 }
                 else //insert mode
                 {

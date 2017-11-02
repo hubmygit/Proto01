@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Protocol
 {
@@ -161,6 +162,70 @@ namespace Protocol
             return ret.ToArray();
         }
 
+        List<string> saveAttachmentsLocally(int Id)
+        {
+            List<string> ret = new List<string>(); 
+            string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\
+            try
+            {
+                if (!Directory.Exists(tempPath))
+                {
+                    MessageBox.Show("Σφάλμα. Παρακαλώ ελέγξτε τα δικαιώματά σας στο " + tempPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+                return ret;
+            }
+            
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT [PdfText], [FileCont] FROM [dbo].[ProtokPdf] WHERE ProtokId = @ProtokId";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                cmd.Parameters.AddWithValue("@ProtokId", Id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "~" + reader["PdfText"]);
+                    File.WriteAllBytes(tempFile, (byte[])reader["FileCont"]);
+
+                    //ret.Add(reader["PdfText"]);
+                    ret.Add(tempFile);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+                return ret;
+            }
+
+            return ret;
+        }
+
+        void addTmpFilesIntoListView(ListView myListView, List<string> fileNames)
+        {
+            foreach (string thisFile in fileNames)
+            {
+                System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
+
+                foreach (ListViewItem lvi in myListView.Items)
+                {
+                    if (lvi.SubItems[0].Text.ToUpper() == newFile.Name.ToUpper())
+                    {
+                        break;
+                    }
+                }
+
+                ListViewItem lvItem = new ListViewItem(new string[] { newFile.Name, newFile.FullName });
+                myListView.Items.Add(lvItem);
+            }
+        }
+
         private void lvRep_DoubleClick(object sender, EventArgs e)
         {
             ProtokoloInsertForm updScreen = new ProtokoloInsertForm();
@@ -209,13 +274,11 @@ namespace Protocol
                 //updScreen.Controls["panelInbox"].Controls["btnInAddFiles"].Enabled = false;
                 //updScreen.Controls["panelInbox"].Controls["btnInRemoveFile"].Enabled = false;
                 //updScreen.Controls["panelInbox"].Controls["btnInRemoveAll"].Enabled = false;
-                //get results as string array
-                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[0].Text));
-                //fill listview
-                foreach (string thisFileName in fileNames)
-                {
-                    ((ListView)updScreen.Controls["panelInbox"].Controls["lvInAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
-                }
+                
+                //get 'Attachments' from ProtokPdf and extract files to Temp
+                List<string> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
+                //add files to listView
+                addTmpFilesIntoListView(((ListView)updScreen.Controls["panelInbox"].Controls["lvInAttachedFiles"]), AttFilesPath);
 
                 //updScreen.Controls["panelInbox"].Controls["dtpInGetDate"].Enabled = false;
                 //((TextBox)updScreen.Controls["panelInbox"].Controls["tbInDocNum"]).ReadOnly = true;
@@ -252,13 +315,11 @@ namespace Protocol
                 //updScreen.Controls["panelOutbox"].Controls["btnOutAddFiles"].Enabled = false;
                 //updScreen.Controls["panelOutbox"].Controls["btnOutRemoveFile"].Enabled = false;
                 //updScreen.Controls["panelOutbox"].Controls["btnOutRemoveAll"].Enabled = false;
-                //get results as string array
-                string[] fileNames = getSavedAttachments(Convert.ToInt32(lvic[0].Text));
-                //fill listview
-                foreach (string thisFileName in fileNames)
-                {
-                    ((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]).Items.Add(new ListViewItem(thisFileName));
-                }
+
+                //get 'Attachments' from ProtokPdf and extract files to Temp
+                List<string> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
+                //add files to listView
+                addTmpFilesIntoListView(((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]), AttFilesPath);
 
                 //updScreen.Controls["panelOutbox"].Controls["dtpOutSetDate"].Enabled = false;
                 //updScreen.Controls["panelOutbox"].Controls["cbOutFolders"].Enabled = false;
@@ -280,8 +341,95 @@ namespace Protocol
 
             updScreen.ShowDialog();
 
-            //send or show mail ----- copy from master form
+            //send or show mail
+            if (updScreen.successfulInsertion && updScreen.chbSendMail.Checked)
+            {
+                if (updScreen.IOBoxPanel.Name.ToUpper() == "PANELINBOX")
+                {
+                    try
+                    {
+                        //Show Contacts...
+                        outlookForms oF = new outlookForms();
+                        oF.showContacts();
 
+                        if (oF.RecipientsList.Count > 0)
+                        {
+                            //Show Mail... 
+                            //oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Send Mail... 
+                            oF.SendMail(updScreen.myEmail.ProtokId, updScreen.myEmail.Subject, updScreen.myEmail.Body, updScreen.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        MessageBox.Show("The following error occurred: " + exMess);
+                    }
+                }
+                else if (updScreen.IOBoxPanel.Name.ToUpper() == "PANELOUTBOX")
+                {
+                    //temporarily hide 'dieuthinsiografo' and replace with outlook address book
+                    /*
+                    //Show ContactsToEmail Form
+                    ContactsToEmail cteFrm = new ContactsToEmail();
+                    cteFrm.ShowDialog();
+
+                    try
+                    {
+                        if (cteFrm.frmSaved) //check if recipients.count > 0
+                        {
+                            outlookForms oF = new outlookForms();
+                            oF.fillRecipientList(cteFrm.txtRecipientsTo.Text, cteFrm.txtRecipientsCc.Text, cteFrm.txtRecipientsBcc.Text);
+
+                            //Show Mail... 
+                            oF.ShowMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Send Mail... 
+                            //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        //MessageBox.Show(exMess);
+                    }
+                    */
+
+                    try
+                    {
+                        //Show Contacts...
+                        outlookForms oF = new outlookForms();
+                        oF.showContacts();
+
+                        if (oF.RecipientsList.Count > 0)
+                        {
+                            //Show Mail... 
+                            oF.ShowMail(updScreen.myEmail.ProtokId, updScreen.myEmail.Subject, updScreen.myEmail.Body, updScreen.AttFilesList);
+
+                            //Save Mail... 
+                            //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+
+                            //Send Mail... 
+                            //oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string exMess = ex.Message; //do nothing - constructor catches the exception
+                        MessageBox.Show("The following error occurred: " + exMess);
+                    }
+
+                }
+            }
+            
+            //?????????????????
             if (FiltersFrm == null)
             {
                 //no filters

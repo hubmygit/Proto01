@@ -742,7 +742,7 @@ namespace Protocol
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
                                   "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
                                   "VALUES " +
-                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
+                                  "(@Id, @Sn, @Year, @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
                                   "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
 
                 try
@@ -752,6 +752,7 @@ namespace Protocol
 
                     cmd.Parameters.AddWithValue("@Id", Id);
                     cmd.Parameters.AddWithValue("@Sn", Sn);
+                    cmd.Parameters.AddWithValue("@Year", Year);
                     cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentDate", DatetimePickerToSQLDate(myPanel.Controls["dtpInDocDate"])); //datepicker - no time
@@ -788,7 +789,7 @@ namespace Protocol
                                   "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
                                   "VALUES " +
                                   //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
-                                  "(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
+                                  "(@Id, @Sn, @Year, @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
                                   "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
 
                 try
@@ -798,6 +799,7 @@ namespace Protocol
 
                     cmd.Parameters.AddWithValue("@Id", Id);
                     cmd.Parameters.AddWithValue("@Sn", Sn);
+                    cmd.Parameters.AddWithValue("@Year", Year);
                     cmd.Parameters.AddWithValue("@ProcedureId", procedId); //get object from combobox
                     cmd.Parameters.AddWithValue("@CompanyId", companyId); //get object from combobox
                     cmd.Parameters.AddWithValue("@DocumentGetSetDate", DatetimePickerToSQLDate(myPanel.Controls["dtpOutSetDate"])); //datepicker - no time
