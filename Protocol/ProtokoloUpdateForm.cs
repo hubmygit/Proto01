@@ -162,9 +162,9 @@ namespace Protocol
             return ret.ToArray();
         }
 
-        List<string> saveAttachmentsLocally(int Id)
+        List<LvFileInfo> saveAttachmentsLocally(int Id)
         {
-            List<string> ret = new List<string>(); 
+            List<LvFileInfo> ret = new List<LvFileInfo>(); 
             string tempPath = Path.GetTempPath(); //C:\Users\hkylidis\AppData\Local\Temp\
             try
             {
@@ -190,11 +190,35 @@ namespace Protocol
 
                 while (reader.Read())
                 {
-                    string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "~" + reader["PdfText"]);
-                    File.WriteAllBytes(tempFile, (byte[])reader["FileCont"]);
+                    string realFileName = reader["PdfText"].ToString().Trim();
+                    //string tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "~" + realFileName);
+                    //temp file -> attachment name with temp name and tilda 'tmp123~ΦΕΚ123.pdf'
+                    string tempFile = Path.Combine(tempPath, realFileName);
+                    try
+                    {
+                        File.WriteAllBytes(tempFile, (byte[])reader["FileCont"]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Παρουσιάστηκε πρόβλημα κατά την προσωρινή αποθήκευση του συδεδεμένου Αρχείου: '" + realFileName + 
+                            "'\r\n\r\n\r\nΛεπτομέρειες:\r\n" + ex.Message);
+                        try
+                        {
+                            tempFile = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(Path.GetTempFileName()) + "~" + realFileName);
+                            File.WriteAllBytes(tempFile, (byte[])reader["FileCont"]);
 
-                    //ret.Add(reader["PdfText"]);
-                    ret.Add(tempFile);
+                            MessageBox.Show("Προσοχή! Το αρχείο θα αποθηκευτεί με όνομα: " + tempFile);
+                        }
+                        catch (Exception ex2)
+                        {
+                            MessageBox.Show("Προσοχή! Το αρχείο " + realFileName + " δε θα αποθηκευτεί!");
+                        }
+
+                    }
+                    //ret.Add(realFileName);//realFileName
+                    //ret.Add(tempFile);//tempFilePath
+
+                    ret.Add(new LvFileInfo { FileName = realFileName, FilePath = tempFile });
                 }
                 reader.Close();
             }
@@ -207,21 +231,19 @@ namespace Protocol
             return ret;
         }
 
-        void addTmpFilesIntoListView(ListView myListView, List<string> fileNames)
+        void addTmpFilesIntoListView(ListView myListView, List<LvFileInfo> fileNames)
         {
-            foreach (string thisFile in fileNames)
+            foreach (LvFileInfo thisFile in fileNames)
             {
-                System.IO.FileInfo newFile = new System.IO.FileInfo(thisFile);
-
                 foreach (ListViewItem lvi in myListView.Items)
                 {
-                    if (lvi.SubItems[0].Text.ToUpper() == newFile.Name.ToUpper())
+                    if (lvi.SubItems[0].Text.ToUpper() == thisFile.FileName.ToUpper())
                     {
                         break;
                     }
                 }
 
-                ListViewItem lvItem = new ListViewItem(new string[] { newFile.Name, newFile.FullName });
+                ListViewItem lvItem = new ListViewItem(new string[] { thisFile.FileName, thisFile.FilePath });
                 myListView.Items.Add(lvItem);
             }
         }
@@ -268,15 +290,20 @@ namespace Protocol
                 updScreen.Controls["panelInbox"].Controls["lblInProtokolo"].Visible = true;
                 updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Visible = true;
                 updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"].Text = lvic[4].Text;
+                ((TextBox)updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"]).ReadOnly = true;
+                ((TextBox)updScreen.Controls["panelInbox"].Controls["tbInProtokoloNum"]).BackColor = Color.White;
+
                 updScreen.Controls["panelInbox"].Controls["tbInYear"].Visible = true;
                 updScreen.Controls["panelInbox"].Controls["tbInYear"].Text = lvic[2].Text;
+                ((TextBox)updScreen.Controls["panelInbox"].Controls["tbInYear"]).ReadOnly = true;
+                ((TextBox)updScreen.Controls["panelInbox"].Controls["tbInYear"]).BackColor = Color.White;
 
                 //updScreen.Controls["panelInbox"].Controls["btnInAddFiles"].Enabled = false;
                 //updScreen.Controls["panelInbox"].Controls["btnInRemoveFile"].Enabled = false;
                 //updScreen.Controls["panelInbox"].Controls["btnInRemoveAll"].Enabled = false;
-                
+
                 //get 'Attachments' from ProtokPdf and extract files to Temp
-                List<string> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
+                List<LvFileInfo> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
                 //add files to listView
                 addTmpFilesIntoListView(((ListView)updScreen.Controls["panelInbox"].Controls["lvInAttachedFiles"]), AttFilesPath);
 
@@ -309,15 +336,20 @@ namespace Protocol
                 updScreen.Controls["panelOutbox"].Controls["lblOutProtokolo"].Visible = true;
                 updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Visible = true;
                 updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"].Text = lvic[4].Text;
+                ((TextBox)updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"]).ReadOnly = true;
+                ((TextBox)updScreen.Controls["panelOutbox"].Controls["tbOutProtokoloNum"]).BackColor = Color.White;
+
                 updScreen.Controls["panelOutbox"].Controls["tbOutYear"].Visible = true;
                 updScreen.Controls["panelOutbox"].Controls["tbOutYear"].Text = lvic[2].Text;
+                ((TextBox)updScreen.Controls["panelOutbox"].Controls["tbOutYear"]).ReadOnly = true;
+                ((TextBox)updScreen.Controls["panelOutbox"].Controls["tbOutYear"]).BackColor = Color.White;
 
                 //updScreen.Controls["panelOutbox"].Controls["btnOutAddFiles"].Enabled = false;
                 //updScreen.Controls["panelOutbox"].Controls["btnOutRemoveFile"].Enabled = false;
                 //updScreen.Controls["panelOutbox"].Controls["btnOutRemoveAll"].Enabled = false;
 
                 //get 'Attachments' from ProtokPdf and extract files to Temp
-                List<string> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
+                List<LvFileInfo> AttFilesPath = saveAttachmentsLocally(Convert.ToInt32(lvic[0].Text));
                 //add files to listView
                 addTmpFilesIntoListView(((ListView)updScreen.Controls["panelOutbox"].Controls["lvOutAttachedFiles"]), AttFilesPath);
 
@@ -566,6 +598,12 @@ namespace Protocol
             }
         }
 
+    }
+
+    public class LvFileInfo
+    {
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
     }
 
 }

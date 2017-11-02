@@ -662,7 +662,7 @@ namespace Protocol
             bool ret = false;
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string UpdSt = "UPDATE [dbo].[Protok] SET Updated = 1 WHERE Sn = @Sn AND Year = @Year AND CompanyId = @CompanyId AND ProcedId = @ProcedId AND Id <> @Id";
+            string UpdSt = "UPDATE [dbo].[Protok] SET Updated = 1 WHERE Sn = @Sn AND Year = @Year AND CompanyId = @CompanyId AND ProcedureId = @ProcedId AND Id <> @Id";
             try
             {
                 sqlConn.Open();
@@ -695,13 +695,13 @@ namespace Protocol
             int ret = 0;
 
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string SelectSt = "SELECT max(RevNo) as MaxRevNo FROM [dbo].[Protok] WHERE Sn = @Sn AND Year = @Year AND CompanyId = @ComnpanyId AND ProcedId = @ProcedId  ";
+            string SelectSt = "SELECT max(RevNo) as MaxRevNo FROM [dbo].[Protok] WHERE Sn = @Sn AND Year = @Year AND CompanyId = @CompanyId AND ProcedureId = @ProcedId  ";
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
 
             cmd.Parameters.AddWithValue("@Sn", Sn);
             cmd.Parameters.AddWithValue("@Year", Year);
             cmd.Parameters.AddWithValue("@CompanyId", CompanyId); 
-            cmd.Parameters.AddWithValue("@ProcedureId", ProcedId); 
+            cmd.Parameters.AddWithValue("@ProcedId", ProcedId); 
 
             try
             {

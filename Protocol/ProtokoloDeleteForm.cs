@@ -155,19 +155,22 @@ namespace Protocol
                     if (delReasonFrm.Successful)
                     {
                         SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-                        //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate() WHERE Sn = @Sn and Year = @Year ";
-                        string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr, DelReason = @DelReason WHERE Id = @Id ";
-
+                        //string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr, DelReason = @DelReason WHERE Id = @Id ";
+                        string DeleteSt = "UPDATE [dbo].[Protok] SET Deleted = 1, DelDt = getdate(), DelUsr = @DelUsr, DelReason = @DelReason " +
+                            "WHERE Sn = @Sn and Year = @Year and CompanyId = (select id from [dbo].[Company] where Name = @CompanyId) and ProcedureId = (select id from [dbo].[Proced] where Name = @ProcedureId) ";
                         try
                         {
                             sqlConn.Open();
                             SqlCommand cmd = new SqlCommand(DeleteSt, sqlConn);
-
-                            //cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
-                            //cmd.Parameters.AddWithValue("@Year", lvRowYear);
-                            cmd.Parameters.AddWithValue("@Id", lvRowId);
+                                                        
+                            //cmd.Parameters.AddWithValue("@Id", lvRowId);
                             cmd.Parameters.AddWithValue("@DelUsr", UserInfo.DB_AppUser_Id);
                             cmd.Parameters.AddWithValue("@DelReason", delReasonFrm.txtDelReason.Text);
+
+                            cmd.Parameters.AddWithValue("@Sn", lvRowProtocol);
+                            cmd.Parameters.AddWithValue("@Year", lvRowYear);
+                            cmd.Parameters.AddWithValue("@CompanyId", lvRowCompany);
+                            cmd.Parameters.AddWithValue("@ProcedureId", lvRowEisEx);
 
                             cmd.CommandType = CommandType.Text;
                             cmd.ExecuteNonQuery();
