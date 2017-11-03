@@ -520,6 +520,22 @@ namespace Protocol
             
         }
 
+        private void InsManualTSMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Επιλογή Εγχειριδίου Χρήσης Εφαρμογής";
+            ofd.Multiselect = false;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                //Insert manual - Run Once!
+                string Manual_Filename = ofd.FileName;
+
+                if (Manual_Filename.Trim().Length > 0)//and 
+                {
+                    InsertProtocolManual(Manual_Filename);
+                }
+            }
+        }
     }
 
     /*
