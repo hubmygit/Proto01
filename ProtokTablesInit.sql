@@ -24,6 +24,10 @@
 --xx-- select * from [dbo].[Contacts]
 --truncate table [GramDB].[dbo].[Contacts]
 -----------------------------------------------
+--ok-- select * from [dbo].[Doc]
+--truncate table [GramDB].[dbo].[Doc]
+--INSERT INTO [GramDB].[dbo].[Doc] ([DocType] ,[DocName] ,[DocCont]) VALUES ('Manual', 'ProtocolManual.pdf', '0x25504.....')
+-----------------------------------------------
 --ok-- select * from [dbo].[DocsIds]
 --truncate table [GramDB].[dbo].[DocsIds]
 -----------------------------------------------
