@@ -448,10 +448,7 @@ namespace Protocol
         }
 
         private void ManualTSMenuItem_Click(object sender, EventArgs e)
-        {
-            //Insert manual - Run Once!
-            //InsertProtocolManual("C:\\Tests\\ProtocolManual.pdf");
-
+        {            
             //Open Manual
             OpenProtocolManual();
         }
@@ -522,6 +519,9 @@ namespace Protocol
 
         private void InsManualTSMenuItem_Click(object sender, EventArgs e)
         {
+            //Insert manual - Run Once! Or delete previous manual first.
+            //InsertProtocolManual("C:\\Tests\\ProtocolManual.pdf");
+
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Επιλογή Εγχειριδίου Χρήσης Εφαρμογής";
             ofd.Multiselect = false;
@@ -535,6 +535,12 @@ namespace Protocol
                     InsertProtocolManual(Manual_Filename);
                 }
             }
+        }
+
+        private void UsersInsTSMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersInsert UsrIns = new UsersInsert();
+            UsrIns.ShowDialog();
         }
     }
 

@@ -59,6 +59,8 @@
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.InsManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersInsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -123,7 +125,8 @@
             // 
             this.ParamsTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FoldersTSMenuItem,
-            this.ContactsTSMenuItem});
+            this.ContactsTSMenuItem,
+            this.UsersTSMenuItem});
             this.ParamsTSMenuItem.Name = "ParamsTSMenuItem";
             this.ParamsTSMenuItem.Size = new System.Drawing.Size(84, 20);
             this.ParamsTSMenuItem.Text = "Παράμετροι";
@@ -325,6 +328,21 @@
             this.InsManualTSMenuItem.Visible = false;
             this.InsManualTSMenuItem.Click += new System.EventHandler(this.InsManualTSMenuItem_Click);
             // 
+            // UsersTSMenuItem
+            // 
+            this.UsersTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsersInsTSMenuItem});
+            this.UsersTSMenuItem.Name = "UsersTSMenuItem";
+            this.UsersTSMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.UsersTSMenuItem.Text = "Χρήστες";
+            // 
+            // UsersInsTSMenuItem
+            // 
+            this.UsersInsTSMenuItem.Name = "UsersInsTSMenuItem";
+            this.UsersInsTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UsersInsTSMenuItem.Text = "Εισαγωγή";
+            this.UsersInsTSMenuItem.Click += new System.EventHandler(this.UsersInsTSMenuItem_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +403,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem ManualTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem InsManualTSMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsersTSMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsersInsTSMenuItem;
     }
 }
 
