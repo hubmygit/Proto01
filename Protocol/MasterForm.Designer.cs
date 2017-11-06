@@ -43,10 +43,13 @@
             this.FolderDelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FolderToProtokTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContactsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersInsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.YMStatsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserInfoTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InsManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VersionTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,9 +61,7 @@
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.InsManualTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UsersInsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -186,6 +187,22 @@
             this.ContactsTSMenuItem.Visible = false;
             this.ContactsTSMenuItem.Click += new System.EventHandler(this.ContactsTSMenuItem_Click);
             // 
+            // UsersTSMenuItem
+            // 
+            this.UsersTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsersInsTSMenuItem,
+            this.UsersSelTSMenuItem});
+            this.UsersTSMenuItem.Name = "UsersTSMenuItem";
+            this.UsersTSMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.UsersTSMenuItem.Text = "Χρήστες";
+            // 
+            // UsersInsTSMenuItem
+            // 
+            this.UsersInsTSMenuItem.Name = "UsersInsTSMenuItem";
+            this.UsersInsTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UsersInsTSMenuItem.Text = "Εισαγωγή";
+            this.UsersInsTSMenuItem.Click += new System.EventHandler(this.UsersInsTSMenuItem_Click);
+            // 
             // StatisticsTSMenuItem
             // 
             this.StatisticsTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -218,6 +235,14 @@
             this.UserInfoTSMenuItem.Size = new System.Drawing.Size(190, 22);
             this.UserInfoTSMenuItem.Text = "Στοιχεία Χρήστη";
             this.UserInfoTSMenuItem.Click += new System.EventHandler(this.UserInfoTSMenuItem_Click);
+            // 
+            // InsManualTSMenuItem
+            // 
+            this.InsManualTSMenuItem.Name = "InsManualTSMenuItem";
+            this.InsManualTSMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.InsManualTSMenuItem.Text = "Εισαγωγή Εγχειριδίου";
+            this.InsManualTSMenuItem.Visible = false;
+            this.InsManualTSMenuItem.Click += new System.EventHandler(this.InsManualTSMenuItem_Click);
             // 
             // ManualTSMenuItem
             // 
@@ -320,28 +345,12 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // InsManualTSMenuItem
+            // UsersSelTSMenuItem
             // 
-            this.InsManualTSMenuItem.Name = "InsManualTSMenuItem";
-            this.InsManualTSMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.InsManualTSMenuItem.Text = "Εισαγωγή Εγχειριδίου";
-            this.InsManualTSMenuItem.Visible = false;
-            this.InsManualTSMenuItem.Click += new System.EventHandler(this.InsManualTSMenuItem_Click);
-            // 
-            // UsersTSMenuItem
-            // 
-            this.UsersTSMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UsersInsTSMenuItem});
-            this.UsersTSMenuItem.Name = "UsersTSMenuItem";
-            this.UsersTSMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.UsersTSMenuItem.Text = "Χρήστες";
-            // 
-            // UsersInsTSMenuItem
-            // 
-            this.UsersInsTSMenuItem.Name = "UsersInsTSMenuItem";
-            this.UsersInsTSMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.UsersInsTSMenuItem.Text = "Εισαγωγή";
-            this.UsersInsTSMenuItem.Click += new System.EventHandler(this.UsersInsTSMenuItem_Click);
+            this.UsersSelTSMenuItem.Name = "UsersSelTSMenuItem";
+            this.UsersSelTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UsersSelTSMenuItem.Text = "Εμφάνιση";
+            this.UsersSelTSMenuItem.Click += new System.EventHandler(this.UsersSelTSMenuItem_Click);
             // 
             // MasterForm
             // 
@@ -405,6 +414,7 @@
         private System.Windows.Forms.ToolStripMenuItem InsManualTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsersTSMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UsersInsTSMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsersSelTSMenuItem;
     }
 }
 

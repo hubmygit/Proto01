@@ -381,7 +381,7 @@ namespace Protocol
             return ret;
         }
 
-        private static List<int> Get_User_Assigned_Companies(int UserId)
+        public static List<int> Get_User_Assigned_Companies(int UserId)
         {
             List<int> ret = new List<int>();
 

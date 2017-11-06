@@ -542,6 +542,12 @@ namespace Protocol
             UsersInsert UsrIns = new UsersInsert();
             UsrIns.ShowDialog();
         }
+
+        private void UsersSelTSMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersSelect UsrSel = new UsersSelect();
+            UsrSel.ShowDialog();
+        }
     }
 
     /*

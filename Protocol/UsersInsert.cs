@@ -45,7 +45,8 @@ namespace Protocol
         {
             bool ret = false;
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
-            string InsSt = "INSERT INTO [dbo].[AppUsers] (WinUser, FullName, EmailAddress, InsDate) VALUES (@WinUser, @FullName, @EmailAddress, getdate()) ";
+            //string InsSt = "INSERT INTO [dbo].[AppUsers] (WinUser, FullName, EmailAddress, InsDate) VALUES (@WinUser, @FullName, @EmailAddress, getdate()) ";
+            string InsSt = "INSERT INTO [dbo].[AppUsers] (WinUser, FullName, EmailAddress) VALUES (@WinUser, @FullName, @EmailAddress) ";
             try
             {
                 sqlConn.Open();
@@ -58,7 +59,7 @@ namespace Protocol
                 cmd.ExecuteNonQuery();
                 ret = true;
 
-                MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς!");
+                MessageBox.Show("Ο νέος χρήστης καταχωρήθηκε επιτυχώς!");
                 Close();
             }
             catch (Exception ex)
@@ -126,10 +127,7 @@ namespace Protocol
 
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
-                ret = true;
-
-                MessageBox.Show("Η εγγραφή καταχωρήθηκε επιτυχώς!");
-                Close();
+                ret = true;                
             }
             catch (Exception ex)
             {
@@ -139,10 +137,22 @@ namespace Protocol
         }
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            InsertUser(txtWinUser.Text.Trim(), txtFullName.Text.Trim(), txtEmail.Text.Trim());
-            //if exists catch error and continue!!! Its Ok!
+            if (txtWinUser.Text.Trim() == "")
+            {
+                MessageBox.Show("Δεν έχετε συμπληρώσει χρήστη (Win User)");
+                return;
+            }
+            
+            
 
             int UserId = getUserIdFromAppUser(txtWinUser.Text.Trim());
+
+            if (UserId == 0)//not exists
+            {
+                InsertUser(txtWinUser.Text.Trim(), txtFullName.Text.Trim(), txtEmail.Text.Trim());
+                UserId = getUserIdFromAppUser(txtWinUser.Text.Trim());
+            }
+            
             if (UserId > 0)
             {
                 deleteUserAuthorizations(UserId);
@@ -151,18 +161,44 @@ namespace Protocol
                 //all companies - insert 1 row: 999
                 if (chlbCompany.Items.Count == chlbCompany.CheckedItems.Count) //all checked
                 {
-                    InsertUserAuth(UserId, 999);
+                    if(InsertUserAuth(UserId, 999) == true)
+                    {
+                        MessageBox.Show("Η διαδικασία καταχώρησης δικαιωμάτων στο χρήστη " + txtWinUser.Text.Trim() + " ολοκληρώθηκε επιτυχώς!");
+                    }
                 }
                 else //one or some companies - insert x rows
                 {
+                    bool success = true;
                     List<int> CompaniesList = ProtokFiltersForm.Get_CheckedListBox_Checked_Indexes(chlbCompany);
+
+                    if (CompaniesList.Count <= 0)
+                    {
+                        MessageBox.Show("Δεν έχετε επιλέξει εταιρίες!");
+                        return;
+                    }
+
                     foreach (int thisCom in CompaniesList)
                     {
-                        InsertUserAuth(UserId, thisCom);
+                        //int comId = ((Company)chlbCompany.Items[thisCom]).Id;
+                        int comId = ((Company)((ComboboxItem)chlbCompany.Items[thisCom]).Value).Id;
+
+                        if (InsertUserAuth(UserId, comId) == false)
+                        {
+                            success = false;
+                        }
+                    }
+
+                    if (success == true)
+                    {
+                        MessageBox.Show("Η διαδικασία καταχώρησης δικαιωμάτων στο χρήστη " + txtWinUser.Text.Trim() + " ολοκληρώθηκε επιτυχώς!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Η διαδικασία καταχώρησης δικαιωμάτων στο χρήστη " + txtWinUser.Text.Trim() + " ολοκληρώθηκε με σφάλματα! \r\nΠαρακαλώ ελέγξτε τις εγγραφές!");
                     }
                 }
             }
-
+            Close();
 
         }
     }

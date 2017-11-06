@@ -40,4 +40,12 @@ namespace Protocol
         public string Body { get; set; }
     }
 
+    public class AppUsers
+    {
+        public int Id { get; set; }
+        public string WinUser { get; set; }
+        public string FullName { get; set; }
+        public string EmailAddress { get; set; }
+        public string InsDate { get; set; }
+    }
 }
