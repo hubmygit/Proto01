@@ -195,6 +195,7 @@
             this.UsersTSMenuItem.Name = "UsersTSMenuItem";
             this.UsersTSMenuItem.Size = new System.Drawing.Size(176, 22);
             this.UsersTSMenuItem.Text = "Χρήστες";
+            this.UsersTSMenuItem.Visible = false;
             // 
             // UsersInsTSMenuItem
             // 
