@@ -34,6 +34,12 @@ namespace Protocol
             arrangeChart(chartYearly, chYData.company, chYData.value);
             arrangeChart(chartMonthly, chMData.company, chMData.value);
             */
+
+            /*
+             * InsManualTSMenuItem.Visible = true;
+             * UsersTSMenuItem.Visible = true;
+             * UpdateTSMenuItem.Visible = true;
+             */
         }
 
 
