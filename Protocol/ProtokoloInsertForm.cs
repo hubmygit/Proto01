@@ -740,10 +740,10 @@ namespace Protocol
                 SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentDate, DocumentGetSetDate, DocumentNumber, " +
-                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, InsDt, InsUsr, RevNo) " +
                                   "VALUES " +
                                   "(@Id, @Sn, @Year, @ProcedureId, @CompanyId, getdate(), @DocumentDate, @DocumentGetSetDate, @DocumentNumber, " +
-                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, getdate(), @InsUsr, @RevNo) ";
 
                 try
                 {
@@ -763,6 +763,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbInToText"].Text.Left(255));
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbInFolders"]).SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@UpdUsr", UserInfo.DB_AppUser_Id);
+                    cmd.Parameters.AddWithValue("@InsUsr", UserInfo.DB_AppUser_Id);
                     cmd.Parameters.AddWithValue("@RevNo", RevNo);
 
                     cmd.CommandType = CommandType.Text;
@@ -786,11 +787,11 @@ namespace Protocol
                 string InsertSt = "INSERT INTO [dbo].[Protok] " +
                                   //"(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, DocumentNumber, " +
                                   "(Id, Sn, Year, ProcedureId, CompanyId, Date, DocumentGetSetDate, " +
-                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, RevNo) " +
+                                  "ProeleusiKateuth, Summary, ToText, FolderId, UpdDt, UpdUsr, InsDt, InsUsr, RevNo) " +
                                   "VALUES " +
                                   //"(@Id, @Sn, year(getdate()), @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, @DocumentNumber, " +
                                   "(@Id, @Sn, @Year, @ProcedureId, @CompanyId, getdate(), @DocumentGetSetDate, " +
-                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, @RevNo) ";
+                                  "@ProeleusiKateuth, @Summary, @ToText, @FolderId, getdate(), @UpdUsr, getdate(), @InsUsr, @RevNo) ";
 
                 try
                 {
@@ -809,6 +810,7 @@ namespace Protocol
                     cmd.Parameters.AddWithValue("@ToText", myPanel.Controls["tbOutToText"].Text.Left(255));
                     cmd.Parameters.AddWithValue("@FolderId", ((Folders)((ComboboxItem)((ComboBox)myPanel.Controls["cbOutFolders"]).SelectedItem).Value).Id); //get object from combobox
                     cmd.Parameters.AddWithValue("@UpdUsr", UserInfo.DB_AppUser_Id);
+                    cmd.Parameters.AddWithValue("@InsUsr", UserInfo.DB_AppUser_Id);
                     cmd.Parameters.AddWithValue("@RevNo", RevNo);
 
                     cmd.CommandType = CommandType.Text;

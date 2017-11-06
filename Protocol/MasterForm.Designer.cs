@@ -45,6 +45,7 @@
             this.ContactsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UsersInsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsersSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatisticsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.YMStatsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.UsersSelTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -96,21 +96,21 @@
             // InsertTSMenuItem
             // 
             this.InsertTSMenuItem.Name = "InsertTSMenuItem";
-            this.InsertTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.InsertTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.InsertTSMenuItem.Text = "Εισαγωγή";
             this.InsertTSMenuItem.Click += new System.EventHandler(this.InsertProtocol_Click);
             // 
             // SelectTSMenuItem
             // 
             this.SelectTSMenuItem.Name = "SelectTSMenuItem";
-            this.SelectTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.SelectTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.SelectTSMenuItem.Text = "Εμφάνιση";
             this.SelectTSMenuItem.Click += new System.EventHandler(this.SelectTSMenuItem_Click);
             // 
             // UpdateTSMenuItem
             // 
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
-            this.UpdateTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
             this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
@@ -118,7 +118,7 @@
             // DeleteTSMenuItem
             // 
             this.DeleteTSMenuItem.Name = "DeleteTSMenuItem";
-            this.DeleteTSMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.DeleteTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.DeleteTSMenuItem.Text = "Διαγραφή";
             this.DeleteTSMenuItem.Click += new System.EventHandler(this.DeleteTSMenuItem_Click);
             // 
@@ -199,9 +199,16 @@
             // UsersInsTSMenuItem
             // 
             this.UsersInsTSMenuItem.Name = "UsersInsTSMenuItem";
-            this.UsersInsTSMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UsersInsTSMenuItem.Size = new System.Drawing.Size(127, 22);
             this.UsersInsTSMenuItem.Text = "Εισαγωγή";
             this.UsersInsTSMenuItem.Click += new System.EventHandler(this.UsersInsTSMenuItem_Click);
+            // 
+            // UsersSelTSMenuItem
+            // 
+            this.UsersSelTSMenuItem.Name = "UsersSelTSMenuItem";
+            this.UsersSelTSMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.UsersSelTSMenuItem.Text = "Εμφάνιση";
+            this.UsersSelTSMenuItem.Click += new System.EventHandler(this.UsersSelTSMenuItem_Click);
             // 
             // StatisticsTSMenuItem
             // 
@@ -344,13 +351,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(760, 470);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // UsersSelTSMenuItem
-            // 
-            this.UsersSelTSMenuItem.Name = "UsersSelTSMenuItem";
-            this.UsersSelTSMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.UsersSelTSMenuItem.Text = "Εμφάνιση";
-            this.UsersSelTSMenuItem.Click += new System.EventHandler(this.UsersSelTSMenuItem_Click);
             // 
             // MasterForm
             // 

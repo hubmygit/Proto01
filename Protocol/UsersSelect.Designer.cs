@@ -82,6 +82,7 @@
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.txtFullName.Location = new System.Drawing.Point(213, 57);
             this.txtFullName.Name = "txtFullName";
+            this.txtFullName.ReadOnly = true;
             this.txtFullName.Size = new System.Drawing.Size(403, 26);
             this.txtFullName.TabIndex = 3;
             // 
@@ -91,6 +92,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.txtEmail.Location = new System.Drawing.Point(213, 89);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(403, 26);
             this.txtEmail.TabIndex = 4;
             // 
@@ -107,6 +109,7 @@
             // chlbCompany
             // 
             this.chlbCompany.CheckOnClick = true;
+            this.chlbCompany.Enabled = false;
             this.chlbCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.chlbCompany.FormattingEnabled = true;
             this.chlbCompany.Location = new System.Drawing.Point(213, 153);
@@ -131,6 +134,7 @@
             this.txtInsDt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.txtInsDt.Location = new System.Drawing.Point(213, 121);
             this.txtInsDt.Name = "txtInsDt";
+            this.txtInsDt.ReadOnly = true;
             this.txtInsDt.Size = new System.Drawing.Size(403, 26);
             this.txtInsDt.TabIndex = 36;
             // 
