@@ -112,7 +112,6 @@
             this.UpdateTSMenuItem.Name = "UpdateTSMenuItem";
             this.UpdateTSMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
-            this.UpdateTSMenuItem.Visible = false;
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
             // 
             // DeleteTSMenuItem
