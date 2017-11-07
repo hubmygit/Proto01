@@ -918,10 +918,11 @@ namespace Protocol
             return ret;
         }
 
-        public string createInMailBody(string protokType, int protokSn, string getDate, string proeleusi, string summary)
+        public string createInMailBody(string protokType, string company, int protokSn, string getDate, string proeleusi, string summary)
         {
             string ret = "";
-            ret = protokType + "\r\n" + "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Προέλευση: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
+            ret = protokType + " " + company + "\r\n" + "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + 
+                "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Προέλευση: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
             return ret;
         }
 
@@ -1053,7 +1054,8 @@ namespace Protocol
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
 
                             //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
-                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ", 
+                                                ((ComboboxItem)cbCompany.SelectedItem).Text,
                                                 ProtokSn.inserted, 
                                                 DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text,
@@ -1362,6 +1364,7 @@ namespace Protocol
 
                             //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
                             myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ((ComboboxItem)cbCompany.SelectedItem).Text,
                                                 ProtokSn,
                                                 DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text,

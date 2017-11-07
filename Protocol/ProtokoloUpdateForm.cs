@@ -395,6 +395,39 @@ namespace Protocol
                             //oF.SaveMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
 
                             //Send Mail... 
+
+                            string AttnTo = "";
+                            string OthersCC = "";
+                            foreach (Recipient rec in oF.RecipientsList)
+                            {
+                                if (rec.ExchTypeStr.ToUpper() == "TO")
+                                {
+                                    AttnTo += rec.ExchName + ",";
+                                }
+                                else if (rec.ExchTypeStr.ToUpper() == "CC")
+                                {
+                                    OthersCC += rec.ExchName + ",";
+                                }
+                            }
+                            if (AttnTo.Length > 0)
+                            {
+                                AttnTo = AttnTo.Substring(0, AttnTo.Length - 1);
+                            }
+                            else
+                            {
+                                AttnTo = "-";
+                            }
+                            if (OthersCC.Length > 0)
+                            {
+                                OthersCC = OthersCC.Substring(0, OthersCC.Length - 1);
+                            }
+                            else
+                            {
+                                OthersCC = "-";
+                            }
+
+                            updScreen.myEmail.Body += "\r\n" + "Υπεύθυνος: " + AttnTo + "\r\n" + "Κυκλοφορία: " + OthersCC;
+
                             oF.SendMail(updScreen.myEmail.ProtokId, updScreen.myEmail.Subject, updScreen.myEmail.Body, updScreen.AttFilesList);
                         }
                     }
