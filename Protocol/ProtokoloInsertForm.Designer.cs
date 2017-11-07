@@ -40,6 +40,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsStatusLblInsUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chbPrintClipping = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbProtocol)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,7 +118,7 @@
             this.btnShowRecipients.Enabled = false;
             this.btnShowRecipients.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.btnShowRecipients.Image = global::Protocol.Properties.Resources.AccountAttribute_32x;
-            this.btnShowRecipients.Location = new System.Drawing.Point(431, 58);
+            this.btnShowRecipients.Location = new System.Drawing.Point(455, 58);
             this.btnShowRecipients.Name = "btnShowRecipients";
             this.btnShowRecipients.Size = new System.Drawing.Size(40, 40);
             this.btnShowRecipients.TabIndex = 10;
@@ -170,12 +171,27 @@
             this.tsStatusLblInsUser.Size = new System.Drawing.Size(198, 17);
             this.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: Άγνωστος";
             // 
+            // chbPrintClipping
+            // 
+            this.chbPrintClipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.chbPrintClipping.ForeColor = System.Drawing.Color.DarkBlue;
+            this.chbPrintClipping.Image = global::Protocol.Properties.Resources.Print_32x;
+            this.chbPrintClipping.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chbPrintClipping.Location = new System.Drawing.Point(402, 59);
+            this.chbPrintClipping.Name = "chbPrintClipping";
+            this.chbPrintClipping.Size = new System.Drawing.Size(50, 32);
+            this.chbPrintClipping.TabIndex = 13;
+            this.chbPrintClipping.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chbPrintClipping.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chbPrintClipping.UseVisualStyleBackColor = true;
+            // 
             // ProtokoloInsertForm
             // 
             this.AcceptButton = this.btnInsert;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 692);
+            this.Controls.Add(this.chbPrintClipping);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pbProtocol);
             this.Controls.Add(this.btnShowRecipients);
@@ -214,5 +230,6 @@
         private System.Windows.Forms.PictureBox pbProtocol;
         public System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel tsStatusLblInsUser;
+        public System.Windows.Forms.CheckBox chbPrintClipping;
     }
 }

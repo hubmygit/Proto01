@@ -25,7 +25,32 @@ namespace Protocol
             //
         }
 
-        
+        public void printProtocolClipping()
+        {
+            PrintDialog printDlg = new PrintDialog();
+            PrintDocument document = new PrintDocument();
+            document.DocumentName = "Print Protocol Clipping";
+
+            document.PrintPage += new PrintPageEventHandler(this.ProtocolClipping_Document_PrintText);
+            printDlg.Document = document;
+
+            if (printDlg.ShowDialog() == DialogResult.OK)
+            {
+                    document.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169);
+                    document.DefaultPageSettings.Landscape = false;
+                    
+                    document.Print();
+            }
+        }
+
+        private void ProtocolClipping_Document_PrintText(object sender, PrintPageEventArgs e)
+        {
+            Graphics gf = e.Graphics;
+            SizeF sf;
+
+            Font myFont = new Font("Arial", 9);
+            gf.DrawString("Δοκιμαστική εκτύπωση!!!", myFont, Brushes.Black, new Point(256, 38));
+        }
 
         public void printProtocols(ListView ProtocolsListView, List<Filter> savedFilterControls)
         {
