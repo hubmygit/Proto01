@@ -184,6 +184,7 @@
             this.chbPrintClipping.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chbPrintClipping.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.chbPrintClipping.UseVisualStyleBackColor = true;
+            this.chbPrintClipping.CheckedChanged += new System.EventHandler(this.chbPrintClipping_CheckedChanged);
             // 
             // ProtokoloInsertForm
             // 

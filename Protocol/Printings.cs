@@ -20,13 +20,15 @@ namespace Protocol
 
         private int filterPage = 1;
 
+        List<string> clippingList = new List<string>();
         public Printings()
         {
             //
         }
 
-        public void printProtocolClipping()
+        public void printProtocolClipping(List<string> clippingString)
         {
+            clippingList = clippingString;
             PrintDialog printDlg = new PrintDialog();
             PrintDocument document = new PrintDocument();
             document.DocumentName = "Print Protocol Clipping";
@@ -45,6 +47,8 @@ namespace Protocol
 
         private void ProtocolClipping_Document_PrintText(object sender, PrintPageEventArgs e)
         {
+            //clippingList --> List<string>
+
             Graphics gf = e.Graphics;
             SizeF sf;
 

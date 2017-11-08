@@ -282,7 +282,7 @@ namespace Protocol
         BCC = 3
     }
 
-    class Recipient
+    public class Recipient
     {
         public Recipient()
         {

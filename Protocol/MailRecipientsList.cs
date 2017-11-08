@@ -94,5 +94,35 @@ namespace Protocol
                 MessageBox.Show("The following error occurred: " + ex.Message);
             }
         }
+
+        public List<Recipient> FillRecList(int ProtokolId)
+        {
+            List<Recipient> ret = new List<Recipient>();
+
+            SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
+            string SelectSt = "SELECT R.ToCcBcc, T.Name, R.MailAddress, R.ExchName " +
+                "FROM [dbo].[ReceiverList] R left outer join [dbo].[ToCcBcc] T on T.Id = R.ToCcBcc " +
+                "WHERE R.ProtokId = " + ProtokolId +
+                " ORDER BY R.ToCcBcc ";
+            SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
+            try
+            {
+                sqlConn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {                   
+                    ret.Add(new Recipient() { ExchName = reader["ExchName"].ToString(), ExchTypeStr = reader["Name"].ToString() });
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.Message);
+            }
+
+            return ret;
+        }
+
     }
 }

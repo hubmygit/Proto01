@@ -38,6 +38,46 @@ namespace Protocol
         public int ProtokId { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+        public void addRecipientsToBody(List<Recipient> RecipientsList)
+        {
+            string AttnTo = "";
+            string OthersCC = "";
+            foreach (Recipient rec in RecipientsList)
+            {
+                if (rec.ExchTypeStr.ToUpper() == "TO")
+                {
+                    AttnTo += rec.ExchName + ",";
+                }
+                else if (rec.ExchTypeStr.ToUpper() == "CC")
+                {
+                    OthersCC += rec.ExchName + ",";
+                }
+            }
+            if (AttnTo.Length > 0)
+            {
+                AttnTo = AttnTo.Substring(0, AttnTo.Length - 1);
+            }
+            else
+            {
+                AttnTo = "-";
+            }
+            if (OthersCC.Length > 0)
+            {
+                OthersCC = OthersCC.Substring(0, OthersCC.Length - 1);
+            }
+            else
+            {
+                OthersCC = "-";
+            }
+
+            this.Body += "\r\n" + "Υπεύθυνος: " + AttnTo + "\r\n" + "Κυκλοφορία: " + OthersCC;
+        }
+
+        public void addRecipientsToBody()
+        {
+            //this.Body += "\r\n" + "Υπεύθυνος: " + "-" + "\r\n" + "Κυκλοφορία: " + "-";
+            this.Body += "\r\nΥπεύθυνος: -\r\nΚυκλοφορία: -";
+        }
     }
 
     public class AppUsers

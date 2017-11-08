@@ -84,39 +84,8 @@ namespace Protocol
 
                             //Send Mail... 
 
-                            string AttnTo = "";
-                            string OthersCC = "";
-                            foreach (Recipient rec in oF.RecipientsList)
-                            {
-                                if (rec.ExchTypeStr.ToUpper() == "TO")
-                                {
-                                    AttnTo += rec.ExchName + ",";
-                                }
-                                else if (rec.ExchTypeStr.ToUpper() == "CC")
-                                {
-                                    OthersCC += rec.ExchName + ",";
-                                }
-                            }
-                            if (AttnTo.Length > 0)
-                            {
-                                AttnTo = AttnTo.Substring(0, AttnTo.Length - 1);
-                            }
-                            else
-                            {
-                                AttnTo = "-";
-                            }
-                            if (OthersCC.Length > 0)
-                            {
-                                OthersCC = OthersCC.Substring(0, OthersCC.Length - 1);
-                            }
-                            else
-                            {
-                                OthersCC = "-";
-                            }
-
-                            frmProtoIns.myEmail.Body += "\r\n" + "Υπεύθυνος: " + AttnTo + "\r\n" + "Κυκλοφορία: " + OthersCC;
-
-
+                            frmProtoIns.myEmail.addRecipientsToBody(oF.RecipientsList);
+                            
                             oF.SendMail(frmProtoIns.myEmail.ProtokId, frmProtoIns.myEmail.Subject, frmProtoIns.myEmail.Body, frmProtoIns.AttFilesList);
                         }
                     }
@@ -184,10 +153,21 @@ namespace Protocol
 
                 }
             }
+            else if (frmProtoIns.successfulInsertion && frmProtoIns.chbSendMail.Checked == false && frmProtoIns.IOBoxPanel.Name.ToUpper() == "PANELINBOX")
+            {
+                frmProtoIns.myEmail.addRecipientsToBody();
+            }
+
             //else if (frmProtoIns.successfulInsertion == false && frmProtoIns.chbSendMail.Checked == true)
             //{
             //    MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί e-mail!");
             //}
+
+            if (frmProtoIns.chbPrintClipping.Checked)
+            {
+                Printings clprint = new Printings();
+                clprint.printProtocolClipping(frmProtoIns.myEmail.Body.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList<string>());
+            }
         }
 
         //private void InsertToolStripBtn_Click(object sender, EventArgs e)

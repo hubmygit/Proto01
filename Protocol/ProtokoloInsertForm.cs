@@ -1047,20 +1047,31 @@ namespace Protocol
                             myEmail.ProtokId = ProtokId;
 
                             //myEmail.Subject = aaa.Left(3) + "." + bbb + "/" + ccc + " " + ddd.Left(30) + "-" + eee.Left(30);
-                            myEmail.Subject = createInMailSubject("ΕΙΣΕΡΧΟΜΕΝΑ", 
-                                                ProtokSn.inserted, 
-                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]), 
-                                                IOBoxPanel.Controls["tbInProeleusi"].Text, 
+                            myEmail.Subject = createInMailSubject("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ProtokSn.inserted,
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
 
                             //myEmail.Body = aaa + "\r\n" + "Αριθμός Πρωτοκόλλου: " + bbb + "\r\n" + "Ημερομηνία Λήψης: " + ccc + "\r\n" + "Προέλευση: " + ddd + "\r\n" + "Περίληψη: " + eee;
-                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ", 
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
                                                 ((ComboboxItem)cbCompany.SelectedItem).Text,
-                                                ProtokSn.inserted, 
+                                                ProtokSn.inserted,
                                                 DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text,
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
                         }
+                        else
+                        {
+                            myEmail = new Email();
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ((ComboboxItem)cbCompany.SelectedItem).Text,
+                                                ProtokSn.inserted,
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
+                        }
+
 
                         ShowClosingDialog = false;
                         Close();
@@ -1370,6 +1381,17 @@ namespace Protocol
                                                 IOBoxPanel.Controls["tbInProeleusi"].Text,
                                                 IOBoxPanel.Controls["tbInSummary"].Text);
                         }
+                        else
+                        {
+                            myEmail = new Email();
+                            myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                                ((ComboboxItem)cbCompany.SelectedItem).Text,
+                                                ProtokSn,
+                                                DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                                IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                                IOBoxPanel.Controls["tbInSummary"].Text);
+                        }
+
 
                         ShowClosingDialog = false;
                         Close();
@@ -1584,6 +1606,38 @@ namespace Protocol
             {
                 cbControl.SelectedIndex = 0; //zero-base
             }
+        }
+
+        private void chbPrintClipping_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.Text == "Εμφάνιση" && chbPrintClipping.Checked && cbProtokoloKind.Text == "Εισερχόμενα")
+            {
+                //print
+                myEmail = new Email();
+                myEmail.Body = createInMailBody("ΕΙΣΕΡΧΟΜΕΝΑ",
+                                    ((ComboboxItem)cbCompany.SelectedItem).Text,
+                                    Convert.ToInt32(IOBoxPanel.Controls["tbInProtokoloNum"].Text),
+                                    DatetimePickerToReadableDate(IOBoxPanel.Controls["dtpInGetDate"]),
+                                    IOBoxPanel.Controls["tbInProeleusi"].Text,
+                                    IOBoxPanel.Controls["tbInSummary"].Text);
+
+                if (chbSendMail.Checked)
+                {
+                    MailRecipientsList mrl = new MailRecipientsList();
+                    List<Recipient> recList = mrl.FillRecList(Protok_Id_For_Updates);
+                    myEmail.addRecipientsToBody(recList);
+                }
+                else
+                {
+                    myEmail.addRecipientsToBody();
+                }
+                                
+                Printings clprint = new Printings();
+                clprint.printProtocolClipping(myEmail.Body.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList<string>());
+
+                chbPrintClipping.Checked = false;
+            }
+                        
         }
     }
 
