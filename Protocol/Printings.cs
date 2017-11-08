@@ -53,6 +53,25 @@ namespace Protocol
 
         private void ProtocolClipping_Document_PrintText(object sender, PrintPageEventArgs e)
         {
+            //--------------->
+            List<string> names = new List<string>();
+            List<string> values = new List<string>();
+            foreach (string thisLine in clippingList)
+            {
+                if (thisLine.IndexOf(":") > 0)
+                {
+                    names.Add(thisLine.Substring(0, thisLine.IndexOf(":")));
+                    values.Add(thisLine.Substring(thisLine.IndexOf(":")+2));
+                }
+                else
+                {
+                    names.Add(thisLine); 
+                    values.Add("");
+                }
+            }
+            //<---------------
+
+
             Graphics gf = e.Graphics;
             SizeF sf;
             float maxWidth = 0;
