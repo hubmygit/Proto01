@@ -70,13 +70,13 @@ namespace Protocol
                 OthersCC = "-";
             }
 
-            this.Body += "\r\n" + "Υπεύθυνος: " + AttnTo + "\r\n" + "Κυκλοφορία: " + OthersCC;
+            this.Body += "\r\n" + "Αρμόδιος: " + AttnTo + "\r\n" + "Κυκλοφορία: " + OthersCC;
         }
 
         public void addRecipientsToBody()
         {
-            //this.Body += "\r\n" + "Υπεύθυνος: " + "-" + "\r\n" + "Κυκλοφορία: " + "-";
-            this.Body += "\r\nΥπεύθυνος: -\r\nΚυκλοφορία: -";
+            //this.Body += "\r\n" + "Αρμόδιος: " + "-" + "\r\n" + "Κυκλοφορία: " + "-";
+            this.Body += "\r\nΑρμόδιος: -\r\nΚυκλοφορία: -";
         }
     }
 

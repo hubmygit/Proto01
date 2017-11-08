@@ -28,6 +28,12 @@ namespace Protocol
 
         public void printProtocolClipping(List<string> clippingString)
         {
+            if (clippingString.Count <= 0) //will never reach this piece of code!!!
+            {
+                MessageBox.Show("Δεν υπάρχουν εγγραφές για εκτύπωση!");
+                return;
+            }
+            
             clippingList = clippingString;
             PrintDialog printDlg = new PrintDialog();
             PrintDocument document = new PrintDocument();
@@ -47,13 +53,56 @@ namespace Protocol
 
         private void ProtocolClipping_Document_PrintText(object sender, PrintPageEventArgs e)
         {
-            //clippingList --> List<string>
-
             Graphics gf = e.Graphics;
             SizeF sf;
-
+            float maxWidth = 0;
+            float lineWidth = 0;
+            float StartingPtX = 32;
+            float StartingPtY = 32;
+            float ptX = StartingPtX;
+            float ptY = StartingPtY;
+            List<float> lvHeight = new List<float>();
             Font myFont = new Font("Arial", 9);
-            gf.DrawString("Δοκιμαστική εκτύπωση!!!", myFont, Brushes.Black, new Point(256, 38));
+
+            for (int i = 0; i < clippingList.Count; i++)
+            {
+                sf = gf.MeasureString(clippingList[i], myFont, new SizeF(400, 600));
+
+                if (i == 5 && clippingList[5].IndexOf(": -") > 0)
+                {
+                    clippingList[5] = clippingList[5].Replace("-", "");
+
+                    sf.Width = 300;
+                    sf.Height += 20;
+                }
+                if (i == 6 && clippingList[6].IndexOf(": -") > 0)
+                {
+                    clippingList[6] = clippingList[6].Replace("-", "");
+                    sf.Height += 20;
+                }
+
+                lineWidth = sf.Width;
+                lvHeight.Add(sf.Height);
+
+                gf.DrawString(clippingList[i], myFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX, ptY + 5), new SizeF(lineWidth, sf.Height)));
+
+                if (maxWidth < lineWidth)
+                {
+                    maxWidth = lineWidth;
+                }
+
+                ptY += sf.Height + 10;
+            }
+
+            ptY = StartingPtY;
+
+            for (int i = 0; i < clippingList.Count; i++)
+            {
+                e.Graphics.DrawRectangle(Pens.Black, ptX, ptY, maxWidth, lvHeight[i] + 10);
+
+                ptY += lvHeight[i] + 10;
+            }
+
         }
 
         public void printProtocols(ListView ProtocolsListView, List<Filter> savedFilterControls)
