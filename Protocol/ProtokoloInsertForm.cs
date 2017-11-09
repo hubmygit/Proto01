@@ -317,6 +317,11 @@ namespace Protocol
             if (cbProtokoloKind.Text.Trim() != "")
             {
                 cbProtokoloKind.Enabled = false;
+
+                if (cbProtokoloKind.Text == "Εξερχόμενα")
+                {
+                    chbPrintClipping.Enabled = false;
+                }
             }
 
             ShowPanel();
