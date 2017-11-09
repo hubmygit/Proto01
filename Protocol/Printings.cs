@@ -53,7 +53,7 @@ namespace Protocol
 
         private void ProtocolClipping_Document_PrintText(object sender, PrintPageEventArgs e)
         {
-            //--------------->
+            //********************* Split clippingList To Names & Values *********************
             List<string> names = new List<string>();
             List<string> values = new List<string>();
             foreach (string thisLine in clippingList)
@@ -61,17 +61,102 @@ namespace Protocol
                 if (thisLine.IndexOf(":") > 0)
                 {
                     names.Add(thisLine.Substring(0, thisLine.IndexOf(":")));
-                    values.Add(thisLine.Substring(thisLine.IndexOf(":")+2));
+                    values.Add(thisLine.Substring(thisLine.IndexOf(":") + 2));
                 }
                 else
                 {
-                    names.Add(thisLine); 
+                    names.Add(thisLine);
                     values.Add("");
                 }
             }
-            //<---------------
 
+            //********************* Init Main Vars *********************
+            Graphics gf = e.Graphics;
+            SizeF sfn;
+            SizeF sfv;
+            float NameWidth = 0;
+            float ValueWidth = 0;
+            float StartingPtX = 32;
+            float StartingPtY = 32;
+            float ptX = StartingPtX;
+            float ptY = StartingPtY;
+            List<float> lvHeight = new List<float>();
+            Font myFont = new Font("Arial", 9);
+            Font myBoldFont = new Font("Arial", 9, FontStyle.Bold);
 
+            //********************* Names / Values *********************
+            for (int i = 0; i < clippingList.Count; i++)
+            {
+                sfn = gf.MeasureString(names[i], myBoldFont, new SizeF(500, 500));
+                                
+                lvHeight.Add(sfn.Height);
+                
+                sfv = gf.MeasureString(values[i], myFont, new SizeF(300, 600));
+
+                if ((i == 5 && clippingList[5].IndexOf(": -") > 0) || (i == 6 && clippingList[6].IndexOf(": -") > 0))
+                {
+                    values[i] = values[i].Replace("-", "");
+                    sfv.Width = 300;
+                    sfv.Height = 40;
+                }
+
+                if (lvHeight[i] < sfv.Height)
+                {
+                    lvHeight[i] = sfv.Height;
+                }
+
+                if (i == 0)
+                {
+                    sfn.Width = 0;
+                }
+
+                if (NameWidth < sfn.Width)
+                {
+                    NameWidth = sfn.Width;
+                }
+
+                if (i > 0)
+                {
+                    gf.DrawString(names[i], myBoldFont, Brushes.Black, new RectangleF(new PointF(ptX, ptY + 5), new SizeF(NameWidth, lvHeight[i])));
+                }
+
+                if (ValueWidth < sfv.Width)
+                {
+                    ValueWidth = sfv.Width;
+                }
+
+                gf.DrawString(values[i], myFont, Brushes.DarkBlue, new RectangleF(new PointF(ptX + NameWidth, ptY + 5), new SizeF(ValueWidth, lvHeight[i])));
+
+                ptY += lvHeight[i] + 10;
+            }
+
+            //********************* Rectangle Lines *********************
+            ptY = StartingPtY;
+
+            for (int i = 0; i < clippingList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    float TotalWidth = NameWidth + ValueWidth;
+                    float TextWidth = NameWidth; //sfn.Width;
+                    float xPoint = ptX + (TotalWidth / 2) - (TextWidth / 2);
+                    gf.DrawString(names[i], myBoldFont, Brushes.DarkBlue, new RectangleF(new PointF(xPoint, ptY + 5), new SizeF(TotalWidth, lvHeight[i])));
+
+                    e.Graphics.DrawRectangle(Pens.Black, ptX, ptY, NameWidth + ValueWidth, lvHeight[i] + 10);
+                }
+                else
+                {
+                    e.Graphics.DrawRectangle(Pens.Black, ptX, ptY, NameWidth, lvHeight[i] + 10);
+
+                    e.Graphics.DrawRectangle(Pens.Black, ptX + NameWidth, ptY, ValueWidth, lvHeight[i] + 10);
+                }
+                ptY += lvHeight[i] + 10;
+            }
+
+            
+        }
+        private void ProtocolClipping_Document_PrintText__Try001(object sender, PrintPageEventArgs e)
+        {
             Graphics gf = e.Graphics;
             SizeF sf;
             float maxWidth = 0;
