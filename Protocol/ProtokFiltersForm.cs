@@ -229,7 +229,7 @@ namespace Protocol
             whereStr += " isnull(P.deleted, 0) = " + Convert.ToInt32(chbDeleted.Checked);
 
             savedFilters.Add(new Filter("chbUpdated", chbUpdated.Checked.ToString()));
-            whereStr += "AND isnull(P.updated, 0) = " + Convert.ToInt32(chbUpdated.Checked);
+            whereStr += " AND isnull(P.updated, 0) = " + Convert.ToInt32(chbUpdated.Checked);
 
             savedFilters.Add(new Filter("dtpGetSetDate_From", dtpGetSetDate_From.Value.ToString("dd-MM-yyyy")));
             savedFilters.Add(new Filter("dtpGetSetDate_To", dtpGetSetDate_To.Value.ToString("dd-MM-yyyy")));
