@@ -163,7 +163,7 @@ namespace Protocol
             //    MessageBox.Show("Λόγω σφάλματος κατά την καταχώρηση, δεν θα αποσταλεί e-mail!");
             //}
 
-            if (frmProtoIns.chbPrintClipping.Checked)
+            if (frmProtoIns.successfulInsertion && frmProtoIns.chbPrintClipping.Checked)
             {
                 Printings clprint = new Printings();
                 clprint.printProtocolClipping(frmProtoIns.myEmail.Body.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList<string>());

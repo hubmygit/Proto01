@@ -471,7 +471,7 @@ namespace Protocol
                 updScreen.myEmail.addRecipientsToBody();
             }
 
-            if (updScreen.chbPrintClipping.Checked)
+            if (updScreen.successfulInsertion && updScreen.chbPrintClipping.Checked)
             {
                 Printings clprint = new Printings();
                 clprint.printProtocolClipping(updScreen.myEmail.Body.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList<string>());
