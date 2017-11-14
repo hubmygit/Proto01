@@ -73,6 +73,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevisionSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RevisionSelectForm.Designer.cs">
+      <DependentUpon>RevisionSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtokoloRevisionsSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProtokoloRevisionsSelectForm.Designer.cs">
+      <DependentUpon>ProtokoloRevisionsSelectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsersSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +255,12 @@
     <Compile Include="_GramV3_DevDataSet_Contact.Designer.cs">
       <DependentUpon>_GramV3_DevDataSet_Contact.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RevisionSelectForm.resx">
+      <DependentUpon>RevisionSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProtokoloRevisionsSelectForm.resx">
+      <DependentUpon>ProtokoloRevisionsSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsersSelect.resx">
       <DependentUpon>UsersSelect.cs</DependentUpon>
     </EmbeddedResource>

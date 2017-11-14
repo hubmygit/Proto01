@@ -568,6 +568,12 @@ namespace Protocol
             UsersSelect UsrSel = new UsersSelect();
             UsrSel.ShowDialog();
         }
+
+        private void RevisionsTSMenuItem_Click(object sender, EventArgs e)
+        {
+            ProtokoloRevisionsSelectForm frmRevProtoSel = new ProtokoloRevisionsSelectForm();
+            frmRevProtoSel.ShowDialog();
+        }
     }
 
     /*

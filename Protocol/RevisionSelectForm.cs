@@ -12,32 +12,40 @@ using System.Data.SqlClient;
 
 namespace Protocol
 {
-    public partial class FolderProtoksForm : Form
+    public partial class RevisionSelectForm : Form
     {
-        public FolderProtoksForm(int FolderId)
+        public RevisionSelectForm(int Sn, int CompanyId, int ProcedId, int Year, int RevCounter)
         {
             InitializeComponent();
-            
-            ShowDataToListView(lvRep, FolderId);
+
+            revisionsCounter = RevCounter;
+            ShowDataToListView(lvRep, Sn, CompanyId, ProcedId, Year);
+
+            tbCompany.Text = lvRep.Items[0].SubItems[1].Text;
+            tbProtokoloKind.Text = lvRep.Items[0].SubItems[3].Text;
+            tbProtokoloNum.Text = lvRep.Items[0].SubItems[4].Text;
+            tbYear.Text = lvRep.Items[0].SubItems[2].Text;
         }
 
-        public void ShowDataToListView(ListView lvReport, int FolderId)
+        private int revisionsCounter = 0;
+
+        public void ShowDataToListView(ListView lvReport, int Sn, int CompanyId, int ProcedId, int Year)
         {
             SqlConnection sqlConn = new SqlConnection(DBInfo.connectionString);
             string SelectSt = "SELECT P.Sn, P.Year, PR.Name as ProcedName, C.Name as CompanyName, convert(varchar, P.DocumentDate, 104) as _DocumentDate, " +
                                      "convert(varchar, P.DocumentGetSetDate, 104) as _DocumentGetSetDate, P.DocumentNumber, P.ProeleusiKateuth, P.Summary, P.ToText, F.Name, P.Id, " +
                                      "(select count(*) from [dbo].[ProtokPdf] PA where PA.ProtokId = P.id) as Att, " +
-                                     "(select count(*) from [dbo].[ReceiverList] RL where RL.ProtokId = P.id) as Mails " +
+                                     "(select count(*) from [dbo].[ReceiverList] RL where RL.ProtokId = P.id) as Mails, P.RevNo " +
                               "FROM [dbo].[Protok] P left outer join [dbo].[Proced] PR on PR.id = P.ProcedureId " +
                               "left outer join [dbo].[Company] C on C.id = P.CompanyId " +
-                              "left outer join [dbo].[Folders] F on F.id = P.FolderId " + //and F.CompanyId = P.CompanyId and F.ProcedId = P.ProcedureId " +
-                              //"WHERE month(P.DocumentGetSetDate) = month(getdate()) and isnull(P.deleted, 0) = 0 and F.id = " + FolderId.ToString();
-                              //"WHERE year(P.DocumentGetSetDate) = year(getdate()) and isnull(P.deleted, 0) = 0 and F.id = " + FolderId.ToString() +
-                              "WHERE isnull(P.deleted, 0) = 0 and isnull(P.updated, 0) = 0 and F.id = " + FolderId.ToString() +
+                              "left outer join [dbo].[Folders] F on F.id = P.FolderId " + 
+
+                              "WHERE P.Sn = " + Sn.ToString() + " and P.Year = " + Year.ToString() + 
+                              " and P.CompanyId = " + CompanyId.ToString() + " and P.ProcedureId = " + ProcedId.ToString() +
 
                               " and C.id in (" + UserInfo.CompaniesAsCsvString + ") " +
 
-                              "ORDER BY C.Name, P.Year, PR.Name, P.Sn ";
+                              "ORDER BY P.Id DESC ";
 
             SqlCommand cmd = new SqlCommand(SelectSt, sqlConn);
             try
@@ -59,9 +67,10 @@ namespace Protocol
                                      reader[9].ToString(), //paratiriseis
                                      reader[10].ToString(), //folder
                                      reader[12].ToString(), //att
-                                     reader[13].ToString()}; //mails
+                                     reader[13].ToString(), //mails
+                                     reader[14].ToString() }; //Revisions
 
-                    ListViewItem listViewItem = new ListViewItem(row);
+                ListViewItem listViewItem = new ListViewItem(row);
                     lvReport.Items.Add(listViewItem);
                 }
 
@@ -69,6 +78,8 @@ namespace Protocol
                 bs.DataSource = reader;
 
                 reader.Close();
+
+                lvReport.Items[0].BackColor = Color.LightGray;
             }
             catch (Exception ex)
             {
@@ -87,6 +98,8 @@ namespace Protocol
 
             ProtokoloInsertForm selScreen = new ProtokoloInsertForm();
             ListViewItem.ListViewSubItemCollection lvic = new ListViewItem.ListViewSubItemCollection(lvRep.SelectedItems[0]);
+
+            string thisRev = lvic[14].Text;
 
             string proced = lvic[3].Text;
             string company = lvic[1].Text;
@@ -199,14 +212,12 @@ namespace Protocol
             }
 
             InsUser InsUsr = ProtocolSelFrm.getInsUserInfos(Convert.ToInt32(lvic[0].Text));
-            selScreen.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: " + InsUsr.WindowsUser + " - " + InsUsr.FullName;
 
+            string revInfo = "[Αναθεώρηση Νο. " + thisRev + " από " + revisionsCounter.ToString() + "]";
+
+            selScreen.tsStatusLblInsUser.Text = "Χρήστης Καταχώρησης: " + InsUsr.WindowsUser + " - " + InsUsr.FullName + " * " + revInfo;
+            
             selScreen.ShowDialog();
         }
-
-        //private void btnFilters_Click(object sender, EventArgs e)
-        //{
-        //    //not needed here...
-        //}
     }
 }
