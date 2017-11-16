@@ -44,9 +44,9 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.btnFilters = new System.Windows.Forms.Button();
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvRep
@@ -124,7 +124,7 @@
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "Προέλευση/Κατεύθυνση";
+            this.columnHeader9.Text = "Αποστολέας/Κατεύθυνση";
             this.columnHeader9.Width = 138;
             // 
             // columnHeader10
@@ -152,6 +152,11 @@
             this.columnHeader14.Text = "Emails";
             this.columnHeader14.Width = 54;
             // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Revisions";
+            this.columnHeader15.Width = 48;
+            // 
             // btnClearFilters
             // 
             this.btnClearFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
@@ -177,11 +182,6 @@
             this.btnFilters.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilters.UseVisualStyleBackColor = true;
             this.btnFilters.Click += new System.EventHandler(this.btnFilters_Click);
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Revisions";
-            this.columnHeader15.Width = 48;
             // 
             // ProtokoloRevisionsSelectForm
             // 

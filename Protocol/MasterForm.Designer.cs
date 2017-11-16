@@ -34,6 +34,7 @@
             this.InsertTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SelectTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RevisionsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FoldersTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +63,6 @@
             this.UpdateToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.DeleteToolStripBtn = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.RevisionsTSMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -115,6 +115,13 @@
             this.UpdateTSMenuItem.Size = new System.Drawing.Size(276, 22);
             this.UpdateTSMenuItem.Text = "Μεταβολή";
             this.UpdateTSMenuItem.Click += new System.EventHandler(this.UpdateTSMenuItem_Click);
+            // 
+            // RevisionsTSMenuItem
+            // 
+            this.RevisionsTSMenuItem.Name = "RevisionsTSMenuItem";
+            this.RevisionsTSMenuItem.Size = new System.Drawing.Size(276, 22);
+            this.RevisionsTSMenuItem.Text = "Εμφάνιση Αναθεωρήσεων (Revisions)";
+            this.RevisionsTSMenuItem.Click += new System.EventHandler(this.RevisionsTSMenuItem_Click);
             // 
             // DeleteTSMenuItem
             // 
@@ -353,13 +360,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(760, 470);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // RevisionsTSMenuItem
-            // 
-            this.RevisionsTSMenuItem.Name = "RevisionsTSMenuItem";
-            this.RevisionsTSMenuItem.Size = new System.Drawing.Size(276, 22);
-            this.RevisionsTSMenuItem.Text = "Εμφάνιση Αναθεωρήσεων (Revisions)";
-            this.RevisionsTSMenuItem.Click += new System.EventHandler(this.RevisionsTSMenuItem_Click);
             // 
             // MasterForm
             // 

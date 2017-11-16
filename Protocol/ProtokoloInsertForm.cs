@@ -927,7 +927,7 @@ namespace Protocol
         {
             string ret = "";
             ret = protokType + " " + company + "\r\n" + "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + 
-                "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Προέλευση: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
+                "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Αποστολέας: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
             return ret;
         }
 
@@ -989,7 +989,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbInProeleusi"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Προέλευση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αποστολέας'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1316,7 +1316,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbInProeleusi"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Προέλευση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Αποστολέας'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

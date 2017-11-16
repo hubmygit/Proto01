@@ -316,9 +316,9 @@
             this.lblInProeleusi.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblInProeleusi.Location = new System.Drawing.Point(9, 225);
             this.lblInProeleusi.Name = "lblInProeleusi";
-            this.lblInProeleusi.Size = new System.Drawing.Size(79, 17);
+            this.lblInProeleusi.Size = new System.Drawing.Size(86, 17);
             this.lblInProeleusi.TabIndex = 6;
-            this.lblInProeleusi.Text = "Προέλευση";
+            this.lblInProeleusi.Text = "Αποστολέας";
             // 
             // lblInFolderId
             // 
