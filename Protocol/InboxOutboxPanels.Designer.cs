@@ -294,7 +294,7 @@
             this.lblInToText.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblInToText.Location = new System.Drawing.Point(9, 357);
             this.lblInToText.Name = "lblInToText";
-            this.lblInToText.Size = new System.Drawing.Size(257, 17);
+            this.lblInToText.Size = new System.Drawing.Size(251, 17);
             this.lblInToText.TabIndex = 8;
             this.lblInToText.Text = "Αρμόδιος για ενέργεια / Παρατηρήσεις";
             // 
@@ -305,9 +305,9 @@
             this.lblInSummary.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblInSummary.Location = new System.Drawing.Point(9, 291);
             this.lblInSummary.Name = "lblInSummary";
-            this.lblInSummary.Size = new System.Drawing.Size(68, 17);
+            this.lblInSummary.Size = new System.Drawing.Size(42, 17);
             this.lblInSummary.TabIndex = 7;
-            this.lblInSummary.Text = "Περίληψη";
+            this.lblInSummary.Text = "Θέμα";
             // 
             // lblInProeleusi
             // 
@@ -613,9 +613,9 @@
             this.lblOutSummary.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblOutSummary.Location = new System.Drawing.Point(9, 243);
             this.lblOutSummary.Name = "lblOutSummary";
-            this.lblOutSummary.Size = new System.Drawing.Size(68, 17);
+            this.lblOutSummary.Size = new System.Drawing.Size(42, 17);
             this.lblOutSummary.TabIndex = 7;
-            this.lblOutSummary.Text = "Περίληψη";
+            this.lblOutSummary.Text = "Θέμα";
             // 
             // lblOutKateuth
             // 

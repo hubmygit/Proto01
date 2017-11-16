@@ -136,7 +136,7 @@
             // 
             // columnHeader10
             // 
-            this.columnHeader10.Text = "Περίληψη";
+            this.columnHeader10.Text = "Θέμα";
             this.columnHeader10.Width = 250;
             // 
             // columnHeader11

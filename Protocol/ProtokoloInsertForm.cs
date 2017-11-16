@@ -927,7 +927,7 @@ namespace Protocol
         {
             string ret = "";
             ret = protokType + " " + company + "\r\n" + "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + 
-                "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Αποστολέας: " + proeleusi + "\r\n" + "Περίληψη: " + summary;
+                "Ημερομηνία Λήψης: " + getDate + "\r\n" + "Αποστολέας: " + proeleusi + "\r\n" + "Θέμα: " + summary;
             return ret;
         }
 
@@ -941,7 +941,7 @@ namespace Protocol
         public string createOutMailBody(int protokSn, string summary)
         {
             string ret = "";
-            ret = "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Περίληψη: " + summary;
+            ret = "Αριθμός Πρωτοκόλλου: " + protokSn.ToString() + "\r\n" + "Θέμα: " + summary;
             return ret;
         }
         public void btnInsert_Click(object sender, EventArgs e)
@@ -995,7 +995,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbInSummary"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Θέμα'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1165,7 +1165,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbOutSummary"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Θέμα'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1322,7 +1322,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbInSummary"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Θέμα'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1437,7 +1437,7 @@ namespace Protocol
 
                 if (IOBoxPanel.Controls["tbOutSummary"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Περίληψη'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Θέμα'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

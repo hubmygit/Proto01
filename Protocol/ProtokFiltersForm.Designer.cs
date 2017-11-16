@@ -218,11 +218,11 @@
             this.lblSummary.AutoSize = true;
             this.lblSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblSummary.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblSummary.Location = new System.Drawing.Point(111, 231);
+            this.lblSummary.Location = new System.Drawing.Point(137, 231);
             this.lblSummary.Name = "lblSummary";
-            this.lblSummary.Size = new System.Drawing.Size(68, 17);
+            this.lblSummary.Size = new System.Drawing.Size(42, 17);
             this.lblSummary.TabIndex = 38;
-            this.lblSummary.Text = "Περίληψη";
+            this.lblSummary.Text = "Θέμα";
             // 
             // txtDocNum
             // 
