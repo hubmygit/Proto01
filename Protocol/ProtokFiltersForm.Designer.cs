@@ -199,11 +199,11 @@
             this.lblProelKateuth.AutoSize = true;
             this.lblProelKateuth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblProelKateuth.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblProelKateuth.Location = new System.Drawing.Point(11, 200);
+            this.lblProelKateuth.Location = new System.Drawing.Point(9, 200);
             this.lblProelKateuth.Name = "lblProelKateuth";
-            this.lblProelKateuth.Size = new System.Drawing.Size(168, 17);
+            this.lblProelKateuth.Size = new System.Drawing.Size(170, 17);
             this.lblProelKateuth.TabIndex = 36;
-            this.lblProelKateuth.Text = "Αποστολέας/Κατεύθυνση";
+            this.lblProelKateuth.Text = "Αποστολέας/Παραλήπτης";
             // 
             // txtSummary
             // 

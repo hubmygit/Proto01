@@ -253,7 +253,7 @@ namespace Protocol
 
             //ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ/ Σχετ.Αρ.",
             ListViewItem lviColumnHeader = new ListViewItem(new string[] { "Id", "Εταιρία", "Έτος", "Κατ.Πρωτοκ.", "ΑΑ Πρωτ.", "Ημ.Λήψης/ Αποστολής", "Ημ/νία Έκδοσης", "Αρ.Εισερχ. Εγγράφου",
-                "Αποστολέας/Κατεύθυνση", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Αρχεία", "Emails" });
+                "Αποστολέας/Παραλήπτης", "Περίληψη", "Παρ.για ενέργεια/ Παρατηρήσεις", "Αρ.Φακέλου Αρχείου", "Αρχεία", "Emails" });
 
             Graphics gf = e.Graphics;
             SizeF sf;
@@ -666,7 +666,7 @@ namespace Protocol
                         //ret += "\r\n";
                         //filterNames.Add("Προέλευση/Κατεύθυνση:");
                         //filterValues.Add(thisFilter.FieldValue);
-                        filterObjs.Add(new PrintFilterObj { filterNames = "Αποστολέας/Κατεύθυνση:", filterValues = thisFilter.FieldValue });
+                        filterObjs.Add(new PrintFilterObj { filterNames = "Αποστολέας/Παραλήπτης:", filterValues = thisFilter.FieldValue });
 
                         continue;
                     }

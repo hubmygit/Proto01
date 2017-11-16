@@ -624,9 +624,9 @@
             this.lblOutKateuth.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblOutKateuth.Location = new System.Drawing.Point(9, 155);
             this.lblOutKateuth.Name = "lblOutKateuth";
-            this.lblOutKateuth.Size = new System.Drawing.Size(86, 17);
+            this.lblOutKateuth.Size = new System.Drawing.Size(88, 17);
             this.lblOutKateuth.TabIndex = 6;
-            this.lblOutKateuth.Text = "Κατεύθυνση";
+            this.lblOutKateuth.Text = "Παραλήπτης";
             // 
             // lblOutSetDate
             // 

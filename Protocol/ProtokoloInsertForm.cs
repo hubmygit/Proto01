@@ -1159,7 +1159,7 @@ namespace Protocol
                 }
                 if (IOBoxPanel.Controls["tbOutKateuth"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Κατεύθυνση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παραλήπτης'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1431,7 +1431,7 @@ namespace Protocol
                 }
                 if (IOBoxPanel.Controls["tbOutKateuth"].Text.Trim() == "")
                 {
-                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Κατεύθυνση'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Παρακαλώ συμπληρώστε το πεδίο 'Παραλήπτης'!", "Προσοχή!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

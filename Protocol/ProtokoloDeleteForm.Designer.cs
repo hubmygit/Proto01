@@ -180,7 +180,7 @@
             // 
             // columnHeader9
             // 
-            this.columnHeader9.Text = "Αποστολέας/Κατεύθυνση";
+            this.columnHeader9.Text = "Αποστολέας/Παραλήπτης";
             this.columnHeader9.Width = 138;
             // 
             // columnHeader10
