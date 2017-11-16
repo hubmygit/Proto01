@@ -409,12 +409,12 @@ namespace Protocol
                 }
                 if (i == 8) //proel //7
                 {
-                    sf.Width -= 50;
+                    sf.Width -= 45;
                     sf.Height = sf.Height * 2;
                 }
                 if (i == 9) //perilipsi //8
                 {
-                    sf.Width += 158;
+                    sf.Width += 185;
                 }
                 if (i == 10) //parat //9
                 {
