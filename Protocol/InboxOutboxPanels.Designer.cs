@@ -296,7 +296,7 @@
             this.lblInToText.Name = "lblInToText";
             this.lblInToText.Size = new System.Drawing.Size(257, 17);
             this.lblInToText.TabIndex = 8;
-            this.lblInToText.Text = "Παράδοση για ενέργεια / Παρατηρήσεις";
+            this.lblInToText.Text = "Αρμόδιος για ενέργεια / Παρατηρήσεις";
             // 
             // lblInSummary
             // 

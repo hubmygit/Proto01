@@ -256,11 +256,11 @@
             this.lblToText.AutoSize = true;
             this.lblToText.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
             this.lblToText.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblToText.Location = new System.Drawing.Point(0, 293);
+            this.lblToText.Location = new System.Drawing.Point(1, 293);
             this.lblToText.Name = "lblToText";
-            this.lblToText.Size = new System.Drawing.Size(179, 17);
+            this.lblToText.Size = new System.Drawing.Size(178, 17);
             this.lblToText.TabIndex = 42;
-            this.lblToText.Text = "Παρ.για ενέργεια/Παρατηρ.";
+            this.lblToText.Text = "Αρμ.για ενέργεια/Παρατηρ.";
             // 
             // chlbFolder
             // 

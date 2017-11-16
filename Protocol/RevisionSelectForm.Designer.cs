@@ -141,7 +141,7 @@
             // 
             // columnHeader11
             // 
-            this.columnHeader11.Text = "Παρ.για ενέργεια/Παρατηρήσεις";
+            this.columnHeader11.Text = "Αρμ.για ενέργεια/Παρατηρήσεις";
             this.columnHeader11.Width = 205;
             // 
             // columnHeader12
