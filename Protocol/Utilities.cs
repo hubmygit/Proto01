@@ -80,7 +80,7 @@ namespace Protocol
             string username = "GramUser"; //"GramV3";
             string password = "111111"; //"8093570";
             connectionString = "Persist Security Info=False; User ID=" + username + "; Password=" + password + "; Initial Catalog=" + database + "; Server=" + server;
-            
+
             try
             {
                 connectionString = Properties.Settings.Default.connString;

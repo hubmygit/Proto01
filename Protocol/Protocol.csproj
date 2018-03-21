@@ -85,6 +85,7 @@
     <Compile Include="ProtokoloRevisionsSelectForm.Designer.cs">
       <DependentUpon>ProtokoloRevisionsSelectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="UsersSelect.cs">
       <SubType>Form</SubType>
     </Compile>
